@@ -78,14 +78,16 @@
                 android:text="Loan Account Number"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
+                android:background="@drawable/input_box_layout"
                 android:hint="Enter your Loan Account Number"
-                android:textColorHint="@color/HintColor"
+                android:textColor="@color/black"
                 android:padding="20dp"
-                android:background="@drawable/input_box_layout"/>
+                android:textColorHint="@color/HintColor" />
 
 
 
@@ -103,15 +105,17 @@
                 android:padding="10dp"
                 android:textColor="@color/grey"
                 android:textSize="16sp"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
+                android:background="@drawable/input_box_layout"
                 android:hint="Enter your mobile number"
-                android:textColorHint="@color/HintColor"
-                android:padding="20dp"
+                android:textColor="@color/black"
                 android:inputType="phone"
-                android:background="@drawable/input_box_layout"/>
+                android:padding="20dp"
+                android:textColorHint="@color/HintColor" />
         </RelativeLayout>
 
 
