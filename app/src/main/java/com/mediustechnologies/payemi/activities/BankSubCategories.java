@@ -62,6 +62,6 @@ public class BankSubCategories extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this,paymentInfo.class)));
+        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this,addLoadAccount.class)));
     }
 }

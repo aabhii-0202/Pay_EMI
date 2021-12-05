@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PayEMI">
         <activity
+            android:name=".activities.addLoadAccount"
+            android:exported="false" />
+        <activity
             android:name=".activities.BankSubCategories"
             android:exported="false" />
         <activity
