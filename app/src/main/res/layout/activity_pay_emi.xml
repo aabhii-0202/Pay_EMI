@@ -137,7 +137,7 @@
                 android:layout_marginStart="13dp"
                 android:layout_toEndOf="@+id/rupee_sign"
                 android:background="@drawable/amount_box"
-                android:hint="12,234"
+                android:hint="14,288"
                 android:inputType="number"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -176,6 +176,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/payButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pay"
@@ -184,23 +185,6 @@
             android:background="@color/Button_color"
             android:layout_marginVertical="50dp"
             android:layout_marginHorizontal="20dp"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </LinearLayout>
 
 

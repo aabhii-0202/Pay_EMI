@@ -10,21 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PayEMI">
         <activity
-            android:name=".activities.payEMI"
+            android:name=".activities.paypmentSuccessful"
             android:exported="false" >
 
+        </activity>
+        <activity
+            android:name=".activities.payEMI"
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".activities.addLoadAccount"
             android:exported="false" />
         <activity
             android:name=".activities.BankSubCategories"
-            android:exported="false" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            android:exported="false">
         </activity>
         <activity
             android:name=".activities.paymentInfo"
@@ -37,10 +42,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
+
+
 
 </manifest>
