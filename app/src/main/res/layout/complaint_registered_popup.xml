@@ -13,6 +13,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/gtwalsheim_pro_regular"
         android:layout_marginBottom="10dp"
         android:text="Your commmplaint has been registered successfully. \nYour complaint Id is PE82908377 assigned to AXIS Finance Bank. You can track status of your complaint using your complaint Id"
         android:textColor="@color/black"

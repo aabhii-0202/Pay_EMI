@@ -17,9 +17,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="127dp"
+        android:fontFamily="@font/gtwalsheim_pro_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="OTP has been sent on 981xxxx907"
+        android:text="OTP has been sent on 981xxxx907."
         android:textSize="16sp"
         android:textColor="@color/black"/>
 
