@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.mediustechnologies.payemi.Models.bankListItem;
+import com.mediustechnologies.payemi.commons.RetrofitClient;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 
 import org.json.JSONException;
@@ -12,6 +15,10 @@ import com.mediustechnologies.payemi.commons.constants;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultWithDataListener;
+
+import java.util.List;
+
+import retrofit2.Call;
 
 
 public class payEMI extends AppCompatActivity  implements PaymentResultWithDataListener {
@@ -27,6 +34,7 @@ public class payEMI extends AppCompatActivity  implements PaymentResultWithDataL
 
 
         init();
+
     }
 
     private void init(){
