@@ -10,15 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PayEMI">
         <activity
+            android:name=".activities.transaction_Search"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".activities.complaintRegistration"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".activities.paypmentSuccessful"
@@ -28,6 +31,7 @@
         <activity
             android:name=".activities.payEMI"
             android:exported="false">
+
         </activity>
         <activity
             android:name=".activities.addLoadAccount"

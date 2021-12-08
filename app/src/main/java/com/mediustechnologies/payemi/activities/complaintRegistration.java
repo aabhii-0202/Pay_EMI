@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 
 import com.mediustechnologies.payemi.R;
@@ -30,7 +32,7 @@ public class complaintRegistration extends AppCompatActivity {
 
     private void init(){
         // spinner
-        Spinner dropdown = binding.spinner;
+        AutoCompleteTextView dropdown = binding.spinner;
     //create a list of items for the spinner.
         String[] items = new String[]{"Transaction Based Complaint", "2", "3"};
     //create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -42,6 +44,10 @@ public class complaintRegistration extends AppCompatActivity {
 
         binding.sendOTP.setOnClickListener(view -> showOtpSentDialog());
 
+        binding.verifyOTP.setOnClickListener(View->{binding.statusLayout.setVisibility(android.view.View.VISIBLE);});
+
+        binding.submit.setOnClickListener(View->{startActivity(new Intent(context,transaction_Search.class));});
+
 
 
     }
@@ -50,7 +56,7 @@ public class complaintRegistration extends AppCompatActivity {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.otpsentpopup);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         dialog.show();
+        binding.otpLayout.setVisibility(View.VISIBLE);
     }
 }
