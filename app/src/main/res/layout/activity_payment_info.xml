@@ -493,16 +493,16 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/pay_now"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="20dp"
-        android:background="#412e8d"
+        android:background="@drawable/button_bg"
         android:text="Pay Now"
         android:textSize="19sp"
         android:fontFamily="@font/gtwalsheim_pro_medium"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

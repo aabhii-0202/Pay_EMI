@@ -27,12 +27,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:paddingHorizontal="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -343,12 +343,12 @@
 
                 <Button
                     android:id="@+id/submit"
-                    android:layout_width="312dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/btncolor"
+                    android:background="@drawable/button_bg"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
                     android:text="Submit"
                     android:textSize="19sp" />

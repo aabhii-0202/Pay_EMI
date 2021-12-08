@@ -12,6 +12,5 @@
     <color name="title_text_color">#505050</color>
     <color name="inputBorder">#3da27c</color>
     <color name="HintColor">#999999</color>
-    <color name="Button_color">#412e8d</color>
     <color name="btncolor">#412e8d</color>
 </resources>
