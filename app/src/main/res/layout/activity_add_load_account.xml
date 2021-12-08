@@ -145,7 +145,7 @@
             android:textSize="19sp"
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textColor="@color/white"
-            android:background="@color/Button_color"
+            android:background="@drawable/button_bg"
             />
 
 

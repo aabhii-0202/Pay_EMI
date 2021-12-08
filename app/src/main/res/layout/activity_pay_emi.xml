@@ -191,7 +191,7 @@
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textSize="12sp"
             android:textColor="@color/white"
-            android:background="@color/Button_color"
+            android:background="@drawable/button_bg"
             android:layout_marginVertical="50dp"
             android:layout_marginHorizontal="20dp"/>
     </LinearLayout>
