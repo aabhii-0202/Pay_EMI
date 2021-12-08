@@ -134,19 +134,20 @@
             android:orientation="horizontal">
 
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:paddingHorizontal="10dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="9087654321"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/amount_box"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:fontFamily="@font/gtwalsheim_pro_regular"
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/amount_box"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:inputType="phone"
+                android:paddingHorizontal="10dp"
+                android:text="9087654321"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                app:layout_constraintStart_toStartOf="parent"
 
-            />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/sendOTP"
@@ -163,6 +164,62 @@
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/otpLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OTP"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:fontFamily="@font/gtwalsheim_pro_regular"
+            android:layout_marginTop="27dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/complaint_box"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/amount_box"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:text="1234"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/verifyOTP"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/verifyOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify"
+                android:fontFamily="@font/gtwalsheim_pro_medium"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="#0a7aff"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
