@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +35,7 @@
                     android:layout_marginTop="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <!--        <ImageView-->
                     <!--            android:visibility="gone"-->
@@ -51,20 +50,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="Complaint &amp; Tracking"
                         android:fontFamily="@font/gtwalsheim_pro_medium"
                         android:gravity="center"
+                        android:text="Complaint &amp; Tracking"
                         android:textColor="@color/title_text_color"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <ImageView
                         android:id="@+id/bharatBillLogo"
                         android:layout_width="63dp"
                         android:layout_height="match_parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:src="@drawable/cornericon" />
+                        android:src="@drawable/cornericon"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -122,29 +121,28 @@
                     android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    app:boxStrokeColor="@color/grey"
-                    app:boxStrokeWidth="1dp"
+                    android:foregroundTint="@color/grey"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
-                    android:foregroundTint="@color/grey"
+                    app:boxStrokeColor="@color/grey"
+                    app:boxStrokeWidth="1dp"
 
                     >
 
                     <AutoCompleteTextView
                         android:id="@+id/spinner"
-                        android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Transaction Based Complaint"
-                        android:textSize="16sp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
                         android:inputType="none"
-                        />
+                        android:text="Transaction Based Complaint"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,60 +152,63 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:text="Mobile Number"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/complaint_box"
-                    android:orientation="horizontal">
-
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:textColor="@color/black"
-                        android:layout_height="46dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:background="@drawable/amount_box"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="phone"
-                        android:paddingHorizontal="10dp"
-                        android:text="9087654321"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/sendOTP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:fontFamily="@font/gtwalsheim_pro_medium"
-                        android:text="Send OTP"
-                        android:textColor="#0a7aff"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginTop="27dp"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:text="Mobile Number"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/complaint_box"
+                        android:orientation="horizontal">
+
+
+                        <EditText
+                            android:id="@+id/phoneNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="52dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:background="@drawable/amount_box"
+                            android:fontFamily="@font/gtwalsheim_pro_regular"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/sendOTP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:fontFamily="@font/gtwalsheim_pro_medium"
+                            android:text="Send OTP"
+                            android:textColor="#0a7aff"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/layouttracking"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,13 +221,13 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:textColor="@color/black"
                         android:layout_height="46dp"
                         android:background="@drawable/complaint_box"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
                         android:inputType="phone"
                         android:paddingHorizontal="10dp"
                         android:text="PE82908377"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/sendOTP"
                         app:layout_constraintStart_toStartOf="parent"
@@ -260,19 +261,20 @@
 
 
                         <EditText
-                            android:layout_width="match_parent"
+                            android:id="@+id/otpNumber"
+                            android:layout_width="0dp"
                             android:layout_height="46dp"
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/amount_box"
                             android:fontFamily="@font/gtwalsheim_pro_regular"
+                            android:hint="1234"
                             android:inputType="number"
                             android:paddingHorizontal="10dp"
-                            android:hint="1234"
                             android:textColorHint="@color/HintColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/verifyOTP"
-                            app:layout_constraintStart_toStartOf="parent"
 
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
@@ -319,13 +321,13 @@
                     android:id="@+id/complaintId"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/complaintidbox"
                     android:fontFamily="@font/gtwalsheim_pro_regular"
                     android:inputType="phone"
                     android:paddingHorizontal="10dp"
                     android:text="PE82908377"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/HintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/sendOTP"
@@ -346,12 +348,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
                     android:background="@drawable/complaintidbox"
                     android:fontFamily="@font/gtwalsheim_pro_regular"
                     android:inputType="phone"
                     android:paddingHorizontal="10dp"
                     android:text="Pending"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/sendOTP"
                     app:layout_constraintStart_toStartOf="parent"
@@ -371,12 +373,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
                     android:background="@drawable/complaintidbox"
                     android:fontFamily="@font/gtwalsheim_pro_regular"
                     android:inputType="phone"
                     android:paddingHorizontal="10dp"
                     android:text="Rahul Kumar"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/sendOTP"
                     app:layout_constraintStart_toStartOf="parent"
@@ -395,9 +397,9 @@
                     android:textSize="19sp" />
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/viewbtn"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -407,7 +409,8 @@
                 android:background="@drawable/button_bg"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="View"
-                android:textSize="19sp" />
+                android:textSize="19sp"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

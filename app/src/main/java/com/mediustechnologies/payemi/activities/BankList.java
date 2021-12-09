@@ -70,6 +70,7 @@ public class BankList extends AppCompatActivity {
         banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
         banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
         banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
+        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
 
     }
 
