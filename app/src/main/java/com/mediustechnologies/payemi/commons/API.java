@@ -1,14 +1,21 @@
 package com.mediustechnologies.payemi.commons;
 
 import com.mediustechnologies.payemi.Models.bankListItem;
+import com.mediustechnologies.payemi.loginResponse;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface API {
 
-    @GET("bankList")
-    Call<List<bankListItem>> getbank();
+    @POST("sendotp/")
+    Call<loginResponse> sendOTP (@Query("phone")String phone);
+
+    @POST("checkotp/")
+    Call<loginResponse> checkOTP (@Query("phone")String phone,@Query("otp")String otp);
+
 }
