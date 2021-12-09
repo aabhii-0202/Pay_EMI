@@ -111,6 +111,7 @@
                         />
                 </RadioGroup>
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,6 +132,7 @@
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
                     android:foregroundTint="@color/grey"
+
                     >
 
                     <AutoCompleteTextView
@@ -141,11 +143,17 @@
                         android:text="Transaction Based Complaint"
                         android:textSize="16sp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="none"/>
+                        android:inputType="none"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <LinearLayout
+                    android:id="@+id/layoutreg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,6 +200,39 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layouttracking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="27dp"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:text="Complaint Id"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:textColor="@color/black"
+                        android:layout_height="46dp"
+                        android:background="@drawable/complaint_box"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:inputType="phone"
+                        android:paddingHorizontal="10dp"
+                        android:text="PE82908377"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -260,7 +301,7 @@
                 android:background="#f4f6f8"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll1">
@@ -352,7 +393,21 @@
                     android:fontFamily="@font/gtwalsheim_pro_medium"
                     android:text="Submit"
                     android:textSize="19sp" />
+
             </LinearLayout>
+            <Button
+                android:id="@+id/viewbtn"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/gtwalsheim_pro_medium"
+                android:text="View"
+                android:textSize="19sp" />
         </LinearLayout>
     </ScrollView>
 

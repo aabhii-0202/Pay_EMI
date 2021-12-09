@@ -20,6 +20,9 @@ public class complaintRegistration extends AppCompatActivity {
     private ActivityComplaintRegistrationBinding binding;
     private Dialog dialog;
     private final Context context = this;
+    private boolean registration;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class complaintRegistration extends AppCompatActivity {
         // spinner
         AutoCompleteTextView dropdown = binding.spinner;
     //create a list of items for the spinner.
-        String[] items = new String[]{"Transaction Based Complaint", "2", "3"};
+        String[] items = new String[]{"Transaction Based Complaint", "Mobile Based Complaint"};
     //create an adapter to describe how the items are displayed, adapters are used in several places in android.
     //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -48,6 +51,21 @@ public class complaintRegistration extends AppCompatActivity {
 
         binding.submit.setOnClickListener(View->{startActivity(new Intent(context,transaction_Search.class));});
 
+        binding.radioRegistration.setOnClickListener(view -> {
+            registration = true;
+            binding.layoutreg.setVisibility(View.VISIBLE);
+            binding.layouttracking.setVisibility(View.GONE);
+            binding.viewbtn.setVisibility(View.GONE);
+        });
+
+        binding.radioTracking.setOnClickListener(view -> {
+            registration = false;
+            binding.layoutreg.setVisibility(View.GONE);
+            binding.layouttracking.setVisibility(View.VISIBLE);
+            binding.viewbtn.setVisibility(View.VISIBLE);
+            binding.statusLayout.setVisibility(View.GONE);
+            binding.otpLayout.setVisibility(View.GONE);
+        });
 
 
     }
@@ -55,8 +73,13 @@ public class complaintRegistration extends AppCompatActivity {
     private void showOtpSentDialog(){
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.otpsentpopup);
+        dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.findViewById(R.id.cancel).setOnClickListener(view->{
+            dialog.cancel();
+            binding.otpLayout.setVisibility(View.VISIBLE);
+        });
         dialog.show();
-        binding.otpLayout.setVisibility(View.VISIBLE);
+
     }
 }
