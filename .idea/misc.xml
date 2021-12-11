@@ -20,6 +20,7 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_share.xml" value="0.31203703703703706" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/input_box_layout.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/line_2.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/pinview_background.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/signupscreenbox.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/textview_box.xml" value="0.39692307692307693" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/font/font.xml" value="0.18425925925925926" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_splash_screen.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_verify_number.xml" value="0.3415977961432507" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/bank_list.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/bank_list_item.xml" value="0.4597156398104265" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/bank_sublist_items.xml" value="0.29411764705882354" />

@@ -13,37 +13,35 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.login.verifyNumber"
+            android:exported="false" />
+        <activity
             android:name=".activities.login.signIn"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".activities.transaction_Search"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.complaintRegistration"
-            android:exported="false">
-
-
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".activities.paypmentSuccessful"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.payEMI"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.addLoadAccount"
             android:exported="false" />
         <activity
             android:name=".activities.BankSubCategories"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.paymentInfo"
             android:exported="false" />
@@ -80,6 +78,7 @@
                     android:scheme="io.rzp" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.login.signIn">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,44 +39,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="66dp"
             android:layout_marginHorizontal="16dp"
-            android:elevation="8dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="66dp"
             android:background="@drawable/signupscreenbox"
-            >
+            android:elevation="8dp"
+            android:orientation="horizontal">
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/country_code_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:ccp_textSize="12sp"
-            android:layout_margin="5dp"
-            app:ccp_showFlag="false"
-            app:ccp_showNameCode="false"
-            app:ccpDialog_textColor="@color/black"
-            app:ccp_arrowColor="@color/black"
-            app:ccpDialog_backgroundColor="@color/white"
-            />
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/country_code_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                app:ccpDialog_backgroundColor="@color/white"
+                app:ccpDialog_textColor="@color/black"
+                app:ccp_arrowColor="@color/black"
+                app:ccp_showFlag="false"
+                app:ccp_showNameCode="false"
+                app:ccp_textSize="12sp" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#eaeaea"/>
+                android:background="#eaeaea" />
 
             <EditText
                 android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/amount_box"
-                android:inputType="phone"
-                android:hint="Enter your mobile number"
-                android:textColorHint="@color/HintColor"
-                android:textColor="@color/black"
-                android:layout_marginHorizontal="10dp"
                 android:layout_gravity="center_vertical"
-                android:textSize="12sp"/>
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/amount_box"
+                android:hint="Enter your mobile number"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/HintColor"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
