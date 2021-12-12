@@ -13,23 +13,31 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.login.onBording"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
             android:name=".activities.login.verifyNumber"
             android:exported="false" />
         <activity
             android:name=".activities.login.signIn"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
         </activity>
         <activity
             android:name=".activities.transaction_Search"
             android:exported="false" />
         <activity
             android:name=".activities.complaintRegistration"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.paypmentSuccessful"
             android:exported="false" />
