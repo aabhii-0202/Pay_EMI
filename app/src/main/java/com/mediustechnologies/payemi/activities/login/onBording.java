@@ -41,6 +41,7 @@ public class onBording extends AppCompatActivity {
 
     private void init(){
 
+        binding.backbtn.setOnClickListener(view -> finish());
         binding.skip.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
 
     }

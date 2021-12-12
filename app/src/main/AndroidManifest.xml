@@ -13,14 +13,19 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.login.onBording"
-            android:exported="true">
+            android:name=".activities.payment_confirmation"
+            android:exported="true" >
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.login.onBording"
+            android:exported="false">
 
         </activity>
         <activity
@@ -29,7 +34,6 @@
         <activity
             android:name=".activities.login.signIn"
             android:exported="false">
-
 
         </activity>
         <activity
