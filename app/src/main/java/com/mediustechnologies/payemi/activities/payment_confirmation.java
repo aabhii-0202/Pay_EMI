@@ -34,6 +34,6 @@ public class payment_confirmation extends AppCompatActivity {
     }
 
     private void open() {
-        startActivity(new Intent(context,BankList.class));
+        startActivity(new Intent(context,transaction_Details.class));
     }
 }
