@@ -71,6 +71,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/amount_box"
                 android:hint="Enter your mobile number"
+                android:maxLength="10"
                 android:inputType="phone"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"

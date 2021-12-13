@@ -26,7 +26,7 @@ public class verifyNumber extends AppCompatActivity {
 
     private void init(){
         binding.back.setOnClickListener(view -> finish());
-        binding.verifyOTP.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
+        binding.verifyOTP.setOnClickListener(view -> startActivity(new Intent(context, onBording.class)));
     }
 
 }

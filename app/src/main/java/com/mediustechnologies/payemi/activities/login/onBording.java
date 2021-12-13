@@ -12,13 +12,14 @@ import android.view.View;
 
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.BankList;
+import com.mediustechnologies.payemi.activities.payment_confirmation;
 import com.mediustechnologies.payemi.adapters.SliderAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityOnBordingBinding;
 
 public class onBording extends AppCompatActivity {
     private ActivityOnBordingBinding binding;
     private SliderAdapter sliderAdapter;
-    private Context context = this;
+    private final Context context = this;
 
 
     @Override
@@ -36,14 +37,30 @@ public class onBording extends AppCompatActivity {
     private void initSlider() {
         sliderAdapter = new SliderAdapter(context);
         binding.slider.setAdapter(sliderAdapter);
+        binding.slider.setOnPageChangeListener(listener);
 
     }
 
     private void init(){
-
         binding.backbtn.setOnClickListener(view -> finish());
         binding.skip.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
-
     }
+
+    ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (position==2)startActivity(new Intent(context, payment_confirmation.class));
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 
 }
