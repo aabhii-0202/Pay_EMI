@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiDetailsBinding;
@@ -21,6 +22,9 @@ public class pay_EMI_Details extends AppCompatActivity {
         init();
     }
     private void init(){
+
+        binding.backButton.setOnClickListener(view -> finish());
+        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context,BankList.class)));
 
 
     }
