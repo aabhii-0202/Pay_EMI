@@ -1,7 +1,7 @@
 package com.mediustechnologies.payemi.Models;
 
 public class bankSubItem {
-    int image;
+    private int image;
 
     public int getImage() {
         return image;

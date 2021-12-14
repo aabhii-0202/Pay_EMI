@@ -768,43 +768,43 @@ tools:context=".activities.payment_confirmation">
 
 
                 <ImageView
-                    android:id="@+id/img4"
+                    android:id="@+id/india"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_make_in_india"
-                    app:layout_constraintEnd_toStartOf="@+id/img1"
+                    app:layout_constraintEnd_toStartOf="@+id/norton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/img1"
+                    android:id="@+id/norton"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_norton_antivirus_logo"
-                    app:layout_constraintEnd_toStartOf="@+id/img2"
+                    app:layout_constraintEnd_toStartOf="@+id/securepay"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/img4"
+                    app:layout_constraintStart_toEndOf="@+id/india"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/img2"
+                    android:id="@+id/securepay"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_secure_paymment"
-                    app:layout_constraintEnd_toStartOf="@+id/img3"
+                    app:layout_constraintEnd_toStartOf="@+id/verisign"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/img1"
+                    app:layout_constraintStart_toEndOf="@+id/norton"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/img3"
+                    android:id="@+id/verisign"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_veri_sign_logo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/img2"
+                    app:layout_constraintStart_toEndOf="@+id/securepay"
                     app:layout_constraintTop_toTopOf="parent" />
 
 

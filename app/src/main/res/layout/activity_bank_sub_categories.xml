@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/financerlogo"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:gravity="center"
@@ -51,7 +51,7 @@
             android:text="AXIS Bank"
             android:textColor="@color/grey2"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintStart_toEndOf="@+id/financerlogo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

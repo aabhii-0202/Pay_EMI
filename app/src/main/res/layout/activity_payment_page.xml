@@ -30,7 +30,7 @@
 
 
             <ImageView
-                android:id="@+id/logo"
+                android:id="@+id/financerlogo"
                 android:layout_width="23dp"
                 android:layout_height="26dp"
                 android:src="@drawable/b3"
@@ -44,7 +44,7 @@
             android:id="@+id/loan_type_logo"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintStart_toEndOf="@+id/financerlogo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
@@ -107,7 +107,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
-                android:id="@+id/img1"
+                android:id="@+id/norton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_credit_card"
@@ -121,7 +121,7 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/img1"
+                app:layout_constraintStart_toEndOf="@+id/norton"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"
                 android:text="Add New Card"
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/text1"
-                app:layout_constraintStart_toEndOf="@id/img1"
+                app:layout_constraintStart_toEndOf="@id/norton"
                 android:text="Save a pay via card"
                 android:textColor="@color/grey"
                 android:layout_marginStart="16dp"
@@ -169,7 +169,7 @@
             android:paddingVertical="8dp">
 
             <ImageView
-                android:id="@+id/img2"
+                android:id="@+id/securepay"
                 android:layout_width="37dp"
                 android:layout_height="18dp"
                 android:src="@drawable/upi_colored"
@@ -183,7 +183,7 @@
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/img2"
+                app:layout_constraintStart_toEndOf="@+id/securepay"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"
                 android:text="Add New UPI ID"
@@ -195,7 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/text2"
-                app:layout_constraintStart_toEndOf="@id/img2"
+                app:layout_constraintStart_toEndOf="@id/securepay"
                 android:text="You need to have a registered UPI ID"
                 android:textColor="@color/grey"
                 android:layout_marginStart="16dp"
@@ -258,7 +258,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
-                android:id="@+id/img3"
+                android:id="@+id/verisign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_wallet"
@@ -272,7 +272,7 @@
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/img3"
+                app:layout_constraintStart_toEndOf="@+id/verisign"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"
                 android:text="Add Wallet"
@@ -283,7 +283,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/text3"
-                app:layout_constraintStart_toEndOf="@id/img3"
+                app:layout_constraintStart_toEndOf="@id/verisign"
                 android:text="Paytm, PhonePe, Amazon Pay &amp; more"
                 android:textColor="@color/grey"
                 android:layout_marginStart="16dp"
@@ -319,7 +319,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
-                android:id="@+id/img4"
+                android:id="@+id/india"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_net_bank"
@@ -333,7 +333,7 @@
                 android:id="@+id/text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/img4"
+                app:layout_constraintStart_toEndOf="@+id/india"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"
                 android:text="Netbanking"
@@ -344,7 +344,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/text4"
-                app:layout_constraintStart_toEndOf="@id/img4"
+                app:layout_constraintStart_toEndOf="@id/india"
                 android:text="Select from a list of banks"
                 android:textColor="@color/grey"
                 android:layout_marginStart="16dp"
