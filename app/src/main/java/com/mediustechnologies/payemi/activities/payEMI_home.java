@@ -65,6 +65,6 @@ public class payEMI_home extends AppCompatActivity {
     }
 
     private void init(){
-        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context,BankList.class)));
+        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context,pay_EMI_Details.class)));
     }
 }
