@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
@@ -23,6 +24,10 @@ public class payment_Page extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
+        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
+        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
+        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
+        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
 
 
 

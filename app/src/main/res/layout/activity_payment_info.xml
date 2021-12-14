@@ -37,7 +37,7 @@
             app:layout_constraintStart_toEndOf="@id/backButton"
             app:layout_constraintTop_toTopOf="parent">
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/banklogo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_launcher_background"

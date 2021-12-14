@@ -30,7 +30,7 @@
 
 
             <ImageView
-                android:id="@+id/logo"
+                android:id="@+id/banklogo"
                 android:layout_width="23dp"
                 android:layout_height="26dp"
                 android:src="@drawable/b3"
@@ -44,7 +44,7 @@
             android:id="@+id/loan_type_logo"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintStart_toEndOf="@+id/banklogo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
