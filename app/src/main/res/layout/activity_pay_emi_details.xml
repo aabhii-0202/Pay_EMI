@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context=".activities.pay_EMI_Details">
 
+<!--    title-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -140,6 +141,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    interestrate-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
@@ -149,8 +151,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#f4f6f8"
+            app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="-40dp"/>
+
         <LinearLayout
             android:id="@+id/ll"
+            android:elevation="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/pay_emi_bg"
@@ -259,6 +270,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    paymentinfo-->
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="match_parent"
@@ -468,6 +480,7 @@
 
     </LinearLayout>
 
+<!--    button-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
