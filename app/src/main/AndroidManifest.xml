@@ -13,19 +13,22 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.pay_EMI_Details"
-            android:exported="false" >
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
+            android:name=".activities.payEMI_transaction_page"
+            android:exported="true" >
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
 
         </activity>
         <activity
-            android:name=".activities.payEMI_home"
+            android:name=".activities.pay_EMI_Details"
             android:exported="false"/>
+        <activity
+            android:name=".activities.payEMI_home"
+            android:exported="false" />
         <activity
             android:name=".activities.payment_Page"
             android:exported="false" />

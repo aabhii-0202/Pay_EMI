@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.hbb20:ccp:2.3.1'
     // otp pin view
     implementation 'com.chaos.view:pinview:1.4.3'
+    //scratch
+
 
 }
 
