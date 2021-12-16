@@ -71,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/ic_menu_btn"
-            android:layout_marginEnd="16dp"/>
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -83,6 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="#f4f6f8"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
