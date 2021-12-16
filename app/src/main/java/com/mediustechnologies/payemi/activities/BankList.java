@@ -42,34 +42,14 @@ public class BankList extends AppCompatActivity {
         banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
         banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
         banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
+        banklist.add(new bankListItem(R.drawable.b4,"Bank of Baroda"));
+        banklist.add(new bankListItem(R.drawable.b5,"City Bank"));
+        banklist.add(new bankListItem(R.drawable.b6,"SBI Bank"));
+        banklist.add(new bankListItem(R.drawable.b7,"Other Bank"));
+        banklist.add(new bankListItem(R.drawable.b8,"Axis Bank"));
+        banklist.add(new bankListItem(R.drawable.b9,"HSBC Bank"));
+
+
 
     }
 

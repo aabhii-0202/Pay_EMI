@@ -33,17 +33,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="159dp"
                 android:layout_height="159dp"
                 android:layout_gravity="center"
-                android:src="@drawable/paymentsuccessimage" />
+                android:layout_marginTop="72dp"
+                android:src="@drawable/success" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="16dp"
                 android:gravity="center"
+                android:layout_marginTop="4dp"
                 android:text="Bill Payment Successful"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:textColor="#0c8f2d"
@@ -53,8 +56,8 @@
                 android:id="@+id/bank_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:gravity="center"
                 android:text="To AXIS Financec Banl Limited"
@@ -65,7 +68,7 @@
                 android:id="@+id/loanname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:gravity="center"
                 android:text="CAR Loan"
@@ -89,11 +92,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginVertical="15dp"
+                    android:layout_marginVertical="16dp"
                     android:layout_marginStart="13dp"
                     android:layout_toEndOf="@+id/rupee_sign"
-                    android:fontFamily="@font/gilroy_light"
                     android:background="@drawable/amount_box"
+                    android:fontFamily="@font/gilroy_light"
                     android:padding="5dp"
                     android:text="14,288"
                     android:textColor="@color/black"
@@ -105,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Completed | 15 Oct 21 11:34 AM"
+                android:text="  Completed | 15 Oct 21 11:34 AM"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -114,15 +117,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="40dp"
                     android:text="Reciept"
-                    android:fontFamily="@font/gtwalsheim_pro_light"
+                    android:fontFamily="@font/gilroy_extra_bold"
                     android:textColor="@color/grey2"
                     android:textSize="16sp" />
 
@@ -130,7 +133,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,7 +163,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -190,7 +193,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +223,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -250,7 +253,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -280,7 +283,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -310,7 +313,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -340,7 +343,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -370,7 +373,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -400,7 +403,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -430,13 +433,13 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="10dp"
+                    android:layout_marginVertical="24dp"
                     android:background="@color/grey2"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -466,7 +469,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -496,7 +499,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -526,7 +529,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -556,7 +559,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -586,7 +589,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -616,7 +619,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -646,7 +649,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp">
+                    android:layout_marginVertical="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -678,7 +681,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp">
+                android:layout_marginVertical="16dp">
 
                 <Button
                     android:id="@+id/share"
@@ -687,7 +690,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_share"
                     android:text="Share"
-                    app:icon="@android:drawable/ic_menu_share"
+                    app:icon="@drawable/ic_sharevector"
                     app:strokeWidth="1dp"
                     app:strokeColor="#412E8D"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
@@ -713,7 +716,7 @@
                     app:strokeWidth="1dp"
                     app:strokeColor="#412E8D"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
-                    app:icon="@android:drawable/ic_menu_share"
+                    app:icon="@drawable/ic_downloadvector"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintHorizontal_bias="0.538"
@@ -728,12 +731,13 @@
                 android:layout_height="46dp"
                 android:src="@drawable/playlogo"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp">
+                android:layout_marginVertical="16dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/india"

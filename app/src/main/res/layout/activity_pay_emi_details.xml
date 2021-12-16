@@ -94,6 +94,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardview">
 
+
             <com.mediustechnologies.payemi.helper.MyProgressBar
                 android:id="@+id/emiProgressbar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -102,7 +103,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:paddingVertical="4dp"
                 android:progress="25"
-                android:progressDrawable="@drawable/emi_progress_bar_bg"
+                android:progressDrawable="@drawable/emi_progress_bar_bg2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

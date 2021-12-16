@@ -28,15 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <!--        <ImageView-->
-            <!--            android:visibility="gone"-->
-            <!--            android:id="@+id/backButton"-->
-            <!--            android:layout_width="30dp"-->
-            <!--            android:layout_height="30dp"-->
-            <!--            android:gravity="center"-->
-            <!--            app:layout_constraintStart_toStartOf="parent"-->
-            <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--            android:src="@drawable/ic_back_button" />-->
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,8 +84,8 @@
                 android:id="@+id/radio_Transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:buttonTint="#412e8d"
-                android:layout_marginStart="14dp"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="Transaction Ref. Id"
                 android:textColor="@color/black"
@@ -132,7 +124,7 @@
             android:inputType="phone"
             android:paddingVertical="14dp"
             android:paddingHorizontal="16dp"
-            android:hint="Enter your mobile number"
+            android:hint="Enter Your Mobile Number"
             android:textColorHint="@color/HintColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/sendOTP"
@@ -265,7 +257,7 @@
             android:paddingVertical="14dp"
             android:paddingHorizontal="16dp"
             android:textColor="@color/black"
-            android:hint="Enter your transaction reference Id"
+            android:hint="Enter Your Transaction Reference Id"
             android:textColorHint="@color/HintColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/sendOTP"
@@ -283,11 +275,12 @@
             android:text="Search"
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textColor="@color/white"
+            android:textAllCaps="false"
             android:background="@drawable/button_bg"/>
     </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="0dp"

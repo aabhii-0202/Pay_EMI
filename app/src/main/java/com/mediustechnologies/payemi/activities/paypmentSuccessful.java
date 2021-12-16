@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-
-import com.mediustechnologies.payemi.databinding.ActivityPaypmentSuccessfulBinding;
+import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
 
 public class paypmentSuccessful extends AppCompatActivity {
 
-    private ActivityPaypmentSuccessfulBinding binding;
+    private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPaypmentSuccessfulBinding.inflate(getLayoutInflater());
+        binding = ActivityPaymentSuccessfulBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         init();

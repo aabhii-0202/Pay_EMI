@@ -11,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,20 +32,23 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Pay EMI"
             android:fontFamily="@font/gtwalsheim_pro_bold"
             android:gravity="center"
+            android:text="Pay EMI"
             android:textColor="@color/title_text_color"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/bharatBillLogo"
             android:layout_width="63dp"
             android:layout_height="match_parent"
+            android:src="@drawable/cornericon"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/cornericon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,6 +63,7 @@
         >
 
         <RelativeLayout
+            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="20dp"
@@ -110,14 +114,13 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:text="Paying HDFC Bank"
             android:fontFamily="@font/gtwalsheim_pro_bold"
             android:layout_gravity="center"
-            android:layout_marginVertical="15dp"
             android:textColor="@color/grey"/>
 
         <RelativeLayout
@@ -142,8 +145,8 @@
                 android:layout_marginStart="13dp"
                 android:layout_toEndOf="@+id/rupee_sign"
                 android:background="@drawable/amount_box"
-                android:hint="14,288"
                 android:fontFamily="@font/gtwalsheim_pro_light"
+                android:hint="14,288"
                 android:inputType="number"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -159,7 +162,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="16dp"
             android:paddingVertical="10dp"
             android:fontFamily="@font/gtwalsheim_pro_regular"
             android:textColor="@color/black"
@@ -171,16 +174,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="20dp"
-            android:textColor="@color/grey"
+            android:layout_marginVertical="8dp"
+            android:elevation="8dp"
             android:fontFamily="@font/gtwalsheim_pro_regular_oblique"
-            tools:text="Once you have paid this, your loan account will be immediately updated."
-            />
-
-
-
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            tools:text="Once you have paid this, your loan account will be immediately updated." />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/payButton"
@@ -190,6 +190,7 @@
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textSize="19sp"
             android:textColor="@color/white"
+            android:textAllCaps="false"
             android:background="@drawable/button_bg"
             android:layout_marginVertical="50dp"
             android:layout_marginHorizontal="20dp"/>

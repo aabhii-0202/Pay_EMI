@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.mediustechnologies.payemi.Models.transaction_chat;
@@ -63,6 +64,9 @@ public class payEMI_transaction_page extends AppCompatActivity {
     }
 
     private void init(){
+
+        binding.backButton.setOnClickListener(view -> finish());
+        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context,BankList.class)));
 
     }
 }

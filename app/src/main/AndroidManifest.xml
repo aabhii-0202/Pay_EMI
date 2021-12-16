@@ -14,27 +14,20 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.payEMI_transaction_page"
-            android:exported="true" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-
+            android:exported="false" >
         </activity>
         <activity
             android:name=".activities.pay_EMI_Details"
             android:exported="false"/>
         <activity
             android:name=".activities.payEMI_home"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.payment_Page"
             android:exported="false" />
         <activity
             android:name=".activities.transaction_Details"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.payment_confirmation"
             android:exported="false" />
@@ -44,12 +37,23 @@
         <activity
             android:name=".activities.login.verifyNumber"
             android:exported="false" />
+
+
         <activity
             android:name=".activities.login.signIn"
-            android:exported="false" />
+            android:exported="false" >
+
+
+        </activity>
         <activity
             android:name=".activities.transaction_Search"
-            android:exported="false" />
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.complaintRegistration"
             android:exported="false" />
@@ -58,19 +62,21 @@
             android:exported="false" />
         <activity
             android:name=".activities.payEMI"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.addLoadAccount"
-            android:exported="false" />
+            android:exported="false"/>
+
+
         <activity
             android:name=".activities.BankSubCategories"
             android:exported="false" />
         <activity
             android:name=".activities.paymentInfo"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.BankList"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">
@@ -106,5 +112,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>

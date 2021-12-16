@@ -56,7 +56,7 @@ public class BankSubCategories extends AppCompatActivity {
     private void addDummmyItemsInRecyclerView() {
         bankSubList = new ArrayList<>();
         bankSubList.add(new bankSubItem(R.drawable.axis_financne));
-        bankSubList.add(new bankSubItem(R.drawable.axis_financne));
+        bankSubList.add(new bankSubItem(R.drawable.axisfinance3));
 
     }
 

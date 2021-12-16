@@ -3,24 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".activities.login.signIn">
 
     <LinearLayout
+        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="139dp"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="140dp"
             android:fontFamily="@font/roboto_light"
             android:text="Sign In"
             android:textColor="@color/black"
@@ -38,7 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="66dp"
             android:background="@drawable/signupscreenbox"
@@ -54,9 +57,8 @@
                 app:ccpDialog_backgroundColor="@color/white"
                 app:ccpDialog_textColor="@color/black"
                 app:ccp_arrowColor="@color/black"
-                app:ccp_showFlag="false"
                 app:ccp_showNameCode="false"
-                app:ccp_textSize="12sp" />
+                app:ccp_textSize="14sp" />
 
             <View
                 android:layout_width="1dp"
@@ -70,27 +72,30 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/amount_box"
-                android:hint="Enter your mobile number"
-                android:maxLength="10"
+                android:hint="Enter Your Mobile Number"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
                 android:textSize="12sp" />
-
         </LinearLayout>
 
-        <Button
-            android:id="@+id/sendOTPbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="112dp"
-            android:background="@drawable/button_bg"
-            android:fontFamily="@font/roboto"
-            android:text="Send OTP"
-            android:textColor="@color/white" />
-
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/sendOTPbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/roboto"
+        android:text="Send OTP"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout"
+        app:layout_constraintVertical_bias="0.40" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

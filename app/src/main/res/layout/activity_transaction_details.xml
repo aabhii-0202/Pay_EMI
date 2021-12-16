@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:background="@color/white"
         android:layout_height="27dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
@@ -64,6 +63,7 @@
             android:layout_width="59dp"
             android:layout_height="59dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
             android:src="@drawable/carlogo" />
 
         <TextView
@@ -88,41 +88,28 @@
             android:textColor="@color/grey"
             android:textSize="14sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/rupee_sign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="100dp"
-                android:src="@drawable/ic_indian_rupee_symbol" />
+        <TextView
+            android:id="@+id/paidAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="15dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/amount_box"
+            android:fontFamily="@font/gilroy_light"
+            android:padding="5dp"
+            android:text="₹ 14,288"
+            android:textColor="@color/black"
+            android:textSize="60sp" />
 
-            <TextView
-                android:id="@+id/paidAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="15dp"
-                android:layout_marginStart="13dp"
-                android:layout_toEndOf="@+id/rupee_sign"
-                android:background="@drawable/amount_box"
-                android:fontFamily="@font/gilroy_light"
-                android:padding="5dp"
-                android:text="14,288"
-                android:textColor="@color/black"
-                android:textSize="60sp" />
-
-        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/gtwalsheim_pro_regular"
-            android:text="Completed | 15 Oct 21 11:34 AM"
+            android:text="  Completed | 15 Oct 21 11:34 AM"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_tick" />
@@ -131,7 +118,7 @@
             android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="48dp"
             android:background="#f4f6f8"
             android:orientation="vertical">
 
@@ -202,36 +189,35 @@
 
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/havingIssue"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/gtwalsheim_pro_medium"
-            android:text="Having Issue"
-            android:textColor="#5c78ff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#5c78ff"
-            app:strokeWidth="1dp" />
-
-
     </LinearLayout>
 
+    <Button
+        android:id="@+id/havingIssue"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/gtwalsheim_pro_medium"
+        android:text="Having Issue"
+        android:textColor="#5c78ff"
+        app:layout_constraintBottom_toTopOf="@+id/logos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:strokeColor="#5c78ff"
+        app:strokeWidth="1dp" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/india"

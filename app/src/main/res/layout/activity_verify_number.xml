@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
             android:src="@drawable/ic_back_button"/>
 
         <TextView
@@ -87,16 +88,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/OTPpinView"
                 app:layout_constraintTop_toBottomOf="@+id/OTPpinView" />
 
-
-
-
-
-
-
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -104,10 +95,11 @@
             android:id="@+id/verifyOTP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="180dp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/roboto"
-            android:text="Verify your number"
+            android:text="Verify Your Number"
+            android:textAllCaps="false"
             android:textColor="@color/white" />
 
 

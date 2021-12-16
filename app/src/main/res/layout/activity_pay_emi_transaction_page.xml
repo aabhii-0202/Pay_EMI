@@ -65,6 +65,7 @@
             app:layout_constraintTop_toBottomOf="@id/bankname"/>
 
         <ImageView
+            android:id="@+id/dotts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

@@ -147,9 +147,9 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:text="Pay Now"
-            android:textSize="13sp"
+            android:textSize="16sp"
             android:textAllCaps="false"
             android:background="@drawable/button_bg"
             android:layout_marginBottom="16dp"

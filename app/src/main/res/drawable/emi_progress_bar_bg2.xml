@@ -12,7 +12,7 @@
             <shape android:shape="rectangle">
                 <corners android:topLeftRadius="10dp"
                     android:bottomLeftRadius="10dp"/>
-                <solid android:color="@color/titlebgblue"/>
+                <solid android:color="@color/progress"/>
             </shape>
         </scale>
 
