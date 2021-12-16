@@ -17,7 +17,6 @@ import java.util.List;
 public class BankList extends AppCompatActivity {
 
     private ActivityBankListBinding binding;
-    private RecyclerView bankRecyclerView;
     private List<bankListItem> banklist;
     private GridLayoutManager gridLayoutManager ;
     private bankListAdapter adapter;
@@ -75,8 +74,8 @@ public class BankList extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        bankRecyclerView = binding.listOfBanks;
-        gridLayoutManager = new GridLayoutManager(this,3);
+        RecyclerView bankRecyclerView = binding.listOfBanks;
+        gridLayoutManager = new GridLayoutManager(context,3);
         gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
         bankRecyclerView.setLayoutManager(gridLayoutManager);
         adapter = new bankListAdapter(banklist);
