@@ -14,10 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.commons.RetrofitClient;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityComplaintRegistrationBinding;
-import com.mediustechnologies.payemi.commons.loginResponse;
+import com.mediustechnologies.payemi.Models.loginResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

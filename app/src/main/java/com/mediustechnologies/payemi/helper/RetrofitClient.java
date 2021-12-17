@@ -1,4 +1,6 @@
-package com.mediustechnologies.payemi.commons;
+package com.mediustechnologies.payemi.helper;
+
+import com.mediustechnologies.payemi.commons.API;
 
 import java.util.concurrent.TimeUnit;
 

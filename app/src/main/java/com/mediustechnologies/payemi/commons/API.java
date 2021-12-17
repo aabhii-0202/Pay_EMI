@@ -1,5 +1,7 @@
 package com.mediustechnologies.payemi.commons;
 
+import com.mediustechnologies.payemi.Models.loginResponse;
+
 import retrofit2.Call;
 import retrofit2.http.POST;
 import retrofit2.http.Query;

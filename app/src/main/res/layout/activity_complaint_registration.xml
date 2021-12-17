@@ -201,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -236,7 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -270,7 +270,6 @@
                             android:textColorHint="@color/HintColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/verifyOTP"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -300,7 +299,7 @@
                 android:background="#f4f6f8"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll1">
@@ -403,10 +402,11 @@
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/button_bg"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="View"
+                android:textAllCaps="false"
                 android:textSize="19sp"
                 android:visibility="gone" />
         </LinearLayout>
