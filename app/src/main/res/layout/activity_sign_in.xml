@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/gtwalsheim_pro_light"
             android:text="Sign In"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/gtwalsheim_pro_regular"
             android:text="Sign in below to enjoy hassle free loan payment"
             android:textColor="@color/grey"
             android:textSize="14sp" />
@@ -77,7 +77,7 @@
                 android:maxLength="10"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -87,15 +87,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_bg"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/gtwalsheim_pro_medium"
+        android:letterSpacing="0"
         android:text="Send OTP"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout"
-        app:layout_constraintVertical_bias="0.40" />
+
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

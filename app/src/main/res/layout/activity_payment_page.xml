@@ -11,12 +11,12 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -30,50 +30,48 @@
             app:layout_constraintStart_toStartOf="parent" />
 
 
-            <ImageView
-                android:id="@+id/financerlogo"
-                android:layout_width="23dp"
-                android:layout_height="26dp"
-                android:src="@drawable/b3"
-                android:layout_marginStart="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/backButton"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+        <ImageView
+            android:id="@+id/financerlogo"
+            android:layout_width="23dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/b3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/loan_type_logo"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:layout_constraintStart_toEndOf="@+id/financerlogo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
-            android:src="@drawable/car_vector" />
+            android:src="@drawable/car_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/financerlogo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/titletv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:text="Pending Amount"
             android:textColor="@color/grey"
-            android:fontFamily="@font/roboto"
             android:textSize="12sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/Pending_Amount_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Rs. 13,000"
+            android:text="₹ 13,000"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/titletv"/>
-
-
+             />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

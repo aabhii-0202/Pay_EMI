@@ -26,33 +26,22 @@
         android:fontFamily="@font/roboto_medium"
         android:textSize="22sp"
         android:textColor="@color/black"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="48dp"
         />
 
     <TextView
         android:id="@+id/subtitleText2"
         android:layout_width="235dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:text="See at a glance all EMIs and get instant cashback."
         android:textAlignment="center"
         android:textColor="@color/grey"
         android:layout_marginBottom="5dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText1" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/nextbtn"
-        android:src="@drawable/ic_load1"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitleText2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -80,9 +80,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="8dp"
                 android:text="Resend OTP - 00:59 sec"
                 android:textColor="@color/grey"
+                android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/OTPpinView"

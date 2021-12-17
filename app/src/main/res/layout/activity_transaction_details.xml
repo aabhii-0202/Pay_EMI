@@ -95,7 +95,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="15dp"
-            android:layout_marginStart="13dp"
             android:background="@drawable/amount_box"
             android:fontFamily="@font/gilroy_light"
             android:padding="5dp"
@@ -111,7 +110,7 @@
             android:fontFamily="@font/gtwalsheim_pro_regular"
             android:text="  Completed | 15 Oct 21 11:34 AM"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="13sp"
             app:drawableStartCompat="@drawable/ic_tick" />
 
         <LinearLayout

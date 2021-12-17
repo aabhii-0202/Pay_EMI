@@ -66,12 +66,12 @@ public class SliderAdapter extends PagerAdapter {
         ImageView imageView = view.findViewById(R.id.sliderImage);
         TextView t1 = view.findViewById(R.id.titleText1);
         TextView t2 = view.findViewById(R.id.subtitleText2);
-        ImageView btn = view.findViewById(R.id.nextbtn);
+//        ImageView btn = view.findViewById(R.id.nextbtn);
 
         imageView.setImageResource(images[position]);
         t1.setText(headings[position]);
         t2.setText(subheadings[position]);
-        btn.setImageResource(btnimgs[position]);
+//        btn.setImageResource(btnimgs[position]);
 
 
         container.addView(view);
