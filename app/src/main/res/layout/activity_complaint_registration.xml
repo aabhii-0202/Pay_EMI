@@ -83,13 +83,12 @@
                         android:buttonTint="#412e8d"
                         android:checked="true"
                         android:fontFamily="@font/gtwalsheim_pro_medium"
-
                         android:text="Registration"
-                        android:textColor="@color/black"
+                        android:textColor="#412e8d"
                         android:textSize="16sp" />
 
                     <RadioButton
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="40dp"
                         android:id="@+id/radio_Tracking"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,41 +102,63 @@
                 </RadioGroup>
 
 
-                <TextView
+
+
+
+                <LinearLayout
+                    android:id="@+id/layourcomplainttype"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:text="Complaint Type"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:foregroundTint="@color/grey"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/grey"
-                    app:boxStrokeWidth="1dp"
-
-                    >
-
-                    <AutoCompleteTextView
-                        android:id="@+id/spinner"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="none"
-                        android:layout_marginTop="8dp"
-                        android:text="Transaction Based Complaint"
-                        android:textColor="@color/black"
+                        android:text="Complaint Type"
+                        android:textColor="@color/grey"
                         android:textSize="16sp" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/complainttypeselect"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:background="@drawable/complaint_box"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:focusable="false"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Select"
+                        android:paddingStart="24dp"
+                        android:textColorHint="@color/HintColor"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="46dp"-->
+<!--                    android:background="@drawable/complaint_box"-->
+<!--                    android:foregroundTint="@color/grey"-->
+<!--                    app:boxCornerRadiusBottomEnd="4dp"-->
+<!--                    app:boxCornerRadiusBottomStart="4dp"-->
+<!--                    app:boxCornerRadiusTopEnd="4dp"-->
+<!--                    app:boxCornerRadiusTopStart="4dp"-->
+<!--                    app:boxStrokeColor="@color/grey"-->
+<!--                    app:boxStrokeWidth="1dp"-->
+
+<!--                    >-->
+
+
+
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
 
                 <LinearLayout
@@ -166,13 +187,15 @@
                         <EditText
                             android:id="@+id/phoneNumber"
                             android:layout_width="0dp"
-                            android:layout_height="52dp"
+                            android:layout_height="46dp"
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/amount_box"
                             android:fontFamily="@font/gtwalsheim_pro_regular"
                             android:inputType="phone"
                             android:maxLength="10"
-                            android:paddingHorizontal="16dp"
+                            android:hint="Enter Mobile Number"
+                            android:textColorHint="@color/HintColor"
+                            android:paddingHorizontal="8dp"
                             android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/sendOTP"
@@ -201,7 +224,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +243,8 @@
                         android:inputType="phone"
                         android:layout_marginTop="8dp"
                         android:paddingHorizontal="10dp"
-                        android:hint="PE82908377"
+                        android:hint="Enter Complaint Id"
+                        android:paddingStart="24dp"
                         android:textColorHint="@color/HintColor"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -236,7 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -262,11 +286,11 @@
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/amount_box"
                             android:fontFamily="@font/gtwalsheim_pro_regular"
-                            android:hint="1234"
+                            android:hint="Enter OTP"
                             android:textColor="@color/black"
                             android:maxLength="4"
                             android:inputType="number"
-                            android:paddingHorizontal="10dp"
+                            android:paddingHorizontal="8dp"
                             android:textColorHint="@color/HintColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/verifyOTP"
@@ -299,7 +323,7 @@
                 android:background="#f4f6f8"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll1">
@@ -410,7 +434,7 @@
                 android:textAllCaps="false"
                 android:letterSpacing="0"
                 android:textSize="22sp"
-                android:visibility="gone" />
+                android:visibility="visible" />
         </LinearLayout>
     </ScrollView>
 

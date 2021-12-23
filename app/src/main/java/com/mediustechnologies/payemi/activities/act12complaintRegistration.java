@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -40,15 +41,7 @@ public class act12complaintRegistration extends AppCompatActivity {
     }
 
     private void init(){
-        // spinner
-        AutoCompleteTextView dropdown = binding.spinner;
-    //create a list of items for the spinner.
-        String[] items = new String[]{"Transaction Based Complaint", "Mobile Based Complaint"};
-    //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-    //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-    //set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
+
 
 
         binding.sendOTP.setOnClickListener(view -> {
@@ -61,18 +54,23 @@ public class act12complaintRegistration extends AppCompatActivity {
         binding.submit.setOnClickListener(View->{startActivity(new Intent(context, act20transaction_Search.class));});
 
         binding.radioRegistration.setOnClickListener(view -> {
+            binding.radioTracking.setTextColor(getColor(R.color.black));
+            binding.radioRegistration.setTextColor(getColor(R.color.btncolor));
             binding.layoutreg.setVisibility(View.VISIBLE);
             binding.layouttracking.setVisibility(View.GONE);
             binding.viewbtn.setVisibility(View.GONE);
         });
 
         binding.radioTracking.setOnClickListener(view -> {
+            binding.radioRegistration.setTextColor(getColor(R.color.black));
+            binding.radioTracking.setTextColor(getColor(R.color.btncolor));
             binding.layoutreg.setVisibility(View.GONE);
             binding.layouttracking.setVisibility(View.VISIBLE);
             binding.viewbtn.setVisibility(View.VISIBLE);
             binding.statusLayout.setVisibility(View.GONE);
             binding.otpLayout.setVisibility(View.GONE);
         });
+
 
 
     }
