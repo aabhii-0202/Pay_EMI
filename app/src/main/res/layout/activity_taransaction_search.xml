@@ -273,6 +273,8 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:text="Search"
+            android:textSize="22sp"
+            android:letterSpacing="0"
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textColor="@color/white"
             android:textAllCaps="false"

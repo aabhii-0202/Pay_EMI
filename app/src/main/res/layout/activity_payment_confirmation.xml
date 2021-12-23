@@ -715,13 +715,15 @@ tools:context=".activities.act36payment_confirmation">
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
                     android:text="Share"
+                    android:textAllCaps="false"
+                    android:letterSpacing="0"
                     app:icon="@drawable/ic_sharevector"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="#5c78ff"
-                    android:textColor="#5c78ff"
+                    app:strokeColor="@color/btncolor"
+                    android:textColor="@color/btncolor"
                     app:strokeWidth="1dp" />
 
                 <androidx.constraintlayout.widget.Guideline
@@ -745,8 +747,10 @@ tools:context=".activities.act36payment_confirmation">
                     app:layout_constraintHorizontal_bias="0.538"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="#5c78ff"
-                    app:strokeColor="#5c78ff"
+                    android:textColor="@color/btncolor"
+                    android:textAllCaps="false"
+                    android:letterSpacing="0"
+                    app:strokeColor="@color/btncolor"
                     app:strokeWidth="1dp" />
 
 

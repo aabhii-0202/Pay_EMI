@@ -390,8 +390,9 @@
                     android:background="@drawable/button_bg"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
                     android:text="Submit"
+                    android:letterSpacing="0"
                     android:textAllCaps="false"
-                    android:textSize="19sp" />
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
@@ -407,7 +408,8 @@
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="View"
                 android:textAllCaps="false"
-                android:textSize="19sp"
+                android:letterSpacing="0"
+                android:textSize="22sp"
                 android:visibility="gone" />
         </LinearLayout>
     </ScrollView>

@@ -80,11 +80,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Resend OTP - 00:59 sec"
                 android:textColor="@color/grey"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/OTPpinView"
                 app:layout_constraintTop_toBottomOf="@+id/OTPpinView" />
@@ -98,8 +98,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"
             android:background="@drawable/button_bg"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/gtwalsheim_pro_medium"
             android:text="Verify Your Number"
+            android:letterSpacing="0"
+            android:textSize="22sp"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
