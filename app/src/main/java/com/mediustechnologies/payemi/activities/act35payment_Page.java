@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
 
-public class payment_Page extends AppCompatActivity {
+public class act35payment_Page extends AppCompatActivity {
     private ActivityPaymentPageBinding binding;
     private Context context = this;
 
@@ -24,10 +24,10 @@ public class payment_Page extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
-        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
-        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
-        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
+        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
+        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
+        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
+        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
 
 
 

@@ -15,7 +15,7 @@ import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBindin
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankSubCategories extends AppCompatActivity {
+public class act5BankSubCategories extends AppCompatActivity {
 
     private ActivityBankSubCategoriesBinding binding;
     private RecyclerView bankSubListRecyclerview;
@@ -62,6 +62,6 @@ public class BankSubCategories extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this,addLoadAccount.class)));
+        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this, act6addLoadAccount.class)));
     }
 }

@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.login.signIn;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(this, BankList.class));
+            startActivity(new Intent(this, act4BankList.class));
             finish();
         },2000);
 

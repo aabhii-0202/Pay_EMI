@@ -13,9 +13,8 @@ import com.mediustechnologies.payemi.adapters.transction_chatAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiTransactionPageBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class payEMI_transaction_page extends AppCompatActivity {
+public class act39payEMI_transaction_page extends AppCompatActivity {
     private Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;
@@ -66,7 +65,7 @@ public class payEMI_transaction_page extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context,transaction_Details.class)));
+        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, act40transaction_Details.class)));
 
     }
 }

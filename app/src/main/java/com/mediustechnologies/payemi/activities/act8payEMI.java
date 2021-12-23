@@ -15,7 +15,7 @@ import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultWithDataListener;
 
 
-public class payEMI extends AppCompatActivity  implements PaymentResultWithDataListener {
+public class act8payEMI extends AppCompatActivity  implements PaymentResultWithDataListener {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
@@ -33,7 +33,7 @@ public class payEMI extends AppCompatActivity  implements PaymentResultWithDataL
 
     private void init(){
         binding.payButton.setOnClickListener(view ->
-//                startActivity(new Intent(context, paypmentSuccessful.class)));
+//                startActivity(new Intent(context, act9paymentSuccessful.class)));
                 openRazorpay());
     }
 
@@ -55,7 +55,7 @@ public class payEMI extends AppCompatActivity  implements PaymentResultWithDataL
             object.put("amount","500");
             object.put("prefill.contact","9087654321");
             object.put("prefill.email","abc@gmail.com");
-            checkout.open(payEMI.this,object);
+            checkout.open(act8payEMI.this,object);
 
         }
         catch (JSONException e){
@@ -68,12 +68,12 @@ public class payEMI extends AppCompatActivity  implements PaymentResultWithDataL
 
     @Override
     public void onPaymentSuccess(String s, PaymentData paymentData) {
-        startActivity(new Intent(context,paypmentSuccessful.class));
+        startActivity(new Intent(context, act9paymentSuccessful.class));
     }
 
     @Override
     public void onPaymentError(int i, String s, PaymentData paymentData) {
-        startActivity(new Intent(context,paypmentSuccessful.class));
+        startActivity(new Intent(context, act9paymentSuccessful.class));
     }
 
 

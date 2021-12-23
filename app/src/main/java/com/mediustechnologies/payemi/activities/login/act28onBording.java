@@ -6,17 +6,11 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.DragEvent;
-import android.view.View;
 
-import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.BankList;
-import com.mediustechnologies.payemi.activities.payment_confirmation;
 import com.mediustechnologies.payemi.adapters.SliderAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityOnBordingBinding;
 
-public class onBording extends AppCompatActivity {
+public class act28onBording extends AppCompatActivity {
     private ActivityOnBordingBinding binding;
     private SliderAdapter sliderAdapter;
     private final Context context = this;
@@ -43,13 +37,13 @@ public class onBording extends AppCompatActivity {
 
     private void init(){
         binding.backbtn.setOnClickListener(view -> finish());
-        binding.skip.setOnClickListener(view -> startActivity(new Intent(context, signIn.class)));
+        binding.skip.setOnClickListener(view -> startActivity(new Intent(context, act31signIn.class)));
     }
 
     ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            if (position==2)startActivity(new Intent(context, signIn.class));
+            if (position==2)startActivity(new Intent(context, act31signIn.class));
         }
 
         @Override

@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.mediustechnologies.payemi.databinding.ActivityPaymentConfirmationBinding;
 
-public class payment_confirmation extends AppCompatActivity {
+public class act36payment_confirmation extends AppCompatActivity {
 
     private ActivityPaymentConfirmationBinding binding;
     private Context context = this;
@@ -34,6 +33,6 @@ public class payment_confirmation extends AppCompatActivity {
     }
 
     private void open() {
-        startActivity(new Intent(context,payEMI_transaction_page.class));
+        startActivity(new Intent(context, act39payEMI_transaction_page.class));
     }
 }

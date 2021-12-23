@@ -16,7 +16,7 @@ import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class payEMI_home extends AppCompatActivity {
+public class act33payEMI_home extends AppCompatActivity {
     private ActivityPayEmiHomeBinding binding;
     private List<emiListItem> emilist;
     private final Context context = this;
@@ -64,6 +64,6 @@ public class payEMI_home extends AppCompatActivity {
     }
 
     private void init(){
-        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context,pay_EMI_Details.class)));
+        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, act34pay_EMI_Details.class)));
     }
 }

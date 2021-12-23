@@ -1,7 +1,6 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
@@ -15,7 +14,7 @@ import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankList extends AppCompatActivity {
+public class act4BankList extends AppCompatActivity {
 
     private ActivityBankListBinding binding;
     private List<bankListItem> banklist;
@@ -79,7 +78,7 @@ public class BankList extends AppCompatActivity {
 
         binding.backButton.setOnClickListener(view -> finish());
         binding.bharatBillLogo.setOnClickListener(view -> {
-            startActivity(new Intent(this,BankSubCategories.class));
+            startActivity(new Intent(this, act5BankSubCategories.class));
         });
 
 

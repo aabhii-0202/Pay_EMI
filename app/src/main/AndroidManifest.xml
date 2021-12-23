@@ -13,63 +13,63 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.payEMI_transaction_page"
+            android:name=".activities.act39payEMI_transaction_page"
             android:exported="false" >
         </activity>
         <activity
-            android:name=".activities.pay_EMI_Details"
+            android:name=".activities.act34pay_EMI_Details"
             android:exported="false"/>
         <activity
-            android:name=".activities.payEMI_home"
+            android:name=".activities.act33payEMI_home"
             android:exported="false"/>
         <activity
-            android:name=".activities.payment_Page"
+            android:name=".activities.act35payment_Page"
             android:exported="false" />
         <activity
-            android:name=".activities.transaction_Details"
+            android:name=".activities.act40transaction_Details"
             android:exported="false"/>
         <activity
-            android:name=".activities.payment_confirmation"
+            android:name=".activities.act36payment_confirmation"
             android:exported="false" />
         <activity
-            android:name=".activities.login.onBording"
+            android:name=".activities.login.act28onBording"
             android:exported="false" />
         <activity
-            android:name=".activities.login.verifyNumber"
+            android:name=".activities.login.act33verifyNumber"
             android:exported="false" />
 
 
         <activity
-            android:name=".activities.login.signIn"
+            android:name=".activities.login.act31signIn"
             android:exported="false" >
 
 
         </activity>
         <activity
-            android:name=".activities.transaction_Search"
+            android:name=".activities.act20transaction_Search"
             android:exported="false"/>
         <activity
-            android:name=".activities.complaintRegistration"
+            android:name=".activities.act12complaintRegistration"
             android:exported="false" />
         <activity
-            android:name=".activities.paypmentSuccessful"
+            android:name=".activities.act9paymentSuccessful"
             android:exported="false" />
         <activity
-            android:name=".activities.payEMI"
+            android:name=".activities.act8payEMI"
             android:exported="false"/>
         <activity
-            android:name=".activities.addLoadAccount"
+            android:name=".activities.act6addLoadAccount"
             android:exported="false"/>
 
 
         <activity
-            android:name=".activities.BankSubCategories"
+            android:name=".activities.act5BankSubCategories"
             android:exported="false" />
         <activity
-            android:name=".activities.paymentInfo"
+            android:name=".activities.act7pay_emi_details"
             android:exported="false"/>
         <activity
-            android:name=".activities.BankList"
+            android:name=".activities.act4BankList"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

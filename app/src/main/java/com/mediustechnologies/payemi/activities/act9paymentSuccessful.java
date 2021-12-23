@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
 
-public class paypmentSuccessful extends AppCompatActivity {
+public class act9paymentSuccessful extends AppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
@@ -26,6 +26,6 @@ public class paypmentSuccessful extends AppCompatActivity {
     }
 
     private void go() {
-        startActivity(new Intent(context,complaintRegistration.class));
+        startActivity(new Intent(context, act12complaintRegistration.class));
     }
 }

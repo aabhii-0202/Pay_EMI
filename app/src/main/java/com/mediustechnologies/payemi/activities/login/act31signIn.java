@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.mediustechnologies.payemi.databinding.ActivitySignInBinding;
 
-public class signIn extends AppCompatActivity {
+public class act31signIn extends AppCompatActivity {
     private ActivitySignInBinding binding;
     private final Context context = this;
 
@@ -25,7 +25,7 @@ public class signIn extends AppCompatActivity {
     }
 
     private void init(){
-        binding.sendOTPbtn.setOnClickListener(view->{startActivity(new Intent(context,verifyNumber.class));});
+        binding.sendOTPbtn.setOnClickListener(view->{startActivity(new Intent(context, act33verifyNumber.class));});
 
 
 

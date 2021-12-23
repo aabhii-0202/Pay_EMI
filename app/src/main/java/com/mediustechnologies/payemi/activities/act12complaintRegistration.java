@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class complaintRegistration extends AppCompatActivity {
+public class act12complaintRegistration extends AppCompatActivity {
     private ActivityComplaintRegistrationBinding binding;
     private Dialog dialog;
     private final Context context = this;
@@ -58,7 +58,7 @@ public class complaintRegistration extends AppCompatActivity {
 
         binding.verifyOTP.setOnClickListener(View->{binding.statusLayout.setVisibility(android.view.View.VISIBLE);});
 
-        binding.submit.setOnClickListener(View->{startActivity(new Intent(context,transaction_Search.class));});
+        binding.submit.setOnClickListener(View->{startActivity(new Intent(context, act20transaction_Search.class));});
 
         binding.radioRegistration.setOnClickListener(view -> {
             binding.layoutreg.setVisibility(View.VISIBLE);

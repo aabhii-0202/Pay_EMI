@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiDetailsBinding;
 
-public class pay_EMI_Details extends AppCompatActivity {
+public class act34pay_EMI_Details extends AppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiDetailsBinding binding;
 
@@ -24,7 +24,7 @@ public class pay_EMI_Details extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context,payment_Page.class)));
+        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context, act35payment_Page.class)));
 
 
     }

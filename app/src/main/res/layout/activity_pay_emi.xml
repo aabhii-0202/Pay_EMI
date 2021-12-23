@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".activities.payEMI">
+    tools:context=".activities.act8payEMI">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
@@ -72,10 +72,10 @@
             <ImageView
                 android:id="@+id/bankImage"
                 android:layout_width="55dp"
-                android:background="#f4f6f8"
                 android:layout_height="50dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/b3"/>
+                android:background="#f4f6f8"
+                android:src="@drawable/b6" />
 
             <TextView
                 android:id="@+id/customerName"
@@ -124,17 +124,19 @@
             android:textColor="@color/grey"/>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             >
 
-            <ImageView
+            <TextView
                 android:id="@+id/rupee_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="100dp"
-                android:src="@drawable/ic_indian_rupee_symbol" />
+                android:text="₹"
+                android:textColor="@color/grey"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/enter_Amount"
@@ -146,7 +148,7 @@
                 android:layout_toEndOf="@+id/rupee_sign"
                 android:background="@drawable/amount_box"
                 android:fontFamily="@font/gtwalsheim_pro_light"
-                android:hint="14,288"
+                android:hint="00"
                 android:inputType="number"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -157,18 +159,21 @@
         </RelativeLayout>
 
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:inputType="text"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="16dp"
             android:paddingVertical="10dp"
+            android:hint="Enter your comment."
+            android:textColorHint="@color/HintColor"
             android:fontFamily="@font/gtwalsheim_pro_regular"
             android:textColor="@color/black"
             android:background="@drawable/textview_box"
             android:paddingHorizontal="20dp"
-            android:text="Emi Payment"/>
+            />
 
 
         <TextView
@@ -179,7 +184,7 @@
             android:elevation="8dp"
             android:fontFamily="@font/gtwalsheim_pro_regular_oblique"
             android:textColor="@color/grey"
-            android:textSize="12sp"
+            android:textSize="13sp"
             tools:text="Once you have paid this, your loan account will be immediately updated." />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -187,6 +192,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pay"
+            android:letterSpacing="0"
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:textSize="19sp"
             android:textColor="@color/white"

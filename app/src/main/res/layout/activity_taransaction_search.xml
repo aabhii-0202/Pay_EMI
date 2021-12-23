@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.transaction_Search">
+    tools:context=".activities.act20transaction_Search">
 
 
     <LinearLayout
