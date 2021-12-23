@@ -23,7 +23,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="8dp"
             android:src="@drawable/ic_back_button"/>
 
         <TextView
@@ -37,6 +36,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <TextView
+            android:id="@+id/codesenttotext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4 digit code sent to +91876564321"
@@ -77,6 +77,7 @@
                 app:viewType="rectangle" />
 
             <TextView
+                android:id="@+id/resendOTPtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

@@ -1,6 +1,7 @@
 package com.mediustechnologies.payemi.commons;
 
 import com.mediustechnologies.payemi.Models.loginResponse;
+import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 
 import retrofit2.Call;
 import retrofit2.http.POST;
@@ -12,6 +13,6 @@ public interface API {
     Call<loginResponse> sendOTP (@Query("phone")String phone);
 
     @POST("checkotp/")
-    Call<loginResponse> checkOTP (@Query("phone")String phone,@Query("otp")String otp);
+    Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
 
 }
