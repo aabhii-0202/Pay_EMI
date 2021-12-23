@@ -1,6 +1,7 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
@@ -39,15 +40,17 @@ public class BankList extends AppCompatActivity {
 
     private void addDummmyItemsInRecyclerView() {
         banklist = new ArrayList<>();
-        banklist.add(new bankListItem(R.drawable.b12,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b4,"Bank of Baroda"));
-        banklist.add(new bankListItem(R.drawable.b5,"City Bank"));
-        banklist.add(new bankListItem(R.drawable.b6,"SBI Bank"));
-        banklist.add(new bankListItem(R.drawable.b7,"Other Bank"));
-        banklist.add(new bankListItem(R.drawable.b8,"Axis Bank"));
-        banklist.add(new bankListItem(R.drawable.b9,"HSBC Bank"));
+
+        banklist.add(new bankListItem(R.drawable.b1,"Axis Bank"));
+        banklist.add(new bankListItem(R.drawable.b2,"HDFC Bank"));
+        banklist.add(new bankListItem(R.drawable.b3,"SBI"));
+        banklist.add(new bankListItem(R.drawable.b4,"Kotak Bank"));
+        banklist.add(new bankListItem(R.drawable.b5,"Bank of Baroda"));
+        banklist.add(new bankListItem(R.drawable.b6,"City Bank"));
+        banklist.add(new bankListItem(R.drawable.b7,"HSBC Bank"));
+        banklist.add(new bankListItem(R.drawable.b8,"Edelweiss Bank"));
+        banklist.add(new bankListItem(R.drawable.b9,"ICICI Bank"));
+
 
 
 
