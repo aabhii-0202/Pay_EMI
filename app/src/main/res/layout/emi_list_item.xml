@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="8dp"
+    android:outlineAmbientShadowColor="#eaeaea"
     android:elevation="8dp"
-    android:layout_marginHorizontal="16dp"
+    android:layout_marginHorizontal="18dp"
     android:layout_marginVertical="12dp"
     app:cardBackgroundColor="@color/white"
     >
@@ -27,22 +28,18 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
+
+            <ImageView
+                android:id="@+id/banklogo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
+                android:src="@drawable/b9"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <ImageView
-                    android:id="@+id/banklogo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/b9"
+                app:layout_constraintTop_toTopOf="parent"
                     />
 
-            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:id="@+id/FinancersName"
@@ -55,7 +52,7 @@
                 android:textColor="@color/grey2"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/cardview"
+                app:layout_constraintStart_toEndOf="@+id/banklogo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -68,7 +65,7 @@
                 android:text="Home Loan"
                 android:textColor="@color/title_text_color"
                 android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/cardview"
+                app:layout_constraintStart_toEndOf="@+id/banklogo"
                 app:layout_constraintTop_toBottomOf="@id/FinancersName" />
 
 

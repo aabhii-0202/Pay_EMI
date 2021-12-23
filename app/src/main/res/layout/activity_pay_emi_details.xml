@@ -11,8 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:paddingTop="16dp"
-        android:layout_height="150dp"
+        android:paddingTop="32dp"
+        android:layout_height="170dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -102,6 +102,7 @@
                 android:layout_height="30dp"
                 android:layout_marginHorizontal="32dp"
                 android:paddingVertical="4dp"
+                android:layout_marginTop="32dp"
                 android:progress="25"
                 android:progressDrawable="@drawable/emi_progress_bar_bg2"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -117,7 +118,7 @@
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="₹ 50K"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/emiProgressbar"
                 app:layout_constraintStart_toStartOf="@+id/emiProgressbar"
                 app:layout_constraintTop_toTopOf="@+id/emiProgressbar" />
@@ -134,8 +135,9 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:text="₹ 2L"
-            android:textColor="@color/white"
-            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/grey2"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -174,8 +176,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="32dp">
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -35,7 +35,7 @@
             android:layout_width="23dp"
             android:layout_height="26dp"
             android:layout_marginStart="5dp"
-            android:src="@drawable/b3"
+            android:src="@drawable/b1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/backButton"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
             android:fontFamily="@font/roboto"
             android:text="Pending Amount"
             android:textColor="@color/grey"
-            android:textSize="12sp"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Credit/Debit Card"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textColor="@color/grey2"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto"/>
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Pay via UPI"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textColor="@color/grey2"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto"/>
@@ -187,7 +187,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Add New UPI ID"
                 android:textColor="@color/black"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/roboto_medium"/>
             <TextView
                 android:id="@+id/youneed"
@@ -197,7 +197,7 @@
                 app:layout_constraintStart_toEndOf="@id/securepay"
                 android:text="You need to have a registered UPI ID"
                 android:textColor="@color/grey"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/roboto"/>
 
             <ImageView
@@ -224,7 +224,7 @@
                     android:layout_gravity="center_vertical"/>
                 <ImageView
                     android:layout_width="44dp"
-                    android:layout_height="12dp"
+                    android:layout_height="13dp"
                     android:src="@drawable/bhim_bw"
                     android:layout_marginStart="10dp"
                     android:layout_gravity="center_vertical"/>
@@ -244,7 +244,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Wallet"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textColor="@color/grey2"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto"/>
@@ -305,7 +305,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Wallet"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textColor="@color/grey2"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto"/>
