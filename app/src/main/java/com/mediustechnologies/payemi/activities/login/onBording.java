@@ -43,13 +43,13 @@ public class onBording extends AppCompatActivity {
 
     private void init(){
         binding.backbtn.setOnClickListener(view -> finish());
-        binding.skip.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
+        binding.skip.setOnClickListener(view -> startActivity(new Intent(context, signIn.class)));
     }
 
     ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            if (position==2)startActivity(new Intent(context, payment_confirmation.class));
+            if (position==2)startActivity(new Intent(context, signIn.class));
         }
 
         @Override

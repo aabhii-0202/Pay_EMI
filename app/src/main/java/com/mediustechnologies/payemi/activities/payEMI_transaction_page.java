@@ -66,7 +66,7 @@ public class payEMI_transaction_page extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context,BankList.class)));
+        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context,transaction_Details.class)));
 
     }
 }

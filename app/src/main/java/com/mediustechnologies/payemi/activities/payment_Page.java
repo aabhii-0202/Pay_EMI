@@ -24,10 +24,10 @@ public class payment_Page extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
-        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
-        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
-        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context,payEMI_home.class)));
+        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
+        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
+        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
+        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context,payment_confirmation.class)));
 
 
 

@@ -39,7 +39,7 @@ public class BankList extends AppCompatActivity {
 
     private void addDummmyItemsInRecyclerView() {
         banklist = new ArrayList<>();
-        banklist.add(new bankListItem(R.drawable.b1,"HDFC Bank"));
+        banklist.add(new bankListItem(R.drawable.b12,"HDFC Bank"));
         banklist.add(new bankListItem(R.drawable.b2,"ICICI Bank"));
         banklist.add(new bankListItem(R.drawable.b3,"SBI Bank"));
         banklist.add(new bankListItem(R.drawable.b4,"Bank of Baroda"));

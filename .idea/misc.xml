@@ -18,8 +18,10 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/gradient_scratchbg.xml" value="0.3517948717948718" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/home_recycler_bg.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/home_title_background.xml" value="0.403125" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_add_logo.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_back_btn_white.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_back_button.xml" value="0.403125" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_bell.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_credit_card.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_cross.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_download.xml" value="0.31203703703703706" />
@@ -28,6 +30,7 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_load1.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_load2.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_make_in_india.xml" value="0.31203703703703706" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_menutitle.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_rightarrowvector.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_scratch_card.xml" value="0.35572916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/ic_shape.xml" value="0.2712962962962963" />
@@ -65,7 +68,7 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/bank_list_item.xml" value="0.4597156398104265" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/bank_sublist_items.xml" value="0.29411764705882354" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/complaint_registered_popup.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/emi_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/emi_list_item.xml" value="0.5" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/emi_progress_bar_bg2.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/home_title_background.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/otpsentpopup.xml" value="0.381025641025641" />

@@ -24,7 +24,7 @@ public class pay_EMI_Details extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context,payEMI_transaction_page.class)));
+        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context,payment_Page.class)));
 
 
     }

@@ -26,7 +26,7 @@ public class transaction_Details extends AppCompatActivity {
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
         binding.havingIssue.setOnClickListener(view -> {
-            startActivity(new Intent(context,payment_Page.class));
+            startActivity(new Intent(context,SplashScreen.class));
         });
 
     }

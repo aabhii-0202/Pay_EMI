@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.mediustechnologies.payemi.activities.login.onBording;
 import com.mediustechnologies.payemi.helper.DatePickerFragment;
 import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
 
@@ -15,6 +18,7 @@ public class transaction_Search extends AppCompatActivity implements DatePickerD
 
     private ActivityTaransactionSearchBinding binding;
     private boolean from;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class transaction_Search extends AppCompatActivity implements DatePickerD
 
     private void init(){
 
+        binding.details.setVisibility(View.VISIBLE);
+
         binding.radioTransaction.setOnClickListener(view -> {
             if(binding.radioTransaction.isChecked()){
                 binding.mobileNumberSelected.setVisibility(View.GONE);
@@ -57,7 +63,7 @@ public class transaction_Search extends AppCompatActivity implements DatePickerD
             }
         });
 
-        binding.search.setOnClickListener(view -> binding.details.setVisibility(View.VISIBLE));
+        binding.search.setOnClickListener(view -> startActivity(new Intent(context, onBording.class)));
 
         binding.layoutfrom.setOnClickListener(View ->{
             from = true;

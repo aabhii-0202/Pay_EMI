@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.mediustechnologies.payemi.activities.BankList;
+import com.mediustechnologies.payemi.activities.payEMI_home;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
 
 public class verifyNumber extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class verifyNumber extends AppCompatActivity {
 
     private void init(){
         binding.back.setOnClickListener(view -> finish());
-        binding.verifyOTP.setOnClickListener(view -> startActivity(new Intent(context, onBording.class)));
+        binding.verifyOTP.setOnClickListener(view -> startActivity(new Intent(context, payEMI_home.class)));
     }
 
 }
