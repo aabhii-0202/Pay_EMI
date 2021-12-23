@@ -35,16 +35,19 @@
             android:name=".activities.login.act28onBording"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act33verifyNumber"
-            android:exported="false" />
+            android:name=".activities.login.act32verifyNumber"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
 
         <activity
             android:name=".activities.login.act31signIn"
-            android:exported="false" >
-
-
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.act20transaction_Search"
             android:exported="false"/>
@@ -70,13 +73,7 @@
             android:exported="false"/>
         <activity
             android:name=".activities.act4BankList"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">

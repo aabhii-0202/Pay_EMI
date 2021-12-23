@@ -11,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,12 +77,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:padding="5dp"
                 android:text="Loan Account Number"
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
             <EditText
+                android:id="@+id/loanaccountnumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
@@ -94,6 +94,18 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loanaccountnumber"
+                android:layout_marginTop="8dp"
+                android:padding="2dp"
+                android:text="Enter valid loan account number."
+                android:textColor="@color/errormessagecolor"
+                android:textSize="13sp"
+                android:visibility="gone" />
 
 
 
@@ -108,12 +120,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:padding="5dp"
                 android:text="Mobile Number"
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
             <EditText
+                android:id="@+id/mobilenumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
@@ -122,22 +134,35 @@
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:hint="Enter Your Mobile Number"
                 android:inputType="phone"
+                android:maxLength="13"
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/error_message2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mobilenumber"
+                android:layout_marginTop="8dp"
+                android:padding="2dp"
+                android:text="Enter valid mobile number."
+                android:textColor="@color/errormessagecolor"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+
         </RelativeLayout>
 
-
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
-            android:padding="5dp"
             android:layout_marginTop="8dp"
             android:textColor="#999999"
             android:fontFamily="@font/gtwalsheim_pro_regular"
-            tools:text="Mobile number should linked to your account."/>
+            android:text="Mobile number should be linked to your account."/>
 
 
         <Button

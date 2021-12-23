@@ -15,6 +15,7 @@
     <color name="btncolor">#412e8d</color>
     <color name="titlebgblue">#3a2d78</color>
     <color name="progress">#858585</color>
-    <color name="shadow">#22265e</color>
+    <color name="shadow">#0F25265E</color>
+    <color name="errormessagecolor">#ff40</color>
 
 </resources>

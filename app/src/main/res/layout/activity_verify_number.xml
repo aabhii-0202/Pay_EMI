@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.login.act33verifyNumber">
+    tools:context=".activities.login.act32verifyNumber">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Verify Number"
             android:textColor="@color/black"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/gtwalsheim_pro_light"
             android:textSize="40sp"
             android:layout_marginTop="100dp"
             android:layout_gravity="center_horizontal"/>
@@ -44,7 +44,7 @@
             android:layout_marginTop="16dp"
             android:textSize="14sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/roboto"/>
+            android:fontFamily="@font/gtwalsheim_pro_regular"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -57,23 +57,22 @@
                 style="@style/PinWidget.PinView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:cursorVisible="true"
                 android:inputType="number"
                 android:itemBackground="@drawable/pinview_background"
                 android:padding="2dp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/roboto_light"
-                android:textSize="18sp"
+                android:fontFamily="@font/gtwalsheim_pro_light"
+                android:textSize="16sp"
                 app:itemCount="4"
-                app:itemHeight="57dp"
+                app:itemHeight="56dp"
                 app:itemRadius="4dp"
-                app:itemSpacing="26dp"
-                app:itemWidth="57dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lineColor="#eaeaea"
+                app:itemSpacing="24dp"
+                app:itemWidth="56dp"
+                app:lineColor="@color/shadow"
                 app:lineWidth="1dp"
                 app:viewType="rectangle" />
 
