@@ -49,15 +49,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/logos"
+        app:layout_constraintTop_toBottomOf="@+id/title">
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+       >
 
         <ImageView
             android:layout_width="59dp"
@@ -204,27 +212,25 @@
 
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/havingIssue"
+            android:layout_marginTop="80dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/gtwalsheim_pro_medium"
+            android:text="Having Issue"
+            android:textColor="@color/btncolor"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            app:strokeColor="@color/btncolor"
+            app:strokeWidth="1dp" />
     </LinearLayout>
+    </ScrollView>
 
-    <Button
-        android:id="@+id/havingIssue"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/gtwalsheim_pro_medium"
-        android:text="Having Issue"
-        android:textColor="@color/btncolor"
-        android:letterSpacing="0"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/logos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:strokeColor="@color/btncolor"
-        app:strokeWidth="1dp" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/logos"

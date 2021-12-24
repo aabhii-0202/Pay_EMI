@@ -95,7 +95,9 @@ public class act32verifyNumber extends AppCompatActivity {
         String otp = binding.OTPpinView.getText().toString();
         if(otp.length()==4){
             {
+                startActivity(new Intent(this,act33payEMI_home.class));
                 Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone,otp);
+
 
 //                call.enqueue(new Callback<verifyOTPresponse>() {
 //                    @Override
