@@ -2,8 +2,9 @@ package com.mediustechnologies.payemi.commons;
 
 import com.mediustechnologies.payemi.Models.allCashbacks;
 import com.mediustechnologies.payemi.Models.billDetails;
+import com.mediustechnologies.payemi.Models.fetchBill;
 import com.mediustechnologies.payemi.Models.getCashback;
-import com.mediustechnologies.payemi.Models.loginResponse;
+import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 
 import retrofit2.Call;
@@ -14,7 +15,7 @@ import retrofit2.http.Query;
 public interface API {
 
     @POST("sendotp/")
-    Call<loginResponse> sendOTP (@Query("phone")String phone);
+    Call<sendOTPResponse> sendOTP (@Query("phone")String phone);
 
     @POST("checkotp/")
     Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
@@ -28,4 +29,7 @@ public interface API {
     @GET("getbilldetails/")
     Call<billDetails> getBillDetails(@Query("bill_id")String bill_id);
 
+    @POST("billfetch/")
+    Call<fetchBill> fetchBill (@Query("Id_biller")String Id_biller,  @Query("loanNumber")String loanNumber, @Query("mobile") String mobile);
+    
 }

@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class loginResponse {
+public class sendOTPResponse {
 
     @SerializedName("message")
     @Expose

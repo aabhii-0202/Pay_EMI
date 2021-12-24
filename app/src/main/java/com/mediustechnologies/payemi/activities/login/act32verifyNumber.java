@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.loginResponse;
+import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
@@ -18,7 +17,6 @@ import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
@@ -66,11 +64,11 @@ public class act32verifyNumber extends AppCompatActivity {
 
     private void resendOTP(){
             if(phone.length()==10){
-                Call<loginResponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().sendOTP(phone);
+                Call<sendOTPResponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().sendOTP(phone);
                 String finalPhone = phone;
-                call.enqueue(new Callback<loginResponse>() {
+                call.enqueue(new Callback<sendOTPResponse>() {
                     @Override
-                    public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
+                    public void onResponse(Call<sendOTPResponse> call, Response<sendOTPResponse> response) {
                         Log.d("tag","MESSAGE: "+response.body().getMessage()+" PAYLOAD: "+response.body().getPayload());
                         Toast.makeText(context, "OTP sent to "+ finalPhone, Toast.LENGTH_SHORT).show();
                         binding.resendOTPtext.setClickable(false);
@@ -79,7 +77,7 @@ public class act32verifyNumber extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<loginResponse> call, Throwable t) {
+                    public void onFailure(Call<sendOTPResponse> call, Throwable t) {
                         Log.d("tag","OTP sent failed: "+t.toString());
                         Toast.makeText(context, "Fail to send OTP please try again.", Toast.LENGTH_SHORT).show();
                     }
@@ -95,7 +93,9 @@ public class act32verifyNumber extends AppCompatActivity {
         String otp = binding.OTPpinView.getText().toString();
         if(otp.length()==4){
             {
+                startActivity(new Intent(this,act33payEMI_home.class));
                 Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone,otp);
+
 
 //                call.enqueue(new Callback<verifyOTPresponse>() {
 //                    @Override
