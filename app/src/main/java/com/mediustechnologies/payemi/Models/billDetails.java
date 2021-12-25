@@ -304,4 +304,35 @@ public class billDetails {
     public void setService_tax(String service_tax) {
         this.service_tax = service_tax;
     }
+
+    @Override
+    public String toString() {
+        return "billDetails{" +
+                "id='" + id + '\'' +
+                ", biller='" + biller + '\'' +
+                ", loan_acc_no='" + loan_acc_no + '\'' +
+                ", customer_name='" + customer_name + '\'' +
+                ", customer_mobile='" + customer_mobile + '\'' +
+                ", product_name='" + product_name + '\'' +
+                ", tenure='" + tenure + '\'' +
+                ", due_date='" + due_date + '\'' +
+                ", bill_number='" + bill_number + '\'' +
+                ", transaction_date_and_time='" + transaction_date_and_time + '\'' +
+                ", amount='" + amount + '\'' +
+                ", transation_status='" + transation_status + '\'' +
+                ", order_id='" + order_id + '\'' +
+                ", transaction_id='" + transaction_id + '\'' +
+                ", transaction_date='" + transaction_date + '\'' +
+                ", approval_number='" + approval_number + '\'' +
+                ", charges_levied='" + charges_levied + '\'' +
+                ", late_payment_fees='" + late_payment_fees + '\'' +
+                ", additional_charges='" + additional_charges + '\'' +
+                ", fixed_charges='" + fixed_charges + '\'' +
+                ", emi='" + emi + '\'' +
+                ", initiation_channel='" + initiation_channel + '\'' +
+                ", payment_mode='" + payment_mode + '\'' +
+                ", customer_convinience_fees='" + customer_convinience_fees + '\'' +
+                ", service_tax='" + service_tax + '\'' +
+                '}';
+    }
 }

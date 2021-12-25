@@ -14,8 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.act39payEMI_transaction_page"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activities.act34pay_EMI_Details"
             android:exported="false"/>
@@ -42,12 +41,16 @@
 
         <activity
             android:name=".activities.login.act31signIn"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.act20transaction_Search"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.act12complaintRegistration"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.act9paymentSuccessful"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,10 +58,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".activities.act9paymentSuccessful"
-            android:exported="false"/>
 
         <activity
             android:name=".activities.act8payEMI"

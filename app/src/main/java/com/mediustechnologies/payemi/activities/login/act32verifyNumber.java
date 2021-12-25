@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -93,23 +94,28 @@ public class act32verifyNumber extends AppCompatActivity {
         String otp = binding.OTPpinView.getText().toString();
         if(otp.length()==4){
             {
-                startActivity(new Intent(this,act33payEMI_home.class));
-                Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone,otp);
+                startActivity(new Intent(this, act33payEMI_home.class));
+                Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone, otp);
 
 
-//                call.enqueue(new Callback<verifyOTPresponse>() {
-//                    @Override
-//                    public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
-//                        Log.d("tag","Response from OTP verification: "+response.body().getOtp());
-////                        startActivity(new Intent(context, act33payEMI_home.class));
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<verifyOTPresponse> call, Throwable t) {
-//                        Log.d("tag","Unable to verify OTP");
-////                        startActivity(new Intent(context, act33payEMI_home.class));
-//                    }
-//                });
+                call.enqueue(new Callback<verifyOTPresponse>() {
+                    @Override
+                    public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
+                        if (response.code() == 400) {
+                            Log.d("tag", response.toString());
+                        } else if (response.code() == 200) {
+                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
+                            preferences.edit().putString("phone", phone).apply();
+                        }
+//                        startActivity(new Intent(context, act33payEMI_home.class));
+                    }
+
+                    @Override
+                    public void onFailure(Call<verifyOTPresponse> call, Throwable t) {
+                        Log.d("tag", "Unable to verify OTP");
+//                        startActivity(new Intent(context, act33payEMI_home.class));
+                    }
+                });
 
 
             }
