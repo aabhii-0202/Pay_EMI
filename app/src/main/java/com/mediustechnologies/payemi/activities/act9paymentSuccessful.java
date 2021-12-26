@@ -35,29 +35,32 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private void setData(billDetails data) {
 
-        binding.recieptBankName.setText("");
-        binding.BillPeriod.setText("");
-        binding.BillDate.setText("");
+        Log.d("tag", "act9paymentSuccessful " + data.toString());
+
+        binding.recieptBankName.setText("NA");
+        binding.BillPeriod.setText("NA");
+        binding.BillDate.setText("NA");
         binding.BillNumber.setText(data.getBill_number());
         binding.BillerID.setText(data.getId());
         binding.TotalAmount.setText(data.getAmount());
-        binding.TransactionStatus.setText("");
+        binding.TransactionStatus.setText("NA");
         binding.TransactionID.setText(data.getTransaction_id());
         binding.TransactionDateTime.setText(data.getTransaction_date_and_time());
-        binding.ApprovalNumber.setText("");
+        binding.ApprovalNumber.setText("NA");
         binding.CName.setText(data.getCustomer_name());
         binding.CNumber.setText(data.getCustomer_mobile());
         binding.InitiatingChannel.setText(data.getInitiation_channel());
         binding.paymentMode.setText(data.getPayment_mode());
-        binding.BillAmount.setText("");
+        binding.BillAmount.setText("NA");
         binding.convineanceFee.setText(data.getCustomer_convinience_fees());
         binding.serviceTax.setText(data.getService_tax());
-        binding.totalAmount.setText("");
+        binding.totalAmount.setText("NA");
 
     }
 
     private void getbilldetails() {
         String bill_id = 5 + "";
+        // dummy billerID
         Call<List<billDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(bill_id);
 
         call.enqueue(new Callback<List<billDetails>>() {
@@ -71,10 +74,10 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<billDetails>> call, Throwable t) {
-
+                billDetails data = null;
+                setData(data);
             }
         });
-
     }
 
     private void init() {
