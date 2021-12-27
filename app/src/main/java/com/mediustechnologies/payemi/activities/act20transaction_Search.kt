@@ -1,81 +1,72 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.app.AppCompatActivity
+import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Context
+import android.os.Bundle
+import android.widget.DatePicker
+import android.content.Intent
+import android.view.View
+import androidx.fragment.app.DialogFragment
+import com.mediustechnologies.payemi.activities.login.act28onBording
+import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding
+import com.mediustechnologies.payemi.helper.DatePickerFragment
 
-import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.DatePicker;
-
-import com.mediustechnologies.payemi.activities.login.act28onBording;
-import com.mediustechnologies.payemi.helper.DatePickerFragment;
-import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
-
-public class act20transaction_Search extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
-    private ActivityTaransactionSearchBinding binding;
-    private boolean from;
-    private Context context = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding= ActivityTaransactionSearchBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-
-        init();
-
-
+class act20transaction_Search : AppCompatActivity(), OnDateSetListener {
+    private var binding: ActivityTaransactionSearchBinding? = null
+    private var from = false
+    private val context: Context = this
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTaransactionSearchBinding.inflate(
+            layoutInflater
+        )
+        setContentView(binding!!.root)
+        init()
     }
 
-    @Override
-    public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-        String s = date+"-"+month+"-"+year;
-        if(from){
-            binding.fromtext.setText(s);
-        }else {
-            binding.totext.setText(s);
+    override fun onDateSet(datePicker: DatePicker, year: Int, month: Int, date: Int) {
+        val s = "$date-$month-$year"
+        if (from) {
+            binding!!.fromtext.text = s
+        } else {
+            binding!!.totext.text = s
         }
-
     }
 
-    private void init(){
-
-        binding.details.setVisibility(View.VISIBLE);
-
-        binding.radioTransaction.setOnClickListener(view -> {
-            if(binding.radioTransaction.isChecked()){
-                binding.mobileNumberSelected.setVisibility(View.GONE);
-                binding.transactionIdselected.setVisibility(View.VISIBLE);
-                binding.details.setVisibility(View.GONE);
+    private fun init() {
+        binding!!.details.visibility = View.VISIBLE
+        binding!!.radioTransaction.setOnClickListener { view: View? ->
+            if (binding!!.radioTransaction.isChecked) {
+                binding!!.mobileNumberSelected.visibility = View.GONE
+                binding!!.transactionIdselected.visibility = View.VISIBLE
+                binding!!.details.visibility = View.GONE
             }
-        });
-
-        binding.radioMobile.setOnClickListener(view -> {
-            if(binding.radioMobile.isChecked()){
-                binding.mobileNumberSelected.setVisibility(View.VISIBLE);
-                binding.transactionIdselected.setVisibility(View.GONE);
-                binding.details.setVisibility(View.GONE);
+        }
+        binding!!.radioMobile.setOnClickListener { view: View? ->
+            if (binding!!.radioMobile.isChecked) {
+                binding!!.mobileNumberSelected.visibility = View.VISIBLE
+                binding!!.transactionIdselected.visibility = View.GONE
+                binding!!.details.visibility = View.GONE
             }
-        });
-
-        binding.search.setOnClickListener(view -> startActivity(new Intent(context, act28onBording.class)));
-
-        binding.layoutfrom.setOnClickListener(View ->{
-            from = true;
-            DialogFragment datepicker = new DatePickerFragment();
-            datepicker.show(getSupportFragmentManager(),"date picker");
-        });
-
-        binding.layoutto.setOnClickListener(view -> {
-            from = false;
-            DialogFragment datepicker = new DatePickerFragment();
-            datepicker.show(getSupportFragmentManager(),"date picker");
-        });
-
+        }
+        binding!!.search.setOnClickListener { view: View? ->
+            startActivity(
+                Intent(
+                    context,
+                    act28onBording::class.java
+                )
+            )
+        }
+        binding!!.layoutfrom.setOnClickListener { View: View? ->
+            from = true
+            val datepicker: DialogFragment = DatePickerFragment()
+            datepicker.show(supportFragmentManager, "date picker")
+        }
+        binding!!.layoutto.setOnClickListener { view: View? ->
+            from = false
+            val datepicker: DialogFragment = DatePickerFragment()
+            datepicker.show(supportFragmentManager, "date picker")
+        }
     }
 }

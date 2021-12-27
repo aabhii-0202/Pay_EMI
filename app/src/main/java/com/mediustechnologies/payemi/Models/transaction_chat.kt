@@ -1,54 +1,9 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.Models
 
-public class transaction_chat {
-
-    private String name,loan_name,amount,status_date,dateline;
-
-    public transaction_chat(String name, String loan_name, String amount, String status_date,String dateline) {
-        this.name = name;
-        this.loan_name = loan_name;
-        this.amount = amount;
-        this.status_date = status_date;
-        this.dateline=dateline;
-    }
-
-    public String getDateline() {
-        return dateline;
-    }
-
-    public void setDateline(String dateline) {
-        this.dateline = dateline;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLoan_name() {
-        return loan_name;
-    }
-
-    public void setLoan_name(String loan_name) {
-        this.loan_name = loan_name;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    public String getStatus_date() {
-        return status_date;
-    }
-
-    public void setStatus_date(String status_date) {
-        this.status_date = status_date;
-    }
-}
+class transaction_chat(
+    var name: String,
+    var loan_name: String,
+    var amount: String,
+    var status_date: String,
+    var dateline: String
+)

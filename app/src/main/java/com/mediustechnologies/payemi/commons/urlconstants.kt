@@ -1,5 +1,5 @@
-package com.mediustechnologies.payemi.commons;
+package com.mediustechnologies.payemi.commons
 
-public class urlconstants {
-    public static final String AuthURL = "http://3.109.222.99/";
+object urlconstants {
+    const val AuthURL = "http://3.109.222.99/"
 }

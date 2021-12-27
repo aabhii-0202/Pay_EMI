@@ -1,129 +1,96 @@
-package com.mediustechnologies.payemi.adapters;
+package com.mediustechnologies.payemi.adapters
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Context
+import com.mediustechnologies.payemi.Models.transaction_chat
+import androidx.recyclerview.widget.RecyclerView
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.view.View
+import com.mediustechnologies.payemi.R
+import com.mediustechnologies.payemi.databinding.TransactionPageDatelineBinding
+import com.mediustechnologies.payemi.databinding.TransactionPagePaymentItemBinding
+import com.mediustechnologies.payemi.databinding.TransactionPageScratchcardItemBinding
+import java.util.ArrayList
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.mediustechnologies.payemi.Models.transaction_chat;
-import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.databinding.TransactionPageDatelineBinding;
-import com.mediustechnologies.payemi.databinding.TransactionPagePaymentItemBinding;
-import com.mediustechnologies.payemi.databinding.TransactionPageScratchcardItemBinding;
-
-import java.util.ArrayList;
-
-public class transction_chatAdapter extends RecyclerView.Adapter{
-
-    private Context context;
-    private ArrayList<transaction_chat> chatlist;
-    final int ITEM_SCRATCH =1;
-    final int ITEM_PAYMENT=2;
-    final int ITEM_DATE =3;
-
-    public transction_chatAdapter(Context context, ArrayList<transaction_chat> chatlist){
-        this.chatlist=chatlist;
-        this.context=context;
-
-    }
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(viewType == ITEM_SCRATCH){
-            View view = LayoutInflater.from(context).inflate(R.layout.transaction_page_scratchcard_item,parent,false);
-            return new rewardViewHolder(view);
-        }
-
-        else if(viewType==ITEM_DATE){
-            View view  = LayoutInflater.from(context).inflate(R.layout.transaction_page_dateline,parent,false);
-            return new dateLineViewHolder(view);
-        }
-        else{
-            View view = LayoutInflater.from(context).inflate(R.layout.transaction_page_payment_item,parent,false);
-            return new paymentViewHolder(view);
+class TransctionChatAdapter(
+    private val context: Context,
+    private val chatlist: ArrayList<transaction_chat>
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    val ITEM_SCRATCH = 1
+    val ITEM_PAYMENT = 2
+    val ITEM_DATE = 3
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == ITEM_SCRATCH) {
+            val view = LayoutInflater.from(context)
+                .inflate(R.layout.transaction_page_scratchcard_item, parent, false)
+            rewardViewHolder(view)
+        } else if (viewType == ITEM_DATE) {
+            val view =
+                LayoutInflater.from(context)
+                    .inflate(R.layout.transaction_page_dateline, parent, false)
+            dateLineViewHolder(view)
+        } else {
+            val view = LayoutInflater.from(context)
+                .inflate(R.layout.transaction_page_payment_item, parent, false)
+            paymentViewHolder(view)
         }
     }
 
-    @Override
-    public int getItemViewType(int position) {
-
-        transaction_chat chat = chatlist.get(position);
-
-        if(chat.getDateline()!=null) return ITEM_DATE;
-
-        if (chat.getStatus_date()==null)return ITEM_SCRATCH;
-
-        return ITEM_PAYMENT;
-
+    override fun getItemViewType(position: Int): Int {
+        val chat = chatlist[position]
+        if (chat.dateline != null) return ITEM_DATE
+        return if (chat.status_date == null) ITEM_SCRATCH else ITEM_PAYMENT
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-        String name = chatlist.get(position).getName();
-        String loanname = chatlist.get(position).getLoan_name();
-        String status = chatlist.get(position).getStatus_date();
-        String amount = chatlist.get(position).getAmount();
-        String dateline = chatlist.get(position).getDateline();
-
-
-        if(dateline==null) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val name = chatlist[position].name
+        val loanname = chatlist[position].loan_name
+        val status = chatlist[position].status_date
+        val amount = chatlist[position].amount
+        val dateline = chatlist[position].dateline
+        if (dateline == null) {
             if (status == null) {
-                rewardViewHolder vh = (rewardViewHolder) holder;
-                vh.binding.titletext.setText(name);
-                vh.binding.subtitle.setText(loanname);
+                val vh = holder as rewardViewHolder
+                vh.binding.titletext.text = name
+                vh.binding.subtitle.text = loanname
             } else {
-                paymentViewHolder vh = (paymentViewHolder) holder;
-                vh.binding.cardamount.setText(amount);
-                vh.binding.cardbankname.setText(name);
-                vh.binding.cardloanname.setText(loanname);
-                vh.binding.statusanddate.setText(status);
+                val vh = holder as paymentViewHolder
+                vh.binding.cardamount.text = amount
+                vh.binding.cardbankname.text = name
+                vh.binding.cardloanname.text = loanname
+                vh.binding.statusanddate.text = status
             }
-        }
-        else {
-            dateLineViewHolder vh = (dateLineViewHolder) holder;
-            vh.binding.date.setText(dateline);
-        }
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return chatlist.size();
-    }
-
-    public class dateLineViewHolder extends RecyclerView.ViewHolder{
-        TransactionPageDatelineBinding binding;
-
-        public dateLineViewHolder(@NonNull View itemView) {
-            super(itemView);
-            binding = TransactionPageDatelineBinding.bind(itemView);
+        } else {
+            val vh = holder as dateLineViewHolder
+            vh.binding.date.text = dateline
         }
     }
 
+    override fun getItemCount(): Int {
+        return chatlist.size
+    }
 
-    public class rewardViewHolder extends RecyclerView.ViewHolder{
+    inner class dateLineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var binding: TransactionPageDatelineBinding
 
-        TransactionPageScratchcardItemBinding binding;
-
-        public rewardViewHolder(@NonNull View itemView) {
-            super(itemView);
-            binding = TransactionPageScratchcardItemBinding.bind(itemView);
+        init {
+            binding = TransactionPageDatelineBinding.bind(itemView)
         }
     }
 
-    public class paymentViewHolder extends RecyclerView.ViewHolder{
+    inner class rewardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var binding: TransactionPageScratchcardItemBinding
 
-        TransactionPagePaymentItemBinding binding;
-
-        public paymentViewHolder(@NonNull View itemView) {
-            super(itemView);
-            binding = TransactionPagePaymentItemBinding.bind(itemView);
+        init {
+            binding = TransactionPageScratchcardItemBinding.bind(itemView)
         }
     }
 
+    inner class paymentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var binding: TransactionPagePaymentItemBinding
+
+        init {
+            binding = TransactionPagePaymentItemBinding.bind(itemView)
+        }
+    }
 }

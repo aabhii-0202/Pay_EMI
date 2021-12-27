@@ -1,67 +1,70 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.mediustechnologies.payemi.Models.bankSubItem;
-import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.adapters.bankListAdapter;
-import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
-import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.mediustechnologies.payemi.Models.bankSubItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.mediustechnologies.payemi.adapters.bankSublistAdapter
+import android.os.Bundle
+import com.mediustechnologies.payemi.adapters.bankListAdapter
+import android.widget.Toast
+import com.mediustechnologies.payemi.R
+import android.content.Intent
+import android.view.View
+import com.mediustechnologies.payemi.activities.act6addLoadAccount
+import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding
+import java.util.ArrayList
 
-public class act5BankSubCategories extends AppCompatActivity {
-
-    private ActivityBankSubCategoriesBinding binding;
-    private RecyclerView bankSubListRecyclerview;
-    private List<bankSubItem> bankSubList;
-    private LinearLayoutManager linearLayoutManager;
-    private bankSublistAdapter adapter;
-    private final Context context = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityBankSubCategoriesBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        init();
-
-        addDummmyItemsInRecyclerView();
-        initRecyclerView();
+class act5BankSubCategories : AppCompatActivity() {
+    private var binding: ActivityBankSubCategoriesBinding? = null
+    private var bankSubListRecyclerview: RecyclerView? = null
+    private lateinit var bankSubList: MutableList<bankSubItem>
+    private var linearLayoutManager: LinearLayoutManager? = null
+    private var adapter: bankSublistAdapter? = null
+    private val context: Context = this
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityBankSubCategoriesBinding.inflate(
+            layoutInflater
+        )
+        setContentView(binding!!.root)
+        init()
+        addDummmyItemsInRecyclerView()
+        initRecyclerView()
     }
 
-    private void initRecyclerView() {
-        bankSubListRecyclerview = binding.ListRecyclerView;
-        linearLayoutManager = new LinearLayoutManager(context);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        bankSubListRecyclerview.setLayoutManager(linearLayoutManager);
-        adapter = new bankSublistAdapter(bankSubList);
-        bankSubListRecyclerview.setAdapter(adapter);
-        adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
-            @Override
-            public void onItemClick(int position) {
-                Toast.makeText(context, position+" position item clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+    private fun initRecyclerView() {
+        bankSubListRecyclerview = binding!!.ListRecyclerView
+        linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager!!.orientation = RecyclerView.VERTICAL
+        bankSubListRecyclerview!!.layoutManager = linearLayoutManager
+        adapter = bankSublistAdapter(bankSubList)
+        bankSubListRecyclerview!!.adapter = adapter
+        adapter!!.setOnItemClickListner { position ->
+            Toast.makeText(
+                context,
+                "$position position item clicked",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
-    private void addDummmyItemsInRecyclerView() {
-        bankSubList = new ArrayList<>();
-        bankSubList.add(new bankSubItem(R.drawable.axis_financne));
-        bankSubList.add(new bankSubItem(R.drawable.axisfinance3));
-
+    private fun addDummmyItemsInRecyclerView() {
+        bankSubList = ArrayList()
+        bankSubList.add(bankSubItem(R.drawable.axis_financne))
+        bankSubList.add(bankSubItem(R.drawable.axisfinance3))
     }
 
-    private void init(){
-        binding.backButton.setOnClickListener(view -> finish());
-        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this, act6addLoadAccount.class)));
+    private fun init() {
+        binding!!.backButton.setOnClickListener { view: View? -> finish() }
+        binding!!.bharatBillLogo.setOnClickListener { view: View? ->
+            startActivity(
+                Intent(
+                    this,
+                    act6addLoadAccount::class.java
+                )
+            )
+        }
     }
 }

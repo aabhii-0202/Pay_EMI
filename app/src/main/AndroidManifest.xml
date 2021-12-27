@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.scratchCard.ScratchCardActivity"
+            android:name=".activities.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,15 +73,7 @@
         <activity
             android:name=".activities.act4BankList"
             android:exported="false" />
-        <activity
-            android:name=".activities.SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- below code for razorpay -->
+        <!-- below code for razorpay -->
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">

@@ -1,92 +1,84 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.mediustechnologies.payemi.Models.billDetails
+import com.mediustechnologies.payemi.helper.RetrofitClient
+import com.mediustechnologies.payemi.commons.urlconstants
+import android.content.Intent
+import android.util.Log
+import android.view.View
+import com.mediustechnologies.payemi.activities.act12complaintRegistration
+import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.mediustechnologies.payemi.Models.billDetails;
-import com.mediustechnologies.payemi.commons.urlconstants;
-import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
-import com.mediustechnologies.payemi.helper.RetrofitClient;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class act9paymentSuccessful extends AppCompatActivity {
-
-    private ActivityPaymentSuccessfulBinding binding;
-    private final Context context = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityPaymentSuccessfulBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        init();
-        getbilldetails();
+class act9paymentSuccessful : AppCompatActivity() {
+    private var binding: ActivityPaymentSuccessfulBinding? = null
+    private val context: Context = this
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPaymentSuccessfulBinding.inflate(
+            layoutInflater
+        )
+        setContentView(binding!!.root)
+        init()
+        getbilldetails()
     }
 
-    private void setData(billDetails data) {
-
-        Log.d("tag", "act9paymentSuccessful " + data.toString());
-
-        binding.recieptBankName.setText("NA");
-        binding.BillPeriod.setText("NA");
-        binding.BillDate.setText("NA");
-        binding.BillNumber.setText(data.getBill_number());
-        binding.BillerID.setText(data.getId());
-        binding.TotalAmount.setText(data.getAmount());
-        binding.TransactionStatus.setText("NA");
-        binding.TransactionID.setText(data.getTransaction_id());
-        binding.TransactionDateTime.setText(data.getTransaction_date_and_time());
-        binding.ApprovalNumber.setText("NA");
-        binding.CName.setText(data.getCustomer_name());
-        binding.CNumber.setText(data.getCustomer_mobile());
-        binding.InitiatingChannel.setText(data.getInitiation_channel());
-        binding.paymentMode.setText(data.getPayment_mode());
-        binding.BillAmount.setText("NA");
-        binding.convineanceFee.setText(data.getCustomer_convinience_fees());
-        binding.serviceTax.setText(data.getService_tax());
-        binding.totalAmount.setText("NA");
-
+    private fun setData(data: billDetails?) {
+        Log.d("tag", "act9paymentSuccessful " + data.toString())
+        binding!!.recieptBankName.text = "NA"
+        binding!!.BillPeriod.text = "NA"
+        binding!!.BillDate.text = "NA"
+        binding!!.BillNumber.text = data!!.bill_number
+        binding!!.BillerID.text = data.id
+        binding!!.TotalAmount.text = data.amount
+        binding!!.TransactionStatus.text = "NA"
+        binding!!.TransactionID.text = data.transaction_id
+        binding!!.TransactionDateTime.text = data.transaction_date_and_time
+        binding!!.ApprovalNumber.text = "NA"
+        binding!!.CName.text = data.customer_name
+        binding!!.CNumber.text = data.customer_mobile
+        binding!!.InitiatingChannel.text = data.initiation_channel
+        binding!!.paymentMode.text = data.payment_mode
+        binding!!.BillAmount.text = "NA"
+        binding!!.convineanceFee.text = data.customer_convinience_fees
+        binding!!.serviceTax.text = data.service_tax
+        binding!!.totalAmount.text = "NA"
     }
 
-    private void getbilldetails() {
-        String bill_id = 5 + "";
+    private fun getbilldetails() {
+        val bill_id = 5.toString() + ""
         // dummy billerID
-        Call<List<billDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(bill_id);
-
-        call.enqueue(new Callback<List<billDetails>>() {
-            @Override
-            public void onResponse(Call<List<billDetails>> call, Response<List<billDetails>> response) {
+        val call = RetrofitClient.getInstance(urlconstants.AuthURL).api.getBillDetails(bill_id)
+        call.enqueue(object : Callback<List<billDetails?>?> {
+            override fun onResponse(
+                call: Call<List<billDetails?>?>,
+                response: Response<List<billDetails?>?>
+            ) {
                 if (response.code() == 200 && response.body() != null) {
-                    billDetails data = response.body().get(0);
-                    setData(data);
+                    val data = response.body()!![0]
+                    setData(data)
                 }
             }
 
-            @Override
-            public void onFailure(Call<List<billDetails>> call, Throwable t) {
-                billDetails data = null;
-                setData(data);
+            override fun onFailure(call: Call<List<billDetails?>?>, t: Throwable) {
+                val data: billDetails? = null
+                setData(data)
             }
-        });
+        })
     }
 
-    private void init() {
-        binding.crossButton.setOnClickListener(view -> finish());
-        binding.share.setOnClickListener(View -> go());
-        binding.download.setOnClickListener(View -> go());
+    private fun init() {
+        binding!!.crossButton.setOnClickListener { view: View? -> finish() }
+        binding!!.share.setOnClickListener { View: View? -> go() }
+        binding!!.download.setOnClickListener { View: View? -> go() }
     }
 
-    private void go() {
-        startActivity(new Intent(context, act12complaintRegistration.class));
+    private fun go() {
+        startActivity(Intent(context, act12complaintRegistration::class.java))
     }
 }

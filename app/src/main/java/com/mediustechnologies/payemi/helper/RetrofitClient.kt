@@ -1,49 +1,47 @@
-package com.mediustechnologies.payemi.helper;
+package com.mediustechnologies.payemi.helper
 
-import com.mediustechnologies.payemi.commons.API;
+import retrofit2.Retrofit
+import okhttp3.OkHttpClient
+import com.mediustechnologies.payemi.commons.API
+import okhttp3.logging.HttpLoggingInterceptor
+import kotlin.jvm.Synchronized
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class RetrofitClient {
-
-    public static RetrofitClient mInstance;
-    private Retrofit retrofit;
-
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.MINUTES)
-            .readTimeout(1,TimeUnit.MINUTES)
-            .writeTimeout(1,TimeUnit.MINUTES)
-            .addInterceptor(getLoggin())
-            .build();
-
-    public static HttpLoggingInterceptor getLoggin() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        return logging;
-    }
-    private RetrofitClient(String BASE_URL) {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
-
-    public static synchronized RetrofitClient getInstance(String BASE_URL) {
-        mInstance = new RetrofitClient(BASE_URL);
-        return mInstance;
-    }
+class RetrofitClient private constructor(BASE_URL: String) {
+    private val retrofit: Retrofit
+    var okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(1, TimeUnit.MINUTES)
+        .readTimeout(1, TimeUnit.MINUTES)
+        .writeTimeout(1, TimeUnit.MINUTES)
+        .addInterceptor(loggin)
+        .build()
 
     //Api_call.APIService postService = null;
+    val api: API
+        get() = retrofit.create(API::class.java)
 
-    public API getApi() {
-        return retrofit.create(API.class);
+    companion object {
+        var mInstance: RetrofitClient? = null
+        val loggin: HttpLoggingInterceptor
+            get() {
+                val logging = HttpLoggingInterceptor()
+                logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+                return logging
+            }
+
+        @Synchronized
+        fun getInstance(BASE_URL: String): RetrofitClient? {
+            mInstance = RetrofitClient(BASE_URL)
+            return mInstance
+        }
     }
 
-
+    init {
+        retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 }

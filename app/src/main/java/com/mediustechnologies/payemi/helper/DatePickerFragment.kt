@@ -1,26 +1,18 @@
-package com.mediustechnologies.payemi.helper;
+package com.mediustechnologies.payemi.helper
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.os.Bundle;
+import android.os.Bundle
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.app.Dialog
+import androidx.fragment.app.DialogFragment
+import java.util.*
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-
-import java.util.Calendar;
-
-public class DatePickerFragment extends DialogFragment {
-
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-
-        Calendar c = Calendar.getInstance();
-        int yr = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int date = c.get(Calendar.DATE);
-
-        return new DatePickerDialog(getActivity(),(DatePickerDialog.OnDateSetListener)getActivity(),yr,month,date);
+class DatePickerFragment : DialogFragment() {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val c = Calendar.getInstance()
+        val yr = c[Calendar.YEAR]
+        val month = c[Calendar.MONTH]
+        val date = c[Calendar.DATE]
+        return DatePickerDialog(requireActivity(), activity as OnDateSetListener?, yr, month, date)
     }
 }

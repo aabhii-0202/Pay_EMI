@@ -1,37 +1,39 @@
-package com.mediustechnologies.payemi.commons;
+package com.mediustechnologies.payemi.commons
 
-import com.mediustechnologies.payemi.Models.allCashbacks;
-import com.mediustechnologies.payemi.Models.billDetails;
-import com.mediustechnologies.payemi.Models.fetchBill;
-import com.mediustechnologies.payemi.Models.getCashback;
-import com.mediustechnologies.payemi.Models.sendOTPResponse;
-import com.mediustechnologies.payemi.Models.verifyOTPresponse;
+import retrofit2.http.POST
+import com.mediustechnologies.payemi.Models.sendOTPResponse
+import com.mediustechnologies.payemi.Models.verifyOTPresponse
+import retrofit2.http.GET
+import com.mediustechnologies.payemi.Models.AllCashbacks
+import com.mediustechnologies.payemi.Models.getCashback
+import com.mediustechnologies.payemi.Models.billDetails
+import com.mediustechnologies.payemi.Models.fetchBill
+import retrofit2.Call
+import retrofit2.http.Query
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
-
-public interface API {
-
+interface API {
     @POST("sendotp/")
-    Call<sendOTPResponse> sendOTP (@Query("phone")String phone);
+    fun sendOTP(@Query("phone") phone: String?): Call<sendOTPResponse?>?
 
     @POST("checkotp/")
-    Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
+    fun checkOTP(
+        @Query("phone") phone: String?,
+        @Query("otp") otp: String?
+    ): Call<verifyOTPresponse?>?
 
     @GET("allcashback/")
-    Call<List<allCashbacks>> getallcashback(@Query("profile_id") String profile_id);
+    fun getallcashback(@Query("profile_id") profile_id: String?): Call<List<AllCashbacks?>?>?
 
     @GET("getcashback/")
-    Call<getCashback> getcashback(@Query("bill_id")String bill_id);
+    fun getcashback(@Query("bill_id") bill_id: String?): Call<getCashback?>?
 
     @GET("getbilldetails/")
-    Call<List<billDetails>> getBillDetails(@Query("bill_id") String bill_id);
+    fun getBillDetails(@Query("bill_id") bill_id: String?): Call<List<billDetails?>?>?
 
     @POST("billfetch/")
-    Call<fetchBill> fetchBill (@Query("Id_biller")String Id_biller,  @Query("loanNumber")String loanNumber, @Query("mobile") String mobile);
-    
+    fun fetchBill(
+        @Query("Id_biller") Id_biller: String?,
+        @Query("loanNumber") loanNumber: String?,
+        @Query("mobile") mobile: String?
+    ): Call<fetchBill?>?
 }

@@ -1,43 +1,18 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.Models
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
-public class allCashbacks {
-
+class AllCashbacks {
     @SerializedName("date")
     @Expose
-    private String date;
+    var date: String? = null
 
     @SerializedName("cashback_amountcashback_amount")
     @Expose
-    private String cashback_amount;
+    var cashback_amount: String? = null
 
     @SerializedName("status")
     @Expose
-    private String status;
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getCashback_amount() {
-        return cashback_amount;
-    }
-
-    public void setCashback_amount(String cashback_amount) {
-        this.cashback_amount = cashback_amount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    var status: String? = null
 }

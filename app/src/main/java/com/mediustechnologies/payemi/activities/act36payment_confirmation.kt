@@ -1,38 +1,32 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.content.Intent
+import android.view.View
+import com.mediustechnologies.payemi.activities.act39payEMI_transaction_page
+import com.mediustechnologies.payemi.databinding.ActivityPaymentConfirmationBinding
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.mediustechnologies.payemi.databinding.ActivityPaymentConfirmationBinding;
-
-public class act36payment_confirmation extends AppCompatActivity {
-
-    private ActivityPaymentConfirmationBinding binding;
-    private Context context = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityPaymentConfirmationBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-
-        init();
+class act36payment_confirmation : AppCompatActivity() {
+    private var binding: ActivityPaymentConfirmationBinding? = null
+    private val context: Context = this
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPaymentConfirmationBinding.inflate(
+            layoutInflater
+        )
+        setContentView(binding!!.root)
+        init()
     }
 
-    private void init(){
-        binding.share.setOnClickListener(view ->open());
-        binding.download.setOnClickListener(view ->open());
-        binding.crossButton.setOnClickListener(view -> finish());
-
-
-
+    private fun init() {
+        binding!!.share.setOnClickListener { view: View? -> open() }
+        binding!!.download.setOnClickListener { view: View? -> open() }
+        binding!!.crossButton.setOnClickListener { view: View? -> finish() }
     }
 
-    private void open() {
-        startActivity(new Intent(context, act39payEMI_transaction_page.class));
+    private fun open() {
+        startActivity(Intent(context, act39payEMI_transaction_page::class.java))
     }
 }

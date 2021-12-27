@@ -1,74 +1,55 @@
-package com.mediustechnologies.payemi.adapters;
+package com.mediustechnologies.payemi.adapters
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import com.mediustechnologies.payemi.Models.bankSubItem;
-import com.mediustechnologies.payemi.R;
-import java.util.List;
+import com.mediustechnologies.payemi.Models.bankSubItem
+import androidx.recyclerview.widget.RecyclerView
+import com.mediustechnologies.payemi.adapters.bankSublistAdapter.Viewholder
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import com.mediustechnologies.payemi.R
 
-public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.Viewholder> {
+class bankSublistAdapter(private val bankSubList: List<bankSubItem>) :
+    RecyclerView.Adapter<Viewholder>() {
+    private var mListner: bankListAdapter.onItemClicked? = null
 
-    private List<bankSubItem> bankSubList;
-    private bankListAdapter.onItemClicked mListner;
-
-
-
-    public interface onItemClicked{
-        void onItemClick(int position);
+    interface onItemClicked {
+        fun onItemClick(position: Int)
     }
 
-    public void setOnItemClickListner(bankListAdapter.onItemClicked listner){
-        mListner = listner;
-    }
-    public bankSublistAdapter(List<bankSubItem> bankSubList){ this.bankSubList = bankSubList; }
-
-    @NonNull
-    @Override
-    public bankSublistAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()) .inflate(R.layout.bank_sublist_items,parent,false);
-        return new Viewholder(view);
+    fun setOnItemClickListner(listner: bankListAdapter.onItemClicked?) {
+        mListner = listner
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull bankSublistAdapter.Viewholder holder, int position) {
-        int imageRes = bankSubList.get(position).getImage();
-        holder.setData(imageRes);
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.bank_sublist_items, parent, false)
+        return Viewholder(view)
     }
 
-    @Override
-    public int getItemCount() {
-        return bankSubList.size();
+    override fun onBindViewHolder(holder: Viewholder, position: Int) {
+        val imageRes = bankSubList[position].image
+        holder.setData(imageRes)
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder {
+    override fun getItemCount(): Int {
+        return bankSubList.size
+    }
 
-        private ImageView SubImage;
-
-
-        public Viewholder(View view) {
-            super(view);
-            SubImage = view.findViewById(R.id.sub_image);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(mListner!=null){
-                        int pos = getAbsoluteAdapterPosition();
-                        mListner.onItemClick(pos);
-                    }
-                }
-            });
-
-
+    inner class Viewholder(view: View) : RecyclerView.ViewHolder(view) {
+        private val SubImage: ImageView
+        fun setData(imageRes: Int) {
+            SubImage.setImageResource(imageRes)
         }
 
-        public void setData(int imageRes) {
-            SubImage.setImageResource(imageRes);
-
+        init {
+            SubImage = view.findViewById(R.id.sub_image)
+            itemView.setOnClickListener {
+                if (mListner != null) {
+                    val pos = absoluteAdapterPosition
+                    mListner!!.onItemClick(pos)
+                }
+            }
         }
     }
 }

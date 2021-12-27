@@ -1,29 +1,36 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.WindowManager
+import com.mediustechnologies.payemi.R
+import android.content.Intent
+import android.os.Handler
+import android.view.Window
+import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding
+import com.mediustechnologies.payemi.databinding.ActivitySplashScreenBinding
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.Window;
-import android.view.WindowManager;
+class SplashScreen : AppCompatActivity() {
 
-import com.mediustechnologies.payemi.R;
+//    private var binding: ActivitySplashScreenBinding? = null
 
-public class SplashScreen extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        binding = ActivitySplashScreenBinding.inflate(
+//            layoutInflater
+//        )
+//        setContentView(binding!!.root)
+setContentView(R.layout.activity_splash_screen)
+        this.window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        Handler().postDelayed({
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash_screen);
-
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(this, act4BankList.class));
-            finish();
-        },2000);
-
-
+            startActivity(Intent(this, act4BankList::class.java))
+//            startActivity(Intent(this, ScratchCardActivity::class.java))
+            finish()
+        }, 2000)
     }
 }

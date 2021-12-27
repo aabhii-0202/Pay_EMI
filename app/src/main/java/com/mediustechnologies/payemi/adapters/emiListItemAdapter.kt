@@ -1,89 +1,73 @@
-package com.mediustechnologies.payemi.adapters;
+package com.mediustechnologies.payemi.adapters
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.mediustechnologies.payemi.Models.emiListItem
+import androidx.recyclerview.widget.RecyclerView
+import com.mediustechnologies.payemi.adapters.emiListItemAdapter.viewHolder
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import com.mediustechnologies.payemi.R
+import android.widget.TextView
+import com.mediustechnologies.payemi.helper.MyProgressBar
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.mediustechnologies.payemi.Models.emiListItem;
-import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.helper.MyProgressBar;
-
-import java.util.List;
-
-public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.viewHolder> {
-
-    private List<emiListItem> emiList;
-
-
-    public emiListItemAdapter(List<emiListItem> emiList){this.emiList = emiList;}
-
-
-    @NonNull
-    @Override
-    public emiListItemAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.emi_list_item,parent,false);
-        return new viewHolder(view);
-
+class emiListItemAdapter(private val emiList: List<emiListItem>) :
+    RecyclerView.Adapter<viewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.emi_list_item, parent, false)
+        return viewHolder(view)
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull emiListItemAdapter.viewHolder holder, int position) {
-        int icon = emiList.get(position).getIcon();
-        String EMIAmount = emiList.get(position).getEmiAmount();
-        String BankName = emiList.get(position).getBank_Name();
-        String LoanName = emiList.get(position).getLoan_Name();
-        String PaidAmount = emiList.get(position).getPaid_Amount();
-        String TotalAmount = emiList.get(position).getTotal_Amount();
-        int progress = emiList.get(position).getProgress();
-
-
-        holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount,progress);
-
+    override fun onBindViewHolder(holder: viewHolder, position: Int) {
+        val icon = emiList[position].icon
+        val EMIAmount = emiList[position].emiAmount
+        val BankName = emiList[position].bank_Name
+        val LoanName = emiList[position].loan_Name
+        val PaidAmount = emiList[position].paid_Amount
+        val TotalAmount = emiList[position].total_Amount
+        val progress = emiList[position].progress
+        holder[icon, EMIAmount, BankName, LoanName, PaidAmount, TotalAmount] = progress
     }
 
-    @Override
-    public int getItemCount() {
-        return emiList.size();
+    override fun getItemCount(): Int {
+        return emiList.size
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder {
-
-        private ImageView icon;
-        private TextView emiamount,bankname,loanname,paidamount,totalamount;
-        private MyProgressBar progressBar;
-
-        public viewHolder(@NonNull View view){
-            super(view);
-            icon = view.findViewById(R.id.banklogo);
-            emiamount= view.findViewById(R.id.emiAmount);
-            bankname= view.findViewById(R.id.FinancersName);
-            loanname= view.findViewById(R.id.loansname);
-            paidamount= view.findViewById(R.id.paidamount);
-            totalamount= view.findViewById(R.id.total_Loan);
-            progressBar = view.findViewById(R.id.emiProgressbar);
-
+    inner class viewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val icon: ImageView
+        private val emiamount: TextView
+        private val bankname: TextView
+        private val loanname: TextView
+        private val paidamount: TextView
+        private val totalamount: TextView
+        private val progressBar: MyProgressBar
+        operator fun set(
+            img: Int,
+            emiAmount: String?,
+            Bank_Name: String?,
+            Loan_Name: String?,
+            Paid_Amount: String?,
+            Total_Amount: String?,
+            progress: Int
+        ) {
+            icon.setImageResource(img)
+            emiamount.text = emiAmount
+            bankname.text = Bank_Name
+            loanname.text = Loan_Name
+            paidamount.text = Paid_Amount
+            totalamount.text = Total_Amount
+            progressBar.progress = progress
         }
 
-        public void set(int img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
-            icon.setImageResource(img);
-            emiamount.setText(emiAmount);
-            bankname.setText(Bank_Name);
-            loanname.setText(Loan_Name);
-            paidamount.setText(Paid_Amount);
-            totalamount.setText(Total_Amount);
-            progressBar.setProgress(progress);
-
-
-
+        init {
+            icon = view.findViewById(R.id.banklogo)
+            emiamount = view.findViewById(R.id.emiAmount)
+            bankname = view.findViewById(R.id.FinancersName)
+            loanname = view.findViewById(R.id.loansname)
+            paidamount = view.findViewById(R.id.paidamount)
+            totalamount = view.findViewById(R.id.total_Loan)
+            progressBar = view.findViewById(R.id.emiProgressbar)
         }
-
-
-
-
     }
 }

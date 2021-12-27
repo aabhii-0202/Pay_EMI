@@ -1,80 +1,62 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import com.razorpay.PaymentResultWithDataListener
+import android.os.Bundle
+import com.razorpay.Checkout
+import com.mediustechnologies.payemi.commons.constants
+import org.json.JSONObject
+import org.json.JSONException
+import android.content.Intent
+import android.view.View
+import com.mediustechnologies.payemi.activities.act9paymentSuccessful
+import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding
+import com.razorpay.PaymentData
 
-import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.mediustechnologies.payemi.commons.constants;
-import com.razorpay.Checkout;
-import com.razorpay.PaymentData;
-import com.razorpay.PaymentResultWithDataListener;
-
-
-public class act8payEMI extends AppCompatActivity  implements PaymentResultWithDataListener {
-
-    private ActivityPayEmiBinding binding;
-    private final Context context = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityPayEmiBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-
-        init();
-
+class act8payEMI : AppCompatActivity(), PaymentResultWithDataListener {
+    private var binding: ActivityPayEmiBinding? = null
+    private val context: Context = this
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPayEmiBinding.inflate(
+            layoutInflater
+        )
+        setContentView(binding!!.root)
+        init()
     }
 
-    private void init(){
-        binding.payButton.setOnClickListener(view ->
-//                startActivity(new Intent(context, act9paymentSuccessful.class)));
-                openRazorpay());
+    private fun init() {
+        binding!!.payButton.setOnClickListener { view: View? ->  //                startActivity(new Intent(context, act9paymentSuccessful.class)));
+            openRazorpay()
+        }
     }
 
-
-
-    private void openRazorpay(){
-
-        Checkout checkout = new Checkout();
-        checkout.setKeyID(constants.RAZOR_PAY_KEY);
+    private fun openRazorpay() {
+        val checkout = Checkout()
+        checkout.setKeyID(constants.RAZOR_PAY_KEY)
 
 //        checkout.setImage(R.drawable.);
-
-        JSONObject object = new JSONObject();
+        val `object` = JSONObject()
         try {
-            object.put("name","Pay EMI");
-            object.put("description","Test payment");
-            object.put("theme.color","#0093DD");
-            object.put("currency","INR");
-            object.put("amount","500");
-            object.put("prefill.contact","9087654321");
-            object.put("prefill.email","abc@gmail.com");
-            checkout.open(act8payEMI.this,object);
-
+            `object`.put("name", "Pay EMI")
+            `object`.put("description", "Test payment")
+            `object`.put("theme.color", "#0093DD")
+            `object`.put("currency", "INR")
+            `object`.put("amount", "500")
+            `object`.put("prefill.contact", "9087654321")
+            `object`.put("prefill.email", "abc@gmail.com")
+            checkout.open(this@act8payEMI, `object`)
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-
-
     }
 
-
-    @Override
-    public void onPaymentSuccess(String s, PaymentData paymentData) {
-        startActivity(new Intent(context, act9paymentSuccessful.class));
+    override fun onPaymentSuccess(s: String, paymentData: PaymentData) {
+        startActivity(Intent(context, act9paymentSuccessful::class.java))
     }
 
-    @Override
-    public void onPaymentError(int i, String s, PaymentData paymentData) {
-        startActivity(new Intent(context, act9paymentSuccessful.class));
+    override fun onPaymentError(i: Int, s: String, paymentData: PaymentData) {
+        startActivity(Intent(context, act9paymentSuccessful::class.java))
     }
-
-
 }

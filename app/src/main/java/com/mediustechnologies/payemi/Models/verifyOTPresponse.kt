@@ -1,33 +1,14 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.Models
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.Expose
 
-public class verifyOTPresponse {
-
+class verifyOTPresponse {
     @SerializedName("id")
     @Expose
-    private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getOtp() {
-        return otp;
-    }
-
-    public void setOtp(String otp) {
-        this.otp = otp;
-    }
+    var id: String? = null
 
     @SerializedName("otp")
     @Expose
-    private String otp;
-
-
+    var otp: String? = null
 }
