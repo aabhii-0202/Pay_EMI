@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.Models.emiListItem;
+import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.MyProgressBar;
 

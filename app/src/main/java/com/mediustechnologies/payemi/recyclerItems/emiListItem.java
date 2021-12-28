@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.recyclerItems;
 
 public class emiListItem {
     private String emiAmount,Bank_Name,Loan_Name,Paid_Amount,Total_Amount;

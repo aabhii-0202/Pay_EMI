@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.mediustechnologies.payemi.Models.bankSubItem;
+import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.adapters.bankSublistAdapter;

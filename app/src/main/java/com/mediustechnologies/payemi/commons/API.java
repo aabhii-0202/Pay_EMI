@@ -3,10 +3,12 @@ package com.mediustechnologies.payemi.commons;
 import com.mediustechnologies.payemi.Models.allCashbacks;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
+import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
 import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,5 +35,7 @@ public interface API {
 
     @POST("billfetch/")
     Call<fetchBill> fetchBill (@Query("Id_biller")String Id_biller,  @Query("loanNumber")String loanNumber, @Query("mobile") String mobile);
-    
+
+    @GET("get-all-banks/")
+    Call<List<getAllBanks>> getAllBanks();
 }

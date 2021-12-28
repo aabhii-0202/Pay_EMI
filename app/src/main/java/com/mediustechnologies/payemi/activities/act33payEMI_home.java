@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.mediustechnologies.payemi.Models.emiListItem;
+import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;

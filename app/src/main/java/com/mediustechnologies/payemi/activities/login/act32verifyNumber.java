@@ -14,6 +14,7 @@ import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
+import com.mediustechnologies.payemi.activities.act4BankList;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
@@ -36,6 +37,9 @@ public class act32verifyNumber extends AppCompatActivity {
         binding = ActivityVerifyNumberBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        String s = getIntent().getStringExtra("otp");
+        Toast.makeText(context, "OTP: "+s, Toast.LENGTH_LONG).show();
         init();
         countdown();
 
@@ -94,7 +98,7 @@ public class act32verifyNumber extends AppCompatActivity {
         String otp = binding.OTPpinView.getText().toString();
         if(otp.length()==4){
             {
-                startActivity(new Intent(this, act33payEMI_home.class));
+
                 Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone, otp);
 
 
@@ -103,9 +107,13 @@ public class act32verifyNumber extends AppCompatActivity {
                     public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
                         if (response.code() == 400) {
                             Log.d("tag", response.toString());
+                            Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
                         } else if (response.code() == 200) {
-                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
-                            preferences.edit().putString("phone", phone).apply();
+//                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
+//                            preferences.edit().putString("phone", phone).apply();
+                            Intent i = new Intent(context, act4BankList.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(i);
                         }
 //                        startActivity(new Intent(context, act33payEMI_home.class));
                     }
@@ -127,11 +135,13 @@ public class act32verifyNumber extends AppCompatActivity {
     }
 
     private void init(){
+        binding.verifyOTP.setClickable(true);
         phone = getIntent().getStringExtra("phone");
         binding.codesenttotext.setText("4 digit code sent to "+phone);
         binding.back.setOnClickListener(view -> finish());
         binding.verifyOTP.setOnClickListener(view -> {
             verify();
+            binding.verifyOTP.setClickable(false);
         });
         binding.OTPpinView.setCursorColor(getColor(R.color.grey));
         binding.resendOTPtext.setOnClickListener(view -> {

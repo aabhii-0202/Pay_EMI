@@ -58,6 +58,7 @@ public class act31signIn extends AppCompatActivity {
                     Toast.makeText(context, "OTP sent to "+ finalPhone, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context,act32verifyNumber.class);
                     i.putExtra("phone",finalPhone);
+                    i.putExtra("otp",response.body().getPayload());
                     startActivity(i);
                 }
 

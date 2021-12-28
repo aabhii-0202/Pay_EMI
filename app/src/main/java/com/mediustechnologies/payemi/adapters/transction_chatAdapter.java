@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.Models.transaction_chat;
+import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.TransactionPageDatelineBinding;
 import com.mediustechnologies.payemi.databinding.TransactionPagePaymentItemBinding;

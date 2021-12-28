@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.mediustechnologies.payemi.Models.allCashbacks;
-import com.mediustechnologies.payemi.Models.transaction_chat;
+import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
 import com.mediustechnologies.payemi.adapters.transction_chatAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiTransactionPageBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;

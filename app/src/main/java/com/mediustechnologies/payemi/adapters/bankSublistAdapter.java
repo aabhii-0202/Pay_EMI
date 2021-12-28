@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.mediustechnologies.payemi.Models.bankSubItem;
+import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
 
