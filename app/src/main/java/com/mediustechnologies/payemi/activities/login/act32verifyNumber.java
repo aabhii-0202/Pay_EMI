@@ -109,8 +109,8 @@ public class act32verifyNumber extends AppCompatActivity {
                             Log.d("tag", response.toString());
                             Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
                         } else if (response.code() == 200) {
-//                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
-//                            preferences.edit().putString("phone", phone).apply();
+                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
+                            preferences.edit().putString("phone", phone).apply();
                             Intent i = new Intent(context, act4BankList.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(i);

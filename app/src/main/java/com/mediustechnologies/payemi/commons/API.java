@@ -5,6 +5,7 @@ import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
+import com.mediustechnologies.payemi.Models.ifNewUser;
 import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 
@@ -38,4 +39,8 @@ public interface API {
 
     @GET("get-all-banks/")
     Call<List<getAllBanks>> getAllBanks();
+
+    @GET("ifnew/")
+    Call<ifNewUser> checkfornewUser(@Query("phone") String phone);
+
 }
