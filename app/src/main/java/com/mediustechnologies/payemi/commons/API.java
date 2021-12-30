@@ -8,6 +8,8 @@ import com.mediustechnologies.payemi.Models.getCashback;
 import com.mediustechnologies.payemi.Models.ifNewUser;
 import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
+import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -36,6 +38,9 @@ public interface API {
 
     @GET("get-all-banks/")
     Call<List<getAllBanks>> getAllBanks();
+
+    @GET("get-biller-by-bank/")
+    Call<List<bankSubItem>> getBillerByBank (@Query("bank")String name);
 
     @GET("ifnew/")
     Call<ifNewUser> checkfornewUser(@Query("phone") String phone);

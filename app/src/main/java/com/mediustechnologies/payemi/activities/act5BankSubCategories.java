@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
@@ -14,6 +18,10 @@ import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class act5BankSubCategories extends AppCompatActivity {
 
@@ -33,7 +41,7 @@ public class act5BankSubCategories extends AppCompatActivity {
         init();
 
         addDummmyItemsInRecyclerView();
-        initRecyclerView();
+
     }
 
     private void initRecyclerView() {
@@ -55,8 +63,28 @@ public class act5BankSubCategories extends AppCompatActivity {
 
     private void addDummmyItemsInRecyclerView() {
         bankSubList = new ArrayList<>();
-        bankSubList.add(new bankSubItem(R.drawable.axis_financne));
-        bankSubList.add(new bankSubItem(R.drawable.axisfinance3));
+
+        String name = getIntent().getStringExtra("name");
+        Call<List<bankSubItem>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillerByBank(name);
+
+        call.enqueue(new Callback<List<bankSubItem>>() {
+            @Override
+            public void onResponse(Call<List<bankSubItem>> call, Response<List<bankSubItem>> response) {
+                bankSubList = response.body();
+                initRecyclerView();
+
+                if(bankSubList!=null) {
+                    String s = bankSubList.get(0).toString()+" "+bankSubList.get(1).toString();
+                    Log.d("tag", "SUb response " + s);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<bankSubItem>> call, Throwable t) {
+                Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 

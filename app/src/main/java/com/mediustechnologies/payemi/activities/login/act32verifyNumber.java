@@ -105,17 +105,22 @@ public class act32verifyNumber extends AppCompatActivity {
                 call.enqueue(new Callback<verifyOTPresponse>() {
                     @Override
                     public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
-                        if (response.code() == 400) {
-                            Log.d("tag", response.toString());
-                            Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
-                        } else if (response.code() == 200) {
+                        if (response.code() == 200) {
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
-                            Intent i = new Intent(context, act4BankList.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(i);
+                            if(getIntent().getBooleanExtra("newUser",true)){
+                                Intent i = new Intent(context, act4BankList.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }else {
+                                Intent i = new Intent(context, act33payEMI_home.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }
                         }
-//                        startActivity(new Intent(context, act33payEMI_home.class));
+                        else{
+                            Log.d("tag",response.code()+"");
+                        }
                     }
 
                     @Override

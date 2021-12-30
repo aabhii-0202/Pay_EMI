@@ -64,13 +64,12 @@ public class act4BankList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
                 List<getAllBanks> data = response.body();
-
                 setdata(data);
             }
 
             @Override
             public void onFailure(Call<List<getAllBanks>> call, Throwable t) {
-
+                Log.d("tag","Failed"+t.toString());
             }
         });
 
@@ -94,7 +93,9 @@ public class act4BankList extends AppCompatActivity {
 
 
                 //on item click listner
-                startActivity(new Intent(context, act5BankSubCategories.class));
+                Intent i = new Intent(context,act5BankSubCategories.class);
+                i.putExtra("name",banklist.get(position).getBank_name().toString());
+                startActivity(i);
             }
         });
 

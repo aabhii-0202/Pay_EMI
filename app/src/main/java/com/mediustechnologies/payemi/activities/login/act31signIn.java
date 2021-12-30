@@ -53,13 +53,23 @@ public class act31signIn extends AppCompatActivity {
             call.enqueue(new Callback<sendOTPResponse>() {
                 @Override
                 public void onResponse(Call<sendOTPResponse> call, Response<sendOTPResponse> response) {
-                    Log.d("tag","MESSAGE: "+response.body().getMessage()+" PAYLOAD: "+response.body().getPayload());
+
+                    if(response.code()==200)
+                    {
+                        Log.d("tag", "MESSAGE: " + response.body().getMessage() + " PAYLOAD: " + response.body().getPayload());
 //                   showOtpSentDialog();
-                    Toast.makeText(context, "OTP sent to "+ finalPhone, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(context,act32verifyNumber.class);
-                    i.putExtra("phone",finalPhone);
-                    i.putExtra("otp",response.body().getPayload());
-                    startActivity(i);
+                        Toast.makeText(context, "OTP sent to " + finalPhone, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(context, act32verifyNumber.class);
+                        i.putExtra("phone", finalPhone);
+                        i.putExtra("newUser", response.body().getNew_user());
+                        i.putExtra("otp", response.body().getPayload());
+                        startActivity(i);
+                    }
+                    else {
+                        Log.d("tag","Error "+response.code());
+                    }
+
+
                 }
 
                 @Override
