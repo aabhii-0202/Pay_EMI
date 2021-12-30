@@ -16,6 +16,7 @@ import com.mediustechnologies.payemi.Models.ifNewUser;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.login.act28onBording;
 import com.mediustechnologies.payemi.activities.login.act31signIn;
+import com.mediustechnologies.payemi.activities.payments.act11AddNewCard;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
@@ -63,7 +64,8 @@ public class SplashScreen extends AppCompatActivity {
 //            });
 
 
-            startActivity(new Intent(this, act31signIn.class));
+//            startActivity(new Intent(this, act31signIn.class));
+            startActivity(new Intent(this, act11AddNewCard.class));
             finish();
         },2000);
 

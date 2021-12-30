@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.payments.act11AddNewCard">
+    tools:context=".activities.payments.act12AddNewUpi">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -102,13 +102,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:text="Card Number"
+                android:text="UPI ID/ VPA"
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Your Card Number"
+                android:hint="Enter Your UPI ID"
                 android:background="@drawable/addcard_boxbg"
                 android:layout_marginTop="8dp"
                 android:inputType="number"
@@ -120,115 +120,6 @@
                 android:textColorHint="@color/HintColor"
                 android:layout_marginStart="16dp"
                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="Name on Card"
-                android:textColor="@color/grey"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:layout_marginTop="16dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Card Holder's name"
-                android:background="@drawable/addcard_boxbg"
-                android:layout_marginTop="8dp"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textSize="13sp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:textColor="@color/black"
-                android:textColorHint="@color/HintColor"
-                android:layout_marginStart="16dp"
-                />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="Valid Through"
-                        android:textColor="@color/grey"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/addcard_boxbg"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:hint="MM/YY"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/HintColor"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="vertical"
-                    app:layout_goneMarginStart="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/guideline"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="CVV"
-                        android:layout_marginTop="16dp"
-                        android:textColor="@color/grey"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/addcard_boxbg"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/HintColor"
-                        android:textSize="13sp" />
-
-
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".5" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,17 +129,15 @@
                 android:foregroundTint="@color/payment_screen"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:textSize="13sp"
-                android:text="Securely Save card Details"
+                android:text="Securely save VPA"
                 android:id="@+id/SecurelySaveCard"/>
-
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/proceedtopayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Proceed To Payment"
+                android:text="Verify and Pay"
                 android:textColor="@color/white"
                 android:background="@drawable/add_card_background"
                 android:textSize="19sp"
