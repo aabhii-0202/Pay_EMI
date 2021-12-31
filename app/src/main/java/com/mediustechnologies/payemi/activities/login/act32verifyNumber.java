@@ -16,6 +16,7 @@ import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
 import com.mediustechnologies.payemi.activities.act4BankList;
 import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
@@ -106,8 +107,14 @@ public class act32verifyNumber extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
                         if (response.code() == 200) {
+
+                            utils.access_token= "Bearer "+response.body().getAccess_token();
+                            utils.refresh_token= response.body().getRefresh_token();
+                            utils.phone=phone;
+
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
+                            preferences.edit().putString("token", "Bearer "+response.body().getAccess_token()).apply();
                             if(getIntent().getBooleanExtra("newUser",true)){
                                 Intent i = new Intent(context, act4BankList.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -146,7 +153,6 @@ public class act32verifyNumber extends AppCompatActivity {
         binding.back.setOnClickListener(view -> finish());
         binding.verifyOTP.setOnClickListener(view -> {
             verify();
-            binding.verifyOTP.setClickable(false);
         });
         binding.OTPpinView.setCursorColor(getColor(R.color.grey));
         binding.resendOTPtext.setOnClickListener(view -> {
