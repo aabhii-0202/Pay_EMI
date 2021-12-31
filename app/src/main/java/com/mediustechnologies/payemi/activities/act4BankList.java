@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
@@ -58,13 +59,20 @@ public class act4BankList extends AppCompatActivity {
     private void addDummmyItemsInRecyclerView() {
 
 
-        Call<List<getAllBanks>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getAllBanks();
+        Log.d("tag","Access Token Saved in Utils "+utils.access_token);
+        Call<List<getAllBanks>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getAllBanks(utils.access_token);
 
         call.enqueue(new Callback<List<getAllBanks>>() {
             @Override
             public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
-                List<getAllBanks> data = response.body();
+
+                if(response.code()==200) {
+                    List<getAllBanks> data = response.body();
                 setdata(data);
+                }
+                else{
+                    Log.d("tag", "Get BankList onResponse: "+response.code());
+                }
             }
 
             @Override
@@ -90,11 +98,10 @@ public class act4BankList extends AppCompatActivity {
         adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
-
-
                 //on item click listner
                 Intent i = new Intent(context,act5BankSubCategories.class);
-                i.putExtra("name",banklist.get(position).getBank_name().toString());
+                i.putExtra("name",banklist.get(position).getBank_name());
+                i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
                 startActivity(i);
             }
         });

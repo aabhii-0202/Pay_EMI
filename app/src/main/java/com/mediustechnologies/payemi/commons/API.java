@@ -6,6 +6,7 @@ import com.mediustechnologies.payemi.Models.fetchBill;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
 import com.mediustechnologies.payemi.Models.ifNewUser;
+import com.mediustechnologies.payemi.Models.inputParameterFeilds;
 import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
@@ -13,6 +14,7 @@ import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -37,12 +39,14 @@ public interface API {
     Call<fetchBill> fetchBill (@Query("Id_biller")String Id_biller,  @Query("loanNumber")String loanNumber, @Query("mobile") String mobile);
 
     @GET("get-all-banks/")
-    Call<List<getAllBanks>> getAllBanks();
+    Call<List<getAllBanks>> getAllBanks(@Header("Authorization")String token);
 
     @GET("get-biller-by-bank/")
-    Call<List<bankSubItem>> getBillerByBank (@Query("bank")String name);
+    Call<List<bankSubItem>> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);
 
     @GET("ifnew/")
-    Call<ifNewUser> checkfornewUser(@Query("phone") String phone);
+    Call<ifNewUser> checkfornewUser(@Header("Authorization")String token,@Query("phone") String phone);
 
+    @GET("inputparam-fields/")
+    Call<inputParameterFeilds> inputparameterfeilds (@Header("Authorization") String token,@Query("biller_id")String billerId);
 }

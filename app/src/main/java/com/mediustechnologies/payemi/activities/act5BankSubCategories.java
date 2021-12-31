@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 import com.mediustechnologies.payemi.R;
@@ -40,7 +42,7 @@ public class act5BankSubCategories extends AppCompatActivity {
 
         init();
 
-        addDummmyItemsInRecyclerView();
+        addItemsInRecyclerView();
 
     }
 
@@ -55,27 +57,34 @@ public class act5BankSubCategories extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(context, position+" position item clicked", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(context,act6addLoadAccount.class);
+                i.putExtra("url",bankSubList.get(position).getLogo_url());
+                i.putExtra("biller_id",bankSubList.get(position).getBillerId());
+                startActivity(i);
             }
         });
 
 
     }
 
-    private void addDummmyItemsInRecyclerView() {
+    private void addItemsInRecyclerView() {
         bankSubList = new ArrayList<>();
 
         String name = getIntent().getStringExtra("name");
-        Call<List<bankSubItem>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillerByBank(name);
+        Call<List<bankSubItem>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillerByBank(utils.access_token,name);
 
         call.enqueue(new Callback<List<bankSubItem>>() {
             @Override
             public void onResponse(Call<List<bankSubItem>> call, Response<List<bankSubItem>> response) {
-                bankSubList = response.body();
-                initRecyclerView();
 
-                if(bankSubList!=null) {
-                    String s = bankSubList.get(0).toString()+" "+bankSubList.get(1).toString();
-                    Log.d("tag", "SUb response " + s);
+                if(response.code()==200){
+                    bankSubList = response.body();
+                    initRecyclerView();
+//                    if(bankSubList!=null) {
+//                        String s = bankSubList.toString();
+//                        Log.d("tag", "Sub Bank response " + s);
+//                    }
                 }
             }
 
@@ -91,5 +100,9 @@ public class act5BankSubCategories extends AppCompatActivity {
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
         binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this, act6addLoadAccount.class)));
+        String url = getIntent().getStringExtra("imgurl");
+
+        binding.ParentBankName.setText(getIntent().getStringExtra("name"));
+        if(url!=null) Glide.with(binding.financerlogo).load(url).into(binding.financerlogo);
     }
 }
