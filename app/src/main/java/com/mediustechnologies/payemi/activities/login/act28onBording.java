@@ -31,7 +31,7 @@ public class act28onBording extends AppCompatActivity {
     private void initSlider() {
         sliderAdapter = new SliderAdapter(context);
         binding.slider.setAdapter(sliderAdapter);
-        binding.slider.setOnPageChangeListener(listener);
+        binding.slider.addOnPageChangeListener(listener);
 
     }
 
