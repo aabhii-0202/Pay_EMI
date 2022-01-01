@@ -65,7 +65,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.act6addLoadAccount"
-            android:exported="false" />
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".activities.act5BankSubCategories"
             android:exported="false" />
@@ -83,7 +89,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- below code for razorpay -->
+        </activity>
+
+
+
+        <!-- below code for razorpay -->
 
 
 

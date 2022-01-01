@@ -124,6 +124,8 @@ public class act32verifyNumber extends AppCompatActivity {
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }
+                        }else if(response.code()==400){
+                            Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             Log.d("tag",response.code()+"");
@@ -147,7 +149,6 @@ public class act32verifyNumber extends AppCompatActivity {
     }
 
     private void init(){
-        binding.verifyOTP.setClickable(true);
         phone = getIntent().getStringExtra("phone");
         binding.codesenttotext.setText("4 digit code sent to "+phone);
         binding.back.setOnClickListener(view -> finish());

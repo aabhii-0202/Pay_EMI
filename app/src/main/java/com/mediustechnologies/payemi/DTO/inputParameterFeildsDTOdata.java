@@ -13,11 +13,11 @@ public class inputParameterFeildsDTOdata {
 
     @SerializedName("mandatory_params")
     @Expose
-    private HashMap<String,String> mandatory;
+    private HashMap<String ,String> mandatory;
 
     @SerializedName("optional_params")
     @Expose
-    private HashMap<String,String> optional;
+    private HashMap<String ,String> optional;
 
     @SerializedName("logo")
     @Expose
@@ -37,22 +37,6 @@ public class inputParameterFeildsDTOdata {
 
     public void setBillerName(String billerName) {
         this.billerName = billerName;
-    }
-
-    public HashMap<String, String> getMandatory() {
-        return mandatory;
-    }
-
-    public void setMandatory(HashMap<String, String> mandatory) {
-        this.mandatory = mandatory;
-    }
-
-    public HashMap<String, String> getOptional() {
-        return optional;
-    }
-
-    public void setOptional(HashMap<String, String> optional) {
-        this.optional = optional;
     }
 
     public String getLogo() {
@@ -79,15 +63,26 @@ public class inputParameterFeildsDTOdata {
         this.billerPaymentExactness = billerPaymentExactness;
     }
 
+    public HashMap<String, String> getMandatoryl() {
+        return mandatory;
+    }
+
+    public void setMandatoryl(HashMap<String, String> mandatoryl) {
+        this.mandatory = mandatoryl;
+    }
+
+
     @Override
     public String toString() {
         return "inputParameterFeildsDTOdata{" +
                 "billerName='" + billerName + '\'' +
-                ", mandatory=" + mandatory +
+                ", mandatoryl=" + mandatory +
                 ", optional=" + optional +
                 ", logo='" + logo + '\'' +
                 ", timeout=" + timeout +
                 ", billerPaymentExactness='" + billerPaymentExactness + '\'' +
                 '}';
     }
+
+
 }

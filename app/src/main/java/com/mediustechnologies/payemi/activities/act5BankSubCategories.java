@@ -56,8 +56,6 @@ public class act5BankSubCategories extends AppCompatActivity {
         adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(context, position+" position item clicked", Toast.LENGTH_SHORT).show();
-
                 Intent i = new Intent(context,act6addLoadAccount.class);
                 i.putExtra("url",bankSubList.get(position).getLogo_url());
                 i.putExtra("biller_id",bankSubList.get(position).getBillerId());
@@ -81,10 +79,6 @@ public class act5BankSubCategories extends AppCompatActivity {
                 if(response.code()==200){
                     bankSubList = response.body();
                     initRecyclerView();
-//                    if(bankSubList!=null) {
-//                        String s = bankSubList.toString();
-//                        Log.d("tag", "Sub Bank response " + s);
-//                    }
                 }
             }
 
@@ -99,10 +93,8 @@ public class act5BankSubCategories extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.bharatBillLogo.setOnClickListener(view -> startActivity(new Intent(this, act6addLoadAccount.class)));
-        String url = getIntent().getStringExtra("imgurl");
-
         binding.ParentBankName.setText(getIntent().getStringExtra("name"));
+        String url = getIntent().getStringExtra("imgurl");
         if(url!=null) Glide.with(binding.financerlogo).load(url).into(binding.financerlogo);
     }
 }

@@ -123,6 +123,7 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
         public paymentViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = TransactionPagePaymentItemBinding.bind(itemView);
+
         }
     }
 

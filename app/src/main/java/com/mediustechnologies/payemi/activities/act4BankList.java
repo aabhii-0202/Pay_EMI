@@ -38,25 +38,15 @@ public class act4BankList extends AppCompatActivity {
 
         init();
 
-        addDummmyItemsInRecyclerView();
+        addItemsInRecyclerView();
 
 
 
 
     }
 
-    private void setdata(List<getAllBanks> data) {
 
-        Log.d("tag", "setdata: "+data.toString());
-        banklist = new ArrayList<>();
-
-        banklist = data;
-        initRecyclerView();
-
-
-
-    }
-    private void addDummmyItemsInRecyclerView() {
+    private void addItemsInRecyclerView() {
 
 
         Log.d("tag","Access Token Saved in Utils "+utils.access_token);
@@ -67,8 +57,9 @@ public class act4BankList extends AppCompatActivity {
             public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
 
                 if(response.code()==200) {
-                    List<getAllBanks> data = response.body();
-                setdata(data);
+//                    Log.d("tag", "setdata: "+banklist.toString());
+                    banklist  = response.body();
+                    initRecyclerView();
                 }
                 else{
                     Log.d("tag", "Get BankList onResponse: "+response.code());

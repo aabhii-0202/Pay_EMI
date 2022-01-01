@@ -47,36 +47,36 @@ public class SplashScreen extends AppCompatActivity {
 
             Call<ifNewUser> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkfornewUser(token,phone);
 
-//            call.enqueue(new Callback<ifNewUser>() {
-//                @Override
-//                public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
-//                    if (response.code()==200){
-//
-//                        ifNewUser n = response.body();
-//                        assert n != null;
-//                        if (n.getNew_user().equals("true")){
-//                            startActivity(new Intent(context, act28onBording.class));
-//                        }else{
-//                            Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(context, act33payEMI_home.class));
-//                            utils.access_token= preferences.getString("token","");
-//                            utils.refresh_token= "";
-//                            utils.phone=preferences.getString("phone","");
-//                        }
-//                    }
-//                    else {
-//                        Log.d("tag",""+response.message());
-//                        startActivity(new Intent(context, act28onBording.class));
-////                        startActivity(new Intent(context, act11AddNewCard.class));
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<ifNewUser> call, Throwable t) {
-//
-//                }
-//            });
-            startActivity(new Intent(context, act28onBording.class));
+            call.enqueue(new Callback<ifNewUser>() {
+                @Override
+                public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
+                    if (response.code()==200){
+
+                        ifNewUser n = response.body();
+                        assert n != null;
+                        if (n.getNew_user().equals("true")){
+                            startActivity(new Intent(context, act28onBording.class));
+                        }else{
+                            Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(context, act33payEMI_home.class));
+                            utils.access_token= preferences.getString("token","");
+                            utils.refresh_token= "";
+                            utils.phone=preferences.getString("phone","");
+                        }
+                    }
+                    else {
+                        Log.d("tag","Check if new: "+response.message());
+                        startActivity(new Intent(context, act28onBording.class));
+//                        startActivity(new Intent(context, act11AddNewCard.class));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ifNewUser> call, Throwable t) {
+
+                }
+            });
+//            startActivity(new Intent(context, act28onBording.class));
 
             finish();
         },2000);
