@@ -101,10 +101,22 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
         adapter = new transction_chatAdapter(context,chatlist);
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemClickListner(new transction_chatAdapter.onItemClick() {
+            @Override
+            public void onItemClick(int postion) {
+                Intent i = new Intent(context,act40transaction_Details.class);
+                i.putExtra("amount",chatlist.get(postion).getAmount());
+                startActivity(i);
+            }
+        });
+
+
     }
 
     private void init(){
 
+        String name = getIntent().getStringExtra("name");
+        binding.bankname.setText(name);
         binding.backButton.setOnClickListener(view -> finish());
         binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, act40transaction_Details.class)));
 

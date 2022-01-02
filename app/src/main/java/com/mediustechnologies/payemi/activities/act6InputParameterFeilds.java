@@ -8,30 +8,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.DTO.inputParameterFeildsDTOdata;
 import com.mediustechnologies.payemi.Models.inputParameterFeilds;
 import com.mediustechnologies.payemi.activities.payments.act11AddNewCard;
 import com.mediustechnologies.payemi.adapters.inputParametersAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
-import com.mediustechnologies.payemi.databinding.ActivityAddLoadAccountBinding;
+import com.mediustechnologies.payemi.databinding.ActivityInputParameterFeildsBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-
 import java.util.HashMap;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act6addLoadAccount extends AppCompatActivity {
+public class act6InputParameterFeilds extends AppCompatActivity {
 
-    private ActivityAddLoadAccountBinding binding;
+    private ActivityInputParameterFeildsBinding binding;
     private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAddLoadAccountBinding.inflate(getLayoutInflater());
+        binding = ActivityInputParameterFeildsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         init();
@@ -93,6 +90,6 @@ public class act6addLoadAccount extends AppCompatActivity {
         binding.backButton.setOnClickListener(view -> finish());
         String url = getIntent().getStringExtra("url");
         Glide.with(binding.Image).load(url).into(binding.Image);
-        binding.getDetails.setOnClickListener(view -> startActivity(new Intent(context, act11AddNewCard.class)));
+        binding.getDetails.setOnClickListener(view -> startActivity(new Intent(context, act7pay_emi_details.class)));
     }
 }

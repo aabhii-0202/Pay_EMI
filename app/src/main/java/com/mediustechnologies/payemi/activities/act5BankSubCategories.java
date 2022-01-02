@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -14,7 +13,6 @@ import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
-import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;
@@ -56,7 +54,7 @@ public class act5BankSubCategories extends AppCompatActivity {
         adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
-                Intent i = new Intent(context,act6addLoadAccount.class);
+                Intent i = new Intent(context, act6InputParameterFeilds.class);
                 i.putExtra("url",bankSubList.get(position).getLogo_url());
                 i.putExtra("biller_id",bankSubList.get(position).getBillerId());
                 startActivity(i);

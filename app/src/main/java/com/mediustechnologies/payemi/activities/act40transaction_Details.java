@@ -25,9 +25,8 @@ public class act40transaction_Details extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.havingIssue.setOnClickListener(view -> {
-            startActivity(new Intent(context,SplashScreen.class));
-        });
+        String amount = getIntent().getStringExtra("amount");
+        binding.paidAmount.setText(amount);
 
     }
 }

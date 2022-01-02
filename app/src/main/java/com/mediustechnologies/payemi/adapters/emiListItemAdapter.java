@@ -1,14 +1,19 @@
 package com.mediustechnologies.payemi.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mediustechnologies.payemi.activities.act33payEMI_home;
+import com.mediustechnologies.payemi.activities.act34pay_EMI_Details;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.MyProgressBar;
@@ -18,7 +23,23 @@ import java.util.List;
 public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.viewHolder> {
 
     private List<emiListItem> emiList;
+    private onItemClicked mListner;
 
+    public interface onItemClicked{
+        void onItemClick(int position);
+    }
+    public interface onButtonClickeListner{
+        void onButtonClick(int pos);
+    }
+    private onButtonClickeListner btnListner;
+
+    public void setOnButtonClickListner(onButtonClickeListner listner){
+        btnListner = listner;
+    }
+
+    public void setOnItemClickListner(onItemClicked listner){
+        mListner = listner;
+    }
 
     public emiListItemAdapter(List<emiListItem> emiList){this.emiList = emiList;}
 
@@ -66,6 +87,30 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             paidamount= view.findViewById(R.id.paidamount);
             totalamount= view.findViewById(R.id.total_Loan);
             progressBar = view.findViewById(R.id.emiProgressbar);
+
+            itemView.findViewById(R.id.emilistpay).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(btnListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            btnListner.onButtonClick(position);
+                        }
+                    }
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int pos = getAbsoluteAdapterPosition();
+                        if (pos!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(pos);
+                        }
+                    }
+                }
+            });
 
         }
 

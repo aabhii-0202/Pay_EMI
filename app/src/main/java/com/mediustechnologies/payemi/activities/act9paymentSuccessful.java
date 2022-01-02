@@ -82,11 +82,5 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private void init() {
         binding.crossButton.setOnClickListener(view -> finish());
-        binding.share.setOnClickListener(View -> go());
-        binding.download.setOnClickListener(View -> go());
-    }
-
-    private void go() {
-        startActivity(new Intent(context, act12complaintRegistration.class));
     }
 }

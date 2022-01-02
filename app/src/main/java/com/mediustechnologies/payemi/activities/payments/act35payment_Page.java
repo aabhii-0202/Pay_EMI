@@ -1,16 +1,17 @@
-package com.mediustechnologies.payemi.activities;
+package com.mediustechnologies.payemi.activities.payments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
 
 public class act35payment_Page extends AppCompatActivity {
+    
+    
     private ActivityPaymentPageBinding binding;
-    private Context context = this;
+    private final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,7 @@ public class act35payment_Page extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
-        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
-        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
-        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context, act36payment_confirmation.class)));
-
-
-
+        binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context, act11AddNewCard.class)));
+        binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context, act12AddNewUpi.class)));
     }
 }

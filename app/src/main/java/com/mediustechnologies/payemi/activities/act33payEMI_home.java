@@ -61,6 +61,23 @@ public class act33payEMI_home extends AppCompatActivity {
         emilistRecycler.setLayoutManager(linearLayoutManager);
         emiListItemAdapter adapter = new emiListItemAdapter(emilist);
         emilistRecycler.setAdapter(adapter);
+
+        adapter.setOnButtonClickListner(new emiListItemAdapter.onButtonClickeListner() {
+            @Override
+            public void onButtonClick(int pos) {
+                Intent i = new Intent(context,act34pay_EMI_Details.class);
+                i.putExtra("bankname",emilist.get(pos).getBank_Name());
+                startActivity(i);
+            }
+        });
+        adapter.setOnItemClickListner(new emiListItemAdapter.onItemClicked() {
+            @Override
+            public void onItemClick(int position) {
+                Intent i = new Intent(context,act39payEMI_transaction_page.class);
+                i.putExtra("name",emilist.get(position).getBank_Name());
+                startActivity(i);
+            }
+        });
     }
 
     private void init(){

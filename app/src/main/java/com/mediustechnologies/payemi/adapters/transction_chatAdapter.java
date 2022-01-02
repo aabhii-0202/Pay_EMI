@@ -18,11 +18,30 @@ import java.util.ArrayList;
 
 public class transction_chatAdapter extends RecyclerView.Adapter{
 
+
+
+
+    private onItemClick mListner;
+
+
     private Context context;
     private ArrayList<transaction_chat> chatlist;
+
+
+
     final int ITEM_SCRATCH =1;
     final int ITEM_PAYMENT=2;
     final int ITEM_DATE =3;
+
+    public interface onItemClick{
+        void onItemClick (int postion);
+    }
+
+    public void setOnItemClickListner(transction_chatAdapter.onItemClick listner){
+        mListner = listner;
+    }
+
+
 
     public transction_chatAdapter(Context context, ArrayList<transaction_chat> chatlist){
         this.chatlist=chatlist;
@@ -102,6 +121,18 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
         public dateLineViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = TransactionPageDatelineBinding.bind(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -113,6 +144,18 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
         public rewardViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = TransactionPageScratchcardItemBinding.bind(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -124,6 +167,17 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
             super(itemView);
             binding = TransactionPagePaymentItemBinding.bind(itemView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 

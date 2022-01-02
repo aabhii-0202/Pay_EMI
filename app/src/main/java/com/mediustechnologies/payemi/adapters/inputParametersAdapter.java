@@ -58,7 +58,8 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
 
         public void setData(String title,String type) {
             binding.title.setText(title);
-            binding.errorMessage2.setText("Please enter proper "+title);
+            binding.input.setHint("Enter Your "+title);
+            binding.errorMessage2.setText("Please Enter Proper "+title);
             if(type.equals("NUMERIC")) binding.input.setInputType(InputType.TYPE_CLASS_NUMBER);
 
             else binding.input.setInputType(InputType.TYPE_CLASS_TEXT);

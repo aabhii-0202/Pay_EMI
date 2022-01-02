@@ -34,7 +34,7 @@
             android:name=".activities.act33payEMI_home"
             android:exported="false" />
         <activity
-            android:name=".activities.act35payment_Page"
+            android:name=".activities.payments.act35payment_Page"
             android:exported="false" />
         <activity
             android:name=".activities.act40transaction_Details"
@@ -64,14 +64,14 @@
             android:name=".activities.act8payEMI"
             android:exported="false" />
         <activity
-            android:name=".activities.act6addLoadAccount"
+            android:name=".activities.act6InputParameterFeilds"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
+    </activity>
         <activity
             android:name=".activities.act5BankSubCategories"
             android:exported="false" />
