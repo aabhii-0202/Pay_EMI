@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 
 import org.json.JSONException;
@@ -32,8 +33,23 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
     }
 
     private void init(){
+
+        String url = getIntent().getStringExtra("logo");
+//        String exactness = getIntent().getStringExtra("Exactness");
+        String customer = getIntent().getStringExtra("customer");
+        String amount = getIntent().getStringExtra("amount");
+
+        Glide.with(binding.bankImage).load(url).into(binding.bankImage);
+        binding.amount.setText("Rs. "+amount);
+        binding.enterAmount.setText(amount);
+        binding.customerName.setText(customer);
+
+//        if(exactness.equals("Exact")){
+//            binding.enterAmount.setEnabled(false);
+//        }
+
+
         binding.payButton.setOnClickListener(view ->
-//                startActivity(new Intent(context, act9paymentSuccessful.class)));
                 openRazorpay());
     }
 

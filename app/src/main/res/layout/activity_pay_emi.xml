@@ -102,14 +102,14 @@
             <TextView
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:text="Rs. 14,288"
-                android:textSize="14sp"
-                android:textColor="@color/grey2"
                 android:layout_below="@id/LoanName"
-                android:layout_toEndOf="@+id/bankImage"/>
+                android:layout_marginHorizontal="5dp"
+                android:layout_toEndOf="@+id/bankImage"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Rs. 14,288"
+                android:textColor="@color/grey2"
+                android:textSize="14sp" />
         </RelativeLayout>
 
         <TextView
@@ -147,9 +147,9 @@
                 android:layout_toEndOf="@+id/rupee_sign"
                 android:background="@drawable/amount_box"
                 android:fontFamily="@font/gtwalsheim_pro_light"
-                android:text="14288"
                 android:inputType="number"
                 android:padding="5dp"
+                android:text="14288"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
                 android:textSize="60sp" />

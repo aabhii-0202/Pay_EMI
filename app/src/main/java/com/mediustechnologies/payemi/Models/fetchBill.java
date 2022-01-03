@@ -2,9 +2,11 @@ package com.mediustechnologies.payemi.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.mediustechnologies.payemi.DTO.billFetchDTO;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class fetchBill {
 
@@ -14,7 +16,7 @@ public class fetchBill {
 
     @SerializedName("payload")
     @Expose
-    private LinkedHashMap<String, String> payload;
+    private List<billFetchDTO> payload;
 
     @SerializedName("message")
     @Expose
@@ -28,20 +30,20 @@ public class fetchBill {
         this.status = status;
     }
 
+    public List<billFetchDTO> getPayload() {
+        return payload;
+    }
+
+    public void setPayload(List<billFetchDTO> payload) {
+        this.payload = payload;
+    }
+
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public LinkedHashMap<String, String> getPayload() {
-        return payload;
-    }
-
-    public void setPayload(LinkedHashMap<String, String> payload) {
-        this.payload = payload;
     }
 
     @Override

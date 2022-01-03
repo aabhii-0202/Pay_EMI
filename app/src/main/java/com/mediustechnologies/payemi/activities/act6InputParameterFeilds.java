@@ -24,6 +24,7 @@ public class act6InputParameterFeilds extends AppCompatActivity {
 
     private ActivityInputParameterFeildsBinding binding;
     private Context context = this;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +89,15 @@ public class act6InputParameterFeilds extends AppCompatActivity {
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
-        String url = getIntent().getStringExtra("url");
+        url = getIntent().getStringExtra("url");
         Glide.with(binding.Image).load(url).into(binding.Image);
-        binding.getDetails.setOnClickListener(view -> startActivity(new Intent(context, act7pay_emi_details.class)));
+        binding.getDetails.setOnClickListener(view -> nextScreen());
+    }
+
+    private void nextScreen(){
+        Intent i = new Intent(context,act7pay_emi_details.class);
+        i.putExtra("url",url);
+        i.putExtra("biller_name",getIntent().getStringExtra("biller_name"));
+        startActivity(i);
     }
 }

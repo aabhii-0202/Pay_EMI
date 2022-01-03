@@ -57,6 +57,7 @@ public class act5BankSubCategories extends AppCompatActivity {
                 Intent i = new Intent(context, act6InputParameterFeilds.class);
                 i.putExtra("url",bankSubList.get(position).getLogo_url());
                 i.putExtra("biller_id",bankSubList.get(position).getBillerId());
+                i.putExtra("biller_name",bankSubList.get(position).getBillerName());
                 startActivity(i);
             }
         });

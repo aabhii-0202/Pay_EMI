@@ -51,7 +51,6 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
                     if (response.code()==200){
-
                         ifNewUser n = response.body();
                         assert n != null;
                         if (n.getNew_user().equals("true")){
@@ -67,7 +66,6 @@ public class SplashScreen extends AppCompatActivity {
                     else {
                         Log.d("tag","Check if new: "+response.message());
                         startActivity(new Intent(context, act28onBording.class));
-//                        startActivity(new Intent(context, act11AddNewCard.class));
                     }
                 }
 
@@ -76,7 +74,6 @@ public class SplashScreen extends AppCompatActivity {
 
                 }
             });
-//            startActivity(new Intent(context, act28onBording.class));
 
             finish();
         },2000);

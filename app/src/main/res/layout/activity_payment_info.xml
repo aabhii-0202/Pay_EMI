@@ -82,9 +82,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:id="@+id/list"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -119,6 +128,7 @@
             android:fontFamily="@font/gtwalsheim_pro_medium"
             android:letterSpacing="0"
             android:text="Pay Now"
+            android:visibility="gone"
             android:textAllCaps="false"
             android:textSize="22sp" />
 
@@ -134,7 +144,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
 
 
@@ -516,7 +526,7 @@
                 android:background="#dddddd" />
 
             <Button
-                android:id="@+id/pay_now"
+                android:id="@+id/payNow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"

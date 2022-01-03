@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.commons;
 import com.mediustechnologies.payemi.Models.allCashbacks;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
-import com.mediustechnologies.payemi.Models.fetchBillBody;
+import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
 import com.mediustechnologies.payemi.Models.ifNewUser;
