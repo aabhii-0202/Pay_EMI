@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.commons;
 import com.mediustechnologies.payemi.Models.allCashbacks;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
+import com.mediustechnologies.payemi.Models.fetchBillBody;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
 import com.mediustechnologies.payemi.Models.ifNewUser;
@@ -13,6 +14,7 @@ import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
 
 import java.util.List;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -36,7 +38,7 @@ public interface API {
     Call<List<billDetails>> getBillDetails(@Query("bill_id") String bill_id);
 
     @POST("billfetch/")
-    Call<fetchBill> fetchBill (@Query("Id_biller")String Id_biller,  @Query("loanNumber")String loanNumber, @Query("mobile") String mobile);
+    Call<fetchBill> fetchBill (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body fetchBillBody body);
 
     @GET("get-all-banks/")
     Call<List<getAllBanks>> getAllBanks(@Header("Authorization")String token);

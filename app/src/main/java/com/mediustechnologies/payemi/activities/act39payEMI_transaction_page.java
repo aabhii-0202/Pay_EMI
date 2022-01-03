@@ -28,9 +28,6 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;
-    private transction_chatAdapter adapter;
-    private LinearLayoutManager linearLayoutManager;
-    private RecyclerView recyclerView;
     private final String TAG = "tag";
 
     @Override
@@ -94,11 +91,11 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
     }
 
     private void initrecyclerview(){
-        recyclerView = binding.paymentRecyclerView;
-        linearLayoutManager = new LinearLayoutManager(context);
+        RecyclerView recyclerView = binding.paymentRecyclerView;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new transction_chatAdapter(context,chatlist);
+        transction_chatAdapter adapter = new transction_chatAdapter(context, chatlist);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListner(new transction_chatAdapter.onItemClick() {

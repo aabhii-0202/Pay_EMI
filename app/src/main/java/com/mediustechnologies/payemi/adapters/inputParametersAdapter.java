@@ -18,12 +18,12 @@ import java.util.List;
 public class inputParametersAdapter extends RecyclerView.Adapter<inputParametersAdapter.viewHolder> {
 
     private HashMap<String,String> inputList;
-    private List<String> keys;
+    private final List<String> keys;
     public inputParametersAdapter(HashMap<String,String> inputList) {
         this.inputList = inputList;
 
         keys = new ArrayList<>();
-        for (String key : inputList.keySet()) keys.add(key);
+        keys.addAll(inputList.keySet());
     }
 
 

@@ -97,9 +97,11 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.5" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi_transaction_page.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_payment_info.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/bank_list_item.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/fetch_bill_layout.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/input_params_recycler_item.xml" value="0.1" />
       </map>
     </option>
