@@ -10,7 +10,6 @@ import com.mediustechnologies.payemi.Models.inputParameterFeilds;
 import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 import com.mediustechnologies.payemi.Models.bankSubItem;
-
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -46,6 +45,6 @@ public interface API {
     Call<inputParameterFeilds> inputparameterfeilds (@Header("Authorization") String token,@Query("biller_id")String billerId);
 
     @POST("homepage/")
-    Call<List<homePage>> homepage (@Header("Authorization") String token,@Query("mobile")String mobile);
+    Call<List<homePage>> homepage (@Header("Authorization") String token,@Query("mobile")String mobile,@Query("profile")String id);
 
 }

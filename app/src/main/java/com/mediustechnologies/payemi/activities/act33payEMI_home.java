@@ -92,7 +92,8 @@ public class act33payEMI_home extends AppCompatActivity {
 
     private void callapi(){
 
-        Call<List<homePage>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone);
+        Log.d("tag","Id "+utils.profileId+"\n token "+utils.access_token+"\n mobile "+utils.phone);
+        Call<List<homePage>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
 
         call.enqueue(new Callback<List<homePage>>() {
             @Override
@@ -101,6 +102,10 @@ public class act33payEMI_home extends AppCompatActivity {
                     data = response.body();
                     setData();
 
+                    Log.d("tag","-->>"+data.get(0).toString());
+
+                }else {
+                    Log.d("tag","Home "+response.code());
                 }
             }
 

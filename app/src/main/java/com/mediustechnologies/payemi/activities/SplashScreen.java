@@ -41,9 +41,11 @@ public class SplashScreen extends AppCompatActivity {
             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
             String phone = preferences.getString("phone","");
             String token = preferences.getString("token","");
+            String id = preferences.getString("profileid","");
 
-            System.out.println("Token------"+token);
-            System.out.println("Phone------"+phone);
+            System.out.println("Token------ "+token);
+            System.out.println("Phone------ "+phone);
+            System.out.println("ProfileId-- "+id);
 
             Call<ifNewUser> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkfornewUser(token,phone);
 
@@ -58,9 +60,10 @@ public class SplashScreen extends AppCompatActivity {
                         }else{
                             Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(context, act33payEMI_home.class));
-                            utils.access_token= preferences.getString("token","");
+                            utils.access_token= token;
                             utils.refresh_token= "";
-                            utils.phone=preferences.getString("phone","");
+                            utils.phone=phone;
+                            utils.profileId = id;
                         }
                     }
                     else {
