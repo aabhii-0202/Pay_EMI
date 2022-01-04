@@ -2,16 +2,16 @@ package com.mediustechnologies.payemi.recyclerItems;
 
 public class emiListItem {
     private String emiAmount,Bank_Name,Loan_Name,Paid_Amount,Total_Amount;
-    private int icon;
+    private String icon;
 
-    public emiListItem(String emiAmount, String bank_Name, String loan_Name, String paid_Amount, String total_Amount, int icon, int progress) {
+    public emiListItem(String emiAmount, String bank_Name, String loan_Name, String paid_Amount, String total_Amount, String icon) {
         this.emiAmount = emiAmount;
         Bank_Name = bank_Name;
         Loan_Name = loan_Name;
         Paid_Amount = paid_Amount;
         Total_Amount = total_Amount;
         this.icon = icon;
-        this.progress = progress;
+
     }
 
     private int progress;
@@ -56,19 +56,12 @@ public class emiListItem {
         Total_Amount = total_Amount;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
-    public int getProgress() {
-        return progress;
-    }
-
-    public void setProgress(int progress) {
-        this.progress = progress;
-    }
 }

@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
 import com.mediustechnologies.payemi.activities.act34pay_EMI_Details;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
@@ -54,16 +55,16 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull emiListItemAdapter.viewHolder holder, int position) {
-        int icon = emiList.get(position).getIcon();
+        String icon = emiList.get(position).getIcon();
         String EMIAmount = emiList.get(position).getEmiAmount();
         String BankName = emiList.get(position).getBank_Name();
         String LoanName = emiList.get(position).getLoan_Name();
         String PaidAmount = emiList.get(position).getPaid_Amount();
         String TotalAmount = emiList.get(position).getTotal_Amount();
-        int progress = emiList.get(position).getProgress();
 
 
-        holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount,progress);
+
+        holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount);
 
     }
 
@@ -114,14 +115,14 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
 
         }
 
-        public void set(int img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
-            icon.setImageResource(img);
+        public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount){
+            Glide.with(icon).load(img).into(icon);
             emiamount.setText(emiAmount);
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
             paidamount.setText(Paid_Amount);
             totalamount.setText(Total_Amount);
-            progressBar.setProgress(progress);
+
 
 
 

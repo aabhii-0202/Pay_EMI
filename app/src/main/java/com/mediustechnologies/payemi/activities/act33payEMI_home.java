@@ -7,7 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.mediustechnologies.payemi.Models.homePage;
+import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
@@ -16,10 +22,15 @@ import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class act33payEMI_home extends AppCompatActivity {
     private ActivityPayEmiHomeBinding binding;
     private List<emiListItem> emilist;
     private final Context context = this;
+    private  List<homePage> data;
 
 
 
@@ -30,28 +41,27 @@ public class act33payEMI_home extends AppCompatActivity {
         binding = ActivityPayEmiHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
         init();
-        dummydata();
-        initrecycler();
+        callapi();
+
     }
 
-    private void dummydata() {
+    private void setData() {
         emilist = new ArrayList<>();
+        for(int i=0;i<data.size();i++){
+            String totalemi = data.get(i).getAmount();
+            String remaining = data.get(i).getDue_amount();
+            String paid = "NUll";
+            if(totalemi!=null&&remaining!=null)
+            paid= Integer.toString(Integer.parseInt(totalemi)-Integer.parseInt(remaining));
 
-        emilist.add(new emiListItem("Rs 15,000","ICICI Bank Limited","Home Loan","₹ 52L","₹ 80L",R.drawable.b1,60));
-        emilist.add(new emiListItem("Rs 1,000","SBI","Edu Loan","₹ 1.2L","₹ 2L",R.drawable.b6,60));
-        emilist.add(new emiListItem("Rs 8,000","HDFC Bank Limited","Car Loan","₹ 5.2L","₹ 12L",R.drawable.b5,45));
-        emilist.add(new emiListItem("Rs 1,000","SBI","Edu Loan","₹ 1.2L","₹ 2L",R.drawable.b7,60));
-        emilist.add(new emiListItem("Rs 10,000","ICICI Bank Limited","Car Loan","₹ 5.2L","₹ 12L",R.drawable.b6,48));
-        emilist.add(new emiListItem("Rs 19,000","ICICI Bank Limited","Home Loan","₹ 52L","₹ 80L",R.drawable.b1,60));
-        emilist.add(new emiListItem("Rs 12,000","SBI","Edu Loan","₹ 1.2L","₹ 2L",R.drawable.b5,70));
-        emilist.add(new emiListItem("Rs 10,000","HDFC Bank Limited","Car Loan","₹ 6L","₹ 12L",R.drawable.b7,50));
-        emilist.add(new emiListItem("Rs 3,000","SBI","Edu Loan","₹ 1.2L","₹ 2L",R.drawable.b1,80));
+            emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),"loan name",paid,data.get(i).getAmount(),data.get(i).getBiller__logo_url()));
 
 
+        }
 
+
+        initrecycler();
     }
 
     private void initrecycler() {
@@ -76,6 +86,28 @@ public class act33payEMI_home extends AppCompatActivity {
                 Intent i = new Intent(context,act39payEMI_transaction_page.class);
                 i.putExtra("name",emilist.get(position).getBank_Name());
                 startActivity(i);
+            }
+        });
+    }
+
+    private void callapi(){
+
+        Call<List<homePage>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone);
+
+        call.enqueue(new Callback<List<homePage>>() {
+            @Override
+            public void onResponse(Call<List<homePage>> call, Response<List<homePage>> response) {
+                if(response.code()==200&&response.body()!=null){
+                    data = response.body();
+                    setData();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<homePage>> call, Throwable t) {
+                Toast.makeText(context, "Unable to fetch Loans", Toast.LENGTH_SHORT).show();
+                Log.d("tag","API home: "+t.toString());
             }
         });
     }

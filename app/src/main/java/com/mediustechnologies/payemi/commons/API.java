@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.commons;
 import com.mediustechnologies.payemi.Models.allCashbacks;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
+import com.mediustechnologies.payemi.Models.homePage;
 import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.getCashback;
@@ -51,4 +52,8 @@ public interface API {
 
     @GET("inputparam-fields/")
     Call<inputParameterFeilds> inputparameterfeilds (@Header("Authorization") String token,@Query("biller_id")String billerId);
+
+    @POST("homepage/")
+    Call<List<homePage>> homepage (@Header("Authorization") String token,@Query("mobile")String mobile);
+
 }
