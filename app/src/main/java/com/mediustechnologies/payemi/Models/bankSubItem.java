@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.recyclerItems;
+package com.mediustechnologies.payemi.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

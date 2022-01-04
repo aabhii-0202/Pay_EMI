@@ -56,10 +56,13 @@ public class act4BankList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
 
-                if(response.code()==200) {
+                if(response.code()==200&&response.isSuccessful()&&response.body()!=null) {
 //                    Log.d("tag", "setdata: "+banklist.toString());
                     banklist  = response.body();
                     initRecyclerView();
+                }
+                if(response.code()==400){
+                    Log.d("tag","Error code 400 on fetch bill. \"errorCode\": \"BOU001\",");
                 }
                 else{
                     Log.d("tag", "Get BankList onResponse: "+response.code());

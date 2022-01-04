@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-import com.mediustechnologies.payemi.recyclerItems.bankSubItem;
+import com.mediustechnologies.payemi.Models.bankSubItem;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;

@@ -9,9 +9,17 @@ public class billDetails {
     @Expose
     private String id;
 
-    @SerializedName("biller")
+    @SerializedName("biller_id")
     @Expose
-    private String biller;
+    private String biller_id;
+
+    @SerializedName("profile_id")
+    @Expose
+    private String profile_id;
+
+    @SerializedName("loan_id")
+    @Expose
+    private String loan_id;
 
     @SerializedName("loan_acc_no")
     @Expose
@@ -25,17 +33,17 @@ public class billDetails {
     @Expose
     private String customer_mobile;
 
-    @SerializedName("product_name")
+    @SerializedName("biller_additional_info")
     @Expose
-    private String product_name;
+    private String biller_additional_info;
 
-    @SerializedName("tenure")
+    @SerializedName("inputparams_value")
     @Expose
-    private String tenure;
+    private String inputparams_value;
 
-    @SerializedName("due_date")
+    @SerializedName("amountOptions")
     @Expose
-    private String due_date;
+    private String amountOptions;
 
     @SerializedName("bill_number")
     @Expose
@@ -65,30 +73,6 @@ public class billDetails {
     @Expose
     private String transaction_date;
 
-    @SerializedName("approval_number")
-    @Expose
-    private String approval_number;
-
-    @SerializedName("charges_levied")
-    @Expose
-    private String charges_levied;
-
-    @SerializedName("late_payment_fees")
-    @Expose
-    private String late_payment_fees;
-
-    @SerializedName("additional_charges")
-    @Expose
-    private String additional_charges;
-
-    @SerializedName("fixed_charges")
-    @Expose
-    private String fixed_charges;
-
-    @SerializedName("emi")
-    @Expose
-    private String emi;
-
     @SerializedName("initiation_channel")
     @Expose
     private String initiation_channel;
@@ -105,6 +89,22 @@ public class billDetails {
     @Expose
     private String service_tax;
 
+    @SerializedName("RespBillNumber")
+    @Expose
+    private String RespBillNumber;
+
+    @SerializedName("RespBillPeriod")
+    @Expose
+    private String RespBillPeriod;
+
+    @SerializedName("RespDueDate")
+    @Expose
+    private String RespDueDate;
+
+    @SerializedName("requestId")
+    @Expose
+    private String requestId;
+
     public String getId() {
         return id;
     }
@@ -113,12 +113,28 @@ public class billDetails {
         this.id = id;
     }
 
-    public String getBiller() {
-        return biller;
+    public String getBiller_id() {
+        return biller_id;
     }
 
-    public void setBiller(String biller) {
-        this.biller = biller;
+    public void setBiller_id(String biller_id) {
+        this.biller_id = biller_id;
+    }
+
+    public String getProfile_id() {
+        return profile_id;
+    }
+
+    public void setProfile_id(String profile_id) {
+        this.profile_id = profile_id;
+    }
+
+    public String getLoan_id() {
+        return loan_id;
+    }
+
+    public void setLoan_id(String loan_id) {
+        this.loan_id = loan_id;
     }
 
     public String getLoan_acc_no() {
@@ -145,28 +161,28 @@ public class billDetails {
         this.customer_mobile = customer_mobile;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getBiller_additional_info() {
+        return biller_additional_info;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setBiller_additional_info(String biller_additional_info) {
+        this.biller_additional_info = biller_additional_info;
     }
 
-    public String getTenure() {
-        return tenure;
+    public String getInputparams_value() {
+        return inputparams_value;
     }
 
-    public void setTenure(String tenure) {
-        this.tenure = tenure;
+    public void setInputparams_value(String inputparams_value) {
+        this.inputparams_value = inputparams_value;
     }
 
-    public String getDue_date() {
-        return due_date;
+    public String getAmountOptions() {
+        return amountOptions;
     }
 
-    public void setDue_date(String due_date) {
-        this.due_date = due_date;
+    public void setAmountOptions(String amountOptions) {
+        this.amountOptions = amountOptions;
     }
 
     public String getBill_number() {
@@ -225,54 +241,6 @@ public class billDetails {
         this.transaction_date = transaction_date;
     }
 
-    public String getApproval_number() {
-        return approval_number;
-    }
-
-    public void setApproval_number(String approval_number) {
-        this.approval_number = approval_number;
-    }
-
-    public String getCharges_levied() {
-        return charges_levied;
-    }
-
-    public void setCharges_levied(String charges_levied) {
-        this.charges_levied = charges_levied;
-    }
-
-    public String getLate_payment_fees() {
-        return late_payment_fees;
-    }
-
-    public void setLate_payment_fees(String late_payment_fees) {
-        this.late_payment_fees = late_payment_fees;
-    }
-
-    public String getAdditional_charges() {
-        return additional_charges;
-    }
-
-    public void setAdditional_charges(String additional_charges) {
-        this.additional_charges = additional_charges;
-    }
-
-    public String getFixed_charges() {
-        return fixed_charges;
-    }
-
-    public void setFixed_charges(String fixed_charges) {
-        this.fixed_charges = fixed_charges;
-    }
-
-    public String getEmi() {
-        return emi;
-    }
-
-    public void setEmi(String emi) {
-        this.emi = emi;
-    }
-
     public String getInitiation_channel() {
         return initiation_channel;
     }
@@ -289,12 +257,12 @@ public class billDetails {
         this.payment_mode = payment_mode;
     }
 
-    public String getCustomer_convinience_fees() {
+    public String getcustomer_convinience_fees() {
         return customer_convinience_fees;
     }
 
-    public void setCustomer_convinience_fees(String customer_convinience_fees) {
-        this.customer_convinience_fees = customer_convinience_fees;
+    public void setcustomer_convinience_fees(String fixed_chcustomer_convinience_feesarges) {
+        this.customer_convinience_fees = fixed_chcustomer_convinience_feesarges;
     }
 
     public String getService_tax() {
@@ -305,17 +273,51 @@ public class billDetails {
         this.service_tax = service_tax;
     }
 
+    public String getRespBillNumber() {
+        return RespBillNumber;
+    }
+
+    public void setRespBillNumber(String respBillNumber) {
+        RespBillNumber = respBillNumber;
+    }
+
+    public String getRespBillPeriod() {
+        return RespBillPeriod;
+    }
+
+    public void setRespBillPeriod(String respBillPeriod) {
+        RespBillPeriod = respBillPeriod;
+    }
+
+    public String getRespDueDate() {
+        return RespDueDate;
+    }
+
+    public void setRespDueDate(String respDueDate) {
+        RespDueDate = respDueDate;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
     @Override
     public String toString() {
         return "billDetails{" +
                 "id='" + id + '\'' +
-                ", biller='" + biller + '\'' +
+                ", biller_id='" + biller_id + '\'' +
+                ", profile_id='" + profile_id + '\'' +
+                ", loan_id='" + loan_id + '\'' +
                 ", loan_acc_no='" + loan_acc_no + '\'' +
                 ", customer_name='" + customer_name + '\'' +
                 ", customer_mobile='" + customer_mobile + '\'' +
-                ", product_name='" + product_name + '\'' +
-                ", tenure='" + tenure + '\'' +
-                ", due_date='" + due_date + '\'' +
+                ", biller_additional_info='" + biller_additional_info + '\'' +
+                ", inputparams_value='" + inputparams_value + '\'' +
+                ", amountOptions='" + amountOptions + '\'' +
                 ", bill_number='" + bill_number + '\'' +
                 ", transaction_date_and_time='" + transaction_date_and_time + '\'' +
                 ", amount='" + amount + '\'' +
@@ -323,16 +325,14 @@ public class billDetails {
                 ", order_id='" + order_id + '\'' +
                 ", transaction_id='" + transaction_id + '\'' +
                 ", transaction_date='" + transaction_date + '\'' +
-                ", approval_number='" + approval_number + '\'' +
-                ", charges_levied='" + charges_levied + '\'' +
-                ", late_payment_fees='" + late_payment_fees + '\'' +
-                ", additional_charges='" + additional_charges + '\'' +
-                ", fixed_charges='" + fixed_charges + '\'' +
-                ", emi='" + emi + '\'' +
                 ", initiation_channel='" + initiation_channel + '\'' +
                 ", payment_mode='" + payment_mode + '\'' +
-                ", customer_convinience_fees='" + customer_convinience_fees + '\'' +
+                ", fixed_chcustomer_convinience_feesarges='" + customer_convinience_fees + '\'' +
                 ", service_tax='" + service_tax + '\'' +
+                ", RespBillNumber='" + RespBillNumber + '\'' +
+                ", RespBillPeriod='" + RespBillPeriod + '\'' +
+                ", RespDueDate='" + RespDueDate + '\'' +
+                ", requestId='" + requestId + '\'' +
                 '}';
     }
 }

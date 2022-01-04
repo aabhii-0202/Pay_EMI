@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class billFetchDTO {
 
@@ -37,15 +38,15 @@ public class billFetchDTO {
 
     @SerializedName("biller_additional_info")
     @Expose
-    private HashMap<String,String> biller_additional_info;
+    private LinkedHashMap<String,String> biller_additional_info;
 
     @SerializedName("inputparams_value")
     @Expose
-    private HashMap<String,String> inputparams_value;
+    private LinkedHashMap<String,String> inputparams_value;
 
     @SerializedName("amountOptions")
     @Expose
-    private HashMap<String,String> amountOptions;
+    private LinkedHashMap<String,String> amountOptions;
 
     @SerializedName("bill_number")
     @Expose
@@ -160,11 +161,11 @@ public class billFetchDTO {
         this.customer_mobile = customer_mobile;
     }
 
-    public HashMap<String, String> getBiller_additional_info() {
+    public LinkedHashMap<String, String> getBiller_additional_info() {
         return biller_additional_info;
     }
 
-    public void setBiller_additional_info(HashMap<String, String> biller_additional_info) {
+    public void setBiller_additional_info(LinkedHashMap<String, String> biller_additional_info) {
         this.biller_additional_info = biller_additional_info;
     }
 
@@ -172,7 +173,7 @@ public class billFetchDTO {
         return inputparams_value;
     }
 
-    public void setInputparams_value(HashMap<String, String> inputparams_value) {
+    public void setInputparams_value(LinkedHashMap<String, String> inputparams_value) {
         this.inputparams_value = inputparams_value;
     }
 
@@ -180,7 +181,7 @@ public class billFetchDTO {
         return amountOptions;
     }
 
-    public void setAmountOptions(HashMap<String, String> amountOptions) {
+    public void setAmountOptions(LinkedHashMap<String, String> amountOptions) {
         this.amountOptions = amountOptions;
     }
 

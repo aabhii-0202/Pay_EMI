@@ -23,8 +23,8 @@ import retrofit2.Response;
 public class act6InputParameterFeilds extends AppCompatActivity {
 
     private ActivityInputParameterFeildsBinding binding;
-    private Context context = this;
-    private String url;
+    private final Context context = this;
+    private String url,biller_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class act6InputParameterFeilds extends AppCompatActivity {
 
     private void getInputParameters() {
 
-        String biller_id = getIntent().getStringExtra("biller_id");
+        biller_id = getIntent().getStringExtra("biller_id");
 //        biller_id="HPCL00000NAT01";
 
         String token = utils.access_token;
@@ -98,6 +98,7 @@ public class act6InputParameterFeilds extends AppCompatActivity {
         Intent i = new Intent(context,act7pay_emi_details.class);
         i.putExtra("url",url);
         i.putExtra("biller_name",getIntent().getStringExtra("biller_name"));
+        i.putExtra("biller_id",biller_id);
         startActivity(i);
     }
 }

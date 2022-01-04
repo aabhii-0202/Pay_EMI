@@ -91,13 +91,13 @@
                 android:id="@+id/LoanName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:layout_marginHorizontal="5dp"
-                android:text="Home Loan"
-                android:textSize="14sp"
-                android:textColor="@color/grey2"
                 android:layout_below="@+id/customerName"
-                android:layout_toEndOf="@+id/bankImage"/>
+                android:layout_marginHorizontal="5dp"
+                android:layout_toEndOf="@+id/bankImage"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Home Loan"
+                android:textColor="@color/grey2"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/amount"
@@ -113,6 +113,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/billername"
             android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -22,8 +22,6 @@ public class fetchBillAdapter extends RecyclerView.Adapter<fetchBillAdapter.view
     private List<String> keys;
     public fetchBillAdapter(LinkedHashMap <String,String> billItems){
         this.billItems = billItems;
-
-
         keys = new ArrayList<>();
         for (Map.Entry<String, String> entry: billItems.entrySet()){
             String k = entry.getKey();

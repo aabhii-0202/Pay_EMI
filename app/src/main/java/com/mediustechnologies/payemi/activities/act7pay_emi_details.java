@@ -20,6 +20,7 @@ import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentInfoBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import retrofit2.Call;
@@ -55,9 +56,12 @@ public class act7pay_emi_details extends AppCompatActivity {
 
     private void fetchBill() {
 
-        String biller_id = "OU12LO000NATGJ";
-        String mobile = "9898990861";
+        String biller_id = getIntent().getStringExtra("biller_id");
+        biller_id = "OU12LO000NATGJ";
+
+        String mobile = utils.phone;
         String loanNumber = "2775864";
+        loanNumber = "2775864";
 //        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
         fetchBillBody body = new fetchBillBody(loanNumber,mobile);
 
@@ -66,7 +70,7 @@ public class act7pay_emi_details extends AppCompatActivity {
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==200){
+                if(response.code()==200&&response.body()!=null){
                     fetchBill bill = response.body();
 
                     binding.payNow.setVisibility(View.VISIBLE);
@@ -94,35 +98,64 @@ public class act7pay_emi_details extends AppCompatActivity {
         customer = bill.getPayload().get(0).getCustomer_name();
 
         String s = "Not in API";
-        binding.DueDate.setText(bill.getPayload().get(0).getRespDueDate());
-        binding.ChargesLevied.setText(s);
-        binding.BaseBillAmount.setText(s);
-        binding.LatePaymentFee.setText(s);
-        binding.AdditionalCharges.setText(s);
-        binding.FixedCharges.setText(s);
-        binding.EMI.setText(s);
-        binding.Tenure.setText(bill.getPayload().get(0).getRespBillPeriod());
-        binding.Amount.setText(bill.getPayload().get(0).getAmount());
-        binding.ServiceTax.setText(s);
-        binding.TotalAmount.setText(bill.getPayload().get(0).getAmount());
 
-//        Log.d("tag", "setData: BILL"+bill.getPayload().get(0).toString());
+        binding.ChargesLevied.setText(s);
+
+        binding.LatePaymentFee.setText(s);
+
+        binding.AdditionalCharges.setText(s);
+
+        binding.FixedCharges.setText(s);
+
+        binding.EMI.setText(s);
+
+        binding.ServiceTax.setText(s);
+
+        if(bill.getPayload().get(0).getRespDueDate()!=null)
+            binding.DueDate.setText(bill.getPayload().get(0).getRespDueDate());
+        else binding.duedatelayout.setVisibility(View.GONE);
+
+
+        if(bill.getPayload().get(0).getAmount()!=null)
+            binding.basebillamount.setText(bill.getPayload().get(0).getAmount());
+        else binding.basebillamountcontainer.setVisibility(View.GONE);
+
+
+        if(bill.getPayload().get(0).getRespBillPeriod()!=null)
+            binding.Tenure.setText(bill.getPayload().get(0).getRespBillPeriod());
+        else binding.tenurelayout.setVisibility(View.GONE);
+
+
+        if(bill.getPayload().get(0).getAmount()!=null)
+            binding.Amount.setText(bill.getPayload().get(0).getAmount());
+        else binding.amountlayout.setVisibility(View.GONE);
+
+        if(bill.getPayload().get(0).getAmount()!=null)
+            binding.TotalAmount.setText(bill.getPayload().get(0).getAmount());
+        else binding.totalamountlayout.setVisibility(View.GONE);
+
+        LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
+        variableData.putAll(bill.getPayload().get(0).getAmountOptions());
+        variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
+
+
+        recyclerview(variableData);
 
 
 
 
     }
 
-    private void recyclerview(fetchBill bill) {
+    private void recyclerview(LinkedHashMap<String, String> bill) {
 
-//        RecyclerView recyclerView = binding.fetchBillRecyclerView;
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-//        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerView.setLayoutManager(linearLayoutManager);
+        RecyclerView recyclerView = binding.variablerec;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
 
-//        fetchBillAdapter adapter = new fetchBillAdapter(bill);
-//        recyclerView.setAdapter(adapter);
+        fetchBillAdapter adapter = new fetchBillAdapter(bill);
+        recyclerView.setAdapter(adapter);
     }
 
     private void nextscreen(){
@@ -131,6 +164,7 @@ public class act7pay_emi_details extends AppCompatActivity {
 //        i.putExtra("Exactness",exactness);
         i.putExtra("customer",customer);
         i.putExtra("amount",amount);
+        i.putExtra("billerName",name);
         startActivity(i);
     }
 
