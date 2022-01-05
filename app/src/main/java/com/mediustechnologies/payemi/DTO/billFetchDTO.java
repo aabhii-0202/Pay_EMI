@@ -2,8 +2,6 @@ package com.mediustechnologies.payemi.DTO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class billFetchDTO {
@@ -169,7 +167,7 @@ public class billFetchDTO {
         this.biller_additional_info = biller_additional_info;
     }
 
-    public HashMap<String, String> getInputparams_value() {
+    public LinkedHashMap<String, String> getInputparams_value() {
         return inputparams_value;
     }
 
@@ -177,7 +175,7 @@ public class billFetchDTO {
         this.inputparams_value = inputparams_value;
     }
 
-    public HashMap<String, String> getAmountOptions() {
+    public LinkedHashMap<String, String> getAmountOptions() {
         return amountOptions;
     }
 

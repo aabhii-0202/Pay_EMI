@@ -51,7 +51,6 @@ public class act7pay_emi_details extends AppCompatActivity {
 
         fetchBill();
 
-
     }
 
     private void fetchBill() {
@@ -97,19 +96,19 @@ public class act7pay_emi_details extends AppCompatActivity {
         amount = bill.getPayload().get(0).getAmount();
         customer = bill.getPayload().get(0).getCustomer_name();
 
-        String s = "Not in API";
+//        String s = "Not in API";
 
-        binding.ChargesLevied.setText(s);
+//        binding.ChargesLevied.setText(s);
+//
+//        binding.LatePaymentFee.setText(s);
+//
+//        binding.AdditionalCharges.setText(s);
+//
+//        binding.FixedCharges.setText(s);
+//
+//        binding.EMI.setText(s);
 
-        binding.LatePaymentFee.setText(s);
-
-        binding.AdditionalCharges.setText(s);
-
-        binding.FixedCharges.setText(s);
-
-        binding.EMI.setText(s);
-
-        binding.ServiceTax.setText(s);
+//        binding.ServiceTax.setText(s);
 
         if(bill.getPayload().get(0).getRespDueDate()!=null)
             binding.DueDate.setText(bill.getPayload().get(0).getRespDueDate());
@@ -136,6 +135,7 @@ public class act7pay_emi_details extends AppCompatActivity {
 
         LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
         variableData.putAll(bill.getPayload().get(0).getAmountOptions());
+        variableData.putAll(bill.getPayload().get(0).getInputparams_value());
         variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
 
 

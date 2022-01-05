@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.commons;
 
+import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
 import com.mediustechnologies.payemi.Models.homePage;
@@ -27,7 +28,7 @@ public interface API {
     Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
 
     @GET("getbilldetails/")
-    Call<List<billDetails>> getBillDetails(@Header("Authorization") String token,@Query("bill_id") String bill_id);
+    Call<List<billFetchDTO>> getBillDetails(@Header("Authorization") String token, @Query("bill_id") String bill_id);
 
     @POST("billfetch/")
     Call<fetchBill> fetchBill (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body fetchBillBody body);

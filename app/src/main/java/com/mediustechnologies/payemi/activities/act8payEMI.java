@@ -54,7 +54,8 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
 
 
         binding.payButton.setOnClickListener(view ->
-                openRazorpay());
+//                openRazorpay());
+                nextScreen());
     }
 
 

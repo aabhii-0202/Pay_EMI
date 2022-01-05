@@ -1,18 +1,25 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.Models.billDetails;
+import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
+import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,7 +41,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
         getbilldetails();
     }
 
-    private void setData(billDetails data) {
+    private void setData(billFetchDTO data) {
 
         Log.d("tag", "act9paymentSuccessful " + data.toString());
 
@@ -45,46 +52,109 @@ public class act9paymentSuccessful extends AppCompatActivity {
         binding.timeanddate.setText("  Completed | "+data.getTransaction_date_and_time());
 
         binding.recieptBankName.setText(bankname);
-        binding.BillPeriod.setText(data.getRespBillPeriod());
-        binding.BillDate.setText(data.getTransaction_date());
-        binding.BillNumber.setText(data.getBill_number());
-        binding.BillerID.setText(data.getId());
-        binding.TotalAmount.setText(data.getAmount());
-        binding.TransactionStatus.setText(data.getTransation_status());
-        binding.TransactionID.setText(data.getTransaction_id());
-        binding.TransactionDateTime.setText(data.getTransaction_date_and_time());
-        binding.ApprovalNumber.setText("Not in API");
-        binding.CName.setText(data.getCustomer_name());
-        binding.CNumber.setText(data.getCustomer_mobile());
-        binding.InitiatingChannel.setText(data.getInitiation_channel());
-        binding.paymentMode.setText(data.getPayment_mode());
-        binding.BillAmount.setText(data.getAmount());
-        binding.convineanceFee.setText(data.getcustomer_convinience_fees());
-        binding.serviceTax.setText(data.getService_tax());
+
+        if(data.getRespBillPeriod()!=null)
+            binding.BillPeriod.setText(data.getRespBillPeriod());
+        else binding.billperiodholder.setVisibility(View.GONE);
+
+        if(data.getTransaction_date()!=null)
+            binding.BillDate.setText(data.getTransaction_date());
+        else binding.billdateholder.setVisibility(View.GONE);
+
+        if(data.getId()!=null)
+            binding.BillNumber.setText(data.getId());
+        else binding.billnumberholder.setVisibility(View.GONE);
+
+        if(data.getBill_number()!=null)
+            binding.BillerID.setText(data.getBill_number());
+        else binding.billeridholder.setVisibility(View.GONE);
+
+        if(data.getAmount()!=null)
+            binding.TotalAmount.setText(data.getAmount());
+        else binding.totalamountholder.setVisibility(View.GONE);
+
+        if(data.getTransation_status()!=null)
+            binding.TransactionStatus.setText(data.getTransation_status());
+        else binding.transactionstatusholder.setVisibility(View.GONE);
+
+        if(data.getTransaction_id()!=null)
+            binding.TransactionID.setText(data.getTransaction_id());
+        else binding.transactionidholder.setVisibility(View.GONE);
+
+        if(data.getTransaction_date_and_time()!=null)
+            binding.TransactionDateTime.setText(data.getTransaction_date_and_time());
+        else binding.transactiondateholder.setVisibility(View.GONE);
+
+        if(data.getCustomer_name()!=null)
+            binding.CName.setText(data.getCustomer_name());
+        else binding.custnameholder.setVisibility(View.GONE);
+
+        if(data.getCustomer_mobile()!=null)
+            binding.CNumber.setText(data.getCustomer_mobile());
+        else binding.customernumberholder.setVisibility(View.GONE);
+
+        if(data.getInitiation_channel()!=null)
+            binding.InitiatingChannel.setText(data.getInitiation_channel());
+        else binding.channelholder.setVisibility(View.GONE);
+
+        if(data.getPayment_mode()!=null)
+            binding.paymentMode.setText(data.getPayment_mode());
+        else binding.modelholder.setVisibility(View.GONE);
+
+        if(data.getAmount()!=null)
+            binding.BillAmount.setText(data.getAmount());
+        else binding.billamountholder.setVisibility(View.GONE);
+
+        if(data.getService_tax()!=null)
+            binding.serviceTax.setText(data.getService_tax());
+        else binding.servicetaxholder.setVisibility(View.GONE);
+
+//        binding.ApprovalNumber.setText("Not in API");
+//        binding.convineanceFee.setText(data.getcustomer_convinience_fees());
+
         binding.totalAmount.setText(data.getAmount());
 
+        LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
+        variableData.putAll(data.getAmountOptions());
+        variableData.putAll(data.getInputparams_value());
+        variableData.putAll(data.getBiller_additional_info());
+        recyclerview(variableData);
 
+    }
+
+    private void recyclerview(LinkedHashMap<String, String> variableData) {
+        RecyclerView recyclerView = binding.variablerec2;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
+        GetBillDetailsAdapter adapter = new GetBillDetailsAdapter(variableData);
+        recyclerView.setAdapter(adapter);
 
     }
 
     private void getbilldetails() {
-        String bill_id = 1 + "";
+        String bill_id =  "395";
+        String token = utils.access_token;
 
-        Call<List<billDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(utils.access_token,bill_id);
+        Call<List<billFetchDTO>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
-        call.enqueue(new Callback<List<billDetails>>() {
+        call.enqueue(new Callback<List<billFetchDTO>>() {
             @Override
-            public void onResponse(Call<List<billDetails>> call, Response<List<billDetails>> response) {
+            public void onResponse(Call<List<billFetchDTO>> call, Response<List<billFetchDTO>> response) {
                 if (response.code() == 200 && response.body() != null) {
-                    billDetails data = response.body().get(0);
+                    billFetchDTO data = response.body().get(0);
                     setData(data);
+                }
+                else{
+                    Log.d("tag", "onResponse: getbill detail "+response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<billDetails>> call, Throwable t) {
-                billDetails data = null;
-                setData(data);
+            public void onFailure(Call<List<billFetchDTO>> call, Throwable t) {
+                Log.d("tag","getbill details "+t.toString());
             }
         });
     }
