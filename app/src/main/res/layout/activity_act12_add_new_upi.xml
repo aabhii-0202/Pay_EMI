@@ -11,8 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-46dp"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,45 +107,46 @@
                 android:text="UPI ID/ VPA"
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Your UPI ID"
-                android:background="@drawable/addcard_boxbg"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/addcard_boxbg"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:hint="Enter Your UPI ID"
                 android:inputType="number"
                 android:padding="16dp"
-                android:textSize="13sp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
-                android:layout_marginStart="16dp"
-                />
+                android:textSize="13sp" />
+
             <CheckBox
+                android:id="@+id/SecurelySaveCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:textColor="@color/grey"
-                android:foregroundTint="@color/payment_screen"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:textSize="13sp"
+                android:foregroundTint="@color/payment_screen"
                 android:text="Securely save VPA"
-                android:id="@+id/SecurelySaveCard"/>
+                android:textColor="@color/grey"
+                android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/proceedtopayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Verify and Pay"
-                android:textColor="@color/white"
-                android:background="@drawable/add_card_background"
-                android:textSize="19sp"
-                android:letterSpacing="0"
                 android:layout_marginHorizontal="16dp"
-                android:textAllCaps="false"/>
+                android:layout_marginTop="32dp"
+                android:background="@drawable/add_card_background"
+                android:letterSpacing="0"
+                android:text="Verify and Pay"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
 
 
         </LinearLayout>

@@ -13,17 +13,14 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.payments.act13SelectWallect"
+            android:exported="false" />
+        <activity
             android:name=".activities.payments.act12AddNewUpi"
             android:exported="false" />
         <activity
             android:name=".activities.payments.act11AddNewCard"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activities.act39payEMI_transaction_page"
             android:exported="false" />
@@ -35,7 +32,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.payments.act35payment_Page"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.act40transaction_Details"
             android:exported="false" />
@@ -59,28 +62,22 @@
             android:exported="false" />
         <activity
             android:name=".activities.act9paymentSuccessful"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activities.act8payEMI"
             android:exported="false" />
         <activity
             android:name=".activities.act6InputParameterFeilds"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.act5BankSubCategories"
             android:exported="false" />
         <activity
             android:name=".activities.act7pay_emi_details"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.act4BankList"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">
@@ -89,15 +86,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-
-        <!-- below code for razorpay -->
-
-
-
-
+        </activity> <!-- below code for razorpay -->
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">

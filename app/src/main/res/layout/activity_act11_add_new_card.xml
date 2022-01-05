@@ -214,7 +214,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/addcard_boxbg"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="number"
+                        android:inputType="numberPassword"
                         android:maxLength="3"
                         android:padding="16dp"
                         android:textColor="@color/black"

@@ -27,5 +27,6 @@ public class act35payment_Page extends AppCompatActivity {
         binding.backButton.setOnClickListener(view -> finish());
         binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context, act11AddNewCard.class)));
         binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context, act12AddNewUpi.class)));
+        binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context, act13SelectWallect.class)));
     }
 }
