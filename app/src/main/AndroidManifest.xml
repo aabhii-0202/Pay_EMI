@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.payments.act14NetBanking"
+            android:exported="false" />
+        <activity
             android:name=".activities.payments.act13SelectWallect"
             android:exported="false" />
         <activity
