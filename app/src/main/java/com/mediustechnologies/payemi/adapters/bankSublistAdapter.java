@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.Models.bankSubItem;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
@@ -35,8 +37,12 @@ public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull bankSublistAdapter.Viewholder holder, int position) {
-        int imageRes = bankSubList.get(position).getImage();
-        holder.setData(imageRes);
+
+        String billerid = bankSubList.get(position).getBillerId();
+        String bankname = bankSubList.get(position).getBiller_bank__bank_name();
+        String billername = bankSubList.get(position).getBillerName();
+        String logourl = bankSubList.get(position).getLogo_url();
+        holder.setData(billerid,bankname,billername,logourl);
     }
 
     @Override
@@ -68,6 +74,11 @@ public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.
 
         public void setData(int imageRes) {
             SubImage.setImageResource(imageRes);
+
+        }
+
+        public void setData(String billerid, String bankname, String billername, String logourl) {
+            Glide.with(SubImage).load(logourl).into(SubImage);
 
         }
     }

@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.recyclerItems;
 
 public class transaction_chat {
 

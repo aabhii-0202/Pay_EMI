@@ -17,5 +17,6 @@
     <color name="progress">#858585</color>
     <color name="shadow">#0F25265E</color>
     <color name="errormessagecolor">#ff40</color>
+    <color name="payment_screen">#3da27c</color>
 
 </resources>

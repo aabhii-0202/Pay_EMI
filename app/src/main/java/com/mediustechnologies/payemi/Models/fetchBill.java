@@ -2,35 +2,39 @@ package com.mediustechnologies.payemi.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mediustechnologies.payemi.DTO.fetchBillDTO;
+import com.mediustechnologies.payemi.DTO.billFetchDTO;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class fetchBill {
 
     @SerializedName("status")
     @Expose
-    private String status;
+    private int status;
 
     @SerializedName("payload")
     @Expose
-    private fetchBillDTO payload;
+    private List<billFetchDTO> payload;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public fetchBillDTO getPayload() {
+    public List<billFetchDTO> getPayload() {
         return payload;
     }
 
-    public void setPayload(fetchBillDTO payload) {
+    public void setPayload(List<billFetchDTO> payload) {
         this.payload = payload;
     }
 
@@ -40,5 +44,14 @@ public class fetchBill {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "fetchBill{" +
+                "status=" + status +
+                ", payload=" + payload +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 
 import org.json.JSONException;
@@ -19,6 +20,7 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
+    private String billerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,28 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
     }
 
     private void init(){
+
+        String url = getIntent().getStringExtra("logo");
+//        String exactness = getIntent().getStringExtra("Exactness");
+        String customer = getIntent().getStringExtra("customer");
+        String amount = getIntent().getStringExtra("amount");
+        billerName = getIntent().getStringExtra("billerName");
+
+        Glide.with(binding.bankImage).load(url).into(binding.bankImage);
+        binding.amount.setText("Rs. "+amount);
+        binding.enterAmount.setText(amount);
+        binding.customerName.setText(customer);
+        binding.billername.setText("Paying to "+billerName);
+        binding.LoanName.setText("Loan Name");
+
+//        if(exactness.equals("Exact")){
+//            binding.enterAmount.setEnabled(false);
+//        }
+
+
         binding.payButton.setOnClickListener(view ->
-//                startActivity(new Intent(context, act9paymentSuccessful.class)));
-                openRazorpay());
+//                openRazorpay());
+                nextScreen());
     }
 
 
@@ -68,12 +89,18 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
 
     @Override
     public void onPaymentSuccess(String s, PaymentData paymentData) {
-        startActivity(new Intent(context, act9paymentSuccessful.class));
+        nextScreen();
     }
 
     @Override
     public void onPaymentError(int i, String s, PaymentData paymentData) {
-        startActivity(new Intent(context, act9paymentSuccessful.class));
+        nextScreen();
+    }
+
+    private void nextScreen(){
+        Intent i = new Intent(context,act9paymentSuccessful.class);
+        i.putExtra("billerName",billerName);
+        startActivity(i);
     }
 
 

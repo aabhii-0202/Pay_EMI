@@ -13,27 +13,35 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.scratchCard.ScratchCardActivity"
+            android:name=".activities.payments.act14NetBanking"
+            android:exported="false" />
+        <activity
+            android:name=".activities.payments.act13SelectWallect"
+            android:exported="false" />
+        <activity
+            android:name=".activities.payments.act12AddNewUpi"
+            android:exported="false" />
+        <activity
+            android:name=".activities.payments.act11AddNewCard"
+            android:exported="false" />
+        <activity
+            android:name=".activities.act39payEMI_transaction_page"
+            android:exported="false" />
+        <activity
+            android:name=".activities.act34pay_EMI_Details"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.act33payEMI_home"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.payments.act35payment_Page"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".activities.act39payEMI_transaction_page"
-            android:exported="false" />
-        <activity
-            android:name=".activities.act34pay_EMI_Details"
-            android:exported="false" />
-        <activity
-            android:name=".activities.act33payEMI_home"
-            android:exported="false" />
-        <activity
-            android:name=".activities.act35payment_Page"
-            android:exported="false" />
         <activity
             android:name=".activities.act40transaction_Details"
             android:exported="false" />
@@ -62,7 +70,7 @@
             android:name=".activities.act8payEMI"
             android:exported="false" />
         <activity
-            android:name=".activities.act6addLoadAccount"
+            android:name=".activities.act6InputParameterFeilds"
             android:exported="false" />
         <activity
             android:name=".activities.act5BankSubCategories"

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.payments.act11AddNewCard">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-46dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/gtwalsheim_pro_medium"
+                    android:text="Add New Card"
+                    android:textColor="@color/grey2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f4f6f8">
+
+                <ImageView
+                    android:id="@+id/billerimage"
+                    android:layout_width="23dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/b2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/car"
+                    app:layout_constraintBottom_toBottomOf="@+id/billerimage"
+                    app:layout_constraintStart_toEndOf="@+id/billerimage"
+                    app:layout_constraintTop_toTopOf="@+id/billerimage" />
+
+                <TextView
+                    android:id="@+id/pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:fontFamily="@font/gtwalsheim_pro_regular"
+                    android:text="Pending Amount"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/gtwalsheim_pro_bold"
+                    android:text="Rs.13,000"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/pending"
+                    app:layout_constraintTop_toBottomOf="@+id/pending" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Card Number"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/cardnumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Your Card Number"
+                android:maxLength="16"
+                android:background="@drawable/addcard_boxbg"
+                android:layout_marginTop="8dp"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textSize="13sp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/HintColor"
+                android:layout_marginStart="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Name on Card"
+                android:textColor="@color/grey"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/cardholdername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Card Holder's name"
+                android:background="@drawable/addcard_boxbg"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="13sp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:textColor="@color/black"
+                android:textColorHint="@color/HintColor"
+                android:layout_marginStart="16dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:text="Valid Through"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/expirydate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/addcard_boxbg"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:hint="MM/YY"
+                        android:inputType="text"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/HintColor"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    app:layout_goneMarginStart="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/guideline"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:text="CVV"
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/cvv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/addcard_boxbg"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:inputType="numberPassword"
+                        android:maxLength="3"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/HintColor"
+                        android:textSize="13sp" />
+
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/grey"
+                android:foregroundTint="@color/payment_screen"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:textSize="13sp"
+                android:text="Securely Save card Details"
+                android:id="@+id/securelysave"/>
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/proceedtopayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Proceed To Payment"
+                android:textColor="@color/white"
+                android:background="@drawable/add_card_background"
+                android:textSize="19sp"
+                android:letterSpacing="0"
+                android:layout_marginHorizontal="16dp"
+                android:textAllCaps="false"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,9 @@ import com.mediustechnologies.payemi.Models.sendOTPResponse;
 import com.mediustechnologies.payemi.Models.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
+import com.mediustechnologies.payemi.activities.act4BankList;
 import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
@@ -36,6 +38,9 @@ public class act32verifyNumber extends AppCompatActivity {
         binding = ActivityVerifyNumberBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        String s = getIntent().getStringExtra("otp");
+        Toast.makeText(context, "OTP: "+s, Toast.LENGTH_LONG).show();
         init();
         countdown();
 
@@ -94,20 +99,39 @@ public class act32verifyNumber extends AppCompatActivity {
         String otp = binding.OTPpinView.getText().toString();
         if(otp.length()==4){
             {
-                startActivity(new Intent(this, act33payEMI_home.class));
+
                 Call<verifyOTPresponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone, otp);
 
 
                 call.enqueue(new Callback<verifyOTPresponse>() {
                     @Override
                     public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
-                        if (response.code() == 400) {
-                            Log.d("tag", response.toString());
-                        } else if (response.code() == 200) {
+                        if (response.code() == 200) {
+
+                            utils.access_token= "Bearer "+response.body().getAccess_token();
+                            utils.refresh_token= response.body().getRefresh_token();
+                            utils.phone=phone;
+                            utils.profileId = response.body().getId();
+
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
+                            preferences.edit().putString("token", "Bearer "+response.body().getAccess_token()).apply();
+                            preferences.edit().putString("profileid",response.body().getId()).apply();
+                            if(getIntent().getBooleanExtra("newUser",true)){
+                                Intent i = new Intent(context, act4BankList.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }else {
+                                Intent i = new Intent(context, act33payEMI_home.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }
+                        }else if(response.code()==400){
+                            Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
                         }
-//                        startActivity(new Intent(context, act33payEMI_home.class));
+                        else{
+                            Log.d("tag",response.code()+"");
+                        }
                     }
 
                     @Override

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".activities.act6addLoadAccount">
+    tools:context=".activities.act6InputParameterFeilds">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
@@ -67,93 +67,13 @@
             android:src="@drawable/axisfinance2"
             android:layout_gravity="start"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:text="Loan Account Number"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/loanaccountnumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView1"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/input_box_layout"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:hint="Enter Your Loan Account Number"
-                android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/HintColor"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/error_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loanaccountnumber"
-                android:layout_marginTop="8dp"
-                android:padding="2dp"
-                android:text="Enter valid loan account number."
-                android:textColor="@color/errormessagecolor"
-                android:textSize="13sp"
-                android:visibility="gone" />
-
-
-
-        </RelativeLayout>
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/inputparmsrecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:text="Mobile Number"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/mobilenumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView2"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/input_box_layout"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:hint="Enter Your Mobile Number"
-                android:inputType="phone"
-                android:maxLength="13"
-                android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/HintColor"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/error_message2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/mobilenumber"
-                android:layout_marginTop="8dp"
-                android:padding="2dp"
-                android:text="Enter valid mobile number."
-                android:textColor="@color/errormessagecolor"
-                android:textSize="13sp"
-                android:visibility="gone" />
+            />
 
 
-        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -184,3 +104,48 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--<RelativeLayout-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content">-->
+
+<!--<TextView-->
+<!--    android:id="@+id/textView1"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginTop="24dp"-->
+<!--    android:fontFamily="@font/gtwalsheim_pro_regular"-->
+<!--    android:text="Loan Account Number"-->
+<!--    android:textColor="@color/grey"-->
+<!--    android:textSize="14sp" />-->
+
+<!--<EditText-->
+<!--    android:id="@+id/loanaccountnumber"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_below="@+id/textView1"-->
+<!--    android:layout_marginTop="8dp"-->
+<!--    android:background="@drawable/input_box_layout"-->
+<!--    android:fontFamily="@font/gtwalsheim_pro_regular"-->
+<!--    android:hint="Enter Your Loan Account Number"-->
+<!--    android:padding="16dp"-->
+<!--    android:textColor="@color/black"-->
+<!--    android:textColorHint="@color/HintColor"-->
+<!--    android:textSize="12sp" />-->
+
+<!--<TextView-->
+<!--    android:id="@+id/error_message"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_below="@+id/loanaccountnumber"-->
+<!--    android:layout_marginTop="8dp"-->
+<!--    android:padding="2dp"-->
+<!--    android:text="Enter valid loan account number."-->
+<!--    android:textColor="@color/errormessagecolor"-->
+<!--    android:textSize="13sp"-->
+<!--    android:visibility="gone" />-->
+
+
+
+<!--</RelativeLayout>-->

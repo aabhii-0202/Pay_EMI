@@ -6,18 +6,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
-import com.mediustechnologies.payemi.Models.bankListItem;
-import com.mediustechnologies.payemi.R;
+
+import com.mediustechnologies.payemi.Models.getAllBanks;
+import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class act4BankList extends AppCompatActivity {
 
     private ActivityBankListBinding binding;
-    private List<bankListItem> banklist;
+    private List<getAllBanks> banklist;
     private GridLayoutManager gridLayoutManager ;
     private bankListAdapter adapter;
     private final Context context = this;
@@ -30,30 +38,49 @@ public class act4BankList extends AppCompatActivity {
 
         init();
 
-        addDummmyItemsInRecyclerView();
-        initRecyclerView();
-
-
-
-    }
-
-    private void addDummmyItemsInRecyclerView() {
-        banklist = new ArrayList<>();
-
-        banklist.add(new bankListItem(R.drawable.b1,"Axis Bank"));
-        banklist.add(new bankListItem(R.drawable.b2,"HDFC Bank"));
-        banklist.add(new bankListItem(R.drawable.b3,"SBI"));
-        banklist.add(new bankListItem(R.drawable.b4,"Kotak Bank"));
-        banklist.add(new bankListItem(R.drawable.b5,"Bank of Baroda"));
-        banklist.add(new bankListItem(R.drawable.b6,"City Bank"));
-        banklist.add(new bankListItem(R.drawable.b7,"HSBC Bank"));
-        banklist.add(new bankListItem(R.drawable.b8,"Edelweiss Bank"));
-        banklist.add(new bankListItem(R.drawable.b9,"ICICI Bank"));
+        addItemsInRecyclerView();
 
 
 
 
     }
+
+
+    private void addItemsInRecyclerView() {
+
+
+        Log.d("tag","Access Token Saved in Utils "+utils.access_token);
+        Call<List<getAllBanks>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getAllBanks(utils.access_token);
+
+        call.enqueue(new Callback<List<getAllBanks>>() {
+            @Override
+            public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
+
+                if(response.code()==200&&response.isSuccessful()&&response.body()!=null) {
+//                    Log.d("tag", "setdata: "+banklist.toString());
+                    banklist  = response.body();
+                    initRecyclerView();
+                }
+                if(response.code()==400){
+                    Log.d("tag","Error code 400 on fetch bill. \"errorCode\": \"BOU001\",");
+                }
+                else{
+                    Log.d("tag", "Get BankList onResponse: "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<getAllBanks>> call, Throwable t) {
+                Log.d("tag","Failed"+t.toString());
+            }
+        });
+
+
+
+
+    }
+
+
 
     private void initRecyclerView() {
         RecyclerView bankRecyclerView = binding.listOfBanks;
@@ -65,7 +92,11 @@ public class act4BankList extends AppCompatActivity {
         adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(context ,position +" posion item clicked", Toast.LENGTH_SHORT).show();
+                //on item click listner
+                Intent i = new Intent(context,act5BankSubCategories.class);
+                i.putExtra("name",banklist.get(position).getBank_name());
+                i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
+                startActivity(i);
             }
         });
 
@@ -77,9 +108,7 @@ public class act4BankList extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.bharatBillLogo.setOnClickListener(view -> {
-            startActivity(new Intent(this, act5BankSubCategories.class));
-        });
+
 
 
 
