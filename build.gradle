@@ -19,9 +19,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        flatDir {
-            dirs 'libs'
-        }
+        jcenter()
         maven {
             url 'https://maven.google.com/'
             name 'Google'

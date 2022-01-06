@@ -8,10 +8,6 @@ import android.os.Bundle;
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.mediustechnologies.payemi.commons.constants;
-import com.razorpay.Checkout;
 import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultWithDataListener;
 
@@ -59,7 +55,7 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
     }
 
 
-
+/*
     private void openRazorpay(){
 
         Checkout checkout = new Checkout();
@@ -84,7 +80,7 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
         }
 
 
-    }
+    }*/
 
 
     @Override

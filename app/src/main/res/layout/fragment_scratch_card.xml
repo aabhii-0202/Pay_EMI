@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+<!--
     <com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout
         android:id="@+id/scratchCard"
         android:layout_width="250dp"
@@ -47,7 +47,7 @@
 
 
         </LinearLayout>
-    </com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout>
+    </com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout>-->
 
 
 </LinearLayout>

@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- below code for razorpay -->
-        <receiver
+        <!--<receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">
             <intent-filter>
@@ -110,7 +110,7 @@
                     android:host="rzp.io"
                     android:scheme="io.rzp" />
             </intent-filter>
-        </activity>
+        </activity>-->
 
         <meta-data
             android:name="preloaded_fonts"
