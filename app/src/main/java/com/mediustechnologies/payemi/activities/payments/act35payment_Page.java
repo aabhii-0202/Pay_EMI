@@ -1,7 +1,6 @@
 package com.mediustechnologies.payemi.activities.payments;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,5 +27,9 @@ public class act35payment_Page extends AppCompatActivity {
         binding.paywithcard.setOnClickListener(view -> startActivity(new Intent(context, act11AddNewCard.class)));
         binding.paywithupi.setOnClickListener(view -> startActivity(new Intent(context, act12AddNewUpi.class)));
         binding.paywithwallet.setOnClickListener(view -> startActivity(new Intent(context, act13SelectWallect.class)));
+        binding.paywithnetbanking.setOnClickListener(view -> startActivity(new Intent(context, act14NetBanking.class)));
+
+
+
     }
 }

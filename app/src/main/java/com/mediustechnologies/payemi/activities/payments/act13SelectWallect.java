@@ -8,6 +8,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.WalletAdapter;
@@ -53,7 +54,7 @@ public class act13SelectWallect extends AppCompatActivity {
 
             @Override
             public void onItemClick(int position) {
-                Log.d("tag","Link wallet "+walletItem.get(position).getWalletname());
+                Toast.makeText(context, "Link "+walletItem.get(position).getWalletname()+" wallet.", Toast.LENGTH_SHORT).show();
             }
         });
 
