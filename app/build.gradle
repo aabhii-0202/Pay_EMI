@@ -41,10 +41,10 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     //razorpay
     implementation 'com.razorpay:checkout:1.6.15'
-//    implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation(name:'razorpay-android-3.8.8', ext: 'aar')
-//    implementation 'com.androidx.support:customtabs:26.1.0'
-//    implementation(name: 'tez-client-api-0.9.4', ext: 'aar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation(name:'razorpay-android-3.8.8', ext: 'aar')
+    implementation 'com.androidx.support:customtabs:26.1.0'
+    implementation(name: 'tez-client-api-0.9.4', ext: 'aar')
 
 
     implementation 'androidx.appcompat:appcompat:1.4.0'
