@@ -1,6 +1,7 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.view.View;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.scratchCard.fragment.DemoFragment;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -172,6 +174,11 @@ public class act9paymentSuccessful extends AppCompatActivity {
                 d.setContentView(R.layout.scratchcardlayout);
                 d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 d.show();
+
+                com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard);
+                card.setRevealFullAtPercent(10);
+
+
             }
         });
     }

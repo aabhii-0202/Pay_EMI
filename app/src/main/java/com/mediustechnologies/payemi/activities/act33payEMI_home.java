@@ -101,8 +101,14 @@ public class act33payEMI_home extends AppCompatActivity {
                 if(response.code()==200&&response.body()!=null){
                     data = response.body();
                     setData();
-
-                    Log.d("tag","-->>"+data.get(0).toString());
+                    try {
+                        Toast.makeText(context, "No EMI added to our database.", Toast.LENGTH_SHORT).show();
+                        Log.d("tag", "-->>" + data.get(0).toString());
+                    }catch (Exception e){
+                        Log.d("tag","New User");
+                        startActivity(new Intent(context,act4BankList.class));
+                        
+                    }
 
                 }else {
                     Log.d("tag","Home "+response.code());

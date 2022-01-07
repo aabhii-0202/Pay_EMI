@@ -42,6 +42,7 @@ public class SplashScreen extends AppCompatActivity {
             String phone = preferences.getString("phone","");
             String token = preferences.getString("token","");
             String id = preferences.getString("profileid","");
+            String refresh_token = preferences.getString("refresh_token","");
 
             System.out.println("Token------ "+token);
             System.out.println("Phone------ "+phone);
@@ -52,16 +53,20 @@ public class SplashScreen extends AppCompatActivity {
             call.enqueue(new Callback<ifNewUser>() {
                 @Override
                 public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
+
                     if (response.code()==200){
                         ifNewUser n = response.body();
                         assert n != null;
+
+
+
                         if (n.getNew_user().equals("true")){
                             startActivity(new Intent(context, act28onBording.class));
                         }else{
                             Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(context, act33payEMI_home.class));
                             utils.access_token= token;
-                            utils.refresh_token= "";
+                            utils.refresh_token= refresh_token;
                             utils.phone=phone;
                             utils.profileId = id;
                         }

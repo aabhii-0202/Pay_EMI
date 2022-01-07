@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,6 +78,14 @@ public class act7pay_emi_details extends AppCompatActivity {
                     setData(bill);
                     binding.progress.setVisibility(View.GONE);
 
+                }else if (response.code()==400){
+                    Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();
+                    utils.loginAgain(context,getApplicationContext());
+                    binding.progress.setVisibility(View.GONE);
+                }else if (response.code()==401){
+                    Toast.makeText(context, "Token Expired", Toast.LENGTH_LONG).show();
+                    utils.loginAgain(context,getApplicationContext());
+                    binding.progress.setVisibility(View.GONE);
                 }
             }
 

@@ -1,9 +1,11 @@
 package com.mediustechnologies.payemi.commons;
 
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
+import com.mediustechnologies.payemi.Models.RefreshTokenResponse;
 import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.Models.fetchBill;
 import com.mediustechnologies.payemi.Models.homePage;
+import com.mediustechnologies.payemi.activities.apiBody.RefreshToken;
 import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.Models.getAllBanks;
 import com.mediustechnologies.payemi.Models.ifNewUser;
@@ -47,5 +49,8 @@ public interface API {
 
     @POST("homepage/")
     Call<List<homePage>> homepage (@Header("Authorization") String token,@Query("mobile")String mobile,@Query("profile")String id);
+
+    @POST("refreshtoken/")
+    Call<RefreshTokenResponse> refreshToken (@Body RefreshToken refreshToken);
 
 }

@@ -109,12 +109,13 @@ public class act32verifyNumber extends AppCompatActivity {
                         if (response.code() == 200) {
 
                             utils.access_token= "Bearer "+response.body().getAccess_token();
-                            utils.refresh_token= response.body().getRefresh_token();
+                            utils.refresh_token= "Bearer "+response.body().getRefresh_token();
                             utils.phone=phone;
                             utils.profileId = response.body().getId();
 
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
+                            preferences.edit().putString("refresh_token", response.body().getRefresh_token()).apply();
                             preferences.edit().putString("token", "Bearer "+response.body().getAccess_token()).apply();
                             preferences.edit().putString("profileid",response.body().getId()).apply();
                             if(getIntent().getBooleanExtra("newUser",true)){
