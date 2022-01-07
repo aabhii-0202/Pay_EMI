@@ -11,12 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.mediustechnologies.payemi.Models.verifyOTPresponse;
+import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityComplaintRegistrationBinding;
-import com.mediustechnologies.payemi.Models.sendOTPResponse;
+import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

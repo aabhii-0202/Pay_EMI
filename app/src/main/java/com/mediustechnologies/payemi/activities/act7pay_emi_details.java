@@ -6,14 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.Models.fetchBill;
+import com.mediustechnologies.payemi.ApiResponse.fetchBill;
 import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -21,7 +20,6 @@ import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentInfoBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import retrofit2.Call;

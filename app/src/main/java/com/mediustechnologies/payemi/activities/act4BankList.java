@@ -7,15 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.getAllBanks;
+import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -96,6 +95,7 @@ public class act4BankList extends AppCompatActivity {
                 Intent i = new Intent(context,act5BankSubCategories.class);
                 i.putExtra("name",banklist.get(position).getBank_name());
                 i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
+                i.putExtra("count",banklist.get(position).getCount());
                 startActivity(i);
             }
         });

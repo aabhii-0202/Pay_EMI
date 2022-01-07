@@ -10,12 +10,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.homePage;
+import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
-import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;
 

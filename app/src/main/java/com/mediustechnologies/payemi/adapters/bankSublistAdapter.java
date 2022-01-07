@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.Models.bankSubItem;
+import com.mediustechnologies.payemi.ApiResponse.bankSubItem;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
 

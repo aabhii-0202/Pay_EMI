@@ -12,11 +12,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.ifNewUser;
+import com.mediustechnologies.payemi.ApiResponse.ifNewUser;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.login.act28onBording;
-import com.mediustechnologies.payemi.activities.login.act31signIn;
-import com.mediustechnologies.payemi.activities.payments.act11AddNewCard;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;

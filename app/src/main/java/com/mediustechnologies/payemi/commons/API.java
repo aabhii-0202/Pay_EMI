@@ -1,25 +1,11 @@
 package com.mediustechnologies.payemi.commons;
 
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
-import com.mediustechnologies.payemi.Models.RefreshTokenResponse;
-import com.mediustechnologies.payemi.Models.billDetails;
-import com.mediustechnologies.payemi.Models.fetchBill;
-import com.mediustechnologies.payemi.Models.homePage;
-import com.mediustechnologies.payemi.activities.apiBody.RefreshToken;
-import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
-import com.mediustechnologies.payemi.Models.getAllBanks;
-import com.mediustechnologies.payemi.Models.ifNewUser;
-import com.mediustechnologies.payemi.Models.inputParameterFeilds;
-import com.mediustechnologies.payemi.Models.sendOTPResponse;
-import com.mediustechnologies.payemi.Models.verifyOTPresponse;
-import com.mediustechnologies.payemi.Models.bankSubItem;
+import com.mediustechnologies.payemi.activities.apiBody.*;
+import com.mediustechnologies.payemi.ApiResponse.*;
 import java.util.List;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 public interface API {
 
@@ -53,4 +39,9 @@ public interface API {
     @POST("refreshtoken/")
     Call<RefreshTokenResponse> refreshToken (@Body RefreshToken refreshToken);
 
+    @GET("getcashback/")
+    Call<getCashback> getCashback (@Query("bill_id")String bill_id);
+
+    @POST("ScratchCard/")
+    Call<RedeemScratchCard> redeemscratch (@Header("Authorization") String token,@Query("id")String id,@Query("bill_id")String bill_id);
 }

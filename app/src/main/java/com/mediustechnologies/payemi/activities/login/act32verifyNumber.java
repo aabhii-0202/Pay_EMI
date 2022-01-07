@@ -10,8 +10,8 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.sendOTPResponse;
-import com.mediustechnologies.payemi.Models.verifyOTPresponse;
+import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
+import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.act33payEMI_home;
 import com.mediustechnologies.payemi.activities.act4BankList;

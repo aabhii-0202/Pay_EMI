@@ -1,25 +1,27 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
+import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
-import com.mediustechnologies.payemi.Models.billDetails;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.scratchCard.fragment.DemoFragment;
+import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
+import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
-import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
@@ -152,6 +154,8 @@ public class act9paymentSuccessful extends AppCompatActivity {
                 if (response.code() == 200 && response.body() != null) {
                     billFetchDTO data = response.body().get(0);
                     setData(data);
+
+                    scratch(data);
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -165,21 +169,88 @@ public class act9paymentSuccessful extends AppCompatActivity {
         });
     }
 
-    private void init() {
-        binding.crossButton.setOnClickListener(view -> finish());
-        binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
+    private void scratch(billFetchDTO data) {
+        String bill_id = data.getId();
+        bill_id = "1";
+        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(bill_id);
+
+        call.enqueue(new Callback<getCashback>() {
             @Override
-            public void onClick(View view) {
-                Dialog d = new Dialog(context);
-                d.setContentView(R.layout.scratchcardlayout);
-                d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                d.show();
+            public void onResponse(Call<getCashback> call, Response<getCashback> response) {
+                if(response.code()==200&&response.body()!=null){
+                    String cashback = response.body().getCashback_amount();
 
-                com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard);
-                card.setRevealFullAtPercent(10);
+                    binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Dialog d = new Dialog(context);
+                            d.setContentView(R.layout.scratchcardlayout);
+                            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
+                            scratchamount.setText("Rs. "+cashback);
+                            d.show();
 
+                            com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard1);
+                            card.setScratchListener(new ScratchListener() {
+                                @Override
+                                public void onScratchStarted() {
+
+                                }
+
+                                @Override
+                                public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
+                                    if(atLeastScratchedPercent==10){
+                                        card.revealScratch();
+                                        redeem();
+                                    }
+                                }
+
+                                @Override
+                                public void onScratchComplete() {
+
+                                }
+                            });
+
+
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<getCashback> call, Throwable t) {
 
             }
         });
+
+    }
+
+    private void redeem() {
+        String id = "2";
+        String bill_id = "382";
+        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,id,bill_id);
+
+        call.enqueue(new Callback<RedeemScratchCard>() {
+            @Override
+            public void onResponse(Call<RedeemScratchCard> call, Response<RedeemScratchCard> response) {
+                if(response.code()==200&&response.body()!=null){
+                    if(response.body().getMessage().equals("Success")){
+                        Log.d("tag","Redeemed cashback successfull");
+                        Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RedeemScratchCard> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void init() {
+        binding.crossButton.setOnClickListener(view -> finish());
+
     }
 }

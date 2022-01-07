@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.ApiResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

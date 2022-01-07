@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.mediustechnologies.payemi.Models.RefreshTokenResponse;
+import com.mediustechnologies.payemi.ApiResponse.RefreshTokenResponse;
 import com.mediustechnologies.payemi.activities.apiBody.RefreshToken;
 import com.mediustechnologies.payemi.activities.login.act31signIn;
 import com.mediustechnologies.payemi.helper.RetrofitClient;

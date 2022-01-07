@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.Models;
+package com.mediustechnologies.payemi.ApiResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,13 +9,25 @@ public class getAllBanks {
     @Expose
     private String id;
 
+    @SerializedName("count")
+    @Expose
+    private String count;
+
     @SerializedName("bank_name")
     @Expose
     private String bank_name;
 
-    @SerializedName("bank_logo_url")
+    @SerializedName("biller_bank__bank_logo_url")
     @Expose
     private String bank_logo_url;
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
 
     public String getId() {
         return id;
@@ -45,6 +57,7 @@ public class getAllBanks {
     public String toString() {
         return "getAllBanks{" +
                 "id='" + id + '\'' +
+                ", count='" + count + '\'' +
                 ", bank_name='" + bank_name + '\'' +
                 ", bank_logo_url='" + bank_logo_url + '\'' +
                 '}';

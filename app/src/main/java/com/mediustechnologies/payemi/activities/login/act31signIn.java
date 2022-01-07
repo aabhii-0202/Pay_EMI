@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mediustechnologies.payemi.Models.sendOTPResponse;
+import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivitySignInBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;

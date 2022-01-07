@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-import com.mediustechnologies.payemi.Models.bankSubItem;
+import com.mediustechnologies.payemi.ApiResponse.bankSubItem;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;
@@ -61,6 +61,19 @@ public class act5BankSubCategories extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        String count = getIntent().getStringExtra("count");
+        try {
+            if (count.equals("1")) {
+                Intent i = new Intent(context, act6InputParameterFeilds.class);
+                i.putExtra("url", bankSubList.get(0).getLogo_url());
+                i.putExtra("biller_id", bankSubList.get(0).getBillerId());
+                i.putExtra("biller_name", bankSubList.get(0).getBillerName());
+                startActivity(i);
+            }
+        }catch (Exception e){
+
+        }
 
 
     }
