@@ -7,6 +7,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+
 public interface API {
 
     @POST("sendotp/")
@@ -44,4 +45,9 @@ public interface API {
 
     @POST("ScratchCard/")
     Call<RedeemScratchCard> redeemscratch (@Header("Authorization") String token,@Query("id")String id,@Query("bill_id")String bill_id);
+
+    @GET("alltransactions/")
+    Call<List<TransactionDetails>> allTransaction (@Header("Authorization") String token, @Query("id") String id, @Query("biller_id") String biller_id);
+
+
 }
