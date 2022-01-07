@@ -93,6 +93,7 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/checkbox_addcard.xml" value="0.275" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/complaint_box.xml" value="0.11944444444444445" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/ic_datevector.xml" value="0.12685185185185185" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/ic_scratch_card.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_act11_add_new_card.xml" value="0.40520833333333334" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_act12_add_new_upi.xml" value="0.2972222222222222" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_add_load_account.xml" value="0.22916666666666666" />
@@ -116,6 +117,8 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/input_params_recycler_item.xml" value="0.1" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/net_banking_list.xml" value="0.3625" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/scratch_card_layout.xml" value="0.1" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/scratchcardlayout.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/transaction_page_scratchcard_item.xml" value="0.3625" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/wallet_list.xml" value="0.34444444444444444" />
       </map>

@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.Models.billDetails;
+import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -161,5 +165,14 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private void init() {
         binding.crossButton.setOnClickListener(view -> finish());
+        binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog d = new Dialog(context);
+                d.setContentView(R.layout.scratchcardlayout);
+                d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                d.show();
+            }
+        });
     }
 }

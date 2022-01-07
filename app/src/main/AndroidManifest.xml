@@ -13,6 +13,26 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.scratchCard.ScratchCardActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".activities.act9paymentSuccessful"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".activities.payments.act14NetBanking"
             android:exported="false" />
         <activity
@@ -35,13 +55,7 @@
             android:exported="false"/>
         <activity
             android:name=".activities.payments.act35payment_Page"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.act40transaction_Details"
             android:exported="false" />
@@ -63,9 +77,7 @@
         <activity
             android:name=".activities.act12complaintRegistration"
             android:exported="false" />
-        <activity
-            android:name=".activities.act9paymentSuccessful"
-            android:exported="false" />
+
         <activity
             android:name=".activities.act8payEMI"
             android:exported="false" />
@@ -89,7 +101,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- below code for razorpay -->
+        </activity>
+
+
+
+        <!-- below code for razorpay -->
         <!--<receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">
