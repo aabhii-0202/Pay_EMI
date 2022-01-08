@@ -102,14 +102,6 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="₹"
-                android:layout_gravity="center_vertical"
-                android:textSize="32sp"
-                android:textColor="@color/grey"/>
-
 
         <TextView
             android:id="@+id/paidAmount"
@@ -121,7 +113,7 @@
             android:background="@drawable/amount_box"
             android:fontFamily="@font/gilroy_light"
             android:padding="5dp"
-            android:text="14,288"
+            android:text="₹ 14,288"
             android:textColor="@color/black"
             android:textSize="60sp" />
         </LinearLayout>

@@ -221,7 +221,9 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
                                 @Override
                                 public void onScratchComplete() {
-
+                                    card.revealScratch();
+                                    scratched = true;
+                                    redeem(finalBill_id);
                                 }
                             });
 

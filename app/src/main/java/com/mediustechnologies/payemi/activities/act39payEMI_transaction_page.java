@@ -47,7 +47,8 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
         String biller_id = "OU12LO000NATGJ";
         int id =2;
-        String token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNjYzMzE2LCJpYXQiOjE2NDE1NzY5MTYsImp0aSI6IjY0NjMxMmM2YzNmOTQ3ZDE4ZDRhMTFlMWZiOTIwZDIzIiwidXNlcl9pZCI6NH0.CeUQTysLO8oU0e9Djby3tbjgSkuuNOBAZCqF0dGpDAw";
+        String token = utils.access_token;
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNjYzMzE2LCJpYXQiOjE2NDE1NzY5MTYsImp0aSI6IjY0NjMxMmM2YzNmOTQ3ZDE4ZDRhMTFlMWZiOTIwZDIzIiwidXNlcl9pZCI6NH0.CeUQTysLO8oU0e9Djby3tbjgSkuuNOBAZCqF0dGpDAw";
 
         Call<List<TransactionDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().allTransaction(token,id,biller_id);
 
@@ -82,23 +83,40 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
         for(int i=0;i<data.size();i++){
             String date = data.get(i).getTransaction_datetime();
+            date = formatdate(date);
 
-            if(data.get(i).getType().equals("transaction"))
-                chatlist.add(new transaction_chat(data.get(i).getBiller_name(),"not in api",data.get(i).getAmount(),date,null));
-            else {
-                if(data.get(i).getIs_redeemed().equals("false")){
-                    chatlist.add(new transaction_chat("Scratch Now", "Earn a reward!", "", null, null));
-                }else{
-                    chatlist.add(new transaction_chat(data.get(i).getAmount(), "You earned a reward!", "", null, null));
-                }
+            TransactionDetails item = data.get(i);
+            String status = item.getBbps_transaction_status();
+            if(status!=null){
+                if(status.equals("Successful")){
+                    date = "  Failed | "+date;
+                }else date = "  Paid | "+date;
             }
+
+
+            chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));
         }
         initrecyclerview();
-//        chatlist.add(new transaction_chat(null, null, null, null, "15 Oct 6:24PM"));                                  //for date line
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));  // tansaction
-//        chatlist.add(new transaction_chat("Scratch Now","Earn a reward!","",null,null));                              // scratch card
-//        chatlist.add(new transaction_chat("Rs. 140","You earned a reward!","",null,null));                            // scratch card
 
+    }
+
+    private String formatdate(String date) {
+        String ans ="";
+        String day = date.substring(8,10);
+        ans+=day+" ";
+        String month = date.substring(5,7);
+        String months[] = {
+          "Jan","Feb","Mar","Apr","May","June","July","Aug","Sep",
+          "Oct","Nov","Dec"
+        };
+
+        int m = Integer.parseInt(month);
+        try {
+            ans += months[m - 1];
+        }catch (Exception e){
+            ans = "Error finding month";
+        }
+        return ans;
     }
 
     private void initrecyclerview(){

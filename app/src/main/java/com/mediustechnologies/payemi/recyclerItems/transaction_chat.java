@@ -1,23 +1,16 @@
 package com.mediustechnologies.payemi.recyclerItems;
 
 public class transaction_chat {
+    String name,loanname,amount,status,date,redeemed,type;
 
-    private String name,loan_name,amount,status_date,dateline;
-
-    public transaction_chat(String name, String loan_name, String amount, String status_date,String dateline) {
+    public transaction_chat(String name, String loanname, String amount, String status, String date, String redeemed, String type) {
         this.name = name;
-        this.loan_name = loan_name;
+        this.loanname = loanname;
         this.amount = amount;
-        this.status_date = status_date;
-        this.dateline=dateline;
-    }
-
-    public String getDateline() {
-        return dateline;
-    }
-
-    public void setDateline(String dateline) {
-        this.dateline = dateline;
+        this.status = status;
+        this.date = date;
+        this.redeemed = redeemed;
+        this.type = type;
     }
 
     public String getName() {
@@ -28,12 +21,12 @@ public class transaction_chat {
         this.name = name;
     }
 
-    public String getLoan_name() {
-        return loan_name;
+    public String getLoanname() {
+        return loanname;
     }
 
-    public void setLoan_name(String loan_name) {
-        this.loan_name = loan_name;
+    public void setLoanname(String loanname) {
+        this.loanname = loanname;
     }
 
     public String getAmount() {
@@ -44,11 +37,35 @@ public class transaction_chat {
         this.amount = amount;
     }
 
-    public String getStatus_date() {
-        return status_date;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatus_date(String status_date) {
-        this.status_date = status_date;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getRedeemed() {
+        return redeemed;
+    }
+
+    public void setRedeemed(String redeemed) {
+        this.redeemed = redeemed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
