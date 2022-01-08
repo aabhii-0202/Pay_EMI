@@ -16,6 +16,10 @@ import retrofit2.Response;
 
 public class utils {
     public static String access_token,refresh_token,phone,profileId;
+    public static final int RESPONSE_SUCCESS = 200;
+    public static final int INTERNAL_SERVER_ERROR = 500;
+    public static final int MOT_FOUND = 404;
+
 
     public static void loginAgain(Context activitycontext,Context application){
         SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);

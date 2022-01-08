@@ -38,6 +38,9 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
+    private String cashback;
+    private boolean scratched;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,17 +148,18 @@ public class act9paymentSuccessful extends AppCompatActivity {
     private void getbilldetails() {
         String bill_id =  "395";
         String token = utils.access_token;
+        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
 
         Call<List<billFetchDTO>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
         call.enqueue(new Callback<List<billFetchDTO>>() {
             @Override
             public void onResponse(Call<List<billFetchDTO>> call, Response<List<billFetchDTO>> response) {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     billFetchDTO data = response.body().get(0);
                     setData(data);
 
-                    scratch(data);
+                    scratch(data,412);
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -169,20 +173,26 @@ public class act9paymentSuccessful extends AppCompatActivity {
         });
     }
 
-    private void scratch(billFetchDTO data) {
-        String bill_id = data.getId();
-        bill_id = "1";
-        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(bill_id);
+    private void scratch(billFetchDTO data,int bill_id) {
+//        int bill_id = Integer.parseInt(data.getId());
+//        bill_id = 411;
+        String token = utils.access_token;
+        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
+        String profileid = "2";
 
+        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(token,bill_id,profileid);
+
+        int finalBill_id = bill_id;
         call.enqueue(new Callback<getCashback>() {
             @Override
             public void onResponse(Call<getCashback> call, Response<getCashback> response) {
-                if(response.code()==200&&response.body()!=null){
-                    String cashback = response.body().getCashback_amount();
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
+                    cashback = response.body().getCashback_amount();
 
                     binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(!scratched){
                             Dialog d = new Dialog(context);
                             d.setContentView(R.layout.scratchcardlayout);
                             d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -199,9 +209,10 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
                                 @Override
                                 public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
-                                    if(atLeastScratchedPercent==10){
+                                    if(atLeastScratchedPercent==5){
                                         card.revealScratch();
-                                        redeem();
+                                        scratched = true;
+                                        redeem(finalBill_id);
                                     }
                                 }
 
@@ -212,9 +223,23 @@ public class act9paymentSuccessful extends AppCompatActivity {
                             });
 
 
+                        }else{
+                                Dialog d = new Dialog(context);
+                                d.setContentView(R.layout.already_redeemed_scratchcard);
+                                d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
+                                scratchamount.setText("Rs. "+cashback);
+                                d.show();
+                            }
                         }
                     });
 
+                }else if(response.code()==utils.INTERNAL_SERVER_ERROR){
+                    int a = finalBill_id+1;
+                    scratch(data,a);
+                }
+                else{
+                    Log.d("tag","Get Cashback:  "+response.code());
                 }
             }
 
@@ -226,9 +251,11 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     }
 
-    private void redeem() {
+    private void redeem(int bill_id) {
         String id = "2";
-        String bill_id = "382";
+//        int bill_id = "384";
+        String token = utils.access_token;
+        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
         Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,id,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
@@ -240,6 +267,9 @@ public class act9paymentSuccessful extends AppCompatActivity {
                         Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
                     }
                 }
+                else{
+
+                }
             }
 
             @Override
@@ -250,6 +280,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
     }
 
     private void init() {
+        scratched = false;
         binding.crossButton.setOnClickListener(view -> finish());
 
     }

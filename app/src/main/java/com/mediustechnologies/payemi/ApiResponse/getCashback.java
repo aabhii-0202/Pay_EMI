@@ -8,6 +8,18 @@ public class getCashback {
     @Expose
     private String cashback_amount;
 
+    @SerializedName("id")
+    @Expose
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCashback_amount() {
         return cashback_amount;
     }

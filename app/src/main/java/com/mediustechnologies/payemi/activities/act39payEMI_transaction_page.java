@@ -46,7 +46,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
     private void getAllTransaction() {
 
         String biller_id = "OU12LO000NATGJ";
-        String id ="2";
+        int id =2;
         String token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNjYzMzE2LCJpYXQiOjE2NDE1NzY5MTYsImp0aSI6IjY0NjMxMmM2YzNmOTQ3ZDE4ZDRhMTFlMWZiOTIwZDIzIiwidXNlcl9pZCI6NH0.CeUQTysLO8oU0e9Djby3tbjgSkuuNOBAZCqF0dGpDAw";
 
         Call<List<TransactionDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().allTransaction(token,id,biller_id);
@@ -59,7 +59,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
                 if(response.code()==200&&response.body()!=null) {
                     List<TransactionDetails> data = response.body();
-                    adddata(data);
+                    addata(data);
 
                 }else {
                     Toast.makeText(context, "Response "+response.code(), Toast.LENGTH_SHORT).show();
@@ -76,7 +76,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
     }
 
-    private void adddata(List<TransactionDetails> data) {
+    private void addata(List<TransactionDetails> data) {
 
         chatlist = new ArrayList<>();
 
@@ -92,25 +92,12 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
                     chatlist.add(new transaction_chat(data.get(i).getAmount(), "You earned a reward!", "", null, null));
                 }
             }
-
-
-
         }
         initrecyclerview();
-//        chatlist.add(new transaction_chat(null, null, null, null, "15 Oct 6:24PM"));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));
-//
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));
-//
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank","Car Loan","₹ 14,288","  Paid | 15 Oct",null));
-//        chatlist.add(new transaction_chat("Scratch Now","Earn a reward!","",null,null));
-//        chatlist.add(new transaction_chat(null,null,null,null,"18 Oct 6:24PM"));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank","Car Loan","₹ 14,288","  Paid | 15 Oct",null));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank","Car Loan","₹ 14,288","  Paid | 15 Oct",null));
-//        chatlist.add(new transaction_chat("Rs. 140","You earned a reward!","",null,null));
-//        chatlist.add(new transaction_chat("Payment to HDFC Bank","Car Loan","₹ 14,288","  Paid | 15 Oct",null));
+//        chatlist.add(new transaction_chat(null, null, null, null, "15 Oct 6:24PM"));                                  //for date line
+//        chatlist.add(new transaction_chat("Payment to HDFC Bank", "Car Loan", "₹ 14,288", "  Paid | 15 Oct", null));  // tansaction
+//        chatlist.add(new transaction_chat("Scratch Now","Earn a reward!","",null,null));                              // scratch card
+//        chatlist.add(new transaction_chat("Rs. 140","You earned a reward!","",null,null));                            // scratch card
 
     }
 
