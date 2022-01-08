@@ -89,8 +89,8 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
             String status = item.getBbps_transaction_status();
             if(status!=null){
                 if(status.equals("Successful")){
-                    date = "  Failed | "+date;
-                }else date = "  Paid | "+date;
+                    date = "  Paid | "+date;
+                }else date = "  Failed | "+date;
             }
 
 

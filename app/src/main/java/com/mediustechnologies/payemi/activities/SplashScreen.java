@@ -60,6 +60,7 @@ public class SplashScreen extends AppCompatActivity {
 
                         if (n.getNew_user().equals("true")){
                             startActivity(new Intent(context, act28onBording.class));
+                            finish();
                         }else{
                             Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(context, act33payEMI_home.class));
@@ -67,11 +68,14 @@ public class SplashScreen extends AppCompatActivity {
                             utils.refresh_token= refresh_token;
                             utils.phone=phone;
                             utils.profileId = id;
+                            finish();
+
                         }
                     }
                     else {
                         Log.d("tag","Check if new: "+response.message());
                         startActivity(new Intent(context, act28onBording.class));
+                        finish();
                     }
                 }
 
@@ -81,7 +85,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
             });
 
-            finish();
+
         },2000);
 
 
