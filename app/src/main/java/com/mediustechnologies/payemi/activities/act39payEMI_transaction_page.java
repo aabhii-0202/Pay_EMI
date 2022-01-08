@@ -57,7 +57,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
                 System.out.println(response.body().toString());
 
-                if(response.code()==200&&response.body()!=null) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     List<TransactionDetails> data = response.body();
                     addata(data);
 

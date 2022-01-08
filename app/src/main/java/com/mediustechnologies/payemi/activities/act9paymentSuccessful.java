@@ -148,7 +148,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
     private void getbilldetails() {
         String bill_id =  "395";
         String token = utils.access_token;
-        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
 
         Call<List<billFetchDTO>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
@@ -159,7 +159,10 @@ public class act9paymentSuccessful extends AppCompatActivity {
                     billFetchDTO data = response.body().get(0);
                     setData(data);
 
-                    scratch(data,412);
+
+
+
+                    scratch(data,420);
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -177,7 +180,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
 //        int bill_id = Integer.parseInt(data.getId());
 //        bill_id = 411;
         String token = utils.access_token;
-        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
         String profileid = "2";
 
         Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(token,bill_id,profileid);
@@ -255,20 +258,20 @@ public class act9paymentSuccessful extends AppCompatActivity {
         String id = "2";
 //        int bill_id = "384";
         String token = utils.access_token;
-        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
-        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,id,bill_id);
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
+        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,id,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override
             public void onResponse(Call<RedeemScratchCard> call, Response<RedeemScratchCard> response) {
-                if(response.code()==200&&response.body()!=null){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     if(response.body().getMessage().equals("Success")){
                         Log.d("tag","Redeemed cashback successfull");
                         Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
                     }
                 }
                 else{
-
+                    System.out.println(response.code());
                 }
             }
 

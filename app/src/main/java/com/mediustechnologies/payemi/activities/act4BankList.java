@@ -55,7 +55,7 @@ public class act4BankList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<getAllBanks>> call, Response<List<getAllBanks>> response) {
 
-                if(response.code()==200&&response.isSuccessful()&&response.body()!=null) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.isSuccessful()&&response.body()!=null) {
 //                    Log.d("tag", "setdata: "+banklist.toString());
                     banklist  = response.body();
                     initRecyclerView();

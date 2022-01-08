@@ -49,7 +49,7 @@ public class act6InputParameterFeilds extends AppCompatActivity {
         call.enqueue(new Callback<inputParameterFeilds>() {
             @Override
             public void onResponse(Call<inputParameterFeilds> call, Response<inputParameterFeilds> response) {
-                if(response.code()==200){
+                if(response.code()==utils.RESPONSE_SUCCESS){
                     inputParameterFeilds inputParameterFeilds = response.body();
 
                     String s = inputParameterFeilds.toString();

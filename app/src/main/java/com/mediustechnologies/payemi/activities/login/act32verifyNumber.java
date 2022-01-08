@@ -106,7 +106,7 @@ public class act32verifyNumber extends AppCompatActivity {
                 call.enqueue(new Callback<verifyOTPresponse>() {
                     @Override
                     public void onResponse(Call<verifyOTPresponse> call, Response<verifyOTPresponse> response) {
-                        if (response.code() == 200) {
+                        if (response.code() == utils.RESPONSE_SUCCESS) {
 
                             utils.access_token= "Bearer "+response.body().getAccess_token();
                             utils.refresh_token= "Bearer "+response.body().getRefresh_token();

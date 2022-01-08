@@ -37,7 +37,7 @@ public class utils {
             @Override
             public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {
 
-                if(response.code()==200&&response.body()!=null){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     String t = response.body().toString();
                     Log.d("tag","refresh token: "+t);
                 }

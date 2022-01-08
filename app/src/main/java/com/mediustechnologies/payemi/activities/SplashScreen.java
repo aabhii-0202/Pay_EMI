@@ -52,7 +52,7 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
 
-                    if (response.code()==200){
+                    if (response.code()==utils.RESPONSE_SUCCESS){
                         ifNewUser n = response.body();
                         assert n != null;
 

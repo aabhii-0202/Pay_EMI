@@ -97,7 +97,7 @@ public class act33payEMI_home extends AppCompatActivity {
         call.enqueue(new Callback<List<homePage>>() {
             @Override
             public void onResponse(Call<List<homePage>> call, Response<List<homePage>> response) {
-                if(response.code()==200&&response.body()!=null){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     data = response.body();
                     setData();
                     try {

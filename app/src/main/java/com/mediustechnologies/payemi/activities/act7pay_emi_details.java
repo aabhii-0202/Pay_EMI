@@ -68,7 +68,7 @@ public class act7pay_emi_details extends AppCompatActivity {
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==200&&response.body()!=null){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     fetchBill bill = response.body();
 
                     binding.payNow.setVisibility(View.VISIBLE);
@@ -82,8 +82,8 @@ public class act7pay_emi_details extends AppCompatActivity {
                     binding.progress.setVisibility(View.GONE);
                 }else if (response.code()==401){
                     Toast.makeText(context, "Token Expired", Toast.LENGTH_LONG).show();
-                    utils.loginAgain(context,getApplicationContext());
                     binding.progress.setVisibility(View.GONE);
+                    finish();
                 }
             }
 

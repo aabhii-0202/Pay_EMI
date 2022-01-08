@@ -88,7 +88,7 @@ public class act5BankSubCategories extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<bankSubItem>> call, Response<List<bankSubItem>> response) {
 
-                if(response.code()==200){
+                if(response.code()==utils.RESPONSE_SUCCESS){
                     bankSubList = response.body();
                     initRecyclerView();
                 }
