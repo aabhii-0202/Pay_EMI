@@ -29,7 +29,7 @@ public interface API {
     Call<List<bankSubItem>> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);
 
     @GET("ifnew/")
-    Call<ifNewUser> checkfornewUser(@Header("Authorization")String token,@Query("phone") String phone);
+    Call<ifNewUser> checkfornewUser(@Query("phone") String phone);
 
     @GET("inputparam-fields/")
     Call<inputParameterFeilds> inputparameterfeilds (@Header("Authorization") String token,@Query("biller_id")String billerId);
@@ -41,13 +41,13 @@ public interface API {
     Call<RefreshTokenResponse> refreshToken (@Body RefreshToken refreshToken);
 
     @GET("getcashback/")
-    Call<getCashback> getCashback (@Header("Authorization") String token,@Query("bill_id")int bill_id,@Query("profile_id")String profile_id);
+    Call<getCashback> getCashback (@Header("Authorization") String token,@Query("bill_id")String bill_id,@Query("profile_id")String profile_id);
 
     @POST("ScratchCard/")
-    Call<RedeemScratchCard> redeemscratch (@Header("Authorization") String token,@Query("id")String id,@Query("bill_id")int bill_id);
+    Call<RedeemScratchCard> redeemscratch (@Header("Authorization") String token,@Query("id")String id,@Query("bill_id")String bill_id);
 
     @GET("alltransactions/")
-    Call<List<TransactionDetails>> allTransaction (@Header("Authorization") String token, @Query("id") int id, @Query("biller_id") String biller_id);
+    Call<List<TransactionDetails>> allTransaction (@Header("Authorization") String token, @Query("id") String id, @Query("biller_id") String biller_id);
 
 
 }

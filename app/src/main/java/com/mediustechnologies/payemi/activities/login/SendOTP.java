@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
 import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivitySignInBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
@@ -17,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act31signIn extends AppCompatActivity {
+public class SendOTP extends AppCompatActivity {
     private ActivitySignInBinding binding;
     private final Context context = this;
 
@@ -35,7 +36,6 @@ public class act31signIn extends AppCompatActivity {
 
     private void init(){
         binding.sendOTPbtn.setOnClickListener(view->{
-//            startActivity(new Intent(context, act32verifyNumber.class));
             sendOTP();
         });
 
@@ -54,12 +54,11 @@ public class act31signIn extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<sendOTPResponse> call, Response<sendOTPResponse> response) {
 
-                    if(response.code()==200)
+                    if(response.code()== utils.RESPONSE_SUCCESS&& response.body()!=null)
                     {
                         Log.d("tag", "MESSAGE: " + response.body().getMessage() + " PAYLOAD: " + response.body().getPayload());
-//                   showOtpSentDialog();
                         Toast.makeText(context, "OTP sent to " + finalPhone, Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(context, act32verifyNumber.class);
+                        Intent i = new Intent(context, CheckOTP.class);
                         i.putExtra("phone", finalPhone);
                         i.putExtra("newUser", response.body().getNew_user());
                         i.putExtra("otp", response.body().getPayload());

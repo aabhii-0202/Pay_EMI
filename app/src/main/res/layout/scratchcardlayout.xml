@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         app:scratchDrawable="@drawable/ic_scratch_card"
         app:scratchEnabled="true"
-        app:scratchRevealFullAtPercent="40"
+        app:scratchRevealFullAtPercent="10"
         app:scratchWidth="40dp">
 
         <LinearLayout

@@ -38,7 +38,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
-    private String cashback;
+    private String cashback,bill_id,profile_id;
     private boolean scratched;
 
 
@@ -146,7 +146,6 @@ public class act9paymentSuccessful extends AppCompatActivity {
     }
 
     private void getbilldetails() {
-        String bill_id =  "395";
         String token = utils.access_token;
 //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
 
@@ -162,7 +161,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
 
 
-                    scratch(data,420);
+                    scratch();
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -176,16 +175,10 @@ public class act9paymentSuccessful extends AppCompatActivity {
         });
     }
 
-    private void scratch(billFetchDTO data,int bill_id) {
-//        int bill_id = Integer.parseInt(data.getId());
-//        bill_id = 411;
-        String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
-        String profileid = "2";
+    private void scratch() {
 
-        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(token,bill_id,profileid);
+        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(utils.access_token,bill_id,profile_id);
 
-        int finalBill_id = bill_id;
         call.enqueue(new Callback<getCashback>() {
             @Override
             public void onResponse(Call<getCashback> call, Response<getCashback> response) {
@@ -212,18 +205,15 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
                                 @Override
                                 public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
-                                    if(atLeastScratchedPercent==5){
-                                        card.revealScratch();
+                                    if(atLeastScratchedPercent>9){
                                         scratched = true;
-                                        redeem(finalBill_id);
+                                        redeem();
                                     }
                                 }
 
                                 @Override
                                 public void onScratchComplete() {
-                                    card.revealScratch();
-                                    scratched = true;
-                                    redeem(finalBill_id);
+
                                 }
                             });
 
@@ -239,9 +229,6 @@ public class act9paymentSuccessful extends AppCompatActivity {
                         }
                     });
 
-                }else if(response.code()==utils.INTERNAL_SERVER_ERROR){
-                    int a = finalBill_id+1;
-                    scratch(data,a);
                 }
                 else{
                     Log.d("tag","Get Cashback:  "+response.code());
@@ -256,12 +243,12 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     }
 
-    private void redeem(int bill_id) {
-        String id = "2";
+    private void redeem() {
+
 //        int bill_id = "384";
         String token = utils.access_token;
 //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
-        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,id,bill_id);
+        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,profile_id,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override
@@ -286,6 +273,8 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private void init() {
         scratched = false;
+        bill_id = getIntent().getStringExtra("bill_id");
+        profile_id = getIntent().getStringExtra("profile_id");
         binding.crossButton.setOnClickListener(view -> finish());
 
     }

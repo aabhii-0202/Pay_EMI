@@ -55,6 +55,18 @@ public class homePage {
     @Expose
     String emi;
 
+    @SerializedName("id")
+    @Expose
+    String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getBiller__billerName() {
         return biller__billerName;
     }
@@ -166,6 +178,7 @@ public class homePage {
                 ", Amount='" + Amount + '\'' +
                 ", due_amount='" + due_amount + '\'' +
                 ", emi='" + emi + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

@@ -1,20 +1,15 @@
 package com.mediustechnologies.payemi.adapters;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.activities.act33payEMI_home;
-import com.mediustechnologies.payemi.activities.act34pay_EMI_Details;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.MyProgressBar;

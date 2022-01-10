@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act4BankList extends AppCompatActivity {
+public class BankList extends AppCompatActivity {
 
     private ActivityBankListBinding binding;
     private List<getAllBanks> banklist;
@@ -61,7 +61,7 @@ public class act4BankList extends AppCompatActivity {
                     initRecyclerView();
                 }
                 if(response.code()==400){
-                    Log.d("tag","Error code 400 on fetch bill. \"errorCode\": \"BOU001\",");
+                    Log.d("tag","Error code 400 on fetch bill. ErrorCode: BOU001");
                 }
                 else{
                     Log.d("tag", "Get BankList onResponse: "+response.code());
@@ -73,10 +73,6 @@ public class act4BankList extends AppCompatActivity {
                 Log.d("tag","Failed"+t.toString());
             }
         });
-
-
-
-
     }
 
 
@@ -88,16 +84,12 @@ public class act4BankList extends AppCompatActivity {
         bankRecyclerView.setLayoutManager(gridLayoutManager);
         adapter = new bankListAdapter(banklist);
         bankRecyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
-            @Override
-            public void onItemClick(int position) {
-                //on item click listner
-                Intent i = new Intent(context,act5BankSubCategories.class);
-                i.putExtra("name",banklist.get(position).getBank_name());
-                i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
-                i.putExtra("count",banklist.get(position).getCount());
-                startActivity(i);
-            }
+        adapter.setOnItemClickListner(position -> {
+            Intent i = new Intent(context, BillerList.class);
+            i.putExtra("name",banklist.get(position).getBank_name());
+            i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
+            i.putExtra("count",banklist.get(position).getCount());
+            startActivity(i);
         });
 
 

@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.mediustechnologies.payemi.ApiResponse.RefreshTokenResponse;
 import com.mediustechnologies.payemi.activities.apiBody.RefreshToken;
-import com.mediustechnologies.payemi.activities.login.act31signIn;
+import com.mediustechnologies.payemi.activities.login.SendOTP;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import retrofit2.Call;
@@ -16,17 +16,18 @@ import retrofit2.Response;
 
 public class utils {
     public static String access_token,refresh_token,phone,profileId;
+    public static Context application;
     public static final int RESPONSE_SUCCESS = 200;
     public static final int INTERNAL_SERVER_ERROR = 500;
-    public static final int MOT_FOUND = 404;
+    public static final int NOT_FOUND = 404;
 
 
-    public static void loginAgain(Context activitycontext,Context application){
+    public static void loginAgain(Context activitycontext){
         SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
         preferences.edit().putString("phone", "").apply();
         preferences.edit().putString("token", "Bearer ").apply();
         preferences.edit().putString("profileid","").apply();
-        activitycontext.startActivity(new Intent(activitycontext, act31signIn.class));
+        activitycontext.startActivity(new Intent(activitycontext, SendOTP.class));
     }
 
     public static void refreshToken (){
@@ -38,14 +39,17 @@ public class utils {
             public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    String t = response.body().toString();
-                    Log.d("tag","refresh token: "+t);
+                    String t = "Bearer "+response.body().toString();
+                    utils.access_token = t;
+                    SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
+                    preferences.edit().putString("refresh_token",t).apply();
+                    Log.d("tag","Refresh token: "+t);
                 }
             }
 
             @Override
             public void onFailure(Call<RefreshTokenResponse> call, Throwable t) {
-                Log.d("tag","refresh token: "+t.toString());
+                Log.d("tag","Refresh token: "+t.toString());
             }
         });
     }

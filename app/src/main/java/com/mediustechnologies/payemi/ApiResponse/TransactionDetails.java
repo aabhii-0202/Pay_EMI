@@ -1,9 +1,12 @@
 package com.mediustechnologies.payemi.ApiResponse;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TransactionDetails {
+public class TransactionDetails implements Parcelable {
 
     @SerializedName("biller_name")
     @Expose
@@ -39,6 +42,30 @@ public class TransactionDetails {
     @SerializedName("is_redeemed")
     @Expose
     String is_redeemed;
+
+    protected TransactionDetails(Parcel in) {
+        biller_name = in.readString();
+        amount = in.readString();
+        razorpay_transaction_status = in.readString();
+        bbps_transaction_status = in.readString();
+        transaction_datetime = in.readString();
+        type = in.readString();
+        profile_id = in.readString();
+        bill_id = in.readString();
+        is_redeemed = in.readString();
+    }
+
+    public static final Creator<TransactionDetails> CREATOR = new Creator<TransactionDetails>() {
+        @Override
+        public TransactionDetails createFromParcel(Parcel in) {
+            return new TransactionDetails(in);
+        }
+
+        @Override
+        public TransactionDetails[] newArray(int size) {
+            return new TransactionDetails[size];
+        }
+    };
 
     public String getBiller_name() {
         return biller_name;
@@ -125,5 +152,23 @@ public class TransactionDetails {
                 ", bill_id='" + bill_id + '\'' +
                 ", is_redeemed='" + is_redeemed + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(biller_name);
+        parcel.writeString(amount);
+        parcel.writeString(razorpay_transaction_status);
+        parcel.writeString(bbps_transaction_status);
+        parcel.writeString(transaction_datetime);
+        parcel.writeString(type);
+        parcel.writeString(profile_id);
+        parcel.writeString(bill_id);
+        parcel.writeString(is_redeemed);
     }
 }

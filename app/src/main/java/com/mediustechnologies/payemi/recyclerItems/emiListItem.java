@@ -1,8 +1,8 @@
 package com.mediustechnologies.payemi.recyclerItems;
 
 public class emiListItem {
-    private String emiAmount,Bank_Name,Loan_Name,Paid_Amount,Total_Amount;
-    private String icon;
+    private String emiAmount,Bank_Name,Loan_Name,Paid_Amount,Total_Amount,icon;
+    private int progress;
 
     public emiListItem(String emiAmount, String bank_Name, String loan_Name, String paid_Amount, String total_Amount, String icon) {
         this.emiAmount = emiAmount;
@@ -14,7 +14,7 @@ public class emiListItem {
 
     }
 
-    private int progress;
+
 
     public String getEmiAmount() {
         return emiAmount;

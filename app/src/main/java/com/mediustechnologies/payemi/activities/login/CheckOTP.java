@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
 import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.act33payEMI_home;
-import com.mediustechnologies.payemi.activities.act4BankList;
+import com.mediustechnologies.payemi.activities.DashBoard;
+import com.mediustechnologies.payemi.activities.BankList;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act32verifyNumber extends AppCompatActivity {
+public class CheckOTP extends AppCompatActivity {
 
     private ActivityVerifyNumberBinding binding;
     private final Context context = this;
@@ -109,21 +109,22 @@ public class act32verifyNumber extends AppCompatActivity {
                         if (response.code() == utils.RESPONSE_SUCCESS) {
 
                             utils.access_token= "Bearer "+response.body().getAccess_token();
-                            utils.refresh_token= "Bearer "+response.body().getRefresh_token();
+                            utils.refresh_token= response.body().getRefresh_token();
                             utils.phone=phone;
                             utils.profileId = response.body().getId();
 
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
-                            preferences.edit().putString("refresh_token", response.body().getRefresh_token()).apply();
+                            preferences.edit().putString("refresh_token", "Bearer "+response.body().getRefresh_token()).apply();
                             preferences.edit().putString("token", "Bearer "+response.body().getAccess_token()).apply();
                             preferences.edit().putString("profileid",response.body().getId()).apply();
+
                             if(getIntent().getBooleanExtra("newUser",true)){
-                                Intent i = new Intent(context, act4BankList.class);
+                                Intent i = new Intent(context, BankList.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }else {
-                                Intent i = new Intent(context, act33payEMI_home.class);
+                                Intent i = new Intent(context, DashBoard.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }
@@ -138,7 +139,7 @@ public class act32verifyNumber extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<verifyOTPresponse> call, Throwable t) {
                         Log.d("tag", "Unable to verify OTP");
-//                        startActivity(new Intent(context, act33payEMI_home.class));
+//                        startActivity(new Intent(context, DashBoard.class));
                     }
                 });
 

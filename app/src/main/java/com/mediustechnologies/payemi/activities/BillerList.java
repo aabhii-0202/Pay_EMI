@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act5BankSubCategories extends AppCompatActivity {
+public class BillerList extends AppCompatActivity {
 
     private ActivityBankSubCategoriesBinding binding;
     private RecyclerView bankSubListRecyclerview;
@@ -51,25 +51,23 @@ public class act5BankSubCategories extends AppCompatActivity {
         bankSubListRecyclerview.setLayoutManager(linearLayoutManager);
         adapter = new bankSublistAdapter(bankSubList);
         bankSubListRecyclerview.setAdapter(adapter);
-        adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
-            @Override
-            public void onItemClick(int position) {
-                Intent i = new Intent(context, act6InputParameterFeilds.class);
-                i.putExtra("url",bankSubList.get(position).getLogo_url());
-                i.putExtra("biller_id",bankSubList.get(position).getBillerId());
-                i.putExtra("biller_name",bankSubList.get(position).getBillerName());
-                startActivity(i);
-            }
+        adapter.setOnItemClickListner(position -> {
+            Intent i = new Intent(context, AddLoanAccount.class);
+            i.putExtra("url",bankSubList.get(position).getLogo_url());
+            i.putExtra("biller_id",bankSubList.get(position).getBillerId());
+            i.putExtra("biller_name",bankSubList.get(position).getBillerName());
+            startActivity(i);
         });
 
         String count = getIntent().getStringExtra("count");
         try {
             if (count.equals("1")) {
-                Intent i = new Intent(context, act6InputParameterFeilds.class);
+                Intent i = new Intent(context, AddLoanAccount.class);
                 i.putExtra("url", bankSubList.get(0).getLogo_url());
                 i.putExtra("biller_id", bankSubList.get(0).getBillerId());
                 i.putExtra("biller_name", bankSubList.get(0).getBillerName());
                 startActivity(i);
+                finish();
             }
         }catch (Exception e){
 
@@ -88,7 +86,7 @@ public class act5BankSubCategories extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<bankSubItem>> call, Response<List<bankSubItem>> response) {
 
-                if(response.code()==utils.RESPONSE_SUCCESS){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     bankSubList = response.body();
                     initRecyclerView();
                 }

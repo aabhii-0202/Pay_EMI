@@ -25,11 +25,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act33payEMI_home extends AppCompatActivity {
+public class DashBoard extends AppCompatActivity {
     private ActivityPayEmiHomeBinding binding;
     private List<emiListItem> emilist;
     private final Context context = this;
     private  List<homePage> data;
+
 
 
 
@@ -82,8 +83,13 @@ public class act33payEMI_home extends AppCompatActivity {
         adapter.setOnItemClickListner(new emiListItemAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
-                Intent i = new Intent(context,act39payEMI_transaction_page.class);
+
+
+                Intent i = new Intent(context, EMITransactionHistory.class);
                 i.putExtra("name",emilist.get(position).getBank_Name());
+                i.putExtra("id",data.get(position).getId());
+                i.putExtra("biller_id",data.get(position).getBiller__billerId());
+                i.putExtra("logo",data.get(position).getBiller__logo_url());
                 startActivity(i);
             }
         });
@@ -101,11 +107,10 @@ public class act33payEMI_home extends AppCompatActivity {
                     data = response.body();
                     setData();
                     try {
-                        Toast.makeText(context, "No EMI added to our database.", Toast.LENGTH_SHORT).show();
                         Log.d("tag", "-->>" + data.get(0).toString());
                     }catch (Exception e){
                         Log.d("tag","New User");
-                        startActivity(new Intent(context,act4BankList.class));
+                        startActivity(new Intent(context, BankList.class));
                         
                     }
 
@@ -123,6 +128,6 @@ public class act33payEMI_home extends AppCompatActivity {
     }
 
     private void init(){
-        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, act4BankList.class)));
+        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
     }
 }

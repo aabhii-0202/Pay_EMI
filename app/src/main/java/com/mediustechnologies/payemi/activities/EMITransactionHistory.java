@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
@@ -25,11 +26,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act39payEMI_transaction_page extends AppCompatActivity {
+public class EMITransactionHistory extends AppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;
     private final String TAG = "tag";
+    private String logo,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,10 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
     private void getAllTransaction() {
 
-        String biller_id = "OU12LO000NATGJ";
-        int id =2;
+        String biller_id = getIntent().getStringExtra("biller_id");
+//        biller_id = "OU12LO000NATGJ";
+        String id = getIntent().getStringExtra("id");
+        id ="2";
         String token = utils.access_token;
 //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNjYzMzE2LCJpYXQiOjE2NDE1NzY5MTYsImp0aSI6IjY0NjMxMmM2YzNmOTQ3ZDE4ZDRhMTFlMWZiOTIwZDIzIiwidXNlcl9pZCI6NH0.CeUQTysLO8oU0e9Djby3tbjgSkuuNOBAZCqF0dGpDAw";
 
@@ -96,7 +100,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
             chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));
         }
-        initrecyclerview();
+        initrecyclerview(data);
 
     }
 
@@ -119,7 +123,7 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
         return ans;
     }
 
-    private void initrecyclerview(){
+    private void initrecyclerview(List<TransactionDetails> data){
         RecyclerView recyclerView = binding.paymentRecyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -130,8 +134,15 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
         adapter.setOnItemClickListner(new transction_chatAdapter.onItemClick() {
             @Override
             public void onItemClick(int postion) {
+
+                TransactionDetails item = data.get(postion);
+
                 Intent i = new Intent(context,act40transaction_Details.class);
-                i.putExtra("amount",chatlist.get(postion).getAmount());
+
+                i.putExtra("item",item);
+                i.putExtra("logl",logo);
+
+
                 startActivity(i);
             }
         });
@@ -141,7 +152,10 @@ public class act39payEMI_transaction_page extends AppCompatActivity {
 
     private void init(){
 
-        String name = getIntent().getStringExtra("name");
+        name = getIntent().getStringExtra("name");
+        logo = getIntent().getStringExtra("logo");
+
+        Glide.with(binding.image).load(logo).into(binding.image);
         binding.bankname.setText(name);
         binding.backButton.setOnClickListener(view -> finish());
         binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, act40transaction_Details.class)));

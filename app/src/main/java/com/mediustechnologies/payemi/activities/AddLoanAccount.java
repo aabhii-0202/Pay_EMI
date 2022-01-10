@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.inputParameterFeilds;
 import com.mediustechnologies.payemi.adapters.inputParametersAdapter;
@@ -19,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act6InputParameterFeilds extends AppCompatActivity {
+public class AddLoanAccount extends AppCompatActivity {
 
     private ActivityInputParameterFeildsBinding binding;
     private final Context context = this;
@@ -49,27 +51,25 @@ public class act6InputParameterFeilds extends AppCompatActivity {
         call.enqueue(new Callback<inputParameterFeilds>() {
             @Override
             public void onResponse(Call<inputParameterFeilds> call, Response<inputParameterFeilds> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS){
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     inputParameterFeilds inputParameterFeilds = response.body();
 
                     String s = inputParameterFeilds.toString();
-                    Log.d("tag", "inputParameterFeilds: "+s);
+                    Log.d("tag", "InputParameterFeilds: "+s);
 
                     recyclerview(inputParameterFeilds);
 
-
                     String url = inputParameterFeilds.getData().getLogo();
                     Glide.with(binding.Image).load(url).into(binding.Image);
-                    Log.d("tag", "onResponse: input Parameter Feilds"+inputParameterFeilds.toString());
-
-
+                    Log.d("tag", "onResponse: Input Parameter Feilds"+inputParameterFeilds.toString());
 
                 }
             }
 
             @Override
             public void onFailure(Call<inputParameterFeilds> call, Throwable t) {
-
+                Toast.makeText(context, "Fail to load input fields.", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
@@ -82,8 +82,13 @@ public class act6InputParameterFeilds extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         HashMap<String,String> data = inputParameterFeilds.getData().getMandatoryl();
-        inputParametersAdapter adapter = new inputParametersAdapter(data);
-        recyclerView.setAdapter(adapter);
+        if(data!=null&&data.size()>0) {
+            inputParametersAdapter adapter = new inputParametersAdapter(data);
+            recyclerView.setAdapter(adapter);
+
+        }else{
+            binding.text.setText("No Mandatory Input Parameter Feilds");
+        }
     }
 
     private void init(){
@@ -94,7 +99,7 @@ public class act6InputParameterFeilds extends AppCompatActivity {
     }
 
     private void nextScreen(){
-        Intent i = new Intent(context,act7pay_emi_details.class);
+        Intent i = new Intent(context, EMIDetailsBillFetch.class);
         i.putExtra("url",url);
         i.putExtra("biller_name",getIntent().getStringExtra("biller_name"));
         i.putExtra("biller_id",biller_id);

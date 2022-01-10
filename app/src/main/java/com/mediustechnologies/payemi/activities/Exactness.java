@@ -12,11 +12,11 @@ import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultWithDataListener;
 
 
-public class act8payEMI extends AppCompatActivity  implements PaymentResultWithDataListener {
+public class Exactness extends AppCompatActivity  implements PaymentResultWithDataListener {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
-    private String billerName;
+    private String billerName,bill_id,profile_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,9 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
         binding.customerName.setText(customer);
         binding.billername.setText("Paying to "+billerName);
         binding.LoanName.setText("Loan Name");
+
+        bill_id = getIntent().getStringExtra("bill_id");
+        profile_id = getIntent().getStringExtra("profile_id");
 
 //        if(exactness.equals("Exact")){
 //            binding.enterAmount.setEnabled(false);
@@ -72,7 +75,7 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
             object.put("amount","500");
             object.put("prefill.contact","9087654321");
             object.put("prefill.email","abc@gmail.com");
-            checkout.open(act8payEMI.this,object);
+            checkout.open(Exactness.this,object);
 
         }
         catch (JSONException e){
@@ -96,6 +99,9 @@ public class act8payEMI extends AppCompatActivity  implements PaymentResultWithD
     private void nextScreen(){
         Intent i = new Intent(context,act9paymentSuccessful.class);
         i.putExtra("billerName",billerName);
+        i.putExtra("bill_id",bill_id);
+        i.putExtra("profile_id",profile_id);
+
         startActivity(i);
     }
 

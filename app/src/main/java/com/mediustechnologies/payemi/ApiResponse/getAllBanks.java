@@ -13,7 +13,7 @@ public class getAllBanks {
     @Expose
     private String count;
 
-    @SerializedName("bank_name")
+    @SerializedName("biller_bank__bank_name")
     @Expose
     private String bank_name;
 

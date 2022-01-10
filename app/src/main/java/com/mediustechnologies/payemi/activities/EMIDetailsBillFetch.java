@@ -26,11 +26,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act7pay_emi_details extends AppCompatActivity {
+public class EMIDetailsBillFetch extends AppCompatActivity {
 
     private ActivityPaymentInfoBinding binding;
     private final Context context = this;
-    private String url,name,amount,customer ;
+    private String url,name,amount,customer,bill_id,profile_id ;
 
 
     @Override
@@ -74,11 +74,13 @@ public class act7pay_emi_details extends AppCompatActivity {
                     binding.payNow.setVisibility(View.VISIBLE);
 //                    exactness = bill.getPayload().get("payment_exactness");
                     setData(bill);
+                    bill_id = bill.getPayload().get(0).getId();
+                    profile_id = bill.getPayload().get(0).getProfile_id();
                     binding.progress.setVisibility(View.GONE);
 
                 }else if (response.code()==400){
                     Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();
-                    utils.loginAgain(context,getApplicationContext());
+                    utils.loginAgain(context);
                     binding.progress.setVisibility(View.GONE);
                 }else if (response.code()==401){
                     Toast.makeText(context, "Token Expired", Toast.LENGTH_LONG).show();
@@ -166,12 +168,14 @@ public class act7pay_emi_details extends AppCompatActivity {
     }
 
     private void nextscreen(){
-        Intent i = new Intent(context, act8payEMI.class);
+        Intent i = new Intent(context, Exactness.class);
         i.putExtra("logo",url);
 //        i.putExtra("Exactness",exactness);
         i.putExtra("customer",customer);
         i.putExtra("amount",amount);
         i.putExtra("billerName",name);
+        i.putExtra("bill_id",bill_id);
+        i.putExtra("profile_id",profile_id);
         startActivity(i);
     }
 

@@ -38,14 +38,14 @@
             android:name=".activities.payments.act11AddNewCard"
             android:exported="false" />
         <activity
-            android:name=".activities.act39payEMI_transaction_page"
+            android:name=".activities.EMITransactionHistory"
             android:exported="false"/>
 
         <activity
             android:name=".activities.act34pay_EMI_Details"
             android:exported="false"/>
         <activity
-            android:name=".activities.act33payEMI_home"
+            android:name=".activities.DashBoard"
             android:exported="false"/>
         <activity
             android:name=".activities.payments.act35payment_Page"
@@ -57,13 +57,13 @@
             android:name=".activities.act36payment_confirmation"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act28onBording"
+            android:name=".activities.login.OnBording"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act32verifyNumber"
+            android:name=".activities.login.CheckOTP"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act31signIn"
+            android:name=".activities.login.SendOTP"
             android:exported="false" />
         <activity
             android:name=".activities.act20transaction_Search"
@@ -73,19 +73,19 @@
             android:exported="false" />
 
         <activity
-            android:name=".activities.act8payEMI"
+            android:name=".activities.Exactness"
             android:exported="false" />
         <activity
-            android:name=".activities.act6InputParameterFeilds"
+            android:name=".activities.AddLoanAccount"
             android:exported="false" />
         <activity
-            android:name=".activities.act5BankSubCategories"
+            android:name=".activities.BillerList"
             android:exported="false" />
         <activity
-            android:name=".activities.act7pay_emi_details"
+            android:name=".activities.EMIDetailsBillFetch"
             android:exported="false" />
         <activity
-            android:name=".activities.act4BankList"
+            android:name=".activities.BankList"
             android:exported="false" />
         <activity
             android:name=".activities.SplashScreen"
