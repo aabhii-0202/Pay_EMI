@@ -147,11 +147,7 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
         variableData.putAll(bill.getPayload().get(0).getInputparams_value());
         variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
 
-
         recyclerview(variableData);
-
-
-
 
     }
 

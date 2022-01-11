@@ -2,9 +2,8 @@ package com.mediustechnologies.payemi.DTO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 
 public class inputParameterFeildsDTOdata {
     @SerializedName("billerName")
@@ -13,11 +12,11 @@ public class inputParameterFeildsDTOdata {
 
     @SerializedName("mandatory_params")
     @Expose
-    private HashMap<String ,String> mandatory;
+    private LinkedHashMap<String ,mandatoryParmsDTO> mandatory;
 
     @SerializedName("optional_params")
     @Expose
-    private HashMap<String ,String> optional;
+    private LinkedHashMap<String ,mandatoryParmsDTO> optional;
 
     @SerializedName("logo")
     @Expose
@@ -37,6 +36,22 @@ public class inputParameterFeildsDTOdata {
 
     public void setBillerName(String billerName) {
         this.billerName = billerName;
+    }
+
+    public LinkedHashMap<String, mandatoryParmsDTO> getMandatory() {
+        return mandatory;
+    }
+
+    public void setMandatory(LinkedHashMap<String, mandatoryParmsDTO> mandatory) {
+        this.mandatory = mandatory;
+    }
+
+    public LinkedHashMap<String, mandatoryParmsDTO> getOptional() {
+        return optional;
+    }
+
+    public void setOptional(LinkedHashMap<String, mandatoryParmsDTO> optional) {
+        this.optional = optional;
     }
 
     public String getLogo() {
@@ -63,26 +78,15 @@ public class inputParameterFeildsDTOdata {
         this.billerPaymentExactness = billerPaymentExactness;
     }
 
-    public HashMap<String, String> getMandatoryl() {
-        return mandatory;
-    }
-
-    public void setMandatoryl(HashMap<String, String> mandatoryl) {
-        this.mandatory = mandatoryl;
-    }
-
-
     @Override
     public String toString() {
         return "inputParameterFeildsDTOdata{" +
                 "billerName='" + billerName + '\'' +
-                ", mandatoryl=" + mandatory +
+                ", mandatory=" + mandatory +
                 ", optional=" + optional +
                 ", logo='" + logo + '\'' +
                 ", timeout=" + timeout +
                 ", billerPaymentExactness='" + billerPaymentExactness + '\'' +
                 '}';
     }
-
-
 }

@@ -44,7 +44,7 @@ public class act40transaction_Details extends AppCompatActivity {
         }
         ans+=" "+date.substring(2,4);
 
-//        2022-01-07 07:26:22.418915+00:00
+
 
         String time = date.substring(11,16);
         String hr = time.substring(0,2);
