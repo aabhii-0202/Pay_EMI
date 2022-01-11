@@ -57,6 +57,8 @@ public class DashBoard extends AppCompatActivity {
 
             emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),"loan name",paid,data.get(i).getAmount(),data.get(i).getBiller__logo_url()));
 
+            System.out.println(data.get(i).getId());
+
 
         }
 
@@ -103,6 +105,7 @@ public class DashBoard extends AppCompatActivity {
         call.enqueue(new Callback<List<homePage>>() {
             @Override
             public void onResponse(Call<List<homePage>> call, Response<List<homePage>> response) {
+
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     data = response.body();
                     setData();
@@ -111,7 +114,7 @@ public class DashBoard extends AppCompatActivity {
                     }catch (Exception e){
                         Log.d("tag","New User");
                         startActivity(new Intent(context, BankList.class));
-                        
+
                     }
 
                 }else {

@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.commons;
 
+import com.google.gson.JsonObject;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.*;
 import com.mediustechnologies.payemi.ApiResponse.*;
@@ -21,6 +22,9 @@ public interface API {
 
     @POST("billfetch/")
     Call<fetchBill> fetchBill (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body fetchBillBody body);
+
+    @POST("billfetch/")
+    Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
 
     @GET("get-all-banks/")
     Call<List<getAllBanks>> getAllBanks(@Header("Authorization")String token);

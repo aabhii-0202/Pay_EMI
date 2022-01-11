@@ -11,6 +11,7 @@ import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.FetchBillLayoutBinding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,9 +19,9 @@ import java.util.Map;
 
 public class fetchBillAdapter extends RecyclerView.Adapter<fetchBillAdapter.viewHolder> {
 
-    private LinkedHashMap <String,String> billItems;
+    private HashMap <String,String> billItems;
     private List<String> keys;
-    public fetchBillAdapter(LinkedHashMap <String,String> billItems){
+    public fetchBillAdapter(HashMap<String,String> billItems){
         this.billItems = billItems;
         keys = new ArrayList<>();
         for (Map.Entry<String, String> entry: billItems.entrySet()){

@@ -7,16 +7,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mediustechnologies.payemi.ApiResponse.fetchBill;
 import com.mediustechnologies.payemi.ApiResponse.inputParameterFeilds;
 import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
+import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.adapters.inputParametersAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityInputParameterFeildsBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,11 +102,11 @@ public class AddLoanAccount extends AppCompatActivity {
 
         data = inputParameterFeilds.getData().getMandatory();
         if(data!=null&&data.size()>0) {
-//            mandatoryParmsDTO d = new mandatoryParmsDTO();
-//            d.setKey("abhishek_kumar");
-//            d.setType("numeric");
-//            d.setRegex("^[0-9]$");
-//            data.put("abhishek kumar",d);
+            mandatoryParmsDTO d = new mandatoryParmsDTO();
+            d.setKey("abhishek_kumar");
+            d.setType("numeric");
+            d.setRegex("^[0-9]$");
+            data.put("abhishek kumar",d);
             adapter = new inputParametersAdapter(data);
 
             recyclerView.setAdapter(adapter);
@@ -117,24 +125,39 @@ public class AddLoanAccount extends AppCompatActivity {
 
     private void nextScreen(){
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
-        if(verifydata(feilds)) {
+//        if(verifydata(feilds))
+        if(true)
+        {
 
-            String s = makeJSON(feilds);
 
-            Intent i = new Intent(context, EMIDetailsBillFetch.class);
-            i.putExtra("body",s);
-            i.putExtra("url", url);
-            i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
-            i.putExtra("biller_id", biller_id);
-            startActivity(i);
+            fetchBill(ApiJsonMap(feilds));
+
+
         }
     }
 
-    private String makeJSON(LinkedHashMap<String, String> feilds) {
-        String ans ="";
+    private JsonObject ApiJsonMap(LinkedHashMap<String, String> feilds) {
+
+        JsonObject gsonObject = new JsonObject();
+        try {
+            JSONObject jsonObj_ = new JSONObject();
+
+            for (Map.Entry item:feilds.entrySet()){
+                jsonObj_.put((String) item.getKey(),item.getValue());
+            }
 
 
-        return ans;
+            JsonParser jsonParser = new JsonParser();
+            gsonObject = (JsonObject) jsonParser.parse(jsonObj_.toString());
+
+            //print parameter
+            Log.d("tag", "AS PARAMETER  " + gsonObject);
+
+        } catch (JSONException e) {
+            Log.d("tag","Add loan Account JSON exception line 154");
+        }
+
+        return gsonObject;
     }
 
     private boolean verifydata(LinkedHashMap<String, String> feilds) {
@@ -163,5 +186,56 @@ public class AddLoanAccount extends AppCompatActivity {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(value);
         return m.matches();
+    }
+
+
+    private void fetchBill(JsonObject jsonObject){
+
+        String biller_id = getIntent().getStringExtra("biller_id");
+        biller_id = "OU12LO000NATGJ";
+
+        String mobile = utils.phone;
+        String loanNumber = "2775864";
+        loanNumber = "2775864";
+//        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
+        fetchBillBody body = new fetchBillBody(loanNumber,mobile);
+
+        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
+
+        String finalBiller_id = biller_id;
+        call.enqueue(new Callback<fetchBill>() {
+            @Override
+            public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
+                    fetchBill bill = response.body();
+
+                    LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
+                    variableData.putAll(bill.getPayload().get(0).getAmountOptions());
+                    variableData.putAll(bill.getPayload().get(0).getInputparams_value());
+                    variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
+
+                    Intent i = new Intent(context, EMIDetailsBillFetch.class);
+                    i.putExtra("url", url);
+                    i.putExtra("variableData",variableData);
+                    i.putExtra("bill",bill);
+                    i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
+                    i.putExtra("biller_id", finalBiller_id);
+                    startActivity(i);
+
+                }
+                else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<fetchBill> call, Throwable t) {
+                Log.d("tag", "onFailure: bill fetch"+t.toString());
+                Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 }

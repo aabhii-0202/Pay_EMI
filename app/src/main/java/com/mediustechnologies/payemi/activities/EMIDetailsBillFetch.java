@@ -20,6 +20,7 @@ import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentInfoBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import retrofit2.Call;
@@ -48,57 +49,16 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
         binding.backButton.setOnClickListener(view -> finish());
         binding.payNow.setOnClickListener(view -> nextscreen());
 
-        fetchBill();
+        fetchBill bill = getIntent().getParcelableExtra("bill");
+        binding.payNow.setVisibility(View.VISIBLE);
+
+        setData(bill);
+        bill_id = bill.getPayload().get(0).getId();
+        profile_id = bill.getPayload().get(0).getProfile_id();
+        binding.progress.setVisibility(View.GONE);
 
     }
 
-    private void fetchBill() {
-
-        String biller_id = getIntent().getStringExtra("biller_id");
-        biller_id = "OU12LO000NATGJ";
-
-        String mobile = utils.phone;
-        String loanNumber = "2775864";
-        loanNumber = "2775864";
-//        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
-        fetchBillBody body = new fetchBillBody(loanNumber,mobile);
-
-        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
-
-        call.enqueue(new Callback<fetchBill>() {
-            @Override
-            public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    fetchBill bill = response.body();
-
-                    binding.payNow.setVisibility(View.VISIBLE);
-//                    exactness = bill.getPayload().get("payment_exactness");
-                    setData(bill);
-                    bill_id = bill.getPayload().get(0).getId();
-                    profile_id = bill.getPayload().get(0).getProfile_id();
-                    binding.progress.setVisibility(View.GONE);
-
-                }else if (response.code()==400){
-                    Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();
-                    utils.loginAgain(context);
-                    binding.progress.setVisibility(View.GONE);
-                }else if (response.code()==401){
-                    Toast.makeText(context, "Token Expired", Toast.LENGTH_LONG).show();
-                    binding.progress.setVisibility(View.GONE);
-                    finish();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<fetchBill> call, Throwable t) {
-                Log.d("tag", "onFailure: bill fetch"+t.toString());
-                Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
-    }
 
     private void setData(fetchBill bill) {
         binding.scrollView.setVisibility(View.VISIBLE);
@@ -142,16 +102,15 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
             binding.TotalAmount.setText(bill.getPayload().get(0).getAmount());
         else binding.totalamountlayout.setVisibility(View.GONE);
 
-        LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
-        variableData.putAll(bill.getPayload().get(0).getAmountOptions());
-        variableData.putAll(bill.getPayload().get(0).getInputparams_value());
-        variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
+        HashMap<String,String> variableData = new HashMap<>();
+
+        variableData = (HashMap<String, String>) getIntent().getSerializableExtra("variableData");
 
         recyclerview(variableData);
 
     }
 
-    private void recyclerview(LinkedHashMap<String, String> bill) {
+    private void recyclerview(HashMap<String, String> bill) {
 
         RecyclerView recyclerView = binding.variablerec;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
@@ -166,7 +125,6 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
     private void nextscreen(){
         Intent i = new Intent(context, Exactness.class);
         i.putExtra("logo",url);
-//        i.putExtra("Exactness",exactness);
         i.putExtra("customer",customer);
         i.putExtra("amount",amount);
         i.putExtra("billerName",name);

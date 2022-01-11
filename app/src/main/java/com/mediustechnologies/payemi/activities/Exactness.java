@@ -97,7 +97,7 @@ public class Exactness extends AppCompatActivity  implements PaymentResultWithDa
     }
 
     private void nextScreen(){
-        Intent i = new Intent(context,act9paymentSuccessful.class);
+        Intent i = new Intent(context, PaymentSuccessful.class);
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);

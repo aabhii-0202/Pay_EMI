@@ -2,6 +2,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
 
 import java.util.HashMap;
 
@@ -17,7 +18,7 @@ public class homePage {
 
     @SerializedName("biller__inputparameters_mandatory1")
     @Expose
-    HashMap<String, String> biller__inputparameters_mandatory1;
+    HashMap<String, mandatoryParmsDTO> biller__inputparameters_mandatory1;
 
     @SerializedName("biller__billerTimeout")
     @Expose
@@ -83,11 +84,11 @@ public class homePage {
         this.biller__logo_url = biller__logo_url;
     }
 
-    public HashMap<String, String> getBiller__inputparameters_mandatory1() {
+    public HashMap<String, mandatoryParmsDTO> getBiller__inputparameters_mandatory1() {
         return biller__inputparameters_mandatory1;
     }
 
-    public void setBiller__inputparameters_mandatory1(HashMap<String, String> biller__inputparameters_mandatory1) {
+    public void setBiller__inputparameters_mandatory1(HashMap<String, mandatoryParmsDTO> biller__inputparameters_mandatory1) {
         this.biller__inputparameters_mandatory1 = biller__inputparameters_mandatory1;
     }
 

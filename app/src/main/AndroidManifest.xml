@@ -17,7 +17,7 @@
             android:exported="true"/>
 
         <activity
-            android:name=".activities.act9paymentSuccessful"
+            android:name=".activities.PaymentSuccessful"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->

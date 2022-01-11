@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act9paymentSuccessful extends AppCompatActivity {
+public class PaymentSuccessful extends AppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
@@ -54,7 +54,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
     private void setData(billFetchDTO data) {
 
-        Log.d("tag", "act9paymentSuccessful " + data.toString());
+        Log.d("tag", "PaymentSuccessful " + data.toString());
 
         String bankname = getIntent().getStringExtra("billerName");
         binding.bankName.setText("To "+bankname);
@@ -158,9 +158,6 @@ public class act9paymentSuccessful extends AppCompatActivity {
                     billFetchDTO data = response.body().get(0);
                     setData(data);
 
-
-
-
                     scratch();
                 }
                 else{
@@ -205,8 +202,9 @@ public class act9paymentSuccessful extends AppCompatActivity {
 
                                 @Override
                                 public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
-                                    if(atLeastScratchedPercent>9){
-                                        scratched = true;
+                                    Log.d("tag", "onScratchProgress: "+atLeastScratchedPercent);
+                                    if(atLeastScratchedPercent>8){
+                                        Log.d("tag","scratched");
                                         redeem();
                                     }
                                 }
@@ -257,6 +255,7 @@ public class act9paymentSuccessful extends AppCompatActivity {
                     if(response.body().getMessage().equals("Success")){
                         Log.d("tag","Redeemed cashback successfull");
                         Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
+                        scratched = true;
                     }
                 }
                 else{
