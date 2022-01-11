@@ -60,8 +60,6 @@ public class EMITransactionHistory extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<TransactionDetails>> call, Response<List<TransactionDetails>> response) {
 
-                System.out.println(response.body().toString());
-
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     List<TransactionDetails> data = response.body();
                     addata(data);

@@ -1,10 +1,13 @@
 package com.mediustechnologies.payemi.DTO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 
-public class billFetchDTO {
+public class billFetchDTO implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -36,15 +39,15 @@ public class billFetchDTO {
 
     @SerializedName("biller_additional_info")
     @Expose
-    private LinkedHashMap<String,String> biller_additional_info;
+    private HashMap<String,String> biller_additional_info;
 
     @SerializedName("inputparams_value")
     @Expose
-    private LinkedHashMap<String,String> inputparams_value;
+    private HashMap<String,String> inputparams_value;
 
     @SerializedName("amountOptions")
     @Expose
-    private LinkedHashMap<String,String> amountOptions;
+    private HashMap<String,String> amountOptions;
 
     @SerializedName("bill_number")
     @Expose
@@ -103,6 +106,42 @@ public class billFetchDTO {
     private String RespDueDate;
 
 
+    protected billFetchDTO(Parcel in) {
+        id = in.readString();
+        biller_id = in.readString();
+        profile_id = in.readString();
+        loan_idloan_id = in.readString();
+        loan_acc_no = in.readString();
+        customer_name = in.readString();
+        customer_mobile = in.readString();
+        bill_number = in.readString();
+        transaction_date_and_time = in.readString();
+        amount = in.readString();
+        transation_status = in.readString();
+        order_id = in.readString();
+        transaction_id = in.readString();
+        transaction_date = in.readString();
+        initiation_channel = in.readString();
+        payment_mode = in.readString();
+        customer_convinience_fees = in.readString();
+        service_tax = in.readString();
+        RespBillNumber = in.readString();
+        RespBillPeriod = in.readString();
+        RespDueDate = in.readString();
+    }
+
+    public static final Creator<billFetchDTO> CREATOR = new Creator<billFetchDTO>() {
+        @Override
+        public billFetchDTO createFromParcel(Parcel in) {
+            return new billFetchDTO(in);
+        }
+
+        @Override
+        public billFetchDTO[] newArray(int size) {
+            return new billFetchDTO[size];
+        }
+    };
+
     public String getId() {
         return id;
     }
@@ -159,27 +198,27 @@ public class billFetchDTO {
         this.customer_mobile = customer_mobile;
     }
 
-    public LinkedHashMap<String, String> getBiller_additional_info() {
+    public HashMap<String, String> getBiller_additional_info() {
         return biller_additional_info;
     }
 
-    public void setBiller_additional_info(LinkedHashMap<String, String> biller_additional_info) {
+    public void setBiller_additional_info(HashMap<String, String> biller_additional_info) {
         this.biller_additional_info = biller_additional_info;
     }
 
-    public LinkedHashMap<String, String> getInputparams_value() {
+    public HashMap<String, String> getInputparams_value() {
         return inputparams_value;
     }
 
-    public void setInputparams_value(LinkedHashMap<String, String> inputparams_value) {
+    public void setInputparams_value(HashMap<String, String> inputparams_value) {
         this.inputparams_value = inputparams_value;
     }
 
-    public LinkedHashMap<String, String> getAmountOptions() {
+    public HashMap<String, String> getAmountOptions() {
         return amountOptions;
     }
 
-    public void setAmountOptions(LinkedHashMap<String, String> amountOptions) {
+    public void setAmountOptions(HashMap<String, String> amountOptions) {
         this.amountOptions = amountOptions;
     }
 
@@ -323,5 +362,35 @@ public class billFetchDTO {
                 ", RespBillPeriod='" + RespBillPeriod + '\'' +
                 ", RespDueDate='" + RespDueDate + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(biller_id);
+        parcel.writeString(profile_id);
+        parcel.writeString(loan_idloan_id);
+        parcel.writeString(loan_acc_no);
+        parcel.writeString(customer_name);
+        parcel.writeString(customer_mobile);
+        parcel.writeString(bill_number);
+        parcel.writeString(transaction_date_and_time);
+        parcel.writeString(amount);
+        parcel.writeString(transation_status);
+        parcel.writeString(order_id);
+        parcel.writeString(transaction_id);
+        parcel.writeString(transaction_date);
+        parcel.writeString(initiation_channel);
+        parcel.writeString(payment_mode);
+        parcel.writeString(customer_convinience_fees);
+        parcel.writeString(service_tax);
+        parcel.writeString(RespBillNumber);
+        parcel.writeString(RespBillPeriod);
+        parcel.writeString(RespDueDate);
     }
 }
