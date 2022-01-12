@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
 import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
@@ -149,6 +151,8 @@ public class PaymentSuccessful extends AppCompatActivity {
         String token = utils.access_token;
 //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
 
+
+
         Call<List<billFetchDTO>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
         call.enqueue(new Callback<List<billFetchDTO>>() {
@@ -258,8 +262,10 @@ public class PaymentSuccessful extends AppCompatActivity {
                         scratched = true;
                     }
                 }
-                else{
-                    System.out.println(response.code());
+                else if(response.code()==400){
+                    System.out.println(response.message());
+                }else{
+                    Log.e("tag","Error ar redeem code "+response.code());
                 }
             }
 
@@ -275,6 +281,7 @@ public class PaymentSuccessful extends AppCompatActivity {
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
         binding.crossButton.setOnClickListener(view -> finish());
+        binding.download.setOnClickListener(view -> startActivity(new Intent(context, act35payment_Page.class)));
 
     }
 }

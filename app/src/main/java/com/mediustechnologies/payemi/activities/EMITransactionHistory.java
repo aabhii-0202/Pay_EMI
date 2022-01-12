@@ -1,17 +1,26 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
+import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
+import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
@@ -135,17 +144,88 @@ public class EMITransactionHistory extends AppCompatActivity {
 
                 TransactionDetails item = data.get(postion);
 
-                Intent i = new Intent(context, Transaction_Details.class);
+                if(item.getType().equals("transaction")) {
+                    Intent i = new Intent(context, Transaction_Details.class);
+                    i.putExtra("item", item);
+                    i.putExtra("logl", logo);
+                    startActivity(i);
+                }else{
+                    // code for cashback
+                    if(item.getIs_redeemed().equals("false")){
+                        Dialog d = new Dialog(context);
+                        d.setContentView(R.layout.scratchcardlayout);
+                        d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
+                        scratchamount.setText("Rs. "+item.getAmount());
+                        d.show();
 
-                i.putExtra("item",item);
-                i.putExtra("logl",logo);
+                        com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard1);
+                        card.setScratchListener(new ScratchListener() {
+                            @Override
+                            public void onScratchStarted() {
+
+                            }
+
+                            @Override
+                            public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
+                                Log.d("tag", "onScratchProgress: "+atLeastScratchedPercent);
+                                if(atLeastScratchedPercent>8){
+                                    Log.d("tag","scratched");
+                                    redeem(item.getBill_id());
+                                }
+                            }
+
+                            @Override
+                            public void onScratchComplete() {
+
+                            }
+                        });
 
 
-                startActivity(i);
+                    }
+
+
+                    else{
+
+                    }
+                }
             }
         });
 
 
+    }
+
+    private void redeem(String bill_id) {
+
+//        int bill_id = "384";
+        String token = utils.access_token;
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
+        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,utils.profileId,bill_id);
+
+        call.enqueue(new Callback<RedeemScratchCard>() {
+            @Override
+            public void onResponse(Call<RedeemScratchCard> call, Response<RedeemScratchCard> response) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
+                    if(response.body().getMessage().equals("Success")){
+                        Log.d("tag","Redeemed cashback successfull");
+                        Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
+                        getAllTransaction();
+
+                    }
+
+                }
+                else if(response.code()==400){
+                    System.out.println(response.message());
+                }else{
+                    Log.e("tag","Error ar redeem code "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RedeemScratchCard> call, Throwable t) {
+
+            }
+        });
     }
 
     private void init(){

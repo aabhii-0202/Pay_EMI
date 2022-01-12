@@ -28,9 +28,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act34pay_EMI_Details extends AppCompatActivity {
+public class GetLoanDetails extends AppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiDetailsBinding binding;
+    private fetchBill bill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,32 +45,43 @@ public class act34pay_EMI_Details extends AppCompatActivity {
     }
     private void init(){
 
+        binding.emi.setText(getIntent().getStringExtra("emi"));
         binding.scrollview.setVisibility(View.GONE);
         binding.backButton.setOnClickListener(view -> finish());
-        binding.paybtn.setOnClickListener(view -> startActivity(new Intent(context, act35payment_Page.class)));
+        binding.paybtn.setOnClickListener(view ->nextscreen());
         String bankname = getIntent().getStringExtra("bankname");
         binding.FinancerName.setText(bankname);
 
     }
 
+    private void nextscreen(){
+
+        Intent i = new Intent(context,Exactness.class);
+        i.putExtra("bill_id",bill.getPayload().get(0).getId());
+
+        i.putExtra("customer",bill.getPayload().get(0).getCustomer_name());
+        i.putExtra("amount",bill.getPayload().get(0).getAmount());
+
+        i.putExtra("profile_id",bill.getPayload().get(0).getProfile_id());
+        String url = getIntent().getStringExtra("logo");
+        i.putExtra("logo",url);
+        String name = getIntent().getStringExtra("billerName");
+        i.putExtra("billerName",name);
+
+        startActivity(i);
+    }
+
     private void fetchBill() {
 
-        String biller_id = getIntent().getStringExtra("biller_id");
-        biller_id = "OU12LO000NATGJ";
+        String loan_id = getIntent().getStringExtra("loan_id");
 
-        String mobile = utils.phone;
-        String loanNumber = "2775864";
-        loanNumber = "2775864";
-//        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
-        fetchBillBody body = new fetchBillBody(loanNumber,mobile);
-
-        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
+        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getLoanDetails(utils.access_token,loan_id,utils.profileId);
 
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    fetchBill bill = response.body();
+                    bill = response.body();
 
                     binding.paybtn.setVisibility(View.VISIBLE);
 //                    exactness = bill.getPayload().get("payment_exactness");

@@ -105,6 +105,9 @@ public class billFetchDTO implements Parcelable {
     @Expose
     private String RespDueDate;
 
+    @SerializedName("requestId")
+    @Expose
+    private String requestId;
 
     protected billFetchDTO(Parcel in) {
         id = in.readString();
@@ -128,6 +131,7 @@ public class billFetchDTO implements Parcelable {
         RespBillNumber = in.readString();
         RespBillPeriod = in.readString();
         RespDueDate = in.readString();
+        requestId = in.readString();
     }
 
     public static final Creator<billFetchDTO> CREATOR = new Creator<billFetchDTO>() {
@@ -334,6 +338,14 @@ public class billFetchDTO implements Parcelable {
         RespDueDate = respDueDate;
     }
 
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
     @Override
     public String toString() {
         return "billFetchDTO{" +
@@ -361,6 +373,7 @@ public class billFetchDTO implements Parcelable {
                 ", RespBillNumber='" + RespBillNumber + '\'' +
                 ", RespBillPeriod='" + RespBillPeriod + '\'' +
                 ", RespDueDate='" + RespDueDate + '\'' +
+                ", requestId='" + requestId + '\'' +
                 '}';
     }
 
@@ -392,5 +405,6 @@ public class billFetchDTO implements Parcelable {
         parcel.writeString(RespBillNumber);
         parcel.writeString(RespBillPeriod);
         parcel.writeString(RespDueDate);
+        parcel.writeString(requestId);
     }
 }

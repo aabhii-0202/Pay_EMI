@@ -75,8 +75,13 @@ public class DashBoard extends AppCompatActivity {
         emilistRecycler.setAdapter(adapter);
 
         adapter.setOnButtonClickListner(pos -> {
-            Intent i = new Intent(context,act34pay_EMI_Details.class);
+            Intent i = new Intent(context, GetLoanDetails.class);
+            i.putExtra("loan_id",data.get(pos).getId());
+            i.putExtra("emi",data.get(pos).getEmi());
             i.putExtra("bankname",emilist.get(pos).getBank_Name());
+            i.putExtra("billerName",data.get(pos).getBiller__billerName());
+            i.putExtra("logo",data.get(pos).getBiller__logo_url());
+
             startActivity(i);
         });
         adapter.setOnItemClickListner(position -> {

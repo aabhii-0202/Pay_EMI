@@ -53,5 +53,7 @@ public interface API {
     @GET("alltransactions/")
     Call<List<TransactionDetails>> allTransaction (@Header("Authorization") String token, @Query("id") String id, @Query("biller_id") String biller_id);
 
+    @GET("getloandetails/")
+    Call<fetchBill> getLoanDetails(@Header("Authorization") String token,@Query("loan_id") String loan_id,@Query("id") String id);
 
 }

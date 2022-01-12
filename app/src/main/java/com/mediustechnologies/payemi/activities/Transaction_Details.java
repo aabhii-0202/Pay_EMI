@@ -55,11 +55,10 @@ public class Transaction_Details extends AppCompatActivity {
         int hour = Integer.parseInt(hr);
         if(hour>12){
             ampm = "PM";
-        }else ampm = "AM";
+        }
+        else ampm = "AM";
         hour = hour%12;
-
         ans = ans+"  "+hour+":"+min+" "+ampm;
-
 
         return ans;
     }

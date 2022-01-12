@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.act34pay_EMI_Details">
+    tools:context=".activities.GetLoanDetails">
 
 <!--    title-->
     <ProgressBar
@@ -425,6 +425,19 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/paybtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/button_bg"
+                    android:fontFamily="@font/gtwalsheim_pro_medium"
+                    android:letterSpacing="0"
+                    android:text="Pay Now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
                 <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
                 <!--                    android:id="@+id/latepaymentfeeholder"-->
@@ -526,19 +539,7 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/paybtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="10dp"
-                android:background="@drawable/button_bg"
-                android:fontFamily="@font/gtwalsheim_pro_medium"
-                android:letterSpacing="0"
-                android:text="Pay Now"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+
 
         </LinearLayout>
     </ScrollView>

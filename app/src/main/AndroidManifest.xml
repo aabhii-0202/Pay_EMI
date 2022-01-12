@@ -42,7 +42,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".activities.act34pay_EMI_Details"
+            android:name=".activities.GetLoanDetails"
             android:exported="false"/>
         <activity
             android:name=".activities.DashBoard"
