@@ -82,6 +82,9 @@ public class DashBoard extends AppCompatActivity {
             i.putExtra("billerName",data.get(pos).getBiller__billerName());
             i.putExtra("logo",data.get(pos).getBiller__logo_url());
 
+
+
+
             startActivity(i);
         });
         adapter.setOnItemClickListner(position -> {

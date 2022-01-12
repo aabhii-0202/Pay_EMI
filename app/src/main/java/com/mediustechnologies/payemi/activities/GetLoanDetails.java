@@ -68,6 +68,8 @@ public class GetLoanDetails extends AppCompatActivity {
         String name = getIntent().getStringExtra("billerName");
         i.putExtra("billerName",name);
 
+
+
         startActivity(i);
     }
 

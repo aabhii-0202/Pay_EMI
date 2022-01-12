@@ -278,8 +278,10 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void init() {
         scratched = false;
+
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
+
         binding.crossButton.setOnClickListener(view -> finish());
         binding.download.setOnClickListener(view -> startActivity(new Intent(context, act35payment_Page.class)));
 
