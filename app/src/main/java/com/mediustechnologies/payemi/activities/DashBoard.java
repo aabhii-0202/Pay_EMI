@@ -82,18 +82,15 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        adapter.setOnItemClickListner(new emiListItemAdapter.onItemClicked() {
-            @Override
-            public void onItemClick(int position) {
+        adapter.setOnItemClickListner(position -> {
 
 
-                Intent i = new Intent(context, EMITransactionHistory.class);
-                i.putExtra("name",emilist.get(position).getBank_Name());
-                i.putExtra("id",data.get(position).getId());
-                i.putExtra("biller_id",data.get(position).getBiller__billerId());
-                i.putExtra("logo",data.get(position).getBiller__logo_url());
-                startActivity(i);
-            }
+            Intent i = new Intent(context, EMITransactionHistory.class);
+            i.putExtra("name",emilist.get(position).getBank_Name());
+            i.putExtra("id",data.get(position).getId());
+            i.putExtra("biller_id",data.get(position).getBiller__billerId());
+            i.putExtra("logo",data.get(position).getBiller__logo_url());
+            startActivity(i);
         });
     }
 
