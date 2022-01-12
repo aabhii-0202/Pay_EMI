@@ -51,7 +51,7 @@
             android:name=".activities.payments.act35payment_Page"
             android:exported="false"/>
         <activity
-            android:name=".activities.act40transaction_Details"
+            android:name=".activities.Transaction_Details"
             android:exported="false" />
         <activity
             android:name=".activities.act36payment_confirmation"

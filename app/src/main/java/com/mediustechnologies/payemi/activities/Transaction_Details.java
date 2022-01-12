@@ -12,7 +12,7 @@ import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.ActivityTransactionDetailsBinding;
 
-public class act40transaction_Details extends AppCompatActivity {
+public class Transaction_Details extends AppCompatActivity {
     private ActivityTransactionDetailsBinding binding;
     private Context context = this;
 
@@ -69,11 +69,11 @@ public class act40transaction_Details extends AppCompatActivity {
         TransactionDetails item = getIntent().getParcelableExtra("item");
 
         if(item.getType().equals("transaction")){
-            binding.transactionId.setText("Not in api");
+            binding.transactionId.setText(item.getRazorpay_transaction_id());
             binding.detailsbankname.setText("To - "+item.getBiller_name());
-            binding.customerName.setText("From - not in api");
-            binding.customeremail.setText("not in api");
-            binding.billerid.setText("Bill Id - "+item.getBill_id());
+            binding.customerName.setText("From - "+item.getCustomer_name());
+            binding.customeremail.setText(""+item.getCustomer_email());
+            binding.billerid.setText("Bill Id - "+item.getBiller_id());
             binding.tobankname.setText("To "+item.getBiller_name());
             binding.paidAmount.setText(item.getAmount());
             String status = item.getBbps_transaction_status();

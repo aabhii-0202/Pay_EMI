@@ -74,13 +74,10 @@ public class DashBoard extends AppCompatActivity {
         emiListItemAdapter adapter = new emiListItemAdapter(emilist);
         emilistRecycler.setAdapter(adapter);
 
-        adapter.setOnButtonClickListner(new emiListItemAdapter.onButtonClickeListner() {
-            @Override
-            public void onButtonClick(int pos) {
-                Intent i = new Intent(context,act34pay_EMI_Details.class);
-                i.putExtra("bankname",emilist.get(pos).getBank_Name());
-                startActivity(i);
-            }
+        adapter.setOnButtonClickListner(pos -> {
+            Intent i = new Intent(context,act34pay_EMI_Details.class);
+            i.putExtra("bankname",emilist.get(pos).getBank_Name());
+            startActivity(i);
         });
         adapter.setOnItemClickListner(position -> {
 
@@ -115,14 +112,14 @@ public class DashBoard extends AppCompatActivity {
                     }
 
                 }else {
-                    Log.d("tag","Home "+response.code());
+                    Log.e("tag","Home "+response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<homePage>> call, Throwable t) {
                 Toast.makeText(context, "Unable to fetch Loans", Toast.LENGTH_SHORT).show();
-                Log.d("tag","API home: "+t.toString());
+                Log.e("tag","API home: "+t.toString());
             }
         });
     }

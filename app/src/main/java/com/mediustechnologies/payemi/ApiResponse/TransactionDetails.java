@@ -15,6 +15,7 @@ public class TransactionDetails implements Parcelable {
     @SerializedName("amount")
     @Expose
     String amount;
+
     @SerializedName("razorpay_transaction_status")
     @Expose
     String razorpay_transaction_status;
@@ -43,6 +44,22 @@ public class TransactionDetails implements Parcelable {
     @Expose
     String is_redeemed;
 
+    @SerializedName("razorpay_transaction_id")
+    @Expose
+    String razorpay_transaction_id;
+
+    @SerializedName("customer_name")
+    @Expose
+    String customer_name;
+
+    @SerializedName("customer_email")
+    @Expose
+    String customer_email;
+
+    @SerializedName("biller_id")
+    @Expose
+    String biller_id;
+
     protected TransactionDetails(Parcel in) {
         biller_name = in.readString();
         amount = in.readString();
@@ -53,6 +70,10 @@ public class TransactionDetails implements Parcelable {
         profile_id = in.readString();
         bill_id = in.readString();
         is_redeemed = in.readString();
+        razorpay_transaction_id = in.readString();
+        customer_name = in.readString();
+        customer_email = in.readString();
+        biller_id = in.readString();
     }
 
     public static final Creator<TransactionDetails> CREATOR = new Creator<TransactionDetails>() {
@@ -139,6 +160,38 @@ public class TransactionDetails implements Parcelable {
         this.is_redeemed = is_redeemed;
     }
 
+    public String getRazorpay_transaction_id() {
+        return razorpay_transaction_id;
+    }
+
+    public void setRazorpay_transaction_id(String razorpay_transaction_id) {
+        this.razorpay_transaction_id = razorpay_transaction_id;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getCustomer_email() {
+        return customer_email;
+    }
+
+    public void setCustomer_email(String customer_email) {
+        this.customer_email = customer_email;
+    }
+
+    public String getBiller_id() {
+        return biller_id;
+    }
+
+    public void setBiller_id(String biller_id) {
+        this.biller_id = biller_id;
+    }
+
     @Override
     public String toString() {
         return "TransactionDetails{" +
@@ -151,8 +204,13 @@ public class TransactionDetails implements Parcelable {
                 ", profile_id='" + profile_id + '\'' +
                 ", bill_id='" + bill_id + '\'' +
                 ", is_redeemed='" + is_redeemed + '\'' +
+                ", razorpay_transaction_id='" + razorpay_transaction_id + '\'' +
+                ", customer_name='" + customer_name + '\'' +
+                ", customer_email='" + customer_email + '\'' +
+                ", biller_id='" + biller_id + '\'' +
                 '}';
     }
+
 
     @Override
     public int describeContents() {
@@ -170,5 +228,9 @@ public class TransactionDetails implements Parcelable {
         parcel.writeString(profile_id);
         parcel.writeString(bill_id);
         parcel.writeString(is_redeemed);
+        parcel.writeString(razorpay_transaction_id);
+        parcel.writeString(customer_name);
+        parcel.writeString(customer_email);
+        parcel.writeString(biller_id);
     }
 }

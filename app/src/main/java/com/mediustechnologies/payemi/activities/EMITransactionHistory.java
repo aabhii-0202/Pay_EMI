@@ -48,7 +48,7 @@ public class EMITransactionHistory extends AppCompatActivity {
     private void getAllTransaction() {
 
         String biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id = "OU12LO000NATGJ";
+        biller_id = "OU12LO000NATGJ";
         String id = getIntent().getStringExtra("id");
         id ="2";
         String token = utils.access_token;
@@ -135,7 +135,7 @@ public class EMITransactionHistory extends AppCompatActivity {
 
                 TransactionDetails item = data.get(postion);
 
-                Intent i = new Intent(context,act40transaction_Details.class);
+                Intent i = new Intent(context, Transaction_Details.class);
 
                 i.putExtra("item",item);
                 i.putExtra("logl",logo);
@@ -156,7 +156,7 @@ public class EMITransactionHistory extends AppCompatActivity {
         Glide.with(binding.image).load(logo).into(binding.image);
         binding.bankname.setText(name);
         binding.backButton.setOnClickListener(view -> finish());
-        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, act40transaction_Details.class)));
+        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, Transaction_Details.class)));
 
     }
 }
