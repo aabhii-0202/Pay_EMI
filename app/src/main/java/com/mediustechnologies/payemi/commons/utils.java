@@ -30,6 +30,7 @@ public class utils extends Activity {
         preferences.edit().putString("phone", "").apply();
         preferences.edit().putString("token", "Bearer ").apply();
         preferences.edit().putString("profileid","").apply();
+        preferences.edit().putString("refresh_token", "Bearer ").apply();
         activitycontext.startActivity(new Intent(activitycontext, SendOTP.class));
     }
 
