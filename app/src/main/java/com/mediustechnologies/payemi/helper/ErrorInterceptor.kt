@@ -1,6 +1,6 @@
 package com.mediustechnologies.payemi.helper
 
-import android.util.Log
+
 import com.mediustechnologies.payemi.commons.utils
 import okhttp3.Interceptor
 import okhttp3.Request

@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.commons;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class utils {
+public class utils extends Activity {
     public static String access_token,refresh_token,phone,profileId;
     public static Context application;
     public static final int RESPONSE_SUCCESS = 200;
@@ -45,6 +46,13 @@ public class utils {
                     SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
                     preferences.edit().putString("refresh_token",t).apply();
                     Log.d("tag","Refresh token: "+t);
+                }
+                else if(response.code()==401){
+                    //go to login page
+//                    loginAgain();
+
+
+
                 }
             }
 
