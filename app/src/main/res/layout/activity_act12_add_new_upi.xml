@@ -5,7 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.payments.act12AddNewUpi">
+    tools:context=".activities.payments.UPIPayment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="8dp"
+        android:id="@+id/outerbox"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <WebView
+            android:id="@+id/payment_webview"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </WebView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -109,6 +134,7 @@
                 android:textSize="14sp" />
 
             <EditText
+                android:id="@+id/vpa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -117,7 +143,7 @@
                 android:background="@drawable/addcard_boxbg"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:hint="Enter Your UPI ID"
-                android:inputType="number"
+                android:inputType="text"
                 android:padding="16dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"

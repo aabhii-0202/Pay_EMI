@@ -102,11 +102,11 @@ public class AddLoanAccount extends AppCompatActivity {
 
         data = inputParameterFeilds.getData().getMandatory();
         if(data!=null&&data.size()>0) {
-            mandatoryParmsDTO d = new mandatoryParmsDTO();
-            d.setKey("abhishek_kumar");
-            d.setType("numeric");
-            d.setRegex("^[0-9]$");
-            data.put("abhishek kumar",d);
+//            mandatoryParmsDTO d = new mandatoryParmsDTO();
+//            d.setKey("abhishek_kumar");
+//            d.setType("numeric");
+//            d.setRegex("^[0-9]$");
+//            data.put("abhishek kumar",d);
             adapter = new inputParametersAdapter(data);
 
             recyclerView.setAdapter(adapter);
@@ -208,6 +208,8 @@ public class AddLoanAccount extends AppCompatActivity {
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     fetchBill bill = response.body();
+
+                    utils.bill_id = bill.getPayload().get(0).getId();
 
                     LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
                     variableData.putAll(bill.getPayload().get(0).getAmountOptions());

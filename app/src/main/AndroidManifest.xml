@@ -3,6 +3,7 @@
     package="com.mediustechnologies.payemi">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -15,28 +16,22 @@
         <activity
             android:name=".activities.scratchCard.ScratchCardActivity"
             android:exported="true"/>
-
         <activity
             android:name=".activities.PaymentSuccessful"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false"/>
         <activity
-            android:name=".activities.payments.act14NetBanking"
+            android:name=".activities.payments.NetBanking"
             android:exported="false" />
         <activity
             android:name=".activities.payments.act13SelectWallect"
             android:exported="false" />
         <activity
-            android:name=".activities.payments.act12AddNewUpi"
+            android:name=".activities.payments.UPIPayment"
             android:exported="false" />
         <activity
-            android:name=".activities.payments.act11AddNewCard"
-            android:exported="false" />
+            android:name=".activities.payments.CardPayment"
+            android:exported="false"/>
+
         <activity
             android:name=".activities.EMITransactionHistory"
             android:exported="false"/>
@@ -49,7 +44,13 @@
             android:exported="false"/>
         <activity
             android:name=".activities.payments.act35payment_Page"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.Transaction_Details"
             android:exported="false" />
@@ -124,7 +125,12 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts"/>
+
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_ILgsfZCZoFIKMb"/>
     </application>
 
 </manifest>

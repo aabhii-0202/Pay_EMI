@@ -15,15 +15,18 @@ import android.widget.Toast;
 import com.mediustechnologies.payemi.adapters.NetBankingListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityNetBankingBinding;
 import com.mediustechnologies.payemi.recyclerItems.NetBankingListItem;
+import com.razorpay.PaymentResultListener;
+import com.razorpay.Razorpay;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class act14NetBanking extends AppCompatActivity {
+public class NetBanking extends AppCompatActivity implements PaymentResultListener {
 
     private ActivityNetBankingBinding binding;
     private Context context = this;
+    private Razorpay razorpay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,14 @@ public class act14NetBanking extends AppCompatActivity {
         binding = ActivityNetBankingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         init();
+        razorpay = new Razorpay(this);
+        razorpay.setWebView(binding.paymentWebview);
+        razorpay.changeApiKey("rzp_live_ILgsfZCZoFIKMb");
+        razorpay.setWebView(binding.paymentWebview);
+
         recyclerview();
 
 
@@ -41,6 +51,12 @@ public class act14NetBanking extends AppCompatActivity {
     }
 
     private void recyclerview(){
+
+
+
+
+
+
 
         List<NetBankingListItem> banklist = new ArrayList<>();
         banklist.add(new NetBankingListItem("Axis Bank"));
@@ -98,6 +114,16 @@ public class act14NetBanking extends AppCompatActivity {
 
     private void init(){
         binding.back.setOnClickListener(view -> finish());
+
+    }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
 
     }
 }

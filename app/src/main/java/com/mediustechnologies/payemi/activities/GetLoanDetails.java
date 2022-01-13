@@ -85,6 +85,8 @@ public class GetLoanDetails extends AppCompatActivity {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     bill = response.body();
 
+                    utils.bill_id = response.body().getPayload().get(0).getId();
+
                     binding.paybtn.setVisibility(View.VISIBLE);
 //                    exactness = bill.getPayload().get("payment_exactness");
                     setData(bill);
@@ -125,10 +127,7 @@ public class GetLoanDetails extends AppCompatActivity {
         variableData.putAll(data.getInputparams_value());
         variableData.putAll(data.getBiller_additional_info());
 
-
         recyclerview(variableData);
-
-
 
     }
 

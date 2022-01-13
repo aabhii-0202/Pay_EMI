@@ -178,7 +178,7 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void scratch() {
 
-        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(utils.access_token,bill_id,profile_id);
+        Call<getCashback> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getCashback(utils.access_token,utils.bill_id,utils.profileId);
 
         call.enqueue(new Callback<getCashback>() {
             @Override

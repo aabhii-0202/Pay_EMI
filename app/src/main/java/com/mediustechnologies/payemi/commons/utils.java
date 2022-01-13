@@ -18,6 +18,7 @@ import retrofit2.Response;
 
 public class utils extends Activity {
     public static String access_token,refresh_token,phone,profileId;
+    public static String bill_id;
     public static Context application;
     public static final int RESPONSE_SUCCESS = 200;
     public static final int INTERNAL_SERVER_ERROR = 500;
@@ -62,4 +63,5 @@ public class utils extends Activity {
             }
         });
     }
+
 }

@@ -106,6 +106,7 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
 
         variableData = (HashMap<String, String>) getIntent().getSerializableExtra("variableData");
 
+
         recyclerview(variableData);
 
     }
