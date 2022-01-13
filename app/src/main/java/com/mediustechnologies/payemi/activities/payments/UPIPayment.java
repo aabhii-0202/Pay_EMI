@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.activities.payments;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -161,5 +162,14 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
         Log.d("tag", "UPI Payment: Failed");
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        razorpay.onActivityResult(requestCode,resultCode,data);
+
+
+
     }
 }

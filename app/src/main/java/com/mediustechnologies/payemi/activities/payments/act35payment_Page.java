@@ -65,7 +65,7 @@ public class act35payment_Page extends AppCompatActivity {
     }
 
     private void openWalletPayment(){
-        Intent i = new Intent(context,act13SelectWallect.class);
+        Intent i = new Intent(context, LinkWallet.class);
         i.putExtra("feild",res);
         startActivity(i);
     }

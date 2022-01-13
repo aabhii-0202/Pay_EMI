@@ -23,7 +23,7 @@
             android:name=".activities.payments.NetBanking"
             android:exported="false" />
         <activity
-            android:name=".activities.payments.act13SelectWallect"
+            android:name=".activities.payments.LinkWallet"
             android:exported="false" />
         <activity
             android:name=".activities.payments.UPIPayment"
