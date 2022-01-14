@@ -1,13 +1,14 @@
 package com.mediustechnologies.payemi.helper
 
 
+import android.content.Context
 import android.content.Intent
 import com.mediustechnologies.payemi.commons.utils
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class ErrorInterceptor : Interceptor {
+class ErrorInterceptor(val activityContext: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val request: Request = chain.request()
@@ -18,7 +19,7 @@ class ErrorInterceptor : Interceptor {
             }
             401 -> {
                 //Show UnauthorizedError Message
-                utils.refreshToken()
+                utils.refreshToken(activityContext)
 
 
             }

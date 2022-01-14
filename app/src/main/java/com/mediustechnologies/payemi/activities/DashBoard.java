@@ -97,7 +97,7 @@ public class DashBoard extends AppCompatActivity {
 
     private void callapi(){
 
-        Call<List<homePage>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
+        Call<List<homePage>> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
 
         call.enqueue(new Callback<List<homePage>>() {
             @Override

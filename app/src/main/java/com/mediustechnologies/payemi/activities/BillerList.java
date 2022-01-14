@@ -80,7 +80,7 @@ public class BillerList extends AppCompatActivity {
         bankSubList = new ArrayList<>();
 
         String name = getIntent().getStringExtra("name");
-        Call<List<bankSubItem>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillerByBank(utils.access_token,name);
+        Call<List<bankSubItem>> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().getBillerByBank(utils.access_token,name);
 
         call.enqueue(new Callback<List<bankSubItem>>() {
             @Override

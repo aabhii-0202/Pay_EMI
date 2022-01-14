@@ -77,7 +77,7 @@ public class GetLoanDetails extends AppCompatActivity {
 
         String loan_id = getIntent().getStringExtra("loan_id");
 
-        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getLoanDetails(utils.access_token,loan_id,utils.profileId);
+        Call<fetchBill> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().getLoanDetails(utils.access_token,loan_id,utils.profileId);
 
         call.enqueue(new Callback<fetchBill>() {
             @Override

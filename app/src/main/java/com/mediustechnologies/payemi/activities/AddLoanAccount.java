@@ -64,7 +64,7 @@ public class AddLoanAccount extends AppCompatActivity {
         String token = utils.access_token;
 
 
-        Call<inputParameterFeilds> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().inputparameterfeilds(token,biller_id);
+        Call<inputParameterFeilds> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().inputparameterfeilds(token,biller_id);
 
         call.enqueue(new Callback<inputParameterFeilds>() {
             @Override
@@ -193,7 +193,7 @@ public class AddLoanAccount extends AppCompatActivity {
         String biller_id = getIntent().getStringExtra("biller_id");
 //        biller_id = "OU12LO000NATGJ";
 
-        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().billfetch(utils.access_token,biller_id,utils.phone,jsonObject);
+        Call<fetchBill> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().billfetch(utils.access_token,biller_id,utils.phone,jsonObject);
 
 
         String finalBiller_id = biller_id;
@@ -249,7 +249,7 @@ public class AddLoanAccount extends AppCompatActivity {
 //        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
         fetchBillBody body = new fetchBillBody(loanNumber,mobile);
 
-        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
+        Call<fetchBill> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
 
         String finalBiller_id = biller_id;
         call.enqueue(new Callback<fetchBill>() {

@@ -60,7 +60,7 @@ public class EMITransactionHistory extends AppCompatActivity {
 //        biller_id = "OU12LO000NATGJ";
         String token = utils.access_token;
 
-        Call<List<TransactionDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
+        Call<List<TransactionDetails>> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
 
         call.enqueue(new Callback<List<TransactionDetails>>() {
             @Override
@@ -195,7 +195,7 @@ public class EMITransactionHistory extends AppCompatActivity {
     private void redeem(String bill_id) {
 
         String token = utils.access_token;
-        Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,utils.profileId,bill_id);
+        Call<RedeemScratchCard> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,utils.profileId,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override

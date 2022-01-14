@@ -19,13 +19,17 @@ public class RetrofitClient {
     private Retrofit retrofit;
     private Context activity_context;
 
+    public RetrofitClient(Context activity_context){
+        this.activity_context = activity_context;
+    }
+
 
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1,TimeUnit.MINUTES)
             .writeTimeout(1,TimeUnit.MINUTES)
             .addInterceptor(getLoggin())
-            .addInterceptor(new ErrorInterceptor())
+            .addInterceptor(new ErrorInterceptor(activity_context))
             .build();
 
 
@@ -42,7 +46,7 @@ public class RetrofitClient {
                 .build();
     }
 
-    public static synchronized RetrofitClient getInstance(String BASE_URL) {
+    public synchronized RetrofitClient getInstance(String BASE_URL) {
         mInstance = new RetrofitClient(BASE_URL);
         return mInstance;
     }
