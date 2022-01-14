@@ -52,7 +52,7 @@ public class BankList extends AppCompatActivity {
 
 
         Log.d("tag","Access Token Saved in Utils "+utils.access_token);
-        Call<List<getAllBanks>> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().getAllBanks(utils.access_token);
+        Call<List<getAllBanks>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token);
 
         call.enqueue(new Callback<List<getAllBanks>>() {
             @Override

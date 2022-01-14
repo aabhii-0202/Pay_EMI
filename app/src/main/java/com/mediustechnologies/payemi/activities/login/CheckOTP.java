@@ -70,7 +70,7 @@ public class CheckOTP extends AppCompatActivity {
 
     private void resendOTP(){
             if(phone.length()==10){
-                Call<sendOTPResponse> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().sendOTP(phone);
+                Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone);
                 String finalPhone = phone;
                 call.enqueue(new Callback<sendOTPResponse>() {
                     @Override
@@ -100,7 +100,7 @@ public class CheckOTP extends AppCompatActivity {
         if(otp.length()==4){
             {
 
-                Call<verifyOTPresponse> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().checkOTP(phone, otp);
+                Call<verifyOTPresponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().checkOTP(phone, otp);
 
 
                 call.enqueue(new Callback<verifyOTPresponse>() {

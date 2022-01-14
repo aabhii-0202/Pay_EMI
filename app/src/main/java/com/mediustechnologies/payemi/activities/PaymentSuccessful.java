@@ -151,7 +151,7 @@ public class PaymentSuccessful extends AppCompatActivity {
     private void getbilldetails() {
         String token = utils.access_token;
 
-        Call<List<billFetchDTO>> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
+        Call<List<billFetchDTO>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
         call.enqueue(new Callback<List<billFetchDTO>>() {
             @Override
@@ -176,7 +176,7 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void scratch() {
 
-        Call<getCashback> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().getCashback(utils.access_token,utils.bill_id,utils.profileId);
+        Call<getCashback> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getCashback(utils.access_token,utils.bill_id,utils.profileId);
 
         call.enqueue(new Callback<getCashback>() {
             @Override
@@ -247,7 +247,7 @@ public class PaymentSuccessful extends AppCompatActivity {
     private void redeem() {
 
         String token = utils.access_token;
-        Call<RedeemScratchCard> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,profile_id,bill_id);
+        Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(token,profile_id,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override

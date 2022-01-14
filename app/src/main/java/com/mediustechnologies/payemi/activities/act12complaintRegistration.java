@@ -76,7 +76,7 @@ public class act12complaintRegistration extends AppCompatActivity {
     private void sendOTP() {
        String phone = binding.phoneNumber.getText().toString().trim();
        if(phone.length()==10){
-           Call<sendOTPResponse> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().sendOTP(phone);
+           Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone);
            call.enqueue(new Callback<sendOTPResponse>() {
                @Override
                public void onResponse(Call<sendOTPResponse> call, Response<sendOTPResponse> response) {
@@ -98,7 +98,7 @@ public class act12complaintRegistration extends AppCompatActivity {
         String phone = binding.phoneNumber.getText().toString().trim();
         String otp = binding.otpNumber.getText().toString().trim();
         if(phone.length()==10&&otp.length()>0){
-            Call<verifyOTPresponse> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().checkOTP(phone,otp);
+            Call<verifyOTPresponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().checkOTP(phone,otp);
 
 
 

@@ -19,26 +19,26 @@ public class RetrofitClient {
     private Retrofit retrofit;
     private Context activity_context;
 
-    public RetrofitClient(Context activity_context){
-        this.activity_context = activity_context;
+    public RetrofitClient(){
     }
-
-
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.MINUTES)
-            .readTimeout(1,TimeUnit.MINUTES)
-            .writeTimeout(1,TimeUnit.MINUTES)
-            .addInterceptor(getLoggin())
-            .addInterceptor(new ErrorInterceptor(activity_context))
-            .build();
-
 
     public static HttpLoggingInterceptor getLoggin() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         return logging;
     }
-    private RetrofitClient(String BASE_URL) {
+    private RetrofitClient(Context mContext, String BASE_URL) {
+        activity_context = mContext;
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(1,TimeUnit.MINUTES)
+                .writeTimeout(1,TimeUnit.MINUTES)
+                .addInterceptor(getLoggin())
+                .addInterceptor(new ErrorInterceptor(activity_context))
+                .build();
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
@@ -46,8 +46,8 @@ public class RetrofitClient {
                 .build();
     }
 
-    public synchronized RetrofitClient getInstance(String BASE_URL) {
-        mInstance = new RetrofitClient(BASE_URL);
+    public synchronized RetrofitClient getInstance(Context mContext, String BASE_URL) {
+        mInstance = new RetrofitClient(mContext, BASE_URL);
         return mInstance;
     }
 

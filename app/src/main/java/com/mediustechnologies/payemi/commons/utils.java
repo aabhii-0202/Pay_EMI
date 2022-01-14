@@ -37,7 +37,7 @@ public class utils extends Activity {
     public static void refreshToken (Context context){
         Log.d("tag","Refresh token "+utils.refresh_token);
         RefreshToken token = new RefreshToken(utils.refresh_token);
-        Call<RefreshTokenResponse> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().refreshToken(token);
+        Call<RefreshTokenResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().refreshToken(token);
         call.enqueue(new Callback<RefreshTokenResponse>() {
             @Override
             public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {

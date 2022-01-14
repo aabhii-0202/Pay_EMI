@@ -48,7 +48,7 @@ public class SplashScreen extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
 
-            Call<ifNewUser> call = new RetrofitClient(context).getInstance(urlconstants.AuthURL).getApi().checkfornewUser(phone);
+            Call<ifNewUser> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().checkfornewUser(phone);
 
             call.enqueue(new Callback<ifNewUser>() {
                 @Override
