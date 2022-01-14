@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/bharatBillLogo"
+            android:id="@+id/logout"
             android:layout_width="63dp"
             android:layout_height="match_parent"
             android:src="@drawable/cornericon"
@@ -118,6 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
+            android:layout_marginHorizontal="16dp"
             android:text="Paying HDFC Bank"
             android:fontFamily="@font/gtwalsheim_pro_bold"
             android:layout_gravity="center"
@@ -126,6 +127,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_gravity="center_horizontal"
             >
 

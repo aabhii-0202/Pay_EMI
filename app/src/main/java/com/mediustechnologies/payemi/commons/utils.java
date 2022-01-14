@@ -46,7 +46,7 @@ public class utils extends Activity {
                     String t = "Bearer "+response.body().toString();
                     utils.access_token = t;
                     SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
-                    preferences.edit().putString("refresh_token",t).apply();
+                    preferences.edit().putString("token",t).apply();
                     Log.d("tag","Refresh token: "+t);
                 }
                 else if(response.code()==401){

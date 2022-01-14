@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityCardPaymentBinding;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -24,6 +26,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
     private final Context context = this;
     private Razorpay razorpay;
     private JSONObject payload;
+    private String amount;
 
 
     @Override
@@ -32,6 +35,9 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         binding = ActivityCardPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        amount = getIntent().getStringExtra("amount");
+        binding.amount.setText("₹ "+amount);
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
@@ -88,7 +94,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
 
         try {
             payload = new JSONObject("{currency: 'INR'}");
-            payload.put("amount", "100");
+            payload.put("amount", amount+"00");
             payload.put("contact", "9999999999");
             payload.put("email", "customer@name.com");
         } catch (Exception ex) {
@@ -142,6 +148,11 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
 
+        Intent i = new Intent(context, PaymentSuccessful.class);
+        i.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        startActivity(i);
+
     }
 
     @Override
@@ -150,6 +161,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         Log.d("tag", "Card Payment: Failed");
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
+
     }
 
     @Override

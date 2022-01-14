@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.adapters.NetBankingListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityNetBankingBinding;
 import com.mediustechnologies.payemi.recyclerItems.NetBankingListItem;
@@ -29,6 +31,7 @@ public class NetBanking extends AppCompatActivity implements PaymentResultListen
     private Context context = this;
     private Razorpay razorpay;
     private JSONObject payload;
+    private String amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,7 @@ public class NetBanking extends AppCompatActivity implements PaymentResultListen
 
         try {
             payload = new JSONObject("{currency: 'INR'}");
-            payload.put("amount", "100");
+            payload.put("amount", amount+"00");
             payload.put("contact", "9999999999");
             payload.put("email", "customer@name.com");
         } catch (Exception e) {
@@ -115,7 +118,7 @@ public class NetBanking extends AppCompatActivity implements PaymentResultListen
 
             @Override
             public void onValidationError(Map<String, String> error) {
-                Log.d("com.example", "Validation failed: " + error.get("field") + " " + error.get("description"));
+                Log.d("tag", "Validation failed: " + error.get("field") + " " + error.get("description"));
                 Toast.makeText(context, "Validation: " + error.get("field") + " " + error.get("description"), Toast.LENGTH_SHORT).show();
             }
         });
@@ -173,13 +176,21 @@ public class NetBanking extends AppCompatActivity implements PaymentResultListen
     private void init(){
         binding.back.setOnClickListener(view -> finish());
 
+        amount = getIntent().getStringExtra("amount");
+
+
     }
 
     @Override
     public void onPaymentSuccess(String s) {
         binding.paymentWebview.setVisibility(View.GONE);
         binding.outerbox.setVisibility(View.GONE);
-        Log.d("tag","Net Banking Payment Success");
+
+//        Log.d("tag","Net Banking Payment Success");
+        Intent i = new Intent(context, PaymentSuccessful.class);
+        i.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        startActivity(i);
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.adapters.WalletAdapter;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivitySelectWallectBinding;
@@ -34,6 +35,7 @@ public class LinkWallet extends AppCompatActivity implements PaymentResultListen
     private Context context = this;
     private Razorpay razorpay;
     private JSONObject payload;
+    private String amount;
 
 
     @Override
@@ -159,6 +161,8 @@ public class LinkWallet extends AppCompatActivity implements PaymentResultListen
 
     private void init(){
         binding.back.setOnClickListener(view -> finish());
+        amount = getIntent().getStringExtra("amount");
+        binding.amount.setText("₹ "+amount);
 
     }
 
@@ -167,7 +171,11 @@ public class LinkWallet extends AppCompatActivity implements PaymentResultListen
         binding.paymentWebview.setVisibility(View.GONE);
         binding.outerbox.setVisibility(View.GONE);
 
-        Log.d("tag", "onPaymentSuccess: wallet payment successful");
+//        Log.d("tag", "onPaymentSuccess: wallet payment successful");
+        Intent i = new Intent(context, PaymentSuccessful.class);
+        i.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        startActivity(i);
     }
 
     @Override

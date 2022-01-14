@@ -42,7 +42,7 @@ public class AddLoanAccount extends AppCompatActivity {
 
     private ActivityInputParameterFeildsBinding binding;
     private final Context context = this;
-    private String url,biller_id;
+    private String url,biller_id,exactness;
     private inputParametersAdapter adapter;
     private LinkedHashMap<String, mandatoryParmsDTO> data;
 
@@ -59,10 +59,9 @@ public class AddLoanAccount extends AppCompatActivity {
     private void getInputParameters() {
 
         biller_id = getIntent().getStringExtra("biller_id");
-        biller_id="ICIC00000NATKD";
+//        biller_id="ICIC00000NATKD";
 
         String token = utils.access_token;
-//        token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMTQwMjAyLCJpYXQiOjE2NDEwNTM4MDIsImp0aSI6IjU3YmY3N2FmMjEyODQyNmJiYjQzNWNiY2NjNGFmNGU2IiwidXNlcl9pZCI6NX0.TNphEM82rFFVGBrItlmEQtHTTU4kYiofjzzDq2tmnbQ";
 
 
         Call<inputParameterFeilds> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().inputparameterfeilds(token,biller_id);
@@ -77,6 +76,7 @@ public class AddLoanAccount extends AppCompatActivity {
                     Log.d("tag", "InputParameterFeilds: "+s);
 
                     recyclerview(inputParameterFeilds);
+                    exactness = inputParameterFeilds.getData().getBillerPaymentExactness();
 
                     String url = inputParameterFeilds.getData().getLogo();
                     Glide.with(binding.Image).load(url).into(binding.Image);
@@ -130,7 +130,7 @@ public class AddLoanAccount extends AppCompatActivity {
         {
 
 
-            fetchBill(ApiJsonMap(feilds));
+            FetchBill(ApiJsonMap(feilds));
 
 
         }
@@ -188,6 +188,55 @@ public class AddLoanAccount extends AppCompatActivity {
         return m.matches();
     }
 
+    private void FetchBill(JsonObject jsonObject){
+
+        String biller_id = getIntent().getStringExtra("biller_id");
+//        biller_id = "OU12LO000NATGJ";
+
+        Call<fetchBill> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().billfetch(utils.access_token,biller_id,utils.phone,jsonObject);
+
+
+        String finalBiller_id = biller_id;
+        call.enqueue(new Callback<fetchBill>() {
+            @Override
+            public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
+                    fetchBill bill = response.body();
+
+                    utils.bill_id = bill.getPayload().get(0).getId();
+
+                    LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
+                    variableData.putAll(bill.getPayload().get(0).getAmountOptions());
+                    variableData.putAll(bill.getPayload().get(0).getInputparams_value());
+                    variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
+
+                    Intent i = new Intent(context, EMIDetailsBillFetch.class);
+                    i.putExtra("url", url);
+                    i.putExtra("variableData",variableData);
+                    i.putExtra("bill",bill);
+                    i.putExtra("exact",exactness);
+                    i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
+                    i.putExtra("biller_id", finalBiller_id);
+                    startActivity(i);
+
+                }
+                else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<fetchBill> call, Throwable t) {
+                Log.d("tag", "onFailure: bill fetch"+t.toString());
+                Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+    }
 
     private void fetchBill(JsonObject jsonObject){
 
@@ -220,6 +269,7 @@ public class AddLoanAccount extends AppCompatActivity {
                     i.putExtra("url", url);
                     i.putExtra("variableData",variableData);
                     i.putExtra("bill",bill);
+                    i.putExtra("exact",exactness);
                     i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
                     i.putExtra("biller_id", finalBiller_id);
                     startActivity(i);

@@ -1,5 +1,7 @@
 package com.mediustechnologies.payemi.helper;
 
+import android.content.Context;
+
 import com.mediustechnologies.payemi.commons.API;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +17,7 @@ public class RetrofitClient {
 
     public static RetrofitClient mInstance;
     private Retrofit retrofit;
+    private Context activity_context;
 
 
     OkHttpClient okHttpClient = new OkHttpClient.Builder()

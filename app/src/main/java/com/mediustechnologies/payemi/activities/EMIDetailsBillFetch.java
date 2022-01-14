@@ -31,7 +31,7 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
 
     private ActivityPaymentInfoBinding binding;
     private final Context context = this;
-    private String url,name,amount,customer,bill_id,profile_id ;
+    private String url,name,amount,customer,bill_id,profile_id,exactness ;
 
 
     @Override
@@ -102,6 +102,10 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
             binding.TotalAmount.setText(bill.getPayload().get(0).getAmount());
         else binding.totalamountlayout.setVisibility(View.GONE);
 
+        if(bill.getExactness()!=null){
+            exactness = bill.getExactness();
+        }
+
         HashMap<String,String> variableData = new HashMap<>();
 
         variableData = (HashMap<String, String>) getIntent().getSerializableExtra("variableData");
@@ -131,6 +135,8 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
         i.putExtra("billerName",name);
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);
+        i.putExtra("exact",exactness);
+
         startActivity(i);
     }
 

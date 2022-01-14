@@ -31,10 +31,6 @@ public class DashBoard extends AppCompatActivity {
     private final Context context = this;
     private  List<homePage> data;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +53,7 @@ public class DashBoard extends AppCompatActivity {
 
             emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),"loan name",paid,data.get(i).getAmount(),data.get(i).getBiller__logo_url()));
 
-            System.out.println(data.get(i).getId());
+//            System.out.println(data.get(i).getId());
 
 
         }
@@ -101,7 +97,6 @@ public class DashBoard extends AppCompatActivity {
 
     private void callapi(){
 
-        Log.d("tag","Id "+utils.profileId+"\n token "+utils.access_token+"\n mobile "+utils.phone);
         Call<List<homePage>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
 
         call.enqueue(new Callback<List<homePage>>() {

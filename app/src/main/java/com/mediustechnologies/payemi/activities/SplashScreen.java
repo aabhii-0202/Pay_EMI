@@ -41,9 +41,10 @@ public class SplashScreen extends AppCompatActivity {
         String id = preferences.getString("profileid","");
         String refresh_token = preferences.getString("refresh_token","");
 
-        System.out.println("Token------ "+token);
-        System.out.println("Phone------ "+phone);
-        System.out.println("ProfileId-- "+id);
+        System.out.println("Token---------------- "+token);
+        System.out.println("Refresh Token--------"+refresh_token);
+        System.out.println("Phone---------------- "+phone);
+        System.out.println("ProfileId------------ "+id);
 
         new Handler().postDelayed(() -> {
 

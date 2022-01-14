@@ -42,7 +42,7 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/bharatBillLogo"
+                android:id="@+id/logout"
                 android:layout_width="63dp"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"

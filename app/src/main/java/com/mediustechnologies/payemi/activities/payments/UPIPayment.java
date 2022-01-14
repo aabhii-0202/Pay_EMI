@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityAct12AddNewUpiBinding;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -25,6 +26,7 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
     private Razorpay razorpay;
     private final Context context = this;
     private JSONObject payload;
+    private String amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(view -> finish());
+        amount = getIntent().getStringExtra("amount");
+        binding.amount.setText("₹ "+amount);
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
@@ -71,11 +75,9 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
     }
 
     private void sendPaymentRequest(String vpa){
-
-
         try {
             payload = new JSONObject("{currency: 'INR'}");
-            payload.put("amount", "100");
+            payload.put("amount", amount+"00");
             payload.put("contact", "9999999999");
             payload.put("email", "customer@name.com");
         } catch (Exception e) {
@@ -153,6 +155,11 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
         Log.d("tag", "UPI PaymentSuccess: Success");
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
+
+        Intent i = new Intent(context, PaymentSuccessful.class);
+        i.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        startActivity(i);
 
     }
 

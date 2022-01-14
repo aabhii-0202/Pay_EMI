@@ -23,10 +23,16 @@ public class fetchBill implements Parcelable {
     @Expose
     private String message;
 
+    @SerializedName("billerPaymentExactness")
+    @Expose
+    private String exactness;
+
+
     protected fetchBill(Parcel in) {
         status = in.readInt();
         payload = in.createTypedArrayList(billFetchDTO.CREATOR);
         message = in.readString();
+        exactness = in.readString();
     }
 
     public static final Creator<fetchBill> CREATOR = new Creator<fetchBill>() {
@@ -40,6 +46,16 @@ public class fetchBill implements Parcelable {
             return new fetchBill[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "fetchBill{" +
+                "status=" + status +
+                ", payload=" + payload +
+                ", message='" + message + '\'' +
+                ", exactness='" + exactness + '\'' +
+                '}';
+    }
 
     public int getStatus() {
         return status;
@@ -65,13 +81,12 @@ public class fetchBill implements Parcelable {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "fetchBill{" +
-                "status=" + status +
-                ", payload=" + payload +
-                ", message='" + message + '\'' +
-                '}';
+    public String getExactness() {
+        return exactness;
+    }
+
+    public void setExactness(String exactness) {
+        this.exactness = exactness;
     }
 
     @Override
@@ -84,5 +99,6 @@ public class fetchBill implements Parcelable {
         parcel.writeInt(status);
         parcel.writeTypedList(payload);
         parcel.writeString(message);
+        parcel.writeString(exactness);
     }
 }

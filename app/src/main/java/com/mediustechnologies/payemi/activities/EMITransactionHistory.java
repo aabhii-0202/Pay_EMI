@@ -57,13 +57,10 @@ public class EMITransactionHistory extends AppCompatActivity {
     private void getAllTransaction() {
 
         String biller_id = getIntent().getStringExtra("biller_id");
-        biller_id = "OU12LO000NATGJ";
-        String id = getIntent().getStringExtra("id");
-        id ="2";
+//        biller_id = "OU12LO000NATGJ";
         String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNjYzMzE2LCJpYXQiOjE2NDE1NzY5MTYsImp0aSI6IjY0NjMxMmM2YzNmOTQ3ZDE4ZDRhMTFlMWZiOTIwZDIzIiwidXNlcl9pZCI6NH0.CeUQTysLO8oU0e9Djby3tbjgSkuuNOBAZCqF0dGpDAw";
 
-        Call<List<TransactionDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().allTransaction(token,id,biller_id);
+        Call<List<TransactionDetails>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
 
         call.enqueue(new Callback<List<TransactionDetails>>() {
             @Override
@@ -102,7 +99,7 @@ public class EMITransactionHistory extends AppCompatActivity {
                 if(status.equals("Successful")){
                     date = "  Paid | "+date;
                 }else date = "  Failed | "+date;
-            }
+            }else status = "null";
 
 
             chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));
@@ -197,9 +194,7 @@ public class EMITransactionHistory extends AppCompatActivity {
 
     private void redeem(String bill_id) {
 
-//        int bill_id = "384";
         String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
         Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,utils.profileId,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {

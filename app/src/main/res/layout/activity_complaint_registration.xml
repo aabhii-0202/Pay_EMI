@@ -50,7 +50,7 @@
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <ImageView
-                        android:id="@+id/bharatBillLogo"
+                        android:id="@+id/logout"
                         android:layout_width="63dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/cornericon"

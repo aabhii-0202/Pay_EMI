@@ -78,7 +78,14 @@ public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.
         }
 
         public void setData(String billerid, String bankname, String billername, String logourl) {
-            Glide.with(SubImage).load(logourl).into(SubImage);
+
+            if(logourl==null)logourl = "https://image.shutterstock.com/image-photo/black-alphabet-letter-word-null-600w-1968602836.jpg";
+            try {
+                Glide.with(SubImage).load(logourl).into(SubImage);
+            }catch (Exception e){
+                logourl = "https://image.shutterstock.com/image-photo/black-alphabet-letter-word-null-600w-1968602836.jpg";
+                Glide.with(SubImage).load(logourl).into(SubImage);
+            }
 
         }
     }

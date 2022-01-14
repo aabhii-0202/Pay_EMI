@@ -52,11 +52,12 @@ public class PaymentSuccessful extends AppCompatActivity {
 
         init();
         getbilldetails();
+
     }
 
     private void setData(billFetchDTO data) {
 
-        Log.d("tag", "PaymentSuccessful " + data.toString());
+        Log.d("tag", "Payment Successful " + data.toString());
 
         String bankname = getIntent().getStringExtra("billerName");
         binding.bankName.setText("To "+bankname);
@@ -149,9 +150,6 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void getbilldetails() {
         String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzA5NTQ1LCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImEwZmE0MTcxODBkNjQ0ZDM5YjdkNGM0MzNhM2Q3M2VlIiwidXNlcl9pZCI6NH0.DcMHuSjY7Y1sjC-0vNfuCC3tmmzG0UndZ9KT-sKE-dM";
-
-
 
         Call<List<billFetchDTO>> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
@@ -209,6 +207,7 @@ public class PaymentSuccessful extends AppCompatActivity {
                                     Log.d("tag", "onScratchProgress: "+atLeastScratchedPercent);
                                     if(atLeastScratchedPercent>8){
                                         Log.d("tag","scratched");
+                                        scratched = true;
                                         redeem();
                                     }
                                 }
@@ -247,9 +246,7 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void redeem() {
 
-//        int bill_id = "384";
         String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNzAzMDExLCJpYXQiOjE2NDE2MTY2MTEsImp0aSI6ImVlMDYwMmUxNmY2NzQwYzJhNDFjMTE3NzA0MjVhMDEwIiwidXNlcl9pZCI6NH0.Bmy-qy5AI9u-gMO1TIxmlbGOMLlAEbxjHc7CoCcxQYI";
         Call<RedeemScratchCard> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().redeemscratch(token,profile_id,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
@@ -259,7 +256,7 @@ public class PaymentSuccessful extends AppCompatActivity {
                     if(response.body().getMessage().equals("Success")){
                         Log.d("tag","Redeemed cashback successfull");
                         Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
-                        scratched = true;
+
                     }
                 }
                 else if(response.code()==400){
@@ -283,7 +280,6 @@ public class PaymentSuccessful extends AppCompatActivity {
         profile_id = getIntent().getStringExtra("profile_id");
 
         binding.crossButton.setOnClickListener(view -> finish());
-        binding.download.setOnClickListener(view -> startActivity(new Intent(context, act35payment_Page.class)));
 
     }
 }

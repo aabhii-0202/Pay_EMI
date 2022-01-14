@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
+import com.mediustechnologies.payemi.activities.login.SendOTP;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
@@ -100,7 +103,18 @@ public class BankList extends AppCompatActivity {
     private void init(){
 
         binding.backButton.setOnClickListener(view -> finish());
+        binding.logout.setOnClickListener(view -> {
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
+            preferences.edit().putString("phone", "").apply();
+            preferences.edit().putString("refresh_token", "Bearer ").apply();
+            preferences.edit().putString("token", "Bearer ").apply();
+            preferences.edit().putString("profileid","").apply();
 
+            Intent i = new Intent(context, SendOTP.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+
+        });
 
 
 

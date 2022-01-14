@@ -79,12 +79,15 @@ public class Transaction_Details extends AppCompatActivity {
             String date = item.getTransaction_datetime();
             date = formatdate(date);
 
-            if(status.equals("Successful")){
-                binding.statusdate.setText("  Completed | "+date);
-                binding.statusdate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
-            }
-            else{
-                binding.statusdate.setText("  Failed | "+date);
+            try {
+                if (status.equals("Successful")) {
+                    binding.statusdate.setText("  Completed | " + date);
+                    binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_tick, 0, 0, 0);
+                } else {
+                    binding.statusdate.setText("  Failed | " + date);
+                }
+            }catch (Exception e){
+                binding.statusdate.setText("  Failed | " + date);
             }
 
             String url = getIntent().getStringExtra("logo");
