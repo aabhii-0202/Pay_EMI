@@ -88,7 +88,9 @@ public class AddLoanAccount extends AppCompatActivity {
             @Override
             public void onFailure(Call<inputParameterFeilds> call, Throwable t) {
                 Toast.makeText(context, "Fail to load input fields.", Toast.LENGTH_SHORT).show();
-                finish();
+                Log.e("tag","add Loan Account api response failed");
+                binding.getDetails.setVisibility(View.GONE);
+                binding.text.setText("Failed to load.");
             }
         });
 
@@ -124,6 +126,7 @@ public class AddLoanAccount extends AppCompatActivity {
     }
 
     private void nextScreen(){
+
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
 //        if(verifydata(feilds))
         if(true)

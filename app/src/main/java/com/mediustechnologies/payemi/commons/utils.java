@@ -23,6 +23,7 @@ public class utils extends Activity {
     public static final int RESPONSE_SUCCESS = 200;
     public static final int INTERNAL_SERVER_ERROR = 500;
     public static final int NOT_FOUND = 404;
+    public static final int UNAUTH = 401;
 
 
     public static void loginAgain(Context activitycontext){
@@ -31,7 +32,10 @@ public class utils extends Activity {
         preferences.edit().putString("token", "Bearer ").apply();
         preferences.edit().putString("profileid","").apply();
         preferences.edit().putString("refresh_token", "Bearer ").apply();
-        activitycontext.startActivity(new Intent(activitycontext, SendOTP.class));
+
+        Intent i = new Intent(activitycontext, SendOTP.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        activitycontext.startActivity(i);
     }
 
     public static void refreshToken (Context context){
@@ -49,11 +53,9 @@ public class utils extends Activity {
                     preferences.edit().putString("token",t).apply();
                     Log.d("tag","Refresh token: "+t);
                 }
-                else if(response.code()==401){
+                else if(response.code()==UNAUTH){
                     //go to login page
-//                    loginAgain();
-
-
+                    loginAgain(context);
 
                 }
             }

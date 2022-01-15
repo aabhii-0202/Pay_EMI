@@ -275,11 +275,20 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void init() {
         scratched = false;
-
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
+        binding.crossButton.setOnClickListener(view -> nextScreen());
+    }
 
-        binding.crossButton.setOnClickListener(view -> finish());
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        nextScreen();
+    }
 
+    private void nextScreen(){
+        Intent i = new Intent(context,DashBoard.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 }

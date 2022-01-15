@@ -95,7 +95,6 @@ public class GetLoanDetails extends AppCompatActivity {
 
                 }else if (response.code()==400){
                     Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();
-                    utils.loginAgain(context);
                     binding.progress.setVisibility(View.GONE);
                 }else if (response.code()==401){
                     Toast.makeText(context, "Token Expired", Toast.LENGTH_LONG).show();
