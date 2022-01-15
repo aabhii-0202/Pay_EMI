@@ -49,7 +49,6 @@ public class EMITransactionHistory extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         init();
-
         getAllTransaction();
 
     }
@@ -99,7 +98,7 @@ public class EMITransactionHistory extends AppCompatActivity {
                 if(status.equals("Successful")){
                     date = "  Paid | "+date;
                 }else date = "  Failed | "+date;
-            }else status = "null";
+            }else status = "Failed";
 
 
             chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));

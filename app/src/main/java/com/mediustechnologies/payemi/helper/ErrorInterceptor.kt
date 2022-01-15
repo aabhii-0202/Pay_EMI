@@ -21,7 +21,9 @@ class ErrorInterceptor(val activityContext: Context) : Interceptor {
             }
             utils.UNAUTH -> {
                 //Show UnauthorizedError Message
-                utils.refreshToken(activityContext)
+
+                if(!request.url.toString().contains("refreshtoken"))
+                            utils.refreshToken(activityContext)
 
 
             }
