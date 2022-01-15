@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityCardPaymentBinding;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -78,9 +79,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         }else if(cardholdername.trim().length()<1||expiry.length()==0||cvv.trim().length()<3){
             Toast.makeText(context, "Please enter all the details.", Toast.LENGTH_LONG).show();
         }else{
-//            if(binding.securelysave.isChecked()){
-//                savecard();
-//            }
+
             verify(cardno,cardholdername,expiry,cvv);
         }
     }
@@ -108,7 +107,9 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
             payload.put("card[expiry_month]", month);
             payload.put("card[expiry_year]", year);
             payload.put("card[cvv]", cvv);
-            //customer id
+            payload.put("customer_id", utils.profileId);
+            if(binding.securelysave.isChecked())
+                payload.put("save", 1);
             sendRequest();
         } catch (Exception ex) {
             Log.e("tag", "Add card exception : "+ex.toString());
