@@ -2,6 +2,7 @@ package com.mediustechnologies.payemi.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EMITransactionHistory extends AppCompatActivity {
+public class EMITransactionHistory extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private final Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;
@@ -230,7 +236,35 @@ public class EMITransactionHistory extends AppCompatActivity {
         Glide.with(binding.image).load(logo).into(binding.image);
         binding.bankname.setText(name);
         binding.backButton.setOnClickListener(view -> finish());
-        binding.dotts.setOnClickListener(view ->startActivity(new Intent(context, Transaction_Details.class)));
+
+
 
     }
+
+    public void menu(View v){
+        PopupMenu popup = new PopupMenu(context,v);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.transaction_history);
+        popup.show();
+
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.gethelp:
+                Intent i = new Intent(context,act12complaintRegistration.class);
+                startActivity(i);
+                return  true;
+
+            case R.id.refreshhistory:
+                getAllTransaction();
+                return  true;
+
+            default:
+                return false;
+        }
+    }
+
+
 }

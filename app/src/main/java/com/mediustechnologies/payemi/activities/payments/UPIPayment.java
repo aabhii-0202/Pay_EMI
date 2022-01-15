@@ -40,7 +40,7 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
-        razorpay.changeApiKey("rzp_test_1DP5mmOlF5G5ag");
+        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
 
 
         binding.proceedtopayment.setOnClickListener(view -> verifyuip());
@@ -51,7 +51,7 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
 
         String vpa = binding.vpa.getText().toString().trim();
 
-        razorpay.isValidVpa("stambatgr5@okhdfcbank", new ValidateVpaCallback() {
+        razorpay.isValidVpa(vpa, new ValidateVpaCallback() {
             @Override
             public void onResponse(boolean b) {
                 if (b) {

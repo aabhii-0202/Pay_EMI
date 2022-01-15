@@ -41,7 +41,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
-        razorpay.changeApiKey("rzp_test_1DP5mmOlF5G5ag");
+        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
 
 
 
@@ -108,6 +108,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
             payload.put("card[expiry_month]", month);
             payload.put("card[expiry_year]", year);
             payload.put("card[cvv]", cvv);
+            //customer id
             sendRequest();
         } catch (Exception ex) {
             Log.e("tag", "Add card exception : "+ex.toString());

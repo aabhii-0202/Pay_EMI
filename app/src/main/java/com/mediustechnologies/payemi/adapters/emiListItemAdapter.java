@@ -116,14 +116,46 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
             paidamount.setText(Paid_Amount);
-            totalamount.setText(Total_Amount);
+
+
+            try{
+                double total = Double.parseDouble(Total_Amount);
+                double paied = Double.parseDouble(Paid_Amount);
+                int progress = (int) ((total-paied)/total);
+                progressBar.setProgress(progress);
+            }catch (Exception e){
+                progressBar.setVisibility(View.GONE);
+            }
+
+
+
+            String t = formatinword(Total_Amount);
+            totalamount.setText(t);
 
 
 
 
         }
 
-
+        private String formatinword(String total_amount) {
+            String ans = "₹";
+            try{
+                int length = total_amount.length();
+                if(length>7){
+                    ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"CR";
+                }
+                else if(length>5){
+                    ans += total_amount.substring(0,length-5)+"."+total_amount.substring(length-5,length-4)+"L";
+                }else if(length>3){
+                    ans += total_amount.substring(0,length-3)+"."+total_amount.substring(length-3,length-2)+"K";
+                }
+                else ans += total_amount;
+            }
+            catch (Exception e){
+                return "null";
+            }
+            return ans;
+        }
 
 
     }
