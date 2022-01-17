@@ -754,6 +754,7 @@
 
                 <Button
                     android:id="@+id/share"
+                    android:visibility="invisible"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                     android:layout_width="155dp"
                     android:layout_height="wrap_content"
