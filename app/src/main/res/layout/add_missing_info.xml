@@ -109,7 +109,7 @@
             android:textSize="13sp"
             android:padding="16dp"
             android:layout_marginTop="8dp"
-            android:inputType="none"/>
+            android:inputType="number"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
             android:textSize="13sp"
             android:padding="16dp"
             android:layout_marginTop="8dp"
-            android:inputType="none"/>
+            android:inputType="number"/>
 
         <TextView
             android:layout_width="wrap_content"
