@@ -1,23 +1,34 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.internal.ManufacturerUtils;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
+import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.ActivityTransactionDetailsBinding;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Date;
 
 public class Transaction_Details extends AppCompatActivity {
@@ -107,13 +118,41 @@ public class Transaction_Details extends AppCompatActivity {
         }catch (Exception e){}
 
         binding.backButton.setOnClickListener(view -> finish());
-        binding.sharebutton.setOnClickListener(view -> share());
+        binding.sharebutton.setOnClickListener(view -> {
+            File file = save();
+            if(file != null) share(file);
+        });
 
     }
 
-    private void share(){
+    private void share(File file){
+
+        Uri uri;
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
+            uri = FileProvider.getUriForFile(context,getPackageName()+".provider",file);
+        }else{
+            uri = Uri.fromFile(file);
+        }
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Screenshot");
+        intent.putExtra(Intent.EXTRA_TEXT,"Share this with you");
+        intent.putExtra(Intent.EXTRA_STREAM,uri);
+
+        try{
+            startActivity(Intent.createChooser(intent,"Share using"));
+        }
+        catch (Exception e){
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private File save(){
         if(!checkPermission()){
-            return;
+            return null;
         }
         try{
             String path = Environment.getExternalStorageDirectory().toString()+"/PayEMI";
@@ -124,16 +163,28 @@ public class Transaction_Details extends AppCompatActivity {
 
             String mpath = path+"Screenshot"+new Date().getTime()+".png";
             Bitmap bitmap = screenshot();
+            File file = new File(mpath);
+            FileOutputStream fout = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,fout);
+            fout.flush();
+            fout.close();
 
+            Toast.makeText(context,"Image saved successfully.",Toast.LENGTH_LONG).show();
+
+            return file;
 
         }catch (Exception e){
-
+            Log.e("tag","While taking screen shot "+e.toString());
         }
+        return null;
     }
 
-    private Bitmap screenshot(){
-        view v
-        Bitmap bitmap = Bitmap.createBitmap();
+    private Bitmap screenshot() {
+        View v = findViewById(R.id.transactiondetails);
+        Bitmap bitmap = Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        v.draw(canvas);
+        return bitmap;
     }
 
     private boolean checkPermission(){
@@ -144,4 +195,17 @@ public class Transaction_Details extends AppCompatActivity {
         }
         return true;
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(grantResults.length>0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            File file = save();
+            if(file != null) share(file);
+        }
+
+        else Toast.makeText(context, "Grant permission to share image.", Toast.LENGTH_SHORT).show();
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }
+

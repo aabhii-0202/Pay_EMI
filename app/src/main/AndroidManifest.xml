@@ -137,7 +137,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.trendoceans.fileshare.MainActivity.provider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

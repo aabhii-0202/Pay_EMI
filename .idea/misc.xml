@@ -59,15 +59,14 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_complaint_registration.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_on_bording.xml" value="0.18" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.33" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.25" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_pay_emi_home.xml" value="0.5149330587023687" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_pay_emi_transaction_page.xml" value="0.3485254691689008" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_payment_confirmation.xml" value="0.32289628180039137" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_payment_info.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_payment_page.xml" value="0.33" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.33" />
+        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.2740419378163413" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_paypment_successful.xml" value="0.35196589294173375" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_scratch_card.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_splash_screen.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.38697916666666665" />
@@ -79,7 +78,6 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/complaint_registered_popup.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/emi_list_item.xml" value="0.5" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/emi_progress_bar_bg2.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/fragment_demo.xml" value="0.33" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/home_title_background.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/otpsentpopup.xml" value="0.381025641025641" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/scratch_layout.xml" value="0.33958333333333335" />
@@ -87,57 +85,11 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/transaction_page_dateline.xml" value="0.4758961681087763" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/transaction_page_payment_item.xml" value="0.67" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/transaction_page_scratchcard_item.xml" value="0.75" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/add_card_background.xml" value="0.12777777777777777" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/addcard_boxbg.xml" value="0.25" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/button_bg.xml" value="0.12777777777777777" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/checkbox_addcard.xml" value="0.275" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/complaint_box.xml" value="0.11944444444444445" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/ic_datevector.xml" value="0.12685185185185185" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/ic_scratch_card.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/drawable/ic_tick.xml" value="0.3388888888888889" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_act11_add_new_card.xml" value="0.40520833333333334" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_act12_add_new_upi.xml" value="0.2972222222222222" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_add_load_account.xml" value="0.22916666666666666" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_bank_list.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_bank_sub_categories.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_card_payment.xml" value="0.2861111111111111" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_complaint_registration.xml" value="0.22" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_input_parameter_feilds.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_net_banking.xml" value="0.23314606741573032" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.25" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi_home.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_pay_emi_transaction_page.xml" value="0.22291666666666668" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_payment_info.xml" value="0.33" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_payment_page.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.33" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_scratch_card.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_select_wallect.xml" value="0.33" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_sign_in.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.1" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/activity_transaction_details.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/add_missing_info.xml" value="0.5" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/already_redeemed_scratchcard.xml" value="0.22" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/bank_list_item.xml" value="0.23541666666666666" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.22291666666666668" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/fetch_bill_layout.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/fetch_bill_recycler_item2.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/fragment_demo.xml" value="0.1" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/fragment_scratch_card.xml" value="0.14166666666666666" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/input_params_recycler_item.xml" value="0.1" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/net_banking_list.xml" value="0.3625" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/otpsentpopup.xml" value="0.1" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/scratch_card_layout.xml" value="0.1" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/scratchcardlayout.xml" value="0.25" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/transaction_page_payment_item.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/transaction_page_scratchcard_item.xml" value="0.3625" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/layout/wallet_list.xml" value="0.34444444444444444" />
-        <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/Pay_EMI/app/src/main/res/menu/transaction_history.xml" value="0.25" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_transaction_details.xml" value="0.196048632218845" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
