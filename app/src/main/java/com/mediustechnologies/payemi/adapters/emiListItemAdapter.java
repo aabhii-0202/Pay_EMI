@@ -20,14 +20,22 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
 
     private List<emiListItem> emiList;
     private onItemClicked mListner;
+    private onButtonClickeListner btnListner;
+    private onAddMissingListner missingListner;
 
+    public interface onAddMissingListner{
+        void onMissingClick(int pos);
+    }
     public interface onItemClicked{
         void onItemClick(int position);
     }
     public interface onButtonClickeListner{
         void onButtonClick(int pos);
     }
-    private onButtonClickeListner btnListner;
+
+    public void setOnMissingClickLIstner(onAddMissingListner lIstner){
+        missingListner = lIstner;
+    }
 
     public void setOnButtonClickListner(onButtonClickeListner listner){
         btnListner = listner;
@@ -71,7 +79,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
     public class viewHolder extends RecyclerView.ViewHolder {
 
         private ImageView icon;
-        private TextView emiamount,bankname,loanname,paidamount,totalamount;
+        private TextView emiamount,bankname,loanname,paidamount,totalamount,addmissing;
         private MyProgressBar progressBar;
 
         public viewHolder(@NonNull View view){
@@ -83,6 +91,8 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             paidamount= view.findViewById(R.id.paidamount);
             totalamount= view.findViewById(R.id.total_Loan);
             progressBar = view.findViewById(R.id.emiProgressbar);
+            addmissing = view.findViewById(R.id.addmissinginfo);
+
 
             itemView.findViewById(R.id.emilistpay).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,6 +118,18 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
                 }
             });
 
+            itemView.findViewById(R.id.addmissinginfo).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(missingListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if (position!=RecyclerView.NO_POSITION){
+                            missingListner.onMissingClick(position);
+                        }
+                    }
+                }
+            });
+
         }
 
         public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount){
@@ -125,15 +147,11 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
                 progressBar.setProgress(progress);
             }catch (Exception e){
                 progressBar.setVisibility(View.GONE);
+                addmissing.setVisibility(View.VISIBLE);
             }
-
-
 
             String t = formatinword(Total_Amount);
             totalamount.setText(t);
-
-
-
 
         }
 

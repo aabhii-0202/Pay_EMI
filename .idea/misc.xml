@@ -86,6 +86,10 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/transaction_page_payment_item.xml" value="0.67" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/layout/transaction_page_scratchcard_item.xml" value="0.75" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_transaction_details.xml" value="0.196048632218845" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/add_missing_info.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/otpsentpopup.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/scratchcardlayout.xml" value="0.190625" />
       </map>
     </option>
   </component>

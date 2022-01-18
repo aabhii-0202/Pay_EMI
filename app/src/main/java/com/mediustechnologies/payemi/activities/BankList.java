@@ -50,9 +50,10 @@ public class BankList extends AppCompatActivity {
 
     private void addItemsInRecyclerView() {
 
+        String loan_category = "Home Loan";
 
         Log.d("tag","Access Token Saved in Utils "+utils.access_token);
-        Call<List<getAllBanks>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token);
+        Call<List<getAllBanks>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token,loan_category);
 
         call.enqueue(new Callback<List<getAllBanks>>() {
             @Override
