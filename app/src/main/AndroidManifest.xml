@@ -47,16 +47,16 @@
             android:exported="false"/>
         <activity
             android:name=".activities.payments.act35payment_Page"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.Transaction_Details"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.act36payment_confirmation"
             android:exported="false" />

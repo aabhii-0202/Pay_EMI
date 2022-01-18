@@ -299,7 +299,7 @@ public class PaymentSuccessful extends AppCompatActivity {
     }
 
     private void init() {
-        binding.share.setVisibility(View.VISIBLE);
+//        binding.share.setVisibility(View.VISIBLE);
         scratched = false;
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
@@ -307,10 +307,6 @@ public class PaymentSuccessful extends AppCompatActivity {
         binding.share.setOnClickListener(View -> verifyStoragePermission(PaymentSuccessful.this));
     }
 
-    private void share(){
-        ;
-
-    }
 
     private void takeScreenShot(View view) {
 
