@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.mediustechnologies.payemi.activities.login.act28onBording;
+import com.mediustechnologies.payemi.activities.login.OnBording;
 import com.mediustechnologies.payemi.helper.DatePickerFragment;
 import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
 
@@ -63,7 +63,7 @@ public class act20transaction_Search extends AppCompatActivity implements DatePi
             }
         });
 
-        binding.search.setOnClickListener(view -> startActivity(new Intent(context, act28onBording.class)));
+        binding.search.setOnClickListener(view -> startActivity(new Intent(context, OnBording.class)));
 
         binding.layoutfrom.setOnClickListener(View ->{
             from = true;

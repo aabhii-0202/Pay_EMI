@@ -50,7 +50,7 @@
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <ImageView
-                        android:id="@+id/bharatBillLogo"
+                        android:id="@+id/logout"
                         android:layout_width="63dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/cornericon"
@@ -84,6 +84,7 @@
                         android:checked="true"
                         android:fontFamily="@font/gtwalsheim_pro_medium"
                         android:text="Registration"
+                        android:layout_weight="1"
                         android:textColor="#412e8d"
                         android:textSize="16sp" />
 
@@ -95,6 +96,7 @@
                         android:buttonTint="#412e8d"
                         android:fontFamily="@font/gtwalsheim_pro_medium"
                         android:text="Tracking"
+                        android:layout_weight="1"
                         android:textColor="@color/black"
                         android:textSize="16sp"
 

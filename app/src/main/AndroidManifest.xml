@@ -3,8 +3,12 @@
     package="com.mediustechnologies.payemi">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,68 +17,80 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.act39payEMI_transaction_page"
-            android:exported="false" >
-        </activity>
+            android:name=".activities.scratchCard.ScratchCardActivity"
+            android:exported="true"/>
         <activity
-            android:name=".activities.act34pay_EMI_Details"
+            android:name=".activities.PaymentSuccessful"
             android:exported="false"/>
         <activity
-            android:name=".activities.act33payEMI_home"
-            android:exported="false"/>
-        <activity
-            android:name=".activities.act35payment_Page"
+            android:name=".activities.payments.NetBanking"
             android:exported="false" />
         <activity
-            android:name=".activities.act40transaction_Details"
+            android:name=".activities.payments.LinkWallet"
+            android:exported="false" />
+        <activity
+            android:name=".activities.payments.UPIPayment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.payments.CardPayment"
             android:exported="false"/>
+
+        <activity
+            android:name=".activities.EMITransactionHistory"
+            android:exported="false"/>
+
+        <activity
+            android:name=".activities.GetLoanDetails"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.DashBoard"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.payments.act35payment_Page"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.Transaction_Details"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.act36payment_confirmation"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act28onBording"
+            android:name=".activities.login.OnBording"
             android:exported="false" />
         <activity
-            android:name=".activities.login.act32verifyNumber"
-            android:exported="false"/>
-
-
+            android:name=".activities.login.CheckOTP"
+            android:exported="false" />
         <activity
-            android:name=".activities.login.act31signIn"
-            android:exported="false"/>
+            android:name=".activities.login.SendOTP"
+            android:exported="false" />
         <activity
             android:name=".activities.act20transaction_Search"
-            android:exported="false"/>
-        <activity
-            android:name=".activities.act12complaintRegistration"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".activities.act9paymentSuccessful"
-            android:exported="false"/>
-
-        <activity
-            android:name=".activities.act8payEMI"
-            android:exported="false"/>
-        <activity
-            android:name=".activities.act6addLoadAccount"
-            android:exported="false"/>
-
-
-        <activity
-            android:name=".activities.act5BankSubCategories"
             android:exported="false" />
         <activity
-            android:name=".activities.act7pay_emi_details"
-           android:exported="false"/>
+            android:name=".activities.act12complaintRegistration"
+            android:exported="false" />
+
         <activity
-            android:name=".activities.act4BankList"
-            android:exported="false"/>
+            android:name=".activities.Exactness"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddLoanAccount"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BillerList"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EMIDetailsBillFetch"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BankList"
+            android:exported="false" />
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">
@@ -83,8 +99,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- below code for razorpay -->
-        <receiver
+        </activity>
+
+
+
+        <!-- below code for razorpay -->
+        <!--<receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">
             <intent-filter>
@@ -104,12 +124,27 @@
                     android:host="rzp.io"
                     android:scheme="io.rzp" />
             </intent-filter>
-        </activity>
+        </activity>-->
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-    </application>
+            android:resource="@array/preloaded_fonts"/>
 
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_a9DQDSDQfs10TS"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.trendoceans.fileshare.MainActivity.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
+    </application>
 
 </manifest>

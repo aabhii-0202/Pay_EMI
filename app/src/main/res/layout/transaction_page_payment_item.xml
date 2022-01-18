@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Payment to HDFC Bank"
+            android:maxLines="1"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_marginTop="16dp"
@@ -57,10 +58,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  Paid | 15 Oct"
+                android:maxLines="1"
                 android:textSize="13sp"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:textColor="@color/grey2"
-                app:drawableStartCompat="@drawable/ic_tick" />
+                app:drawableStartCompat="@drawable/ic_cross" />
 
             <ImageView
                 android:layout_width="18dp"

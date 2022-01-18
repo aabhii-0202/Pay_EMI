@@ -33,6 +33,6 @@ public class act36payment_confirmation extends AppCompatActivity {
     }
 
     private void open() {
-        startActivity(new Intent(context, act39payEMI_transaction_page.class));
+        startActivity(new Intent(context, EMITransactionHistory.class));
     }
 }

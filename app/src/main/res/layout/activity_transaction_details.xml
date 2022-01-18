@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.act40transaction_Details">
+    android:id="@+id/"
+    tools:context=".activities.Transaction_Details">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
@@ -49,17 +50,26 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/logos"
+        app:layout_constraintTop_toBottomOf="@+id/title">
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+       >
 
         <ImageView
+            android:id="@+id/image"
             android:layout_width="59dp"
             android:layout_height="59dp"
             android:layout_gravity="center_horizontal"
@@ -84,7 +94,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/gtwalsheim_pro_regular"
-            android:text="CAR Loan"
+            android:text="Not in api"
             android:textColor="@color/grey"
             android:textSize="14sp" />
 
@@ -94,40 +104,46 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₹"
                 android:layout_gravity="center_vertical"
-                android:textSize="32sp"
-                android:textColor="@color/grey"/>
-
-
-        <TextView
-            android:id="@+id/paidAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginVertical="15dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/amount_box"
-            android:fontFamily="@font/gilroy_light"
-            android:padding="5dp"
-            android:text="14,288"
-            android:textColor="@color/black"
-            android:textSize="60sp" />
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/amount_box"
+                android:fontFamily="@font/gilroy_light"
+                android:padding="5dp"
+                android:text="₹"
+                android:textColor="@color/grey"
+                android:textSize="32sp" />
+            <TextView
+                android:id="@+id/paidAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/amount_box"
+                android:fontFamily="@font/gilroy_light"
+                android:padding="5dp"
+                android:text="14,288"
+                android:textColor="@color/black"
+                android:textSize="60sp" />
         </LinearLayout>
 
 
         <TextView
+            android:id="@+id/statusdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/gtwalsheim_pro_regular"
-            android:text="  Completed | 15 Oct 21 11:34 AM"
+            android:text="  Failed | 15 Oct 21 11:34 AM"
             android:textColor="@color/black"
             android:textSize="13sp"
-            app:drawableStartCompat="@drawable/ic_tick" />
+            app:drawableStartCompat="@drawable/ic_cross" />
 
         <LinearLayout
             android:id="@+id/details"
@@ -193,6 +209,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/billerid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -204,27 +221,26 @@
 
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:visibility="gone"
+            android:id="@+id/havingIssue"
+            android:layout_marginTop="80dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/gtwalsheim_pro_medium"
+            android:text="Having Issue"
+            android:textColor="@color/btncolor"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            app:strokeColor="@color/btncolor"
+            app:strokeWidth="1dp" />
     </LinearLayout>
+    </ScrollView>
 
-    <Button
-        android:id="@+id/havingIssue"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/gtwalsheim_pro_medium"
-        android:text="Having Issue"
-        android:textColor="@color/btncolor"
-        android:letterSpacing="0"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/logos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:strokeColor="@color/btncolor"
-        app:strokeWidth="1dp" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/logos"

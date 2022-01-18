@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="You Won"
+            android:fontFamily="@font/gtwalsheim_pro_regular"
+            android:textSize="24sp"
+            android:textColor="@color/grey2"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/scratch_cashback_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs 140"
+            android:textSize="40sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gtwalsheim_pro_medium"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use this cashback to pay your other EMIs and also earn cashback on next EMI payments"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/grey"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/gtwalsheim_pro_regular"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

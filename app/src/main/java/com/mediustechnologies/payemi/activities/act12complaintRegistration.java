@@ -1,6 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -11,14 +10,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 
+import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityComplaintRegistrationBinding;
-import com.mediustechnologies.payemi.Models.loginResponse;
+import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -78,16 +76,16 @@ public class act12complaintRegistration extends AppCompatActivity {
     private void sendOTP() {
        String phone = binding.phoneNumber.getText().toString().trim();
        if(phone.length()==10){
-           Call<loginResponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().sendOTP(phone);
-           call.enqueue(new Callback<loginResponse>() {
+           Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone);
+           call.enqueue(new Callback<sendOTPResponse>() {
                @Override
-               public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
+               public void onResponse(Call<sendOTPResponse> call, Response<sendOTPResponse> response) {
                    System.out.println("OTP Response: "+response.body().toString());
 //                   showOtpSentDialog();
                }
 
                @Override
-               public void onFailure(Call<loginResponse> call, Throwable t) {
+               public void onFailure(Call<sendOTPResponse> call, Throwable t) {
                    Log.d("tag","OTP sent failed: "+t.toString());
                }
            });
@@ -100,19 +98,9 @@ public class act12complaintRegistration extends AppCompatActivity {
         String phone = binding.phoneNumber.getText().toString().trim();
         String otp = binding.otpNumber.getText().toString().trim();
         if(phone.length()==10&&otp.length()>0){
-            Call<loginResponse> call = RetrofitClient.getInstance(urlconstants.AuthURL).getApi().checkOTP(phone,otp);
+            Call<verifyOTPresponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().checkOTP(phone,otp);
 
-            call.enqueue(new Callback<loginResponse>() {
-                @Override
-                public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
-                    Log.d("tag","Response from OTP verification: "+response.body().toString());
-                }
 
-                @Override
-                public void onFailure(Call<loginResponse> call, Throwable t) {
-                    Log.d("tag","Unable to verify OTP");
-                }
-            });
 
 
         }else {
