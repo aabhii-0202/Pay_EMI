@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.mediustechnologies.payemi.ApiResponse.homePage;
+import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
@@ -53,7 +59,7 @@ public class DashBoard extends AppCompatActivity {
 
             emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),"loan name",paid,data.get(i).getAmount(),data.get(i).getBiller__logo_url()));
 
-//            System.out.println(data.get(i).getId());
+
 
 
         }
@@ -77,21 +83,22 @@ public class DashBoard extends AppCompatActivity {
             i.putExtra("bankname",emilist.get(pos).getBank_Name());
             i.putExtra("billerName",data.get(pos).getBiller__billerName());
             i.putExtra("logo",data.get(pos).getBiller__logo_url());
-
-
-
-
             startActivity(i);
         });
         adapter.setOnItemClickListner(position -> {
-
-
             Intent i = new Intent(context, EMITransactionHistory.class);
             i.putExtra("name",emilist.get(position).getBank_Name());
             i.putExtra("id",data.get(position).getId());
             i.putExtra("biller_id",data.get(position).getBiller__billerId());
             i.putExtra("logo",data.get(position).getBiller__logo_url());
             startActivity(i);
+        });
+        adapter.setOnMissingClickLIstner(pos -> {
+
+            Dialog d = new Dialog(context);
+            d.setContentView(R.layout.add_missing_info);
+            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            d.show();
         });
     }
 

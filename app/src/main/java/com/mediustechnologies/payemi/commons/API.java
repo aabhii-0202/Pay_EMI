@@ -28,7 +28,7 @@ public interface API {
     Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
 
     @GET("get-all-banks/")
-    Call<List<getAllBanks>> getAllBanks(@Header("Authorization")String token);
+    Call<List<getAllBanks>> getAllBanks(@Header("Authorization")String token,@Query("loan_category")String loan_category);
 
     @GET("get-biller-by-bank/")
     Call<List<bankSubItem>> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);

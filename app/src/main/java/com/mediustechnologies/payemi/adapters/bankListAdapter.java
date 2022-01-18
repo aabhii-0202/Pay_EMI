@@ -86,6 +86,7 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
 
         public void setData(String url, String name) {
 
+
             Glide.with(logo).load(url).into(logo);
             Bank_name.setText(name);
 
