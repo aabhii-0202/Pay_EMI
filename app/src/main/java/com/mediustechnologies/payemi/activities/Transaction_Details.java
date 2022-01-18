@@ -29,6 +29,7 @@ import com.mediustechnologies.payemi.databinding.ActivityTransactionDetailsBindi
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.util.Date;
 
 public class Transaction_Details extends AppCompatActivity {
@@ -157,11 +158,13 @@ public class Transaction_Details extends AppCompatActivity {
         try{
             String path = Environment.getExternalStorageDirectory().toString()+"/PayEMI";
             File fileDir = new File(path);
+
             if(!fileDir.exists()){
                fileDir.mkdir();
+
             }
 
-            String mpath = path+"Screenshot"+new Date().getTime()+".png";
+            String mpath = path+"PayEmi"+new Date().getTime()+".png";
             Bitmap bitmap = screenshot();
             File file = new File(mpath);
             FileOutputStream fout = new FileOutputStream(file);
@@ -174,6 +177,7 @@ public class Transaction_Details extends AppCompatActivity {
             return file;
 
         }catch (Exception e){
+            e.printStackTrace();
             Log.e("tag","While taking screen shot "+e.toString());
         }
         return null;
@@ -189,7 +193,8 @@ public class Transaction_Details extends AppCompatActivity {
 
     private boolean checkPermission(){
         int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        int permission2 = ActivityCompat.checkSelfPermission(context,Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(permission != PackageManager.PERMISSION_GRANTED||permission2 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},1);
             return false;
         }

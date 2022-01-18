@@ -65,8 +65,6 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         String PaidAmount = emiList.get(position).getPaid_Amount();
         String TotalAmount = emiList.get(position).getTotal_Amount();
 
-
-
         holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount);
 
     }
