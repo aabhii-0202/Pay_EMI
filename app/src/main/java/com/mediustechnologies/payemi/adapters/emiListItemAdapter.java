@@ -139,6 +139,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             emiamount.setText("₹"+emiAmount);
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
+            Paid_Amount = formatinword(Paid_Amount);
             paidamount.setText("₹"+Paid_Amount);
 
             if(progress==-1){

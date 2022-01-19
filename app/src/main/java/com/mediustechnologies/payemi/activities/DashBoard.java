@@ -59,7 +59,6 @@ public class DashBoard extends AppCompatActivity {
             try{
                 double total = Double.parseDouble(totalemi);
                 double paied = Double.parseDouble(loanpaied);
-
                 int p = (int) (total/paied);
                 progress = p;
 

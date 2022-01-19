@@ -34,6 +34,7 @@ public class GetLoanDetails extends AppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiDetailsBinding binding;
     private fetchBill bill;
+    private homePage data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class GetLoanDetails extends AppCompatActivity {
     }
     private void init(){
 
-        homePage data = getIntent().getParcelableExtra("data");
+        data = getIntent().getParcelableExtra("data");
 
         String totalemi = data.getAmount();
         String loanpaied = data.getLoan_paid();
@@ -75,8 +76,13 @@ public class GetLoanDetails extends AppCompatActivity {
             Glide.with(binding.financerlogo).load(data.getBiller__logo_url()).into(binding.financerlogo);
             binding.amount.setText("Rs."+data.getAmount());
             binding.productname.setText(data.getLoan_type());
-            binding.paidamount.setText("₹"+data.getLoan_paid());
-            binding.totalLoan.setText("₹"+data.getLoan_amount());
+
+            String temp = data.getLoan_paid();
+            temp = formatinword(temp);
+            binding.paidamount.setText(temp);
+            temp = data.getLoan_amount();
+            temp = formatinword(temp);
+            binding.totalLoan.setText(temp);
             binding.interestRate.setText("NA");
             binding.emi.setText(data.getEmi());
             binding.Tenure.setText("NA");
@@ -96,14 +102,16 @@ public class GetLoanDetails extends AppCompatActivity {
     private void nextscreen(){
 
         Intent i = new Intent(context,Exactness.class);
+
+        i.putExtra("data",data);
+
         i.putExtra("bill_id",bill.getPayload().get(0).getId());
 
         i.putExtra("customer",bill.getPayload().get(0).getCustomer_name());
         i.putExtra("amount",bill.getPayload().get(0).getAmount());
 
         i.putExtra("profile_id",bill.getPayload().get(0).getProfile_id());
-        String url = getIntent().getStringExtra("logo");
-        i.putExtra("logo",url);
+
         String name = getIntent().getStringExtra("billerName");
         i.putExtra("billerName",name);
 
@@ -179,5 +187,25 @@ public class GetLoanDetails extends AppCompatActivity {
 
         fetchBillAdapter2 adapter = new fetchBillAdapter2(bill);
         recyclerView.setAdapter(adapter);
+    }
+
+    private String formatinword(String total_amount) {
+        String ans = "₹";
+        try{
+            int length = total_amount.length();
+            if(length>7){
+                ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"Cr";
+            }
+            else if(length>5){
+                ans += total_amount.substring(0,length-5)+"."+total_amount.substring(length-5,length-4)+"L";
+            }else if(length>3){
+                ans += total_amount.substring(0,length-3)+"."+total_amount.substring(length-3,length-2)+"K";
+            }
+            else ans += total_amount;
+        }
+        catch (Exception e){
+            return "null";
+        }
+        return ans;
     }
 }

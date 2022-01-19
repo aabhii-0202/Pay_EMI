@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 
@@ -17,6 +18,7 @@ public class Exactness extends AppCompatActivity  {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
+    private homePage data;
     private String billerName,bill_id,profile_id;
 
     @Override
@@ -32,7 +34,9 @@ public class Exactness extends AppCompatActivity  {
 
     private void init(){
 
-        String url = getIntent().getStringExtra("logo");
+        data = getIntent().getParcelableExtra("data");
+
+        String url = data.getBiller__logo_url();
         String exactness = getIntent().getStringExtra("exact");
         String customer = getIntent().getStringExtra("customer");
         String amount = getIntent().getStringExtra("amount");
@@ -106,6 +110,7 @@ public class Exactness extends AppCompatActivity  {
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);
+        i.putExtra("logo",data.getBiller__logo_url());
         i.putExtra("amount",binding.enterAmount.getText().toString());
         startActivity(i);
     }

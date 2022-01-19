@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
 import com.razorpay.Razorpay;
@@ -15,7 +16,7 @@ public class act35payment_Page extends AppCompatActivity {
     
     private ActivityPaymentPageBinding binding;
     private final Context context = this;
-    private String res,amount;
+    private String res,amount,logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,10 @@ public class act35payment_Page extends AppCompatActivity {
         binding = ActivityPaymentPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        amount = getIntent().getStringExtra("amount");
+        logo = getIntent().getStringExtra("logo");
+        Glide.with(binding.financerlogo).load(logo).into(binding.financerlogo);
+        binding.titleamount.setText("₹ "+amount);
         getpaymentmethods();
     }
 
@@ -46,9 +51,7 @@ public class act35payment_Page extends AppCompatActivity {
     }
 
     private void init(){
-        amount = getIntent().getStringExtra("amount");
 
-        binding.titleamount.setText("₹ "+amount);
         binding.backButton.setOnClickListener(view -> finish());
         binding.paywithcard.setOnClickListener(view -> openCardPayment());
         binding.paywithupi.setOnClickListener(view -> openUPIPayment());
