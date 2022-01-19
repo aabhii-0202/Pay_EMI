@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -113,7 +114,12 @@ public class DashBoard extends AppCompatActivity {
             mBuilder.setView(view);
 
             AlertDialog d = mBuilder.create();
+            TextView name = view.findViewById(R.id.name);
+            name.setText(data.get(pos).getBiller__billerName()+" Loan Account Number "+data.get(pos).getLoan_acc_no());
+
             d.show();
+            view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
+
 
             EditText loantype = d.findViewById(R.id.loantype);
             EditText amount = d.findViewById(R.id.loanamount);
@@ -124,6 +130,12 @@ public class DashBoard extends AppCompatActivity {
             d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String loanType = loantype.getText().toString();
+                    String Amount = amount.getText().toString();
+                    String EMI = emi.getText().toString();
+
+
+
 
                 }
             });
