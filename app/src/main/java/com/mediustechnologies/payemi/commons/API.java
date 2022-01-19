@@ -57,4 +57,7 @@ public interface API {
     @GET("getloandetails/")
     Call<fetchBill> getLoanDetails(@Header("Authorization") String token,@Query("loan_id") String loan_id,@Query("id") String id);
 
+    @GET("getLoanCategory/")
+    Call<List<loancategory>> getLoanCategory(@Header("Authorization")String token);
+
 }

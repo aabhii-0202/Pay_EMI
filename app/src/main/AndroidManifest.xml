@@ -8,20 +8,32 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.EmiCategories"
+            android:exported="true">
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity
             android:name=".activities.scratchCard.ScratchCardActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activities.PaymentSuccessful"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.payments.NetBanking"
             android:exported="false" />
@@ -33,30 +45,22 @@
             android:exported="false" />
         <activity
             android:name=".activities.payments.CardPayment"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".activities.EMITransactionHistory"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".activities.GetLoanDetails"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.DashBoard"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.payments.act35payment_Page"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.Transaction_Details"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.act36payment_confirmation"
             android:exported="false" />
@@ -75,7 +79,6 @@
         <activity
             android:name=".activities.act12complaintRegistration"
             android:exported="false" />
-
         <activity
             android:name=".activities.Exactness"
             android:exported="false" />
@@ -99,12 +102,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-
-        <!-- below code for razorpay -->
-        <!--<receiver
+        </activity> <!-- below code for razorpay -->
+        <!--
+<receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">
             <intent-filter>
@@ -124,16 +124,14 @@
                     android:host="rzp.io"
                     android:scheme="io.rzp" />
             </intent-filter>
-        </activity>-->
-
+        </activity>
+        -->
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"/>
-
-
+            android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_a9DQDSDQfs10TS"/>
+            android:value="rzp_test_a9DQDSDQfs10TS" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -144,7 +142,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
-
     </application>
 
 </manifest>

@@ -15,6 +15,7 @@ import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.DashBoard;
 import com.mediustechnologies.payemi.activities.BankList;
+import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
@@ -120,7 +121,7 @@ public class CheckOTP extends AppCompatActivity {
                             preferences.edit().putString("profileid",response.body().getId()).apply();
 
                             if(getIntent().getBooleanExtra("newUser",true)){
-                                Intent i = new Intent(context, BankList.class);
+                                Intent i = new Intent(context, EmiCategories.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }else {

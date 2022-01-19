@@ -129,7 +129,7 @@ public class DashBoard extends AppCompatActivity {
                         Log.d("tag", "-->>" + data.get(0).toString());
                     }catch (Exception e){
                         Log.d("tag","New User");
-                        startActivity(new Intent(context, BankList.class));
+                        startActivity(new Intent(context, EmiCategories.class));
 
                     }
 
@@ -147,6 +147,6 @@ public class DashBoard extends AppCompatActivity {
     }
 
     private void init(){
-        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, BankList.class)));
+        binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, EmiCategories.class)));
     }
 }
