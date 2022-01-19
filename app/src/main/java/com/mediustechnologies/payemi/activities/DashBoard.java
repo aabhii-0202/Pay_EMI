@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +14,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -104,11 +108,27 @@ public class DashBoard extends AppCompatActivity {
             startActivity(i);
         });
         adapter.setOnMissingClickLIstner(pos -> {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context,R.style.fullscreenalert);
+            View view = getLayoutInflater().inflate(R.layout.add_missing_info,null);
+            mBuilder.setView(view);
 
-            Dialog d = new Dialog(context);
-            d.setContentView(R.layout.add_missing_info);
-            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            AlertDialog d = mBuilder.create();
             d.show();
+
+            EditText loantype = d.findViewById(R.id.loantype);
+            EditText amount = d.findViewById(R.id.loanamount);
+            EditText emi = d.findViewById(R.id.emi);
+            EditText month = d.findViewById(R.id.month);
+            EditText year = d.findViewById(R.id.year);
+
+            d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+
         });
     }
 
