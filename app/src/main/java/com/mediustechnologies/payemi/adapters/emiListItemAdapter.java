@@ -64,8 +64,9 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         String LoanName = emiList.get(position).getLoan_Name();
         String PaidAmount = emiList.get(position).getPaid_Amount();
         String TotalAmount = emiList.get(position).getTotal_Amount();
+        int progress = emiList.get(position).getProgress();
 
-        holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount);
+        holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount,progress);
 
     }
 
@@ -130,25 +131,23 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
 
         }
 
-        public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount){
+        public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
 //            img ="";
 
 
             Glide.with(icon).load(img).into(icon);
-            emiamount.setText(emiAmount);
+            emiamount.setText("₹"+emiAmount);
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
-            paidamount.setText(Paid_Amount);
+            paidamount.setText("₹"+Paid_Amount);
 
-
-            try{
-                double total = Double.parseDouble(Total_Amount);
-                double paied = Double.parseDouble(Paid_Amount);
-                int progress = (int) ((total-paied)/total);
-                progressBar.setProgress(progress);
-            }catch (Exception e){
+            if(progress==-1){
                 progressBar.setVisibility(View.GONE);
                 addmissing.setVisibility(View.VISIBLE);
+            }
+            else{
+                progressBar.setProgress(progress);
+                addmissing.setVisibility(View.GONE);
             }
 
             String t = formatinword(Total_Amount);
@@ -161,7 +160,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             try{
                 int length = total_amount.length();
                 if(length>7){
-                    ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"CR";
+                    ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"Cr";
                 }
                 else if(length>5){
                     ans += total_amount.substring(0,length-5)+"."+total_amount.substring(length-5,length-4)+"L";

@@ -60,6 +60,54 @@ public class homePage {
     @Expose
     String id;
 
+    @SerializedName("loan_acc_no")
+    @Expose
+    String loan_acc_no;
+
+    @SerializedName("loan_type")
+    @Expose
+    String loan_type;
+
+    @SerializedName("loan_amount")
+    @Expose
+    String loan_amount;
+
+    @SerializedName("loan_paid")
+    @Expose
+    String loan_paid;
+
+    public String getLoan_acc_no() {
+        return loan_acc_no;
+    }
+
+    public void setLoan_acc_no(String loan_acc_no) {
+        this.loan_acc_no = loan_acc_no;
+    }
+
+    public String getLoan_type() {
+        return loan_type;
+    }
+
+    public void setLoan_type(String loan_type) {
+        this.loan_type = loan_type;
+    }
+
+    public String getLoan_amount() {
+        return loan_amount;
+    }
+
+    public void setLoan_amount(String loan_amount) {
+        this.loan_amount = loan_amount;
+    }
+
+    public String getLoan_paid() {
+        return loan_paid;
+    }
+
+    public void setLoan_paid(String loan_paid) {
+        this.loan_paid = loan_paid;
+    }
+
     public String getId() {
         return id;
     }
@@ -180,6 +228,10 @@ public class homePage {
                 ", due_amount='" + due_amount + '\'' +
                 ", emi='" + emi + '\'' +
                 ", id='" + id + '\'' +
+                ", loan_acc_no='" + loan_acc_no + '\'' +
+                ", loan_type='" + loan_type + '\'' +
+                ", loan_amount='" + loan_amount + '\'' +
+                ", loan_paid='" + loan_paid + '\'' +
                 '}';
     }
 }

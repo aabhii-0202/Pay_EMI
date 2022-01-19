@@ -4,17 +4,24 @@ public class emiListItem {
     private String emiAmount,Bank_Name,Loan_Name,Paid_Amount,Total_Amount,icon;
     private int progress;
 
-    public emiListItem(String emiAmount, String bank_Name, String loan_Name, String paid_Amount, String total_Amount, String icon) {
+    public emiListItem(String emiAmount, String bank_Name, String loan_Name, String paid_Amount, String total_Amount, String icon, int progress) {
         this.emiAmount = emiAmount;
         Bank_Name = bank_Name;
         Loan_Name = loan_Name;
         Paid_Amount = paid_Amount;
         Total_Amount = total_Amount;
+        this.progress = progress;
         this.icon = icon;
 
     }
 
+    public int getProgress() {
+        return progress;
+    }
 
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
 
     public String getEmiAmount() {
         return emiAmount;

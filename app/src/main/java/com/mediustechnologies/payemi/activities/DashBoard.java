@@ -52,12 +52,24 @@ public class DashBoard extends AppCompatActivity {
         emilist = new ArrayList<>();
         for(int i=0;i<data.size();i++){
             String totalemi = data.get(i).getAmount();
-            String remaining = data.get(i).getDue_amount();
-            String paid = "NUll";
-            if(totalemi!=null&&remaining!=null)
-            paid= Integer.toString(Integer.parseInt(totalemi)-Integer.parseInt(remaining));
+            String loanpaied = data.get(i).getLoan_paid();
 
-            emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),"loan name",paid,data.get(i).getAmount(),data.get(i).getBiller__logo_url()));
+            int progress;
+            try{
+                double total = Double.parseDouble(totalemi);
+                double paied = Double.parseDouble(loanpaied);
+
+                int p = (int) (total/paied);
+                progress = p;
+
+
+            }catch (Exception e){
+                progress = -1;
+            }
+
+
+
+            emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),data.get(i).getLoan_type(),data.get(i).getLoan_paid(),data.get(i).getAmount(),data.get(i).getBiller__logo_url(),progress));
 
 
 
