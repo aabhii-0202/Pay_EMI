@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -71,9 +72,6 @@ public class DashBoard extends AppCompatActivity {
 
             emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),data.get(i).getLoan_type(),data.get(i).getLoan_paid(),data.get(i).getAmount(),data.get(i).getBiller__logo_url(),progress));
 
-
-
-
         }
 
 
@@ -95,6 +93,7 @@ public class DashBoard extends AppCompatActivity {
             i.putExtra("bankname",emilist.get(pos).getBank_Name());
             i.putExtra("billerName",data.get(pos).getBiller__billerName());
             i.putExtra("logo",data.get(pos).getBiller__logo_url());
+            i.putExtra("data", data.get(pos));
             startActivity(i);
         });
         adapter.setOnItemClickListner(position -> {
@@ -102,7 +101,7 @@ public class DashBoard extends AppCompatActivity {
             i.putExtra("name",emilist.get(position).getBank_Name());
             i.putExtra("id",data.get(position).getId());
             i.putExtra("biller_id",data.get(position).getBiller__billerId());
-            i.putExtra("logo",data.get(position).getBiller__logo_url());
+
             startActivity(i);
         });
         adapter.setOnMissingClickLIstner(pos -> {

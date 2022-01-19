@@ -1,12 +1,15 @@
 package com.mediustechnologies.payemi.ApiResponse;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
 
 import java.util.HashMap;
 
-public class homePage {
+public class homePage implements Parcelable {
 
     @SerializedName("biller__billerName")
     @Expose
@@ -75,6 +78,37 @@ public class homePage {
     @SerializedName("loan_paid")
     @Expose
     String loan_paid;
+
+    protected homePage(Parcel in) {
+        biller__billerName = in.readString();
+        biller__logo_url = in.readString();
+        biller__billerTimeout = in.readString();
+        biller__billerPaymentExactness = in.readString();
+        customer_name = in.readString();
+        biller__billerId = in.readString();
+        customer_mobile = in.readString();
+        due_date = in.readString();
+        Amount = in.readString();
+        due_amount = in.readString();
+        emi = in.readString();
+        id = in.readString();
+        loan_acc_no = in.readString();
+        loan_type = in.readString();
+        loan_amount = in.readString();
+        loan_paid = in.readString();
+    }
+
+    public static final Creator<homePage> CREATOR = new Creator<homePage>() {
+        @Override
+        public homePage createFromParcel(Parcel in) {
+            return new homePage(in);
+        }
+
+        @Override
+        public homePage[] newArray(int size) {
+            return new homePage[size];
+        }
+    };
 
     public String getLoan_acc_no() {
         return loan_acc_no;
@@ -233,5 +267,30 @@ public class homePage {
                 ", loan_amount='" + loan_amount + '\'' +
                 ", loan_paid='" + loan_paid + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(biller__billerName);
+        parcel.writeString(biller__logo_url);
+        parcel.writeString(biller__billerTimeout);
+        parcel.writeString(biller__billerPaymentExactness);
+        parcel.writeString(customer_name);
+        parcel.writeString(biller__billerId);
+        parcel.writeString(customer_mobile);
+        parcel.writeString(due_date);
+        parcel.writeString(Amount);
+        parcel.writeString(due_amount);
+        parcel.writeString(emi);
+        parcel.writeString(id);
+        parcel.writeString(loan_acc_no);
+        parcel.writeString(loan_type);
+        parcel.writeString(loan_amount);
+        parcel.writeString(loan_paid);
     }
 }

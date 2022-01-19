@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.fetchBill;
+import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
@@ -45,7 +47,44 @@ public class GetLoanDetails extends AppCompatActivity {
     }
     private void init(){
 
-        binding.emi.setText(getIntent().getStringExtra("emi"));
+        homePage data = getIntent().getParcelableExtra("data");
+
+        String totalemi = data.getAmount();
+        String loanpaied = data.getLoan_paid();
+
+        int progress;
+        try{
+            double total = Double.parseDouble(totalemi);
+            double paied = Double.parseDouble(loanpaied);
+
+            int p = (int) (total/paied);
+            progress = p;
+
+
+        }catch (Exception e){
+            progress = -1;
+
+        }
+
+        if(progress==-1) binding.emiProgressbar.setVisibility(View.GONE);
+        else {
+            binding.emiProgressbar.setProgress(progress);
+        }
+
+        try{
+            Glide.with(binding.financerlogo).load(data.getBiller__logo_url()).into(binding.financerlogo);
+            binding.amount.setText("Rs."+data.getAmount());
+            binding.productname.setText(data.getLoan_type());
+            binding.paidamount.setText("₹"+data.getLoan_paid());
+            binding.totalLoan.setText("₹"+data.getLoan_amount());
+            binding.interestRate.setText("NA");
+            binding.emi.setText(data.getEmi());
+            binding.Tenure.setText("NA");
+
+
+        }
+        catch (Exception e){}
+
         binding.scrollview.setVisibility(View.GONE);
         binding.backButton.setOnClickListener(view -> finish());
         binding.paybtn.setOnClickListener(view ->nextscreen());

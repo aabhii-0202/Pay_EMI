@@ -74,19 +74,21 @@
 
                 <TextView
                     android:id="@+id/FinancerName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/gtwalsheim_pro_medium"
                     android:gravity="bottom"
+                    android:maxLines="1"
                     android:text="HDFC Bank Limited"
                     android:textColor="@color/black"
                     android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/amount"
                     app:layout_constraintStart_toEndOf="@+id/cardview"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/productname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -224,7 +226,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/gtwalsheim_pro_medium"
-                            android:text="Not in api 9.21%"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
