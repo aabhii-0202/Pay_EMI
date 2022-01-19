@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.util.Date;
+import java.util.List;
 
 public class Transaction_Details extends AppCompatActivity {
     private ActivityTransactionDetailsBinding binding;
@@ -142,8 +144,16 @@ public class Transaction_Details extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_TEXT,"Share this with you");
         intent.putExtra(Intent.EXTRA_STREAM,uri);
 
+        Intent chooser = Intent.createChooser(intent, "Share File");
         try{
-            startActivity(Intent.createChooser(intent,"Share using"));
+            List<ResolveInfo> resInfoList = this.getPackageManager().queryIntentActivities(chooser, PackageManager.MATCH_DEFAULT_ONLY);
+
+            for (ResolveInfo resolveInfo : resInfoList) {
+                String packageName = resolveInfo.activityInfo.packageName;
+                this.grantUriPermission(packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            }
+
+            startActivity(chooser);
         }
         catch (Exception e){
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -151,12 +161,38 @@ public class Transaction_Details extends AppCompatActivity {
 
     }
 
+//    private void share(File file){
+//
+//        Uri uri;
+//        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
+//            uri = FileProvider.getUriForFile(context,getPackageName()+".provider",file);
+//        }else{
+//            uri = Uri.fromFile(file);
+//        }
+//
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_SEND);
+//        intent.setType("image/*");
+//        intent.putExtra(Intent.EXTRA_SUBJECT,"Screenshot");
+//        intent.putExtra(Intent.EXTRA_TEXT,"Share this with you");
+//        intent.putExtra(Intent.EXTRA_STREAM,uri);
+//
+//        try{
+//            startActivity(Intent.createChooser(intent,"Share using"));
+//        }
+//        catch (Exception e){
+//            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
+
     private File save(){
         if(!checkPermission()){
             return null;
         }
         try{
-            String path = Environment.getExternalStorageDirectory().toString()+"/PayEMI";
+//            String path = Environment.getExternalStorageDirectory().toString()+"/PayEMI";
+            String path = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/.PayEMI").toString();
             File fileDir = new File(path);
 
             if(!fileDir.exists()){
@@ -164,7 +200,8 @@ public class Transaction_Details extends AppCompatActivity {
 
             }
 
-            String mpath = path+"PayEmi"+new Date().getTime()+".png";
+            String mpath = path+"PayEmi"+".png";
+//            mpath.replaceAll(":", ".");
             Bitmap bitmap = screenshot();
             File file = new File(mpath);
             FileOutputStream fout = new FileOutputStream(file);
