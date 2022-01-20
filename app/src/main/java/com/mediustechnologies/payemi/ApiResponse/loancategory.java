@@ -15,7 +15,7 @@ public class loancategory {
     @Expose
     private String category_name;
 
-    @SerializedName("url")
+    @SerializedName("loan_category_logo_url")
     @Expose
     private String url;
 

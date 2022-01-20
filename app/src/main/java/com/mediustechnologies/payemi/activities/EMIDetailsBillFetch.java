@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.fetchBill;
+import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -32,6 +33,7 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
     private ActivityPaymentInfoBinding binding;
     private final Context context = this;
     private String url,name,amount,customer,bill_id,profile_id,exactness ;
+    private homePage data;
 
 
     @Override
@@ -136,6 +138,7 @@ public class EMIDetailsBillFetch extends AppCompatActivity {
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);
         i.putExtra("exact",exactness);
+
 
         startActivity(i);
     }

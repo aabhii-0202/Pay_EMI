@@ -135,7 +135,6 @@ public class GetLoanDetails extends AppCompatActivity {
                     utils.bill_id = response.body().getPayload().get(0).getId();
 
                     binding.paybtn.setVisibility(View.VISIBLE);
-//                    exactness = bill.getPayload().get("payment_exactness");
                     setData(bill);
                     binding.progress.setVisibility(View.GONE);
                     binding.scrollview.setVisibility(View.VISIBLE);

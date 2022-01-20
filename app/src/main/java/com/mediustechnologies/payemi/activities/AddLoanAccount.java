@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -22,18 +21,12 @@ import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityInputParameterFeildsBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -244,7 +237,7 @@ public class AddLoanAccount extends AppCompatActivity {
     private void fetchBill(JsonObject jsonObject){
 
         String biller_id = getIntent().getStringExtra("biller_id");
-        biller_id = "OU12LO000NATGJ";
+//        biller_id = "OU12LO000NATGJ";
 
         String mobile = utils.phone;
         String loanNumber = "2775864";

@@ -19,7 +19,7 @@ public class Exactness extends AppCompatActivity  {
     private ActivityPayEmiBinding binding;
     private final Context context = this;
     private homePage data;
-    private String billerName,bill_id,profile_id;
+    private String billerName,bill_id,profile_id,url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +34,29 @@ public class Exactness extends AppCompatActivity  {
 
     private void init(){
 
-        data = getIntent().getParcelableExtra("data");
 
-        String url = data.getBiller__logo_url();
-        String exactness = getIntent().getStringExtra("exact");
+
+        try {
+            data = getIntent().getParcelableExtra("data");
+            url = data.getBiller__logo_url();
+        }catch (Exception e){
+            url = getIntent().getStringExtra("logo");
+        }
+
         String customer = getIntent().getStringExtra("customer");
         String amount = getIntent().getStringExtra("amount");
         billerName = getIntent().getStringExtra("billerName");
 
         try{
-            if (exactness.equalsIgnoreCase("EXACT_UP")) {
+            if (data.getBiller__billerPaymentExactness().equalsIgnoreCase("EXACT_UP")) {
 
-            } else if (exactness.equalsIgnoreCase("EXACT_DOWN")) {
+            } else if (data.getBiller__billerPaymentExactness().equalsIgnoreCase("EXACT_DOWN")) {
 
             } else {
                 binding.enterAmount.setEnabled(false);
             }
-//            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         }
         catch (Exception e){
-//            System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
         }
 
         Glide.with(binding.bankImage).load(url).into(binding.bankImage);
@@ -110,7 +113,7 @@ public class Exactness extends AppCompatActivity  {
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);
-        i.putExtra("logo",data.getBiller__logo_url());
+        i.putExtra("logo",url);
         i.putExtra("amount",binding.enterAmount.getText().toString());
         startActivity(i);
     }
