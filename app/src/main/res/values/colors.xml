@@ -18,5 +18,6 @@
     <color name="shadow">#0F25265E</color>
     <color name="errormessagecolor">#ff40</color>
     <color name="payment_screen">#3da27c</color>
+    <color name="homepagebg">#f4f6f8</color>
 
 </resources>

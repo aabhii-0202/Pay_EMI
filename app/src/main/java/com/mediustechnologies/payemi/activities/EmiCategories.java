@@ -29,6 +29,7 @@ import retrofit2.Response;
 public class EmiCategories extends AppCompatActivity {
     private ActivityEmiCategoriesBinding binding;
     private final Context context = this;
+    private ArrayList<String > catagories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,11 @@ public class EmiCategories extends AppCompatActivity {
 
         List<getAllBanks> banklist = new ArrayList<>();
 
+
+
         for(int i=0;i<data.size();i++){
+
+            catagories.add(data.get(i).getCategory_name());
 
             getAllBanks temp = new getAllBanks();
             temp.setBank_name(data.get(i).getCategory_name());
@@ -63,6 +68,7 @@ public class EmiCategories extends AppCompatActivity {
         adapter.setOnItemClickListner(position -> {
             Intent i = new Intent(context, BankList.class);
             i.putExtra("loan_category",banklist.get(position).getBank_name());
+            i.putStringArrayListExtra("catagories",catagories);
             startActivity(i);
         });
 
@@ -99,6 +105,8 @@ public class EmiCategories extends AppCompatActivity {
     }
 
     private void init(){
+
+        catagories = new ArrayList<>();
         binding.back.setOnClickListener(view -> finish());
     }
 }

@@ -2,6 +2,7 @@ package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
@@ -9,15 +10,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
+import com.mediustechnologies.payemi.adapters.catagoryAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,6 +35,7 @@ public class BankList extends AppCompatActivity {
     private GridLayoutManager gridLayoutManager ;
     private bankListAdapter adapter;
     private final Context context = this;
+    private ArrayList<String> catagories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +45,57 @@ public class BankList extends AppCompatActivity {
 
         init();
 
-        addItemsInRecyclerView();
+        initcatagoriesRecyclerview();
+
+        addItemsInRecyclerView(getIntent().getStringExtra("loan_category"));
 
 
 
 
     }
 
+    private void initcatagoriesRecyclerview() {
+        catagories = getIntent().getStringArrayListExtra("catagories");
+        RecyclerView catagory = binding.catagory;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        catagory.setLayoutManager(linearLayoutManager);
 
-    private void addItemsInRecyclerView() {
+        catagoryAdapter ad = new catagoryAdapter(catagories);
+        catagory.setAdapter(ad);
 
-        String loan_category = getIntent().getStringExtra("loan_category");
+        ad.setOnCatagoryClickListner(new catagoryAdapter.oncatagoryClick() {
+            @Override
+            public void onCatagoryClick(int position) {
+                addItemsInRecyclerView(catagories.get(position));
+
+            }
+        });
+
+
+
+
+    }
+
+    private void initRecyclerView() {
+        RecyclerView bankRecyclerView = binding.listOfBanks;
+        gridLayoutManager = new GridLayoutManager(context,3);
+        gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        bankRecyclerView.setLayoutManager(gridLayoutManager);
+        adapter = new bankListAdapter(banklist);
+        bankRecyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListner(position -> {
+            Intent i = new Intent(context, BillerList.class);
+            i.putExtra("name",banklist.get(position).getBank_name());
+            i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
+            i.putExtra("count",banklist.get(position).getCount());
+            startActivity(i);
+        });
+    }
+
+
+    private void addItemsInRecyclerView(String loan_category) {
+
 
         Log.d("tag","Access Token Saved in Utils "+utils.access_token);
         Call<List<getAllBanks>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token,loan_category);
@@ -81,27 +126,10 @@ public class BankList extends AppCompatActivity {
 
 
 
-    private void initRecyclerView() {
-        RecyclerView bankRecyclerView = binding.listOfBanks;
-        gridLayoutManager = new GridLayoutManager(context,3);
-        gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        bankRecyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new bankListAdapter(banklist);
-        bankRecyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListner(position -> {
-            Intent i = new Intent(context, BillerList.class);
-            i.putExtra("name",banklist.get(position).getBank_name());
-            i.putExtra("imgurl",banklist.get(position).getBank_logo_url());
-            i.putExtra("count",banklist.get(position).getCount());
-            startActivity(i);
-        });
 
-
-
-
-    }
 
     private void init(){
+
 
         binding.backButton.setOnClickListener(view -> finish());
         binding.logout.setOnClickListener(view -> {
