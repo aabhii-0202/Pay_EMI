@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -84,6 +86,8 @@ public class BankList extends AppCompatActivity {
         bankRecyclerView.setLayoutManager(gridLayoutManager);
         adapter = new bankListAdapter(banklist);
         bankRecyclerView.setAdapter(adapter);
+
+        searchbar();
         adapter.setOnItemClickListner(position -> {
             Intent i = new Intent(context, BillerList.class);
             i.putExtra("name",banklist.get(position).getBank_name());
@@ -91,6 +95,34 @@ public class BankList extends AppCompatActivity {
             i.putExtra("count",banklist.get(position).getCount());
             startActivity(i);
         });
+    }
+
+    private void searchbar() {
+
+        binding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text){
+        List<getAllBanks> filteredList = new ArrayList<>();
+
+        for(getAllBanks item : banklist){
+            if(item.getBank_name().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+
     }
 
 

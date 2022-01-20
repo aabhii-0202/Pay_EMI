@@ -56,6 +56,13 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
         return bankListItem.size();
     }
 
+    public void filterList(List<getAllBanks> filteredList){
+
+        bankListItem = filteredList;
+        notifyDataSetChanged();
+
+    }
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
