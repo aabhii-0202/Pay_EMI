@@ -28,6 +28,7 @@ public class act35payment_Page extends AppCompatActivity {
         logo = getIntent().getStringExtra("logo");
         Glide.with(binding.financerlogo).load(logo).into(binding.financerlogo);
         binding.titleamount.setText("₹ "+amount);
+        binding.backButton.setOnClickListener(view -> finish());
         getpaymentmethods();
     }
 

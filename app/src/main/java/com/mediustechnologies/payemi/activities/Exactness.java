@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
@@ -20,6 +23,7 @@ public class Exactness extends AppCompatActivity  {
     private final Context context = this;
     private homePage data;
     private String billerName,bill_id,profile_id,url;
+    private String Exactness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,16 @@ public class Exactness extends AppCompatActivity  {
     private void init(){
 
 
+        String exactness = null;
+
 
         try {
             data = getIntent().getParcelableExtra("data");
             url = data.getBiller__logo_url();
+            exactness = data.getBiller__billerPaymentExactness();
         }catch (Exception e){
             url = getIntent().getStringExtra("logo");
+            exactness = getIntent().getStringExtra("exact");
         }
 
         String customer = getIntent().getStringExtra("customer");
@@ -48,11 +56,15 @@ public class Exactness extends AppCompatActivity  {
         billerName = getIntent().getStringExtra("billerName");
 
         try{
-            if (data.getBiller__billerPaymentExactness().equalsIgnoreCase("EXACT_UP")) {
-
-            } else if (data.getBiller__billerPaymentExactness().equalsIgnoreCase("EXACT_DOWN")) {
-
+//            Log.d("tag","Exactness : "+exactness);
+            if(exactness == null){
+                Exactness = "any";
+            }else if (exactness.toLowerCase().contains("up")) {
+                Exactness = "up";
+            } else if (exactness.toLowerCase().contains("down")||exactness.toLowerCase().contains("below")) {
+                Exactness = "down";
             } else {
+                Exactness = "exact";
                 binding.enterAmount.setEnabled(false);
             }
         }
@@ -74,41 +86,47 @@ public class Exactness extends AppCompatActivity  {
 //        }
 
 
-        binding.payButton.setOnClickListener(view ->
-//                openRazorpay());
-                nextScreen());
+        binding.payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean next = true;
+                String amont = binding.enterAmount.getText().toString();
+                String originalamount = getIntent().getStringExtra("amount");
+                double a = Double.parseDouble(amont);
+                double oa = Double.parseDouble(originalamount);
+
+                if(Exactness == "up"){
+                    if(oa<=a){
+                        next = true;
+                    }
+                    else {
+                        Toast.makeText(context, "You are not allowed to pay any amount lower than Rs."+originalamount, Toast.LENGTH_SHORT).show();
+                        next = false;
+                    }
+                }else if (Exactness == "down"){
+                    if(oa<a){
+                        Toast.makeText(context, "You are not allowed to pay any amount greater than Rs."+originalamount, Toast.LENGTH_SHORT).show();
+                        next = false;
+                    }else next = true;
+
+                }else if (Exactness == "any"){
+                        next = true;
+                }else {
+                    next = true;
+                }
+
+
+
+                if(next) nextScreen();
+            }
+        });
     }
 
 
-/*
-    private void openRazorpay(){
-
-        Checkout checkout = new Checkout();
-        checkout.setKeyID(constants.RAZOR_PAY_KEY);
-
-//        checkout.setImage(R.drawable.);
-
-        JSONObject object = new JSONObject();
-        try {
-            object.put("name","Pay EMI");
-            object.put("description","Test payment");
-            object.put("theme.color","#0093DD");
-            object.put("currency","INR");
-            object.put("amount","500");
-            object.put("prefill.contact","9087654321");
-            object.put("prefill.email","abc@gmail.com");
-            checkout.open(Exactness.this,object);
-
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-
-
-    }*/
-
 
     private void nextScreen(){
+
         Intent i = new Intent(context, act35payment_Page.class);
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
