@@ -60,4 +60,14 @@ public interface API {
     @GET("getLoanCategory/")
     Call<List<loancategory>> getLoanCategory(@Header("Authorization")String token);
 
+    @POST("addMissingLoanData/")
+    Call<String> addMissingInfo(@Header("Authorization") String token,
+                                @Query("loan_acc_no")String loan_acc_no,
+                                @Query("loan_type") String loan_type,
+                                @Query("loan_amount") String loan_amount,
+                                @Query("emi")String emi,
+                                @Query("month")String month,
+                                @Query("Year") String year );
+
+
 }

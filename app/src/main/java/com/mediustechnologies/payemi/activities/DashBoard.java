@@ -25,6 +25,7 @@ import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.databinding.AddMissingInfoBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
@@ -42,6 +43,8 @@ public class DashBoard extends AppCompatActivity {
     private List<emiListItem> emilist;
     private final Context context = this;
     private  List<homePage> data;
+    private AlertDialog d;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,29 +116,49 @@ public class DashBoard extends AppCompatActivity {
             View view = getLayoutInflater().inflate(R.layout.add_missing_info,null);
             mBuilder.setView(view);
 
-            AlertDialog d = mBuilder.create();
+            d = mBuilder.create();
             TextView name = view.findViewById(R.id.name);
             name.setText(data.get(pos).getBiller__billerName()+" Loan Account Number "+data.get(pos).getLoan_acc_no());
 
             d.show();
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
+            AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
 
-
-            EditText loantype = d.findViewById(R.id.loantype);
-            EditText amount = d.findViewById(R.id.loanamount);
-            EditText emi = d.findViewById(R.id.emi);
-            EditText month = d.findViewById(R.id.month);
-            EditText year = d.findViewById(R.id.year);
 
             d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String loanType = loantype.getText().toString();
-                    String Amount = amount.getText().toString();
-                    String EMI = emi.getText().toString();
+
+                    String loanType = binding.loantype.getText().toString();
+                    String loanAmount = binding.loanamount.getText().toString();
+                    String emi = binding.emi.getText().toString();
+                    String month = binding.month.getText().toString();
+                    String year = binding.year.getText().toString();
 
 
+                    boolean call = true;
+                    if(loanType.trim().length()<1){
+                        binding.loantype.setError("Please enter loan type.");
+                        call = false;
+                    }
+                    if(loanAmount.trim().length()<1){
+                        binding.loanamount.setError("Please enter loan amount.");
+                        call = false;
+                    }
+                    if(emi.trim().length()<1){
+                        binding.emi.setError("Please enter EMI.");
+                        call = false;
+                    }
+                    if(month.trim().length()<1){
+                        binding.month.setError("Please select month.");
+                        call = false;
+                    }
+                    if(year.trim().length()<1){
+                        binding.year.setError("Please select year.");
+                        call = false;
+                    }
 
+                    if(call) fillmissingdata(data.get(pos).getLoan_acc_no(),loanType,loanAmount,emi,month,year);
 
                 }
             });
@@ -143,6 +166,36 @@ public class DashBoard extends AppCompatActivity {
 
         });
     }
+    private void fillmissingdata(String loan_acc_no, String loanType, String loanAmount, String emi, String month, String year) {
+
+        Call<String> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().addMissingInfo(utils.access_token,loan_acc_no,loanType,loanAmount,emi,month,year);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.code()== utils.RESPONSE_SUCCESS ){
+                    Toast.makeText(context, "Data updated successfully.", Toast.LENGTH_SHORT).show();
+                    Log.d("tag","Missing info uploaded successfully.");
+
+                }else {
+                    Log.e("tag","Missing info api "+response.code());
+                    Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
+
+
+                }
+                d.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("tag","Missing info API "+t.toString());
+                Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
+                d.dismiss();
+            }
+        });
+
+    }
+
+
 
     private void callapi(){
 

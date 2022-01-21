@@ -63,7 +63,8 @@ public class BankList extends AppCompatActivity {
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         catagory.setLayoutManager(linearLayoutManager);
 
-        catagoryAdapter ad = new catagoryAdapter(catagories);
+        int p = getIntent().getIntExtra("position",0);
+        catagoryAdapter ad = new catagoryAdapter(catagories,p);
         catagory.setAdapter(ad);
 
         ad.setOnCatagoryClickListner(new catagoryAdapter.oncatagoryClick() {

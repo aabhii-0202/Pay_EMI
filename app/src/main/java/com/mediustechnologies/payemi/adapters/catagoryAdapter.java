@@ -17,6 +17,7 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
 
     private ArrayList<String> catagories ;
     private oncatagoryClick mListner;
+    private int p;
 
     public interface oncatagoryClick{
         void onCatagoryClick(int position);
@@ -26,7 +27,8 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
         mListner = listner;
     }
 
-    public catagoryAdapter(ArrayList<String> catagories){
+    public catagoryAdapter(ArrayList<String> catagories,int p){
+        this.p=p;
         this.catagories = catagories;
     }
 

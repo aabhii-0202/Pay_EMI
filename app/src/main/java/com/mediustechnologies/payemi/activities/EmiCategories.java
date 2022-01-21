@@ -69,6 +69,8 @@ public class EmiCategories extends AppCompatActivity {
             Intent i = new Intent(context, BankList.class);
             i.putExtra("loan_category",banklist.get(position).getBank_name());
             i.putStringArrayListExtra("catagories",catagories);
+            i.putExtra("position",position);
+
             startActivity(i);
         });
 
