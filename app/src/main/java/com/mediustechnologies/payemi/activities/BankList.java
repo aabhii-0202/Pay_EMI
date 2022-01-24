@@ -47,7 +47,8 @@ public class BankList extends AppCompatActivity {
 
         init();
 
-        initcatagoriesRecyclerview();
+        int p = getIntent().getIntExtra("position",0);
+        initcatagoriesRecyclerview(p);
 
         addItemsInRecyclerView(getIntent().getStringExtra("loan_category"));
 
@@ -56,21 +57,23 @@ public class BankList extends AppCompatActivity {
 
     }
 
-    private void initcatagoriesRecyclerview() {
+    private void initcatagoriesRecyclerview(int p) {
         catagories = getIntent().getStringArrayListExtra("catagories");
         RecyclerView catagory = binding.catagory;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         catagory.setLayoutManager(linearLayoutManager);
+        catagory.scrollToPosition(p);
 
-        int p = getIntent().getIntExtra("position",0);
-        catagoryAdapter ad = new catagoryAdapter(catagories,p);
+
+        catagoryAdapter ad = new catagoryAdapter(catagories, p);
         catagory.setAdapter(ad);
 
         ad.setOnCatagoryClickListner(new catagoryAdapter.oncatagoryClick() {
             @Override
             public void onCatagoryClick(int position) {
                 addItemsInRecyclerView(catagories.get(position));
+                initcatagoriesRecyclerview(position);
 
             }
         });

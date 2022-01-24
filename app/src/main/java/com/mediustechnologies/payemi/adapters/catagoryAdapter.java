@@ -17,7 +17,7 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
 
     private ArrayList<String> catagories ;
     private oncatagoryClick mListner;
-    private int p;
+    private int positionselected;
 
     public interface oncatagoryClick{
         void onCatagoryClick(int position);
@@ -27,8 +27,8 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
         mListner = listner;
     }
 
-    public catagoryAdapter(ArrayList<String> catagories,int p){
-        this.p=p;
+    public catagoryAdapter(ArrayList<String> catagories,int positionselected){
+        this.positionselected=positionselected;
         this.catagories = catagories;
     }
 
@@ -44,6 +44,8 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull catagoryAdapter.ViewHolder holder, int position) {
         String name = catagories.get(position);
 
+        if(positionselected==position)
+            holder.binding.line.setVisibility(View.VISIBLE);
         holder.set(name);
     }
 
@@ -65,7 +67,6 @@ public class catagoryAdapter extends RecyclerView.Adapter<catagoryAdapter.ViewHo
                         int pos = getAbsoluteAdapterPosition();
                         if(pos!=RecyclerView.NO_POSITION){
                             mListner.onCatagoryClick(pos);
-                            binding.line.setVisibility(View.VISIBLE);
                         }
                     }
                 }
