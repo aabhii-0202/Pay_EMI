@@ -55,14 +55,7 @@ public class PaymentSuccessful extends AppCompatActivity {
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
     private String cashback,bill_id;
-    private boolean scratched;
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-
-    private static final String[] PERMISSION_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-    };
-
+    private boolean scratched,paymentstatus;
 
 
     @Override
@@ -78,14 +71,19 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void setData(billFetchDTO data) {
 
-        Log.d("tag", "Payment Successful " + data.toString());
+
+        Log.d("tag", "Bill fetch API call successful " + data.toString());
 
         String bankname = getIntent().getStringExtra("billerName");
         binding.bankName.setText("To "+bankname);
         binding.loanname.setText("Not in API");
         binding.paidAmount.setText(data.getAmount());
-        binding.timeanddate.setText("  Completed | "+data.getTransaction_date_and_time());
-
+        if(paymentstatus)
+            binding.timeanddate.setText("  Completed | "+data.getTransaction_date_and_time());
+        else {
+            binding.timeanddate.setText("  Failed | " + data.getTransaction_date_and_time());
+            binding.timeanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_crosspopupred, 0, 0, 0);
+        }
         binding.recieptBankName.setText(bankname);
 
         if(data.getRespBillPeriod()!=null)
@@ -109,7 +107,7 @@ public class PaymentSuccessful extends AppCompatActivity {
         else binding.totalamountholder.setVisibility(View.GONE);
 
         if(data.getTransation_status()!=null)
-            binding.TransactionStatus.setText(data.getTransation_status());
+            binding.TransactionStatus.setText("Failed "+data.getTransation_status());
         else binding.transactionstatusholder.setVisibility(View.GONE);
 
         if(data.getTransaction_id()!=null)
@@ -297,86 +295,27 @@ public class PaymentSuccessful extends AppCompatActivity {
     }
 
     private void init() {
-//        binding.share.setVisibility(View.VISIBLE);
+        binding.share.setVisibility(View.VISIBLE);
+        paymentstatus = getIntent().getBooleanExtra("status",false);
         scratched = false;
         bill_id = getIntent().getStringExtra("bill_id");
         binding.crossButton.setOnClickListener(view -> nextScreen());
-        binding.share.setOnClickListener(View -> verifyStoragePermission(PaymentSuccessful.this));
-    }
+        if(!paymentstatus){
+            binding.scratchpopup.setVisibility(View.GONE);
+            binding.gif.setVisibility(View.GONE);
+            binding.paymentstatus.setText("Payment Failed");
+            binding.paymentstatus.setTextColor(getResources().getColor(R.color.errormessagecolor));
+            binding.failedimg.setVisibility(View.VISIBLE);
 
-
-    private void takeScreenShot(View view) {
-
-        //This is used to provide file name with Date a format
-        Date date = new Date();
-        CharSequence format = DateFormat.format("MM-dd-yyyy_hh:mm:ss", date);
-
-        //It will make sure to store file to given below Directory and If the file Directory dosen't exist then it will create it.
-        try {
-            File mainDir = new File(
-                    this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "FilShare");
-            if (!mainDir.exists()) {
-                boolean mkdir = mainDir.mkdir();
-            }
-
-            //Providing file name along with Bitmap to capture screenview
-            String path = mainDir + "/" + "PayEMI" + "-" + format + ".jpeg";
-            view.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-            view.setDrawingCacheEnabled(false);
-
-            //This logic is used to save file at given location with the given filename and compress the Image Quality.
-            File imageFile = new File(path);
-            FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-
-            //Create New Method to take ScreenShot with the imageFile.
-            shareScreenShot(imageFile);
-        } catch (IOException e) {
-           Log.e("tag","Exception in taking screen shot."+e.toString());
         }
     }
 
-    //Share ScreenShot
-    private void shareScreenShot(File imageFile) {
 
-        //Using sub-class of Content provider
-        Uri uri = FileProvider.getUriForFile(
-                context,
-                BuildConfig.APPLICATION_ID + "." + getLocalClassName() + ".provider",
-                imageFile);
 
-        //Explicit intent
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/*");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, "Pay EMI and earn cashback.");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
 
-        //It will show the application which are available to share Image; else Toast message will throw.
-        try {
-            this.startActivity(Intent.createChooser(intent, "Share With"));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "No App Available", Toast.LENGTH_SHORT).show();
-        }
-    }
 
-    //Permissions Check
 
-    private  void verifyStoragePermission(Activity activity) {
-        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSION_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE);
-        }else{
-            takeScreenShot(getWindow().getDecorView());
-        }
-    }
 
     @Override
     public void onBackPressed() {

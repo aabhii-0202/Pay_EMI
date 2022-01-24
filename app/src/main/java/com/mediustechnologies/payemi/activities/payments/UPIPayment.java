@@ -159,6 +159,7 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
         Intent i = new Intent(context, PaymentSuccessful.class);
         i.putExtra("billerName",getIntent().getStringExtra("billerName"));
         i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        i.putExtra("status",true);
         startActivity(i);
 
     }
@@ -169,13 +170,18 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
         Log.d("tag", "UPI Payment: Failed");
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
+
+        Intent j = new Intent(context, PaymentSuccessful.class);
+        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        j.putExtra("status",false);
+        startActivity(j);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         razorpay.onActivityResult(requestCode,resultCode,data);
-
 
 
     }

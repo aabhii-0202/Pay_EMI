@@ -155,6 +155,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         Intent i = new Intent(context, PaymentSuccessful.class);
         i.putExtra("billerName",getIntent().getStringExtra("billerName"));
         i.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        i.putExtra("status",true);
         startActivity(i);
 
     }
@@ -165,6 +166,12 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         Log.d("tag", "Card Payment: Failed");
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
+
+        Intent j = new Intent(context, PaymentSuccessful.class);
+        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        j.putExtra("status",false);
+        startActivity(j);
 
     }
 

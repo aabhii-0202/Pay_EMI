@@ -9,7 +9,7 @@
     tools:context=".activities.PaymentSuccessful">
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
@@ -35,13 +35,24 @@
 
 
             <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gif"
                 android:layout_width="159dp"
                 android:layout_height="159dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="64dp"
                 android:src="@drawable/success" />
 
+            <ImageView
+                android:layout_width="159dp"
+                android:layout_height="159dp"
+                android:id="@+id/failedimg"
+                android:src="@drawable/ic_crosspopupred"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:visibility="gone"/>
+
             <TextView
+                android:id="@+id/paymentstatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -492,6 +503,7 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none"
+                    android:overScrollMode="never"
                     android:id="@+id/variablerec2"/>
 
                 <View
@@ -859,6 +871,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

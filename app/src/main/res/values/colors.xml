@@ -16,7 +16,7 @@
     <color name="titlebgblue">#3a2d78</color>
     <color name="progress">#858585</color>
     <color name="shadow">#0F25265E</color>
-    <color name="errormessagecolor">#ff40</color>
+    <color name="errormessagecolor">#d41700</color>
     <color name="payment_screen">#3da27c</color>
     <color name="homepagebg">#f4f6f8</color>
 

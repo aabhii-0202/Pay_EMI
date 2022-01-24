@@ -90,6 +90,10 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/Pay_EMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/Pay_EMI/app/src/main/res/layout/bank_list_item.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/Pay_EMI/app/src/main/res/layout/catagories_recycler_item.xml" value="0.42398022249690975" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_cross.xml" value="0.1" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_crosspopup.xml" value="0.37777777777777777" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_crosspopupred.xml" value="0.2" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_tick.xml" value="0.4305555555555556" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_act12_add_new_upi.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_bank_list.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_bank_sub_categories.xml" value="0.4244791666666667" />
@@ -106,7 +110,7 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_payment_confirmation.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_payment_info.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_payment_page.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.38902147971360385" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_scratch_card.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_select_wallect.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.4244791666666667" />
