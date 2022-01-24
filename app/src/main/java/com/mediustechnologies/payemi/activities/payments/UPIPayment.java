@@ -40,7 +40,7 @@ public class UPIPayment extends AppCompatActivity implements PaymentResultListen
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
-        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
+       
 
 
         binding.proceedtopayment.setOnClickListener(view -> verifyuip());

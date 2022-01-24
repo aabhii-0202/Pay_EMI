@@ -31,7 +31,6 @@ import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
 import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
@@ -55,7 +54,7 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;
-    private String cashback,bill_id,profile_id;
+    private String cashback,bill_id;
     private boolean scratched;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
 
@@ -270,8 +269,7 @@ public class PaymentSuccessful extends AppCompatActivity {
 
     private void redeem() {
 
-        String token = utils.access_token;
-        Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(token,profile_id,bill_id);
+        Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,utils.profileId,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override
@@ -302,7 +300,6 @@ public class PaymentSuccessful extends AppCompatActivity {
 //        binding.share.setVisibility(View.VISIBLE);
         scratched = false;
         bill_id = getIntent().getStringExtra("bill_id");
-        profile_id = getIntent().getStringExtra("profile_id");
         binding.crossButton.setOnClickListener(view -> nextScreen());
         binding.share.setOnClickListener(View -> verifyStoragePermission(PaymentSuccessful.this));
     }

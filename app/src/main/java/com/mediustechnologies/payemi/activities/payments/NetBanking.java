@@ -43,7 +43,7 @@ public class NetBanking extends AppCompatActivity implements PaymentResultListen
 
         init();
         razorpay = new Razorpay(this);
-        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
+//        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
         razorpay.setWebView(binding.paymentWebview);
 
         String results = getIntent().getStringExtra("feild");

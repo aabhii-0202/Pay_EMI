@@ -15,9 +15,6 @@ import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.fetchBill;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
-import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
-import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
-import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter2;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
@@ -91,7 +88,7 @@ public class GetLoanDetails extends AppCompatActivity {
         }
         catch (Exception e){}
 
-        binding.scrollview.setVisibility(View.GONE);
+        binding.scrollviewshare.setVisibility(View.GONE);
         binding.backButton.setOnClickListener(view -> finish());
         binding.paybtn.setOnClickListener(view ->nextscreen());
         String bankname = getIntent().getStringExtra("bankname");
@@ -137,7 +134,7 @@ public class GetLoanDetails extends AppCompatActivity {
                     binding.paybtn.setVisibility(View.VISIBLE);
                     setData(bill);
                     binding.progress.setVisibility(View.GONE);
-                    binding.scrollview.setVisibility(View.VISIBLE);
+                    binding.scrollviewshare.setVisibility(View.VISIBLE);
 
                 }else if (response.code()==400){
                     Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();

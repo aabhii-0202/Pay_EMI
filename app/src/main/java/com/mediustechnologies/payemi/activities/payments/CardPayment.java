@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityCardPaymentBinding;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -41,7 +42,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
-        razorpay.changeApiKey("rzp_test_a9DQDSDQfs10TS");
+//        razorpay.changeApiKey("rzp_test_I4yUvwRiUPNWay");
 
 
 
@@ -108,7 +109,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
             payload.put("card[cvv]", cvv);
             //customer id
             if(binding.securelysave.isChecked()){
-                payload.put("customer_id", "cust_4lsdkfldlteskf");
+                payload.put("customer_id", utils.customer_id);
                 payload.put("save", 1);
             }
             sendRequest();

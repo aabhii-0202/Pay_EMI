@@ -199,8 +199,8 @@ public class EMITransactionHistory extends AppCompatActivity implements PopupMen
 
     private void redeem(String bill_id) {
 
-        String token = utils.access_token;
-        Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(token,utils.profileId,bill_id);
+
+        Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,utils.profileId,bill_id);
 
         call.enqueue(new Callback<RedeemScratchCard>() {
             @Override

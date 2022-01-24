@@ -5,13 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
 import com.razorpay.Razorpay;
 
-public class act35payment_Page extends AppCompatActivity {
+public class SelectPaymentMethod extends AppCompatActivity {
     
     
     private ActivityPaymentPageBinding binding;
@@ -38,7 +39,7 @@ public class act35payment_Page extends AppCompatActivity {
         razorpay.getPaymentMethods(new Razorpay.PaymentMethodsCallback() {
             @Override
             public void onPaymentMethodsReceived(String result) {
-                Log.d("Result", "" + result);
+                Log.d("tag ", "Razorpay initialise: " + result);
                 res = result;
                 init();
             }
@@ -46,6 +47,7 @@ public class act35payment_Page extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 Log.d("Get Payment error",error);
+                Toast.makeText(context, "Razorpay initialisation error "+ error, Toast.LENGTH_SHORT).show();
             }
         });
 
