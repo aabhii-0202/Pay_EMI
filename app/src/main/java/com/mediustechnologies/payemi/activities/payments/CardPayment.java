@@ -50,7 +50,6 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         binding.proceedtopayment.setOnClickListener(view -> getcardDetails());
         binding.expirydate.setOnClickListener(view -> {
                 datepicker();
-
         });
 
     }
@@ -73,23 +72,31 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
         String cardholdername = binding.cardholdername.getText().toString();
         String expiry = binding.expirydate.getText().toString();
         String cvv = binding.cvv.getText().toString();
+        int index = expiry.indexOf('/');
+        String month ;//= expiry.substring(0,index);
+        String year ;//= expiry.substring(index+3);
 
-        if(cardno.length()!=16){
-            binding.cardnumber.setError("Enter proper card number");
-        }else if(cardholdername.trim().length()<1||expiry.length()==0||cvv.trim().length()<3){
-            Toast.makeText(context, "Please enter all the details.", Toast.LENGTH_LONG).show();
-        }else{
+        //todo
+//        if(cardno.length()!=16){
+//            binding.cardnumber.setError("Enter proper card number");
+//        }else if(cardholdername.trim().length()<1||expiry.length()==0||cvv.trim().length()<3){
+//            Toast.makeText(context, "Please enter all the details.", Toast.LENGTH_LONG).show();
+//        }else{
+//            verify(cardno,cardholdername,month,year,cvv);
+//        }
 
-            verify(cardno,cardholdername,expiry,cvv);
-        }
+        cardno = "5267318187975449";
+        cardholdername= "Abhishek Singh";
+        month = "11";
+        year = "76";
+        cvv = "222";
+        verify(cardno,cardholdername,month,year,cvv);
     }
 
-    private void verify(String cardno, String cardholdername, String expiry, String cvv) {
+    private void verify(String cardno, String cardholdername, String month,String year, String cvv) {
 
-        cardholdername = "Abhishek Singh";
-        cardno = "4844410110527770";
-        String month = "10";
-        String year = "26";
+
+
 
         try {
             payload = new JSONObject("{currency: 'INR'}");

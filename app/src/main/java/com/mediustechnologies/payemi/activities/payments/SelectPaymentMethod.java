@@ -36,6 +36,7 @@ public class SelectPaymentMethod extends AppCompatActivity {
     private void getpaymentmethods(){
         Razorpay razorpay = new Razorpay(this);
 
+
         razorpay.getPaymentMethods(new Razorpay.PaymentMethodsCallback() {
             @Override
             public void onPaymentMethodsReceived(String result) {
