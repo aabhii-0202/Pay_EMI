@@ -75,6 +75,8 @@ public class BankList extends AppCompatActivity {
                 addItemsInRecyclerView(catagories.get(position));
                 initcatagoriesRecyclerview(position);
 
+                System.out.println(p+"  "+catagories.get(p));
+
             }
         });
 

@@ -106,11 +106,17 @@ public class Transaction_Details extends AppCompatActivity {
                     if (status.equals("Successful")) {
                         binding.statusdate.setText("  Completed | " + date);
                         binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_tick, 0, 0, 0);
-                    } else {
+                    } else if(status.equals("failed")){
                         binding.statusdate.setText("  Failed | " + date);
+                        binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross, 0, 0, 0);
+                    }
+                    else{
+                        binding.statusdate.setText("  Pending | " + date);
+                        binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);
                     }
                 } catch (Exception e) {
-                    binding.statusdate.setText("  Failed | " + date);
+                    binding.statusdate.setText("  Pending | " + date);
+                    binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);
                 }
 
 

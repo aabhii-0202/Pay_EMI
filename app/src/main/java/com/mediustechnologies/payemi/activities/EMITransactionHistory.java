@@ -103,8 +103,16 @@ public class EMITransactionHistory extends AppCompatActivity implements PopupMen
             if(status!=null){
                 if(status.equals("Successful")){
                     date = "  Paid | "+date;
-                }else date = "  Failed | "+date;
-            }else status = "Failed";
+                }else if(status.equals("failed")){
+                    date = "  Failed | "+date;
+                }
+                else {
+                    date = " Pending | "+date;
+                }
+            }else {
+                status = "Pending";
+                date = " Pending | "+date;
+            }
 
 
             chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));

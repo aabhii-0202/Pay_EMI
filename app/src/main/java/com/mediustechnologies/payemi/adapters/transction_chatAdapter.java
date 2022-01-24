@@ -87,6 +87,9 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
             if(status.equals("Successful")){
                 vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
             }
+            else if(status.equals("failed")){
+                vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cross, 0, 0, 0);
+            }
         }
         else if(type.equals("cashback")){
 

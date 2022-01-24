@@ -57,12 +57,12 @@
                 android:id="@+id/statusanddate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  Paid | 15 Oct"
+                android:text="  Pending | 15 Oct"
                 android:maxLines="1"
                 android:textSize="13sp"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:textColor="@color/grey2"
-                app:drawableStartCompat="@drawable/ic_cross" />
+                app:drawableStartCompat="@drawable/ic_processing" />
 
             <ImageView
                 android:layout_width="18dp"
