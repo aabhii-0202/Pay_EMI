@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    //glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -72,6 +73,10 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
     //month & year picker
     implementation 'com.whiteelephant:monthandyearpicker:1.3.0'
+
+    //navigation bar
+//    implementation 'com.androidx.support:appcompat-v7:26.1.0'
+//    implementation 'com.androidx.support:design:26.1.0'
 
 }
 

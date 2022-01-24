@@ -133,6 +133,17 @@ public class Transaction_Details extends AppCompatActivity {
             if(file != null) share(file);
         });
 
+        binding.havingIssue.setOnClickListener(view -> {
+
+            Intent i = new Intent(context,act12complaintRegistration.class);
+
+
+            startActivity(i);
+
+
+
+        });
+
     }
 
     private void share(File file){
@@ -168,32 +179,9 @@ public class Transaction_Details extends AppCompatActivity {
 
     }
 
-//    private void share(File file){
-//
-//        Uri uri;
-//        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
-//            uri = FileProvider.getUriForFile(context,getPackageName()+".provider",file);
-//        }else{
-//            uri = Uri.fromFile(file);
-//        }
-//
-//        Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_SEND);
-//        intent.setType("image/*");
-//        intent.putExtra(Intent.EXTRA_SUBJECT,"Screenshot");
-//        intent.putExtra(Intent.EXTRA_TEXT,"Share this with you");
-//        intent.putExtra(Intent.EXTRA_STREAM,uri);
-//
-//        try{
-//            startActivity(Intent.createChooser(intent,"Share using"));
-//        }
-//        catch (Exception e){
-//            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
 
     private File save(){
+
         if(!checkPermission()){
             return null;
         }
@@ -228,6 +216,7 @@ public class Transaction_Details extends AppCompatActivity {
     }
 
     private Bitmap screenshot() {
+
         View v = findViewById(R.id.linearLayout2);
         Bitmap bitmap = Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
