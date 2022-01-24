@@ -99,15 +99,14 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
 
 
         try {
-            payload = new JSONObject("{currency: 'INR'}");
-            payload.put("amount", amount+"00");
-            payload.put("contact", "9999999999");
-            payload.put("email", "customer@name.com");
-        } catch (Exception ex) {
-            Log.e("tag", "Add card exception : "+ex.toString());
-        }
 
-        try {
+            long d = Long.parseLong(amount);
+            d = d*100;
+            amount = Long.toString(d);
+            payload = new JSONObject("{currency: 'INR'}");
+            payload.put("amount", amount);
+            payload.put("contact", utils.phone+"");
+            payload.put("email", "customer@name.com");
             payload.put("method", "card");
             payload.put("card[name]", cardholdername);
             payload.put("card[number]", cardno);
@@ -170,7 +169,7 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
     @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(context, "Card payment failed", Toast.LENGTH_SHORT).show();
-        Log.d("tag", "Card Payment: Failed");
+        Log.d("tag", "Card Payment: Failed "+s);
         binding.outerbox.setVisibility(View.GONE);
         binding.paymentWebview.setVisibility(View.GONE);
 

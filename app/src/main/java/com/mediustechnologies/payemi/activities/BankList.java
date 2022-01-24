@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +12,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
 import com.mediustechnologies.payemi.adapters.catagoryAdapter;
@@ -49,6 +53,7 @@ public class BankList extends AppCompatActivity {
 
         int p = getIntent().getIntExtra("position",0);
         initcatagoriesRecyclerview(p);
+
 
         addItemsInRecyclerView(getIntent().getStringExtra("loan_category"));
 
@@ -101,6 +106,32 @@ public class BankList extends AppCompatActivity {
             i.putExtra("count",banklist.get(position).getCount());
             startActivity(i);
         });
+    }
+
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        menu.clear();
+        for(int i=0;i<catagories.size();i++){
+            menu.add(0,i,Menu.NONE,catagories.get(i));
+        }
+
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        for(int i=0;i<catagories.size();i++){
+            if(i==item.getItemId()){
+                addItemsInRecyclerView(catagories.get(i));
+            }
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void searchbar() {
@@ -182,6 +213,8 @@ public class BankList extends AppCompatActivity {
             startActivity(i);
 
         });
+
+
 
 
 

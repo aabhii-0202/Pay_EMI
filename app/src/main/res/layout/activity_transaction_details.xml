@@ -36,17 +36,17 @@
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_share_vector_transaction_details"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/menubutton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/menubutton"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_menu_btn" />
+<!--        <ImageView-->
+<!--            android:id="@+id/menubutton"-->
+<!--            android:layout_width="22dp"-->
+<!--            android:layout_height="22dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:src="@drawable/ic_menu_btn" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,7 +63,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/logos"
         app:layout_constraintTop_toBottomOf="@+id/title">
-    <LinearLayout
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:background="@color/white"
@@ -224,23 +230,25 @@
 
             </LinearLayout>
         </LinearLayout>
-        <Button
-            android:visibility="gone"
-            android:id="@+id/havingIssue"
-            android:layout_marginTop="80dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/gtwalsheim_pro_medium"
-            android:text="Having Issue"
-            android:textColor="@color/btncolor"
-            android:letterSpacing="0"
-            android:textAllCaps="false"
-            app:strokeColor="@color/btncolor"
-            app:strokeWidth="1dp" />
+
     </LinearLayout>
+
+            <Button
+                android:id="@+id/havingIssue"
+                android:layout_marginTop="80dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/gtwalsheim_pro_medium"
+                android:text="Having Issue"
+                android:textColor="@color/btncolor"
+                android:letterSpacing="0"
+                android:textAllCaps="false"
+                app:strokeColor="@color/btncolor"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
     </ScrollView>
 
 
