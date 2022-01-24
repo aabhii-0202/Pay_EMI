@@ -113,6 +113,7 @@ public class Transaction_Details extends AppCompatActivity {
                     binding.statusdate.setText("  Failed | " + date);
                 }
 
+
                 String url = getIntent().getStringExtra("logo");
                 Glide.with(binding.image).load(url).into(binding.image);
 
@@ -141,10 +142,10 @@ public class Transaction_Details extends AppCompatActivity {
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_SUBJECT,"Screenshot");
-        intent.putExtra(Intent.EXTRA_TEXT,"Share this with you");
+        intent.putExtra(Intent.EXTRA_TEXT,getResources().getString(R.string.Share_Message));
         intent.putExtra(Intent.EXTRA_STREAM,uri);
 
-        Intent chooser = Intent.createChooser(intent, "Share File");
+        Intent chooser = Intent.createChooser(intent, "Share Payment Image");
         try{
             List<ResolveInfo> resInfoList = this.getPackageManager().queryIntentActivities(chooser, PackageManager.MATCH_DEFAULT_ONLY);
 
@@ -221,7 +222,7 @@ public class Transaction_Details extends AppCompatActivity {
     }
 
     private Bitmap screenshot() {
-        View v = findViewById(R.id.transactiondetails);
+        View v = findViewById(R.id.linearLayout2);
         Bitmap bitmap = Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         v.draw(canvas);

@@ -31,7 +31,6 @@ import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
 import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;

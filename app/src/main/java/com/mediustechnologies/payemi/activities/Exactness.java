@@ -4,17 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
-import com.mediustechnologies.payemi.activities.payments.act35payment_Page;
+import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
-
-import com.razorpay.PaymentData;
-import com.razorpay.PaymentResultWithDataListener;
 
 
 public class Exactness extends AppCompatActivity  {
@@ -127,7 +123,7 @@ public class Exactness extends AppCompatActivity  {
 
     private void nextScreen(){
 
-        Intent i = new Intent(context, act35payment_Page.class);
+        Intent i = new Intent(context, SelectPaymentMethod.class);
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
         i.putExtra("profile_id",profile_id);

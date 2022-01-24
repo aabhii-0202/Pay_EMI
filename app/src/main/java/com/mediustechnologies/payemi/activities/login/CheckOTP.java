@@ -113,12 +113,14 @@ public class CheckOTP extends AppCompatActivity {
                             utils.refresh_token= response.body().getRefresh_token();
                             utils.phone=phone;
                             utils.profileId = response.body().getId();
+                            utils.customer_id = response.body().getCustomer_id();
 
                             SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
                             preferences.edit().putString("phone", phone).apply();
                             preferences.edit().putString("refresh_token", "Bearer "+response.body().getRefresh_token()).apply();
                             preferences.edit().putString("token", "Bearer "+response.body().getAccess_token()).apply();
                             preferences.edit().putString("profileid",response.body().getId()).apply();
+                            preferences.edit().putString("cutomerid",response.body().getCustomer_id()).apply();
 
                             if(getIntent().getBooleanExtra("newUser",true)){
                                 Intent i = new Intent(context, EmiCategories.class);
