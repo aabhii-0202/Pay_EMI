@@ -173,9 +173,10 @@ public class BankList extends AppCompatActivity {
         call.enqueue(new Callback<banklistResponse>() {
             @Override
             public void onResponse(Call<banklistResponse> call, Response<banklistResponse> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.isSuccessful()&&response.body()!=null) {
-//                    Log.d("tag", "Banklist setdata: "+banklist.toString());
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.isSuccessful()&&response.body().getData()!=null) {
+
                     banklist  = response.body();
+                    Log.d("tag", "Banklist setdata: "+banklist.toString());
                     initRecyclerView();
                 }
                 if(response.code()==400){
