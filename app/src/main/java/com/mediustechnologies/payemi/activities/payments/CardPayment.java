@@ -123,8 +123,6 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
             Log.e("tag", "Add card exception : "+ex.toString());
         }
 
-
-
     }
 
     private void sendRequest() {
