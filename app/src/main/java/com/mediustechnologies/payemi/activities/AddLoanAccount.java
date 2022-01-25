@@ -97,13 +97,7 @@ public class AddLoanAccount extends AppCompatActivity {
 
         data = inputParameterFeilds.getData().getMandatory();
         if(data!=null&&data.size()>0) {
-//            mandatoryParmsDTO d = new mandatoryParmsDTO();
-//            d.setKey("abhishek_kumar");
-//            d.setType("numeric");
-//            d.setRegex("^[0-9]$");
-//            data.put("abhishek kumar",d);
             adapter = new inputParametersAdapter(data);
-
             recyclerView.setAdapter(adapter);
 
         }else{
@@ -121,14 +115,10 @@ public class AddLoanAccount extends AppCompatActivity {
     private void nextScreen(){
 
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
-//        if(verifydata(feilds))
-        if(true)
+        if(verifydata(feilds))
+//        if(true)
         {
-
-
             FetchBill(ApiJsonMap(feilds));
-
-
         }
     }
 
@@ -179,6 +169,10 @@ public class AddLoanAccount extends AppCompatActivity {
     }
 
     private boolean check(String value, String regex) {
+
+        if (regex== null||regex.equals("null")){
+            return true;
+        }
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(value);
         return m.matches();
@@ -187,7 +181,6 @@ public class AddLoanAccount extends AppCompatActivity {
     private void FetchBill(JsonObject jsonObject){
 
         String biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id = "OU12LO000NATGJ";
 
         Call<fetchBill> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().billfetch(utils.access_token,biller_id,utils.phone,jsonObject);
 
@@ -227,10 +220,6 @@ public class AddLoanAccount extends AppCompatActivity {
                 Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
 
     }
 

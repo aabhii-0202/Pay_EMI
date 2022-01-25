@@ -1,6 +1,8 @@
 package com.mediustechnologies.payemi.activities;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,8 +21,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -54,6 +58,8 @@ public class DashBoard extends AppCompatActivity {
 
         init();
         callapi();
+
+
 
     }
 
@@ -230,6 +236,8 @@ public class DashBoard extends AppCompatActivity {
     }
 
     private void init(){
+
+
         binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, EmiCategories.class)));
     }
 }

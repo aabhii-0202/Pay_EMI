@@ -94,6 +94,7 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_cross.xml" value="0.1" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_crosspopup.xml" value="0.37777777777777777" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_crosspopupred.xml" value="0.2" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_nav_bell.xml" value="0.440625" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_tick.xml" value="0.4305555555555556" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_act12_add_new_upi.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_bank_list.xml" value="0.4244791666666667" />
@@ -118,8 +119,10 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_transaction_details.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_verify_number.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/add_missing_info.xml" value="0.2898148148148148" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/nav_header.xml" value="0.41388888888888886" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/transaction_page_payment_item.xml" value="0.27395833333333336" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/menu/home_screen_navigation.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/menu/main_menu.xml" value="0.4244791666666667" />
       </map>
     </option>
   </component>
