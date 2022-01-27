@@ -187,6 +187,7 @@ public class DashBoard extends AppCompatActivity {
                     Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
 
 
+
                 }
                 d.dismiss();
             }
@@ -195,6 +196,7 @@ public class DashBoard extends AppCompatActivity {
             public void onFailure(Call<String> call, Throwable t) {
                 Log.e("tag","Missing info API "+t.toString());
                 Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
                 d.dismiss();
             }
         });

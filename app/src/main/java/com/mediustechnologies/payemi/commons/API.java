@@ -28,7 +28,7 @@ public interface API {
     Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
 
     @GET("get-all-banks/")
-    Call<banklistResponse> getAllBanks(@Header("Authorization")String token,@Query("loan_category")String loan_category);
+    Call<banklistResponse> getAllBanks(@Header("Authorization")String token,@Query("loan_category_id")String loan_category);
 
     @GET("get-biller-by-bank/")
     Call<List<bankSubItem>> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);
@@ -66,8 +66,8 @@ public interface API {
                                 @Query("loan_type") String loan_type,
                                 @Query("loan_amount") String loan_amount,
                                 @Query("emi")String emi,
-                                @Query("month")String month,
-                                @Query("Year") String year );
+                                @Query("start_month")String month,
+                                @Query("start_year") String year );
 
 
 }

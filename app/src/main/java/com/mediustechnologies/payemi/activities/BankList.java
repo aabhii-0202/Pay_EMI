@@ -42,7 +42,7 @@ public class BankList extends AppCompatActivity {
     private GridLayoutManager gridLayoutManager ;
     private bankListAdapter adapter;
     private final Context context = this;
-    private ArrayList<String> catagories;
+    private ArrayList<String> catagories,ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class BankList extends AppCompatActivity {
         initcatagoriesRecyclerview(p);
 
 
-        addItemsInRecyclerView(getIntent().getStringExtra("loan_category"));
+        addItemsInRecyclerView(getIntent().getStringExtra("loan_category_id"));
 
 
 
@@ -65,6 +65,7 @@ public class BankList extends AppCompatActivity {
 
     private void initcatagoriesRecyclerview(int p) {
         catagories = getIntent().getStringArrayListExtra("catagories");
+        ids = getIntent().getStringArrayListExtra("ids");
         RecyclerView catagory = binding.catagory;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -78,7 +79,7 @@ public class BankList extends AppCompatActivity {
         ad.setOnCatagoryClickListner(new catagoryAdapter.oncatagoryClick() {
             @Override
             public void onCatagoryClick(int position) {
-                addItemsInRecyclerView(catagories.get(position));
+                addItemsInRecyclerView(ids.get(position));
                 initcatagoriesRecyclerview(position);
 
                 System.out.println(p+"  "+catagories.get(p));
@@ -127,7 +128,7 @@ public class BankList extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         for(int i=0;i<catagories.size();i++){
             if(i==item.getItemId()){
-                addItemsInRecyclerView(catagories.get(i));
+                addItemsInRecyclerView(ids.get(i));
             }
         }
 
@@ -164,11 +165,10 @@ public class BankList extends AppCompatActivity {
     }
 
 
-    private void addItemsInRecyclerView(String loan_category) {
-
+    private void addItemsInRecyclerView(String loan_category_id) {
 
         Log.d("tag","Access Token Saved in Utils "+utils.access_token);
-        Call<banklistResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token,loan_category);
+        Call<banklistResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getAllBanks(utils.access_token,loan_category_id);
 
         call.enqueue(new Callback<banklistResponse>() {
             @Override
