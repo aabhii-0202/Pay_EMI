@@ -14,10 +14,13 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.DateFormat;
@@ -178,9 +181,6 @@ public class PaymentSuccessful extends AppCompatActivity {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     billFetchDTO data = response.body().get(0);
                     setData(data);
-
-
-
                     scratch();
                 }
                 else{
@@ -308,14 +308,114 @@ public class PaymentSuccessful extends AppCompatActivity {
             binding.failedimg.setVisibility(View.VISIBLE);
 
         }
+
+        binding.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                File file = save();
+                if(file != null) share(file);
+            }
+        });
     }
 
+    private void share(File file){
 
+        Uri uri;
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
+            uri = FileProvider.getUriForFile(context,getPackageName()+".provider",file);
+        }else{
+            uri = Uri.fromFile(file);
+        }
 
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Screenshot");
+        intent.putExtra(Intent.EXTRA_TEXT,getResources().getString(R.string.Share_Message));
+        intent.putExtra(Intent.EXTRA_STREAM,uri);
 
+        Intent chooser = Intent.createChooser(intent, "Share Payment Image");
+        try{
+            List<ResolveInfo> resInfoList = this.getPackageManager().queryIntentActivities(chooser, PackageManager.MATCH_DEFAULT_ONLY);
 
+            for (ResolveInfo resolveInfo : resInfoList) {
+                String packageName = resolveInfo.activityInfo.packageName;
+                this.grantUriPermission(packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            }
 
+            startActivity(chooser);
+        }
+        catch (Exception e){
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
+    }
+
+    private File save(){
+
+        if(!checkPermission()){
+            return null;
+        }
+        try{
+//            String path = Environment.getExternalStorageDirectory().toString()+"/PayEMI";
+            String path = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/.PayEMI").toString();
+            File fileDir = new File(path);
+
+            if(!fileDir.exists()){
+                fileDir.mkdir();
+
+            }
+
+            String mpath = path+"PayEmi"+".png";
+//            mpath.replaceAll(":", ".");
+            Bitmap bitmap = screenshot();
+            File file = new File(mpath);
+            FileOutputStream fout = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,fout);
+            fout.flush();
+            fout.close();
+
+            Toast.makeText(context,"Image saved successfully.",Toast.LENGTH_LONG).show();
+
+            return file;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("tag","While taking screen shot "+e.toString());
+        }
+        return null;
+    }
+
+    private Bitmap screenshot() {
+
+        View v = binding.ss;
+        Bitmap bitmap = Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        v.draw(canvas);
+        return bitmap;
+    }
+
+    private boolean checkPermission(){
+        int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permission2 = ActivityCompat.checkSelfPermission(context,Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(permission != PackageManager.PERMISSION_GRANTED||permission2 != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},1);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(grantResults.length>0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            File file = save();
+            if(file != null) share(file);
+        }
+
+        else Toast.makeText(context, "Grant permission to share image.", Toast.LENGTH_SHORT).show();
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     @Override
     public void onBackPressed() {

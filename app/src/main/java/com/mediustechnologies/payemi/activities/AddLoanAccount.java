@@ -52,8 +52,6 @@ public class AddLoanAccount extends AppCompatActivity {
     private void getInputParameters() {
 
         biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id="ICIC00000NATKD";
-
         String token = utils.access_token;
 
 
@@ -220,59 +218,6 @@ public class AddLoanAccount extends AppCompatActivity {
                 Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    private void fetchBill(JsonObject jsonObject){
-
-        String biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id = "OU12LO000NATGJ";
-
-        String mobile = utils.phone;
-        String loanNumber = "2775864";
-        loanNumber = "2775864";
-//        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzA3ODQwLCJpYXQiOjE2NDEyMjE0NDAsImp0aSI6ImYxOGE1ZjdhODA5YTRhNTU4MWUwOTg2ODM3N2Q1NzdmIiwidXNlcl9pZCI6NH0.r1g5N0HObaX0ckz0t3bx8uDoCVX9dunARy7LdChjfMI";
-        fetchBillBody body = new fetchBillBody(loanNumber,mobile);
-
-        Call<fetchBill> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().fetchBill(utils.access_token,biller_id,mobile,body);
-
-        String finalBiller_id = biller_id;
-        call.enqueue(new Callback<fetchBill>() {
-            @Override
-            public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    fetchBill bill = response.body();
-
-                    utils.bill_id = bill.getPayload().get(0).getId();
-
-                    LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
-                    variableData.putAll(bill.getPayload().get(0).getAmountOptions());
-                    variableData.putAll(bill.getPayload().get(0).getInputparams_value());
-                    variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
-
-                    Intent i = new Intent(context, EMIDetailsBillFetch.class);
-                    i.putExtra("url", url);
-                    i.putExtra("variableData",variableData);
-                    i.putExtra("bill",bill);
-                    i.putExtra("exact",exactness);
-                    i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
-                    i.putExtra("biller_id", finalBiller_id);
-                    startActivity(i);
-
-                }
-                else{
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<fetchBill> call, Throwable t) {
-                Log.d("tag", "onFailure: bill fetch"+t.toString());
-                Toast.makeText(context, "Error fetching Bill", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
 
     }
 }

@@ -140,7 +140,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
             Paid_Amount = formatinword(Paid_Amount);
-            paidamount.setText("₹"+Paid_Amount);
+            paidamount.setText(Paid_Amount);
 
             if(progress==-1){
                 progressBar.setVisibility(View.GONE);
@@ -159,6 +159,8 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         private String formatinword(String total_amount) {
             String ans = "₹";
             try{
+
+
                 int length = total_amount.length();
                 if(length>7){
                     ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"Cr";

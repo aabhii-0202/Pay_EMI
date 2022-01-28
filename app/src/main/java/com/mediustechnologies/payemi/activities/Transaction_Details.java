@@ -134,14 +134,10 @@ public class Transaction_Details extends AppCompatActivity {
         });
 
         binding.havingIssue.setOnClickListener(view -> {
-
             Intent i = new Intent(context,act12complaintRegistration.class);
 
 
             startActivity(i);
-
-
-
         });
 
     }
@@ -178,7 +174,6 @@ public class Transaction_Details extends AppCompatActivity {
         }
 
     }
-
 
     private File save(){
 
