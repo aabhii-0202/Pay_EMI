@@ -260,7 +260,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/gtwalsheim_pro_medium"
-                            android:text="Will take from provious screen 5"
+                            android:text="5"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -293,7 +293,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/gtwalsheim_pro_medium"
-                            android:text="Not in api 60 Months"
+                            android:text="na"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -335,69 +335,69 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false" />
 
-                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-                <!--                    android:id="@+id/duedateholder"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginHorizontal="24dp"-->
-                <!--                    android:layout_marginTop="26dp">-->
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/duedateholder"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="24dp"
+                                    android:layout_marginTop="26dp">
 
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:fontFamily="@font/gtwalsheim_pro_regular"-->
-                <!--                        android:text="Due Date"-->
-                <!--                        android:textColor="@color/grey"-->
-                <!--                        android:textSize="14sp"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="@+id/duedate"-->
-                <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="@+id/duedate" />-->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                                        android:text="Due Date"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        app:layout_constraintBottom_toBottomOf="@+id/duedate"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="@+id/duedate" />
 
-                <!--                    <TextView-->
-                <!--                        android:id="@+id/duedate"-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:fontFamily="@font/gtwalsheim_pro_medium"-->
-                <!--                        android:text="15 Aug 21"-->
-                <!--                        android:textColor="@color/black"-->
-                <!--                        android:textSize="14sp"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+                                    <TextView
+                                        android:id="@+id/duedate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gtwalsheim_pro_medium"
+                                        android:text="15 Aug 21"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
 
-                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-                <!--                    android:id="@+id/chargeslevivedholder"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginHorizontal="24dp"-->
-                <!--                    android:layout_marginTop="26dp">-->
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/chargeslevivedholder"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="24dp"
+                                    android:layout_marginTop="26dp">
 
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:fontFamily="@font/gtwalsheim_pro_regular"-->
-                <!--                        android:text="Charges Levied"-->
-                <!--                        android:textColor="@color/grey"-->
-                <!--                        android:textSize="14sp"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="@+id/charges"-->
-                <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="@+id/charges" />-->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                                        android:text="Charges Levied"
+                                        android:textColor="@color/grey"
+                                        android:textSize="14sp"
+                                        app:layout_constraintBottom_toBottomOf="@+id/charges"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="@+id/charges" />
 
-                <!--                    <TextView-->
-                <!--                        android:id="@+id/charges"-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:fontFamily="@font/gtwalsheim_pro_medium"-->
-                <!--                        android:text="Rs.5,822"-->
-                <!--                        android:textColor="@color/black"-->
-                <!--                        android:textSize="14sp"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+                                    <TextView
+                                        android:id="@+id/charges"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gtwalsheim_pro_medium"
+                                        android:text="Rs.5,822"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
 
-                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/basebillamountholder"

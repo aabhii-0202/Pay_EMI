@@ -159,17 +159,40 @@ public class GetLoanDetails extends AppCompatActivity {
 
     private void setData(fetchBill bill) {
 
-        billFetchDTO data = bill.getPayload().get(0);
-        if(data.getAmount()!=null){
-            binding.basebill.setText(data.getAmount());
-        }else binding.basebillamountholder.setVisibility(View.GONE);
+        try {
 
-        LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
-        variableData.putAll(data.getAmountOptions());
-        variableData.putAll(data.getInputparams_value());
-        variableData.putAll(data.getBiller_additional_info());
 
-        recyclerview(variableData);
+            billFetchDTO data = bill.getPayload().get(0);
+            if (data.getAmount() != null) {
+                binding.basebill.setText(data.getAmount());
+            } else binding.basebillamountholder.setVisibility(View.GONE);
+
+            if (data.getEmi() != null) {
+                binding.emi.setText(data.getEmi());
+            } else binding.emiholder.setVisibility(View.GONE);
+
+            if (data.getTenure() != null) {
+                binding.Tenure.setText(data.getTenure());
+            } else binding.tenureholder.setVisibility(View.GONE);
+
+            if (data.getRespDueDate() != null) {
+                binding.duedate.setText(data.getRespDueDate());
+            } else binding.duedateholder.setVisibility(View.GONE);
+
+            if (data.getCharges_levied() != null) {
+                binding.charges.setText(data.getCharges_levied());
+            } else binding.chargeslevivedholder.setVisibility(View.GONE);
+
+            LinkedHashMap<String, String> variableData = new LinkedHashMap<>();
+            variableData.putAll(data.getAmountOptions());
+            variableData.putAll(data.getInputparams_value());
+            variableData.putAll(data.getBiller_additional_info());
+
+            recyclerview(variableData);
+        }
+        catch (Exception e){
+
+        }
 
     }
 

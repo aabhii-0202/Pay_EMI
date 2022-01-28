@@ -109,6 +109,22 @@ public class billFetchDTO implements Parcelable {
     @Expose
     private String requestId;
 
+    @SerializedName("approval_number")
+    @Expose
+    private String approval_number;
+
+    @SerializedName("emi")
+    @Expose
+    private String emi;
+
+    @SerializedName("tenure")
+    @Expose
+    private String tenure;
+
+    @SerializedName("charges_levied")
+    @Expose
+    private String charges_levied;
+
     protected billFetchDTO(Parcel in) {
         id = in.readString();
         biller_id = in.readString();
@@ -132,6 +148,10 @@ public class billFetchDTO implements Parcelable {
         RespBillPeriod = in.readString();
         RespDueDate = in.readString();
         requestId = in.readString();
+        approval_number = in.readString();
+        emi = in.readString();
+        tenure = in.readString();
+        charges_levied = in.readString();
     }
 
     public static final Creator<billFetchDTO> CREATOR = new Creator<billFetchDTO>() {
@@ -346,6 +366,39 @@ public class billFetchDTO implements Parcelable {
         this.requestId = requestId;
     }
 
+    public String getApproval_number() {
+        return approval_number;
+    }
+
+    public void setApproval_number(String approval_number) {
+        this.approval_number = approval_number;
+    }
+
+    public String getEmi() {
+        return emi;
+    }
+
+    public void setEmi(String emi) {
+        this.emi = emi;
+    }
+
+    public String getTenure() {
+        return tenure;
+    }
+
+    public void setTenure(String tenure) {
+        this.tenure = tenure;
+    }
+
+    public String getCharges_levied() {
+        return charges_levied;
+    }
+
+    public void setCharges_levied(String charges_levied) {
+        this.charges_levied = charges_levied;
+    }
+
+
     @Override
     public String toString() {
         return "billFetchDTO{" +
@@ -374,6 +427,10 @@ public class billFetchDTO implements Parcelable {
                 ", RespBillPeriod='" + RespBillPeriod + '\'' +
                 ", RespDueDate='" + RespDueDate + '\'' +
                 ", requestId='" + requestId + '\'' +
+                ", approval_number='" + approval_number + '\'' +
+                ", emi='" + emi + '\'' +
+                ", tenure='" + tenure + '\'' +
+                ", charges_levied='" + charges_levied + '\'' +
                 '}';
     }
 
@@ -406,5 +463,9 @@ public class billFetchDTO implements Parcelable {
         parcel.writeString(RespBillPeriod);
         parcel.writeString(RespDueDate);
         parcel.writeString(requestId);
+        parcel.writeString(approval_number);
+        parcel.writeString(emi);
+        parcel.writeString(tenure);
+        parcel.writeString(charges_levied);
     }
 }
