@@ -8,8 +8,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-//   https://razorpay.com/docs/payments/payments/payment-methods/cards/saved-cards/
-
 public interface API {
 
     @POST("sendotp/")

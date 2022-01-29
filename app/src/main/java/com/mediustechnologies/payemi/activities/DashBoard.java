@@ -34,8 +34,10 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -48,7 +50,6 @@ public class DashBoard extends AppCompatActivity {
     private final Context context = this;
     private  List<homePage> data;
     private AlertDialog d;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class DashBoard extends AppCompatActivity {
 
 
             }catch (Exception e){
-                progress = -1;
+                progress = 1;
             }
 
 
@@ -117,61 +118,118 @@ public class DashBoard extends AppCompatActivity {
 
             startActivity(i);
         });
-        adapter.setOnMissingClickLIstner(pos -> {
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context,R.style.fullscreenalert);
-            View view = getLayoutInflater().inflate(R.layout.add_missing_info,null);
-            mBuilder.setView(view);
 
-            d = mBuilder.create();
-            TextView name = view.findViewById(R.id.name);
-            name.setText(data.get(pos).getBiller__billerName()+" Loan Account Number "+data.get(pos).getLoan_acc_no());
+        binding.bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(context,R.style.fullscreenalert);
+                View v = getLayoutInflater().inflate(R.layout.add_missing_info,null);
+                mBuilder.setView(v);
 
-            d.show();
-            view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
-            AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
+                d = mBuilder.create();
+                TextView name = v.findViewById(R.id.name);
+                name.setText(data.get(0).getBiller__billerName()+" Loan Account Number "+data.get(0).getLoan_acc_no());
 
-
-            d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    String loanType = binding.loantype.getText().toString();
-                    String loanAmount = binding.loanamount.getText().toString();
-                    String emi = binding.emi.getText().toString();
-                    String month = binding.month.getText().toString();
-                    String year = binding.year.getText().toString();
-
-
-                    boolean call = true;
-                    if(loanType.trim().length()<1){
-                        binding.loantype.setError("Please enter loan type.");
-                        call = false;
+                d.show();
+                v.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
+                AddMissingInfoBinding binding = AddMissingInfoBinding.bind(v);
+                binding.month.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        adddate();
                     }
-                    if(loanAmount.trim().length()<1){
-                        binding.loanamount.setError("Please enter loan amount.");
-                        call = false;
-                    }
-                    if(emi.trim().length()<1){
-                        binding.emi.setError("Please enter EMI.");
-                        call = false;
-                    }
-                    if(month.trim().length()<1){
-                        binding.month.setError("Please select month.");
-                        call = false;
-                    }
-                    if(year.trim().length()<1){
-                        binding.year.setError("Please select year.");
-                        call = false;
-                    }
-
-                    if(call) fillmissingdata(data.get(pos).getLoan_acc_no(),loanType,loanAmount,emi,month,year);
-
-                }
-            });
-
-
+                });
+            }
         });
+
+//        adapter.setOnMissingClickLIstner(pos -> {
+//            AlertDialog.Builder mBuilder = new AlertDialog.Builder(context,R.style.fullscreenalert);
+//            View view = getLayoutInflater().inflate(R.layout.add_missing_info,null);
+//            mBuilder.setView(view);
+//
+//            d = mBuilder.create();
+//            TextView name = view.findViewById(R.id.name);
+//            name.setText(data.get(pos).getBiller__billerName()+" Loan Account Number "+data.get(pos).getLoan_acc_no());
+//
+//            d.show();
+//            view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
+//            AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
+//
+//            binding.month.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    adddate();
+//                }
+//            });
+//
+//            binding.year.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    adddate();
+//                }
+//            });
+//
+//
+//
+//
+//            d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    String loanType = binding.loantype.getText().toString();
+//                    String loanAmount = binding.loanamount.getText().toString();
+//                    String emi = binding.emi.getText().toString();
+//                    String month = binding.month.getText().toString();
+//                    String year = binding.year.getText().toString();
+//
+//
+//                    boolean call = true;
+//                    if(loanType.trim().length()<1){
+//                        binding.loantype.setError("Please enter loan type.");
+//                        call = false;
+//                    }
+//                    if(loanAmount.trim().length()<1){
+//                        binding.loanamount.setError("Please enter loan amount.");
+//                        call = false;
+//                    }
+//                    if(emi.trim().length()<1){
+//                        binding.emi.setError("Please enter EMI.");
+//                        call = false;
+//                    }
+//                    if(month.trim().length()<1){
+//                        binding.month.setError("Please select month.");
+//                        call = false;
+//                    }
+//                    if(year.trim().length()<1){
+//                        binding.year.setError("Please select year.");
+//                        call = false;
+//                    }
+//
+//                    if(call) fillmissingdata(data.get(pos).getLoan_acc_no(),loanType,loanAmount,emi,month,year);
+//
+//                }
+//            });
+//
+//
+//        });
     }
+
+    private void adddate(){
+
+
+        Calendar today = Calendar.getInstance();
+        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+
+            //todo
+
+
+        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+        builder.setMaxYear(3000).build().show();
+
+
+
+    }
+
     private void fillmissingdata(String loan_acc_no, String loanType, String loanAmount, String emi, String month, String year) {
 
         Call<String> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().addMissingInfo(utils.access_token,loan_acc_no,loanType,loanAmount,emi,month,year);
@@ -189,7 +247,7 @@ public class DashBoard extends AppCompatActivity {
 
 
                 }
-                d.dismiss();
+//                d.dismiss();
             }
 
             @Override
@@ -197,7 +255,7 @@ public class DashBoard extends AppCompatActivity {
                 Log.e("tag","Missing info API "+t.toString());
                 Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
-                d.dismiss();
+//                d.dismiss();
             }
         });
 

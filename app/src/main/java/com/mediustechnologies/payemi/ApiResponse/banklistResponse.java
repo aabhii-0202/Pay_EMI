@@ -19,7 +19,6 @@ public class banklistResponse {
     @Expose
     private List<getAllBanks> data;
 
-
     public String getStatus() {
         return status;
     }

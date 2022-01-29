@@ -121,8 +121,9 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
             binding.title.setText(title);
             binding.input.setHint("Enter Your "+title);
             binding.errorMessage2.setText("Please Enter Proper "+title);
-            if(type.equals("NUMERIC")) binding.input.setInputType(InputType.TYPE_CLASS_NUMBER);
-            else binding.input.setInputType(InputType.TYPE_CLASS_TEXT);
+//            if(type.equals("NUMERIC")) binding.input.setInputType(InputType.TYPE_CLASS_NUMBER);
+//            else
+                binding.input.setInputType(InputType.TYPE_CLASS_TEXT);
 
         }
 
