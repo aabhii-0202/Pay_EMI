@@ -56,9 +56,9 @@ public class AddLoanAccount extends AppCompatActivity {
     private void getInputParameters() {
 
         biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id = "CAPR00000NATC0";
+        biller_id = "CAPR00000NATC0";
         String token = utils.access_token;
-//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNTU3MDIxLCJpYXQiOjE2NDM0NzA2MjEsImp0aSI6IjdlMWVmNjJmMjNlZjQyNzdhYzQ4ZmU2ZGM5MzcyODY4IiwidXNlcl9pZCI6NH0.X6LpLigl1PSTaxdn9DtactGwHOoyXwDjb6rmzMC1Anw";
+        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNTU3MDIxLCJpYXQiOjE2NDM0NzA2MjEsImp0aSI6IjdlMWVmNjJmMjNlZjQyNzdhYzQ4ZmU2ZGM5MzcyODY4IiwidXNlcl9pZCI6NH0.X6LpLigl1PSTaxdn9DtactGwHOoyXwDjb6rmzMC1Anw";
 
 
         Call<inputParameterFeilds> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().inputparameterfeilds(token,biller_id);
@@ -108,7 +108,9 @@ public class AddLoanAccount extends AppCompatActivity {
 //        temp2.setRegex(null);
 //        temp2.setType("Numeric");
 //        temp.put("Date",temp2);
-//        data.putAll(temp);
+
+
+        data.putAll(temp);
 
 
         if(data!=null&&data.size()>0) {
