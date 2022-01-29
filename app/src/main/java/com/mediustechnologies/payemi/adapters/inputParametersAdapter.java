@@ -1,43 +1,68 @@
 package com.mediustechnologies.payemi.adapters;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.provider.CalendarContract;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.AddLoanAccount;
 import com.mediustechnologies.payemi.databinding.InputParamsRecyclerItemBinding;
+import com.mediustechnologies.payemi.helper.DatePickerFragment;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 
-public class inputParametersAdapter extends RecyclerView.Adapter<inputParametersAdapter.viewHolder> {
+public class inputParametersAdapter extends RecyclerView.Adapter<inputParametersAdapter.viewHolder> implements DatePickerDialog.OnDateSetListener {
 
     private LinkedHashMap<String,mandatoryParmsDTO> inputList;
     private final List<String> keys;
     private LinkedHashMap<String,String> returnvalues;
-
     boolean isOnTextChanged = false;
+    private Context context;
 
-    public LinkedHashMap<String,String> getfeilds(){
-        return returnvalues;
+    private onItemClick mListner;
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        // add date
+    }
+
+    public interface onItemClick{
+        void onItemClick (int postion);
+    }
+    public void setOnItemClickListner(inputParametersAdapter.onItemClick listner){
+        mListner = listner;
     }
 
 
 
 
 
+    public LinkedHashMap<String,String> getfeilds(){
+
+        return returnvalues;
+    }
 
 
     public inputParametersAdapter(LinkedHashMap<String, mandatoryParmsDTO> inputList) {
@@ -58,6 +83,7 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
     @NonNull
     @Override
     public inputParametersAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.input_params_recycler_item,parent,false);
         return new viewHolder(view);
     }
@@ -89,7 +115,6 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
                     try{
                         String k = inputList.get(title).getKey();
                         returnvalues.put(k,editable.toString());
-//                        System.out.println(returnvalues.toString());
                     }
                     catch (Exception e){
                         Log.d("tag","inputParametersAdapter line 86 -- ExceptionExceptionExceptionException");
@@ -111,6 +136,21 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
             super(itemView);
             binding = InputParamsRecyclerItemBinding.bind(itemView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+
+
+                    }
+                }
+            });
+
 
 
         }
@@ -119,8 +159,40 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
 
             title = format(title);
             binding.title.setText(title);
+            try{
+                if(title.toLowerCase().contains("date")){
+                    binding.input.setFocusable(false);
+
+                    binding.input.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Calendar cal = Calendar.getInstance();
+                            int year = cal.get(Calendar.YEAR);
+                            int month = cal.get(Calendar.MONTH);
+                            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                            DatePickerDialog dialog = new DatePickerDialog(
+                                    context,
+                                    new DatePickerDialog.OnDateSetListener() {
+                                        @Override
+                                        public void onDateSet(DatePicker datePicker, int y, int m, int d) {
+                                            m++;
+                                            String s = y+"/"+m+"/"+d;
+                                            binding.input.setText(s);
+                                        }
+                                    },year,month,day);
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(1,135,134)));
+                            dialog.show();
+
+                        }
+                    });
+                }
+            }catch (Exception e){}
             binding.input.setHint("Enter Your "+title);
-            binding.errorMessage2.setText("Please Enter Proper "+title);
+
+
+//            binding.errorMessage2.setText("Please Enter Proper "+title);
 //            if(type.equals("NUMERIC")) binding.input.setInputType(InputType.TYPE_CLASS_NUMBER);
 //            else
                 binding.input.setInputType(InputType.TYPE_CLASS_TEXT);

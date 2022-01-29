@@ -60,15 +60,14 @@ public class DashBoard extends AppCompatActivity {
             String loanpaied = data.get(i).getLoan_paid();
 
             int progress;
+
             try{
                 double total = Double.parseDouble(totalemi);
                 double paied = Double.parseDouble(loanpaied);
                 int p = (int) (total/paied);
                 progress = p;
-
-
             }catch (Exception e){
-                progress = 1;
+                progress = -1;
             }
 
 
@@ -230,15 +229,15 @@ public class DashBoard extends AppCompatActivity {
 
 
                 }
-//                d.dismiss();
+                d.dismiss();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.e("tag","Missing info API "+t.toString());
-                Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
-//                d.dismiss();
+                d.dismiss();
             }
         });
 

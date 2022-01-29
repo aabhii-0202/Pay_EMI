@@ -132,8 +132,6 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         }
 
         public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
-//            img ="";
-
 
             Glide.with(icon).load(img).into(icon);
             emiamount.setText("₹"+emiAmount);
@@ -159,7 +157,8 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         private String formatinword(String total_amount) {
             String ans = "₹";
             try{
-
+                if(total_amount=="null")return "";
+                if(total_amount==null)return "";
 
                 int length = total_amount.length();
                 if(length>7){
@@ -175,6 +174,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             catch (Exception e){
                 return "null";
             }
+
             return ans;
         }
 

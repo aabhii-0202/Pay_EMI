@@ -19,9 +19,6 @@ import java.util.ArrayList;
 
 public class transction_chatAdapter extends RecyclerView.Adapter{
 
-
-
-
     private onItemClick mListner;
     private Context context;
     private final ArrayList<transaction_chat> chatlist;

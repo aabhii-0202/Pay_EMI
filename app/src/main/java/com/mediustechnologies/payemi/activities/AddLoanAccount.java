@@ -1,13 +1,17 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
@@ -15,11 +19,11 @@ import com.google.gson.JsonParser;
 import com.mediustechnologies.payemi.ApiResponse.fetchBill;
 import com.mediustechnologies.payemi.ApiResponse.inputParameterFeilds;
 import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
-import com.mediustechnologies.payemi.activities.apiBody.fetchBillBody;
 import com.mediustechnologies.payemi.adapters.inputParametersAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityInputParameterFeildsBinding;
+import com.mediustechnologies.payemi.helper.DatePickerFragment;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +56,9 @@ public class AddLoanAccount extends AppCompatActivity {
     private void getInputParameters() {
 
         biller_id = getIntent().getStringExtra("biller_id");
+//        biller_id = "CAPR00000NATC0";
         String token = utils.access_token;
+//        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNTU3MDIxLCJpYXQiOjE2NDM0NzA2MjEsImp0aSI6IjdlMWVmNjJmMjNlZjQyNzdhYzQ4ZmU2ZGM5MzcyODY4IiwidXNlcl9pZCI6NH0.X6LpLigl1PSTaxdn9DtactGwHOoyXwDjb6rmzMC1Anw";
 
 
         Call<inputParameterFeilds> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().inputparameterfeilds(token,biller_id);
@@ -93,15 +99,31 @@ public class AddLoanAccount extends AppCompatActivity {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+
         data = inputParameterFeilds.getData().getMandatory();
+
+//        LinkedHashMap<String, mandatoryParmsDTO> temp = new LinkedHashMap<>();
+//        mandatoryParmsDTO temp2 = new mandatoryParmsDTO();
+//        temp2.setKey("date");
+//        temp2.setRegex(null);
+//        temp2.setType("Numeric");
+//        temp.put("Date",temp2);
+//        data.putAll(temp);
+
+
         if(data!=null&&data.size()>0) {
             adapter = new inputParametersAdapter(data);
             recyclerView.setAdapter(adapter);
-
         }else{
             binding.text.setText("No Mandatory Input Parameter Feilds");
         }
+
+
     }
+
+
+
+
 
     private void init(){
         binding.backButton.setOnClickListener(view -> finish());
@@ -156,6 +178,7 @@ public class AddLoanAccount extends AppCompatActivity {
             String regex = data.get(key).getRegex();
             String value = feilds.get(data.get(key).getKey());
 
+            Log.d("tag","Pattern: "+regex+" Matcher Value: "+value+" Return: "+check(value,regex));
             if(!check(value,regex)){
                 Log.d("tag","Regex error for "+key);
                 Toast.makeText(context, "Pattern didn't matched for "+ key, Toast.LENGTH_SHORT).show();
@@ -220,4 +243,7 @@ public class AddLoanAccount extends AppCompatActivity {
         });
 
     }
+
+
+
 }

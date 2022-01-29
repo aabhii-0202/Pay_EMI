@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -88,6 +89,7 @@ public class BillerList extends AppCompatActivity {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     bankSubList = response.body();
+                    Log.d("tag", "biller list "+response.body());
                     initRecyclerView();
                 }
             }

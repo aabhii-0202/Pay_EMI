@@ -25,8 +25,6 @@ public class act20transaction_Search extends AppCompatActivity implements DatePi
         super.onCreate(savedInstanceState);
         binding= ActivityTaransactionSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
         init();
 
 
