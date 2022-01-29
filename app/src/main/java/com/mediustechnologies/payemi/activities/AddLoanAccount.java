@@ -108,9 +108,7 @@ public class AddLoanAccount extends AppCompatActivity {
 //        temp2.setRegex(null);
 //        temp2.setType("Numeric");
 //        temp.put("Date",temp2);
-
-
-        data.putAll(temp);
+//        data.putAll(temp);
 
 
         if(data!=null&&data.size()>0) {
