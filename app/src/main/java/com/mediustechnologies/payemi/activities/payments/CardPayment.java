@@ -42,7 +42,6 @@ public class CardPayment extends AppCompatActivity implements PaymentResultListe
 
         razorpay = new Razorpay(this);
         razorpay.setWebView(binding.paymentWebview);
-//        razorpay.changeApiKey("rzp_test_I4yUvwRiUPNWay");
 
 
 

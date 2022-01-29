@@ -1,30 +1,18 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.navigation.NavigationView;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -34,9 +22,12 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiHomeBinding;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +39,6 @@ public class DashBoard extends AppCompatActivity {
     private final Context context = this;
     private  List<homePage> data;
     private AlertDialog d;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +68,7 @@ public class DashBoard extends AppCompatActivity {
 
 
             }catch (Exception e){
-                progress = -1;
+                progress = 1;
             }
 
 
@@ -117,6 +107,8 @@ public class DashBoard extends AppCompatActivity {
 
             startActivity(i);
         });
+
+
         adapter.setOnMissingClickLIstner(pos -> {
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(context,R.style.fullscreenalert);
             View view = getLayoutInflater().inflate(R.layout.add_missing_info,null);
@@ -129,6 +121,36 @@ public class DashBoard extends AppCompatActivity {
             d.show();
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
             AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
+
+            binding.month.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Calendar today = Calendar.getInstance();
+                        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                            selectedMonth+=1;
+                            binding.month.setText(selectedMonth+"");
+                            binding.year.setText(selectedYear+"");
+
+                        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                        builder.setMaxYear(3000).build().show();
+                }
+            });
+
+            binding.year.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Calendar today = Calendar.getInstance();
+                        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                            selectedMonth+=1;
+                            binding.month.setText(selectedMonth+"");
+                            binding.year.setText(selectedYear+"");
+
+                        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                        builder.setMaxYear(3000).build().show();
+                }
+            });
+
+
 
 
             d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
@@ -172,6 +194,25 @@ public class DashBoard extends AppCompatActivity {
 
         });
     }
+
+    private AtomicReference<String> adddate(){
+
+        AtomicReference<String> s = new AtomicReference<>("");
+
+        Calendar today = Calendar.getInstance();
+        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+
+            s.set(selectedMonth + " " + selectedYear);
+
+
+
+        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+        builder.setMaxYear(3000).build().show();
+
+        return s;
+
+    }
+
     private void fillmissingdata(String loan_acc_no, String loanType, String loanAmount, String emi, String month, String year) {
 
         Call<String> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().addMissingInfo(utils.access_token,loan_acc_no,loanType,loanAmount,emi,month,year);
@@ -189,7 +230,7 @@ public class DashBoard extends AppCompatActivity {
 
 
                 }
-                d.dismiss();
+//                d.dismiss();
             }
 
             @Override
@@ -197,7 +238,7 @@ public class DashBoard extends AppCompatActivity {
                 Log.e("tag","Missing info API "+t.toString());
                 Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
-                d.dismiss();
+//                d.dismiss();
             }
         });
 
