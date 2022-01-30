@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.adapters.NetBankingListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityNetBankingBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.recyclerItems.NetBankingListItem;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -25,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class NetBanking extends AppCompatActivity implements PaymentResultListener {
+public class NetBanking extends BaseAppCompatActivity implements PaymentResultListener {
 
     private ActivityNetBankingBinding binding;
     private Context context = this;

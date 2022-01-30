@@ -33,6 +33,7 @@
                 android:id="@+id/banklogo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/b9"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

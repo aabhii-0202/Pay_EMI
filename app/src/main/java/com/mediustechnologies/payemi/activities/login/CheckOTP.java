@@ -19,6 +19,7 @@ import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CheckOTP extends AppCompatActivity {
+public class CheckOTP extends BaseAppCompatActivity {
 
     private ActivityVerifyNumberBinding binding;
     private final Context context = this;

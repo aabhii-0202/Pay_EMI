@@ -27,6 +27,7 @@ import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.ActivityTransactionDetailsBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +35,7 @@ import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
 
-public class Transaction_Details extends AppCompatActivity {
+public class Transaction_Details extends BaseAppCompatActivity {
     private ActivityTransactionDetailsBinding binding;
     private Context context = this;
 

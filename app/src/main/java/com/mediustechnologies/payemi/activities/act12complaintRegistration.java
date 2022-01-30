@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.databinding.ActivityComplaintRegistrationBinding;
@@ -22,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class act12complaintRegistration extends AppCompatActivity {
+public class act12complaintRegistration extends BaseAppCompatActivity {
     private ActivityComplaintRegistrationBinding binding;
     private Dialog dialog;
     private final Context context = this;

@@ -19,6 +19,7 @@ import com.mediustechnologies.payemi.adapters.fetchBillAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentInfoBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EMIDetailsBillFetch extends AppCompatActivity {
+public class EMIDetailsBillFetch extends BaseAppCompatActivity {
 
     private ActivityPaymentInfoBinding binding;
     private final Context context = this;

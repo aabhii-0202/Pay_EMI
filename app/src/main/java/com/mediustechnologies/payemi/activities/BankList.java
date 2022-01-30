@@ -24,6 +24,7 @@ import com.mediustechnologies.payemi.activities.login.SendOTP;
 import com.mediustechnologies.payemi.adapters.catagoryAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding;
@@ -35,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BankList extends AppCompatActivity {
+public class BankList extends BaseAppCompatActivity {
 
     private ActivityBankListBinding binding;
     private banklistResponse banklist;
@@ -105,7 +106,8 @@ public class BankList extends AppCompatActivity {
             Intent i = new Intent(context, BillerList.class);
             i.putExtra("name",banklist.getData().get(position).getBank_name());
             i.putExtra("imgurl",banklist.getData().get(position).getBank_logo_url());
-            i.putExtra("count",banklist.getData().get(position).getCount());
+            i.putExtra("count",banklist.getData().size());
+
             startActivity(i);
         });
     }

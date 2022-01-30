@@ -19,6 +19,7 @@ import com.mediustechnologies.payemi.adapters.fetchBillAdapter2;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiDetailsBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.LinkedHashMap;
@@ -27,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetLoanDetails extends AppCompatActivity {
+public class GetLoanDetails extends BaseAppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiDetailsBinding binding;
     private fetchBill bill;

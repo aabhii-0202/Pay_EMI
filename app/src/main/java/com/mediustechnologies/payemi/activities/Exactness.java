@@ -11,9 +11,10 @@ import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 
 
-public class Exactness extends AppCompatActivity  {
+public class Exactness extends BaseAppCompatActivity {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;

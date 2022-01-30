@@ -11,10 +11,11 @@ import android.view.View;
 import android.widget.DatePicker;
 
 import com.mediustechnologies.payemi.activities.login.OnBording;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.DatePickerFragment;
 import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
 
-public class act20transaction_Search extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class act20transaction_Search extends BaseAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ActivityTaransactionSearchBinding binding;
     private boolean from;

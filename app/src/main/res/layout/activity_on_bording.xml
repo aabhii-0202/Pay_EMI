@@ -31,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Skip"
-            android:paddingStart="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -55,14 +54,41 @@
 
     </androidx.viewpager.widget.ViewPager>
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nextbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_load1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="56dp"
-        />
+        android:layout_marginBottom="56dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_load1"
+            app:layout_constraintTop_toTopOf="@id/progress"
+            app:layout_constraintBottom_toBottomOf="@id/progress"
+            app:layout_constraintEnd_toEndOf="@id/progress"
+            app:layout_constraintStart_toStartOf="@id/progress"
+            />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:progressDrawable="@drawable/onbording_progress"
+            tools:progress="40"
+            android:rotation="-90"
+            android:indeterminateOnly="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

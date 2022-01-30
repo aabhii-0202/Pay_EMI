@@ -10,9 +10,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentPageBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.razorpay.Razorpay;
 
-public class SelectPaymentMethod extends AppCompatActivity {
+public class SelectPaymentMethod extends BaseAppCompatActivity {
     
     
     private ActivityPaymentPageBinding binding;

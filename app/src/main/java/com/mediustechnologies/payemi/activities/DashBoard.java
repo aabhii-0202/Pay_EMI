@@ -18,6 +18,7 @@ import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.AddMissingInfoBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.adapters.emiListItemAdapter;
@@ -33,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DashBoard extends AppCompatActivity {
+public class DashBoard extends BaseAppCompatActivity {
     private ActivityPayEmiHomeBinding binding;
     private List<emiListItem> emilist;
     private final Context context = this;
@@ -69,6 +70,16 @@ public class DashBoard extends AppCompatActivity {
             }catch (Exception e){
                 progress = -1;
             }
+
+            String s = "";
+            s = "EMI "+data.get(i).getEmi();
+            s+= "\nBiller Name "+data.get(i).getBiller__billerName();
+            s+= "\nLoan type "+data.get(i).getLoan_type();
+            s+= "\nPaid "+data.get(i).getLoan_paid();
+            s+= "\nAmount "+data.get(i).getAmount();
+            s+= "\nProgress "+progress;
+
+            Log.d("tag", "Emi List index: "+i+" data: "+s);
 
 
 
@@ -230,6 +241,7 @@ public class DashBoard extends AppCompatActivity {
 
                 }
                 d.dismiss();
+                callapi();
             }
 
             @Override
@@ -238,6 +250,7 @@ public class DashBoard extends AppCompatActivity {
 //                Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 d.dismiss();
+                callapi();
             }
         });
 
@@ -255,6 +268,9 @@ public class DashBoard extends AppCompatActivity {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     data = response.body();
+
+
+
                     setData();
                     try {
                         Log.d("tag", "-->>" + data.get(0).toString());

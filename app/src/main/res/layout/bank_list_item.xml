@@ -24,6 +24,7 @@
             android:layout_width="92dp"
             android:layout_gravity="center"
             android:layout_height="92dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/b1"/>
     </androidx.cardview.widget.CardView>
     <TextView

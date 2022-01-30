@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityCardPaymentBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
 import com.razorpay.ValidateVpaCallback;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Map;
 
-public class CardPayment extends AppCompatActivity implements PaymentResultListener {
+public class CardPayment extends BaseAppCompatActivity implements PaymentResultListener {
 
     private ActivityCardPaymentBinding binding;
     private final Context context = this;

@@ -40,6 +40,7 @@ import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPaymentSuccessfulBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.io.File;
@@ -53,7 +54,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PaymentSuccessful extends AppCompatActivity {
+public class PaymentSuccessful extends BaseAppCompatActivity {
 
     private ActivityPaymentSuccessfulBinding binding;
     private final Context context = this;

@@ -17,6 +17,7 @@ import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.adapters.WalletAdapter;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.databinding.ActivitySelectWallectBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.recyclerItems.walletItem;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
@@ -29,7 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class LinkWallet extends AppCompatActivity implements PaymentResultListener {
+public class LinkWallet extends BaseAppCompatActivity implements PaymentResultListener {
 
     private ActivitySelectWallectBinding binding;
     private Context context = this;

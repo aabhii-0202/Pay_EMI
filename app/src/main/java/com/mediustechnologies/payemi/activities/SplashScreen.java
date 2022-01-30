@@ -17,13 +17,14 @@ import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.login.OnBording;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends BaseAppCompatActivity {
 
     private final Context context = SplashScreen.this;
 

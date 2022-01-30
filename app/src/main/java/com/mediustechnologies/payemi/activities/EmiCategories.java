@@ -17,6 +17,7 @@ import com.mediustechnologies.payemi.adapters.bankListAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityEmiCategoriesBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EmiCategories extends AppCompatActivity {
+public class EmiCategories extends BaseAppCompatActivity {
     private ActivityEmiCategoriesBinding binding;
     private final Context context = this;
     private ArrayList<String > catagories,ids;

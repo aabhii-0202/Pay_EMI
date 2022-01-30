@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 import com.mediustechnologies.payemi.databinding.ActivityAct12AddNewUpiBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.razorpay.PaymentResultListener;
 import com.razorpay.Razorpay;
 import com.razorpay.ValidateVpaCallback;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-public class UPIPayment extends AppCompatActivity implements PaymentResultListener {
+public class UPIPayment extends BaseAppCompatActivity implements PaymentResultListener {
     private ActivityAct12AddNewUpiBinding binding;
     private Razorpay razorpay;
     private final Context context = this;

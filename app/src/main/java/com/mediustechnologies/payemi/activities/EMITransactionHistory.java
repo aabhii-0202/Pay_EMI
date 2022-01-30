@@ -29,6 +29,7 @@ import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchList
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
 import com.mediustechnologies.payemi.adapters.transction_chatAdapter;
@@ -41,7 +42,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EMITransactionHistory extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class EMITransactionHistory extends BaseAppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private final Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;

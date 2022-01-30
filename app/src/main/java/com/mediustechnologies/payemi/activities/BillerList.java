@@ -7,11 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.ApiResponse.bankSubItem;
 import com.mediustechnologies.payemi.adapters.bankListAdapter;
@@ -24,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BillerList extends AppCompatActivity {
+public class BillerList extends BaseAppCompatActivity {
 
     private ActivityBankSubCategoriesBinding binding;
     private RecyclerView bankSubListRecyclerview;
@@ -60,9 +62,9 @@ public class BillerList extends AppCompatActivity {
             startActivity(i);
         });
 
-        String count = getIntent().getStringExtra("count");
+        int count = getIntent().getIntExtra("count",0);
         try {
-            if (count.equals("1")) {
+            if (bankSubList.size()==1) {
                 Intent i = new Intent(context, AddLoanAccount.class);
                 i.putExtra("url", bankSubList.get(0).getLogo_url());
                 i.putExtra("biller_id", bankSubList.get(0).getBillerId());
@@ -73,6 +75,7 @@ public class BillerList extends AppCompatActivity {
         }catch (Exception e){
 
         }
+        binding.progressbar.setVisibility(View.GONE);
 
 
     }
@@ -104,6 +107,7 @@ public class BillerList extends AppCompatActivity {
     }
 
     private void init(){
+        binding.progressbar.setVisibility(View.VISIBLE);
         binding.backButton.setOnClickListener(view -> finish());
         binding.ParentBankName.setText(getIntent().getStringExtra("name"));
         String url = getIntent().getStringExtra("imgurl");
