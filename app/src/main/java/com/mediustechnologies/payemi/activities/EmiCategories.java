@@ -72,7 +72,6 @@ public class EmiCategories extends BaseAppCompatActivity {
             i.putExtra("loan_category_id",banklist.get(position).getId());
             i.putStringArrayListExtra("catagories",catagories);
             i.putStringArrayListExtra("ids",ids);
-
             i.putExtra("position",position);
 
             startActivity(i);

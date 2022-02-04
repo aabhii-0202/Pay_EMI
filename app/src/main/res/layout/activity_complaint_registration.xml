@@ -84,29 +84,70 @@
                         android:buttonTint="#412e8d"
                         android:checked="true"
                         android:fontFamily="@font/gtwalsheim_pro_medium"
-                        android:text="Registration"
+                        android:text="Transaction"
+                        android:inputType="textMultiLine"
                         android:layout_weight="1"
                         android:textColor="#412e8d"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:layout_marginStart="40dp"
-                        android:id="@+id/radio_Tracking"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#412e8d"
-                        android:fontFamily="@font/gtwalsheim_pro_medium"
-                        android:text="Tracking"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+<!--                    <RadioButton-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:id="@+id/radio_Tracking"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:buttonTint="#412e8d"-->
+<!--                        android:fontFamily="@font/gtwalsheim_pro_medium"-->
+<!--                        android:text="Tracking"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp"-->
 
-                        />
+<!--                        />-->
                 </RadioGroup>
 
 
 
 
+
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/layouttracking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="27dp"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:text="Transaction Reference Id"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/complaint_box"
+                        android:fontFamily="@font/gtwalsheim_pro_regular"
+                        android:textSize="16sp"
+                        android:padding="14dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="10dp"
+                        android:hint="Enter Transaction Reference Id"
+                        android:paddingStart="24dp"
+                        android:textColorHint="@color/HintColor"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layourcomplainttype"
@@ -118,7 +159,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="24dp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
                         android:text="Complaint Type"
                         android:textColor="@color/grey"
@@ -144,86 +185,8 @@
 
                 </LinearLayout>
 
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="46dp"-->
-<!--                    android:background="@drawable/complaint_box"-->
-<!--                    android:foregroundTint="@color/grey"-->
-<!--                    app:boxCornerRadiusBottomEnd="4dp"-->
-<!--                    app:boxCornerRadiusBottomStart="4dp"-->
-<!--                    app:boxCornerRadiusTopEnd="4dp"-->
-<!--                    app:boxCornerRadiusTopStart="4dp"-->
-<!--                    app:boxStrokeColor="@color/grey"-->
-<!--                    app:boxStrokeWidth="1dp"-->
-
-<!--                    >-->
-
-
-
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-
                 <LinearLayout
-                    android:id="@+id/layoutreg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="27dp"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="Mobile Number"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/complaint_box"
-                        android:orientation="horizontal">
-
-
-                        <EditText
-                            android:id="@+id/phoneNumber"
-                            android:layout_width="0dp"
-                            android:layout_height="46dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:background="@drawable/amount_box"
-                            android:fontFamily="@font/gtwalsheim_pro_regular"
-                            android:inputType="phone"
-                            android:maxLength="10"
-                            android:hint="Enter Mobile Number"
-                            android:textColorHint="@color/HintColor"
-                            android:paddingHorizontal="8dp"
-                            android:textColor="@color/black"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/sendOTP"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="@font/gtwalsheim_pro_medium"
-                            android:text="Send OTP"
-                            android:textColor="#0a7aff"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layouttracking"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -234,20 +197,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="Complaint Id"
+                        android:text="Description"
                         android:textColor="@color/grey"
                         android:textSize="16sp" />
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="46dp"
+                        android:layout_height="wrap_content"
+                        android:lines="8"
+                        android:gravity="top|start"
                         android:background="@drawable/complaint_box"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:inputType="phone"
+                        android:textSize="16sp"
+                        android:padding="14dp"
+                        android:scrollbars="vertical"
                         android:layout_marginTop="8dp"
                         android:paddingHorizontal="10dp"
-                        android:hint="Enter Complaint Id"
+                        android:hint="Enter some description"
                         android:paddingStart="24dp"
+                        android:paddingEnd="24dp"
                         android:textColorHint="@color/HintColor"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -257,171 +225,89 @@
 
                 </LinearLayout>
 
+                <!--                <com.google.android.material.textfield.TextInputLayout-->
+                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="46dp"-->
+                <!--                    android:background="@drawable/complaint_box"-->
+                <!--                    android:foregroundTint="@color/grey"-->
+                <!--                    app:boxCornerRadiusBottomEnd="4dp"-->
+                <!--                    app:boxCornerRadiusBottomStart="4dp"-->
+                <!--                    app:boxCornerRadiusTopEnd="4dp"-->
+                <!--                    app:boxCornerRadiusTopStart="4dp"-->
+                <!--                    app:boxStrokeColor="@color/grey"-->
+                <!--                    app:boxStrokeWidth="1dp"-->
 
-                <LinearLayout
-                    android:id="@+id/otpLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="27dp"
-                        android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="OTP"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/complaint_box"
-                        android:orientation="horizontal">
+                <!--                    >-->
 
 
-                        <EditText
-                            android:id="@+id/otpNumber"
-                            android:layout_width="0dp"
-                            android:layout_height="46dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:background="@drawable/amount_box"
-                            android:fontFamily="@font/gtwalsheim_pro_regular"
-                            android:hint="Enter OTP"
-                            android:textColor="@color/black"
-                            android:maxLength="4"
-                            android:inputType="number"
-                            android:paddingHorizontal="8dp"
-                            android:textColorHint="@color/HintColor"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/verifyOTP"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/verifyOTP"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="@font/gtwalsheim_pro_medium"
-                            android:text="Verify"
-                            android:textColor="#0a7aff"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/status_Layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="40dp"
-                android:background="#f4f6f8"
-                android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:text="Complaint Id"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
+                <!--                <LinearLayout-->
+<!--                    android:id="@+id/otpLayout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:visibility="visible">-->
 
-                <EditText
-                    android:id="@+id/complaintId"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/complaintidbox"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:focusable="false"
-                    android:paddingHorizontal="10dp"
-                    android:text="PE82908377"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/HintColor"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="27dp"-->
+<!--                        android:fontFamily="@font/gtwalsheim_pro_regular"-->
+<!--                        android:text="OTP"-->
+<!--                        android:textColor="@color/grey"-->
+<!--                        android:textSize="16sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:text="Complaint Status"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:background="@drawable/complaint_box"-->
+<!--                        android:orientation="horizontal">-->
 
-                <EditText
-                    android:id="@+id/status"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/complaintidbox"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:focusable="false"
-                    android:paddingHorizontal="10dp"
-                    android:text="Pending"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:text="Complaint Assigned"
-                    android:textColor="@color/grey"
-                    android:textSize="16sp" />
+<!--                        <EditText-->
+<!--                            android:id="@+id/otpNumber"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="46dp"-->
+<!--                            android:layout_marginHorizontal="16dp"-->
+<!--                            android:background="@drawable/amount_box"-->
+<!--                            android:fontFamily="@font/gtwalsheim_pro_regular"-->
+<!--                            android:hint="Enter OTP"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:maxLength="4"-->
+<!--                            android:inputType="number"-->
+<!--                            android:paddingHorizontal="8dp"-->
+<!--                            android:textColorHint="@color/HintColor"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toStartOf="@+id/verifyOTP"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent" />-->
 
-                <EditText
-                    android:id="@+id/CompAssigned"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/complaintidbox"
-                    android:fontFamily="@font/gtwalsheim_pro_regular"
-                    android:focusable="false"
-                    android:paddingHorizontal="8dp"
-                    android:text="Rahul Kumar"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/verifyOTP"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginHorizontal="16dp"-->
+<!--                            android:fontFamily="@font/gtwalsheim_pro_medium"-->
+<!--                            android:text="Verify"-->
+<!--                            android:textColor="#0a7aff"-->
+<!--                            android:textSize="16sp"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent" />-->
 
-                <Button
-                    android:id="@+id/submit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/button_bg"
-                    android:fontFamily="@font/gtwalsheim_pro_medium"
-                    android:text="Submit"
-                    android:letterSpacing="0"
-                    android:textAllCaps="false"
-                    android:textSize="22sp" />
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--                </LinearLayout>-->
+
 
             </LinearLayout>
+
+
 
             <Button
                 android:id="@+id/viewbtn"
@@ -433,7 +319,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_bg"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
-                android:text="View"
+                android:text="Register"
                 android:textAllCaps="false"
                 android:letterSpacing="0"
                 android:textSize="22sp"
