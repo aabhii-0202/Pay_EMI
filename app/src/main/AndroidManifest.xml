@@ -17,9 +17,20 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.EmiCategories"
-            android:exported="false"/>
+            android:name=".activities.DashBoardclasses.Home_Nav"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.act12complaintRegistration"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.EmiCategories"
+            android:exported="false" />
         <activity
             android:name=".activities.scratchCard.ScratchCardActivity"
             android:exported="true" />
@@ -52,7 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.Transaction_Details"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.act36payment_confirmation"
             android:exported="false" />
@@ -67,24 +78,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.act20transaction_Search"
-            android:exported="false" />
-        <activity
-            android:name=".activities.act12complaintRegistration"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activities.Exactness"
             android:exported="false" />
         <activity
             android:name=".activities.AddLoanAccount"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.BillerList"
             android:exported="false" />

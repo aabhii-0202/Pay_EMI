@@ -104,6 +104,7 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_card_payment.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_complaint_registration.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_emi_categories.xml" value="0.4244791666666667" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_home_nav.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_input_parameter_feilds.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_net_banking.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_on_bording.xml" value="0.536" />
@@ -123,9 +124,12 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/add_missing_info.xml" value="0.2898148148148148" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/bank_list_item.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/bank_sublist_items.xml" value="0.409375" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/drawer_menu.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/fetch_bill_layout.xml" value="0.409375" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/fragment_dashboard.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/input_params_recycler_item.xml" value="0.536" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/nav_header.xml" value="0.41388888888888886" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/net_banking_list.xml" value="0.409375" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/scratchcardlayout.xml" value="0.409375" />
