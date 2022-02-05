@@ -72,7 +72,7 @@ public class CheckOTP extends BaseAppCompatActivity {
 
     private void resendOTP(){
             if(phone.length()==10){
-                Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone);
+                Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone,"androidapp");
                 String finalPhone = phone;
                 call.enqueue(new Callback<sendOTPResponse>() {
                     @Override

@@ -49,7 +49,7 @@ public class SendOTP extends BaseAppCompatActivity {
 //        String courntycode = binding.countryCodePicker.getSelectedCountryCode();
 //        phone = "+"+courntycode+phone;
         if(phone.length()==10){
-            Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone);
+            Call<sendOTPResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().sendOTP(phone,"androidapp");
             String finalPhone = phone;
             call.enqueue(new Callback<sendOTPResponse>() {
                 @Override

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.getBillerByBank;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
@@ -84,21 +85,21 @@ public class BillerList extends BaseAppCompatActivity {
         bankSubList = new ArrayList<>();
 
         String name = getIntent().getStringExtra("name");
-        Call<List<bankSubItem>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillerByBank(utils.access_token,name);
+        Call<getBillerByBank> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillerByBank(utils.access_token,name);
 
-        call.enqueue(new Callback<List<bankSubItem>>() {
+        call.enqueue(new Callback<getBillerByBank>() {
             @Override
-            public void onResponse(Call<List<bankSubItem>> call, Response<List<bankSubItem>> response) {
+            public void onResponse(Call<getBillerByBank> call, Response<getBillerByBank> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    bankSubList = response.body();
+                    bankSubList = response.body().getData();
                     Log.d("tag", "biller list "+response.body());
                     initRecyclerView();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<bankSubItem>> call, Throwable t) {
+            public void onFailure(Call<getBillerByBank> call, Throwable t) {
                 Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
 
             }

@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.adapters;
+package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
 import android.util.SparseArray;
 import android.view.View;
@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.mediustechnologies.payemi.recyclerItems.DrawerItems;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,8 +1,6 @@
-package com.mediustechnologies.payemi.recyclerItems;
+package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
 import android.view.ViewGroup;
-
-import com.mediustechnologies.payemi.adapters.DrawerAdapter;
 
 public abstract class DrawerItems<T extends DrawerAdapter.ViewHolder> {
 

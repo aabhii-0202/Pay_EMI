@@ -11,7 +11,7 @@ import retrofit2.http.*;
 public interface API {
 
     @POST("sendotp/")
-    Call<sendOTPResponse> sendOTP (@Query("phone")String phone);
+    Call<sendOTPResponse> sendOTP (@Query("phone")String phone,@Query("source")String source);
 
     @POST("checkotp/")
     Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
@@ -20,16 +20,13 @@ public interface API {
     Call<List<billFetchDTO>> getBillDetails(@Header("Authorization") String token, @Query("bill_id") String bill_id);
 
     @POST("billfetch/")
-    Call<fetchBill> fetchBill (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body fetchBillBody body);
-
-    @POST("billfetch/")
     Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
 
     @GET("get-all-banks/")
     Call<banklistResponse> getAllBanks(@Header("Authorization")String token,@Query("loan_category_id")String loan_category);
 
     @GET("get-biller-by-bank/")
-    Call<List<bankSubItem>> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);
+    Call<getBillerByBank> getBillerByBank (@Header("Authorization")String token, @Query("bank")String name);
 
     @GET("ifnew/")
     Call<ifNewUser> checkfornewUser(@Query("phone") String phone);

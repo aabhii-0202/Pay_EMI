@@ -8,16 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.adapters.DrawerAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityHomeNavBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
-import com.mediustechnologies.payemi.helper.SimpleItem;
-import com.mediustechnologies.payemi.recyclerItems.DrawerItems;
-import com.mediustechnologies.payemi.recyclerItems.SpaceItem;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -56,6 +53,7 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
+                .withMenuLayout(R.layout.drawer_menu)
                 .inject();
         
         screenIcons = loadScreenIcons();
@@ -101,15 +99,44 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
     }
 
     private String[] loadScreenTitles() {
+        return getResources().getStringArray(R.array.id_activityScreenTitles);
     }
 
     private Drawable[] loadScreenIcons() {
+        TypedArray ta = getResources().obtainTypedArray(R.array.id_activityScreenIcon);
+        Drawable[] icons = new Drawable[ta.length()];
+        for(int i=0;i<ta.length();i++){
+            int id = ta.getResourceId(i,0);
+            if(id!=0){
+                icons[i]=ContextCompat.getDrawable(context,id);
+            }
+        }
+        ta.recycle();
+        return icons;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
     public void onItemSelected(int position) {
         // transaction of fragments
-        FragmentTransaction taransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if(position == POS_HOME){
+            dashboardFrag dashboardFrag = new dashboardFrag();
+            transaction.replace(R.id.homeframe,dashboardFrag);
+        }
+        else{
+            ComplaintRegFrag complaintRegFrag = new ComplaintRegFrag();
+            transaction.replace(R.id.homeframe,complaintRegFrag);
+        }
+
+        slidingRootNav.closeMenu();
+        transaction.addToBackStack(null);
+        transaction.commit();
         
     }
 }

@@ -9,6 +9,10 @@ public class verifyOTPresponse {
     @Expose
     private String id;
 
+    @SerializedName("fullname")
+    @Expose
+    private String fullname;
+
     @SerializedName("otp")
     @Expose
     private String otp;
@@ -21,21 +25,17 @@ public class verifyOTPresponse {
     @Expose
     private String refresh_token;
 
-    @SerializedName("user_id")
-    @Expose
-    private String user_id;
 
     @SerializedName("customer_id")
     @Expose
     private String customer_id;
 
-
-    public String getUser_id() {
-        return user_id;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getCustomer_id() {

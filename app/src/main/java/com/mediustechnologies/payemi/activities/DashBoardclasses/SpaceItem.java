@@ -1,4 +1,4 @@
-package com.mediustechnologies.payemi.recyclerItems;
+package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
 import android.content.Context;
 import android.view.View;
@@ -6,9 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-import com.mediustechnologies.payemi.adapters.DrawerAdapter;
-
-public class SpaceItem extends DrawerItems<SpaceItem.ViewHolder>{
+public class SpaceItem extends DrawerItems<SpaceItem.ViewHolder> {
 
     private int spaceDp;
 
