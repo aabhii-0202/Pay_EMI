@@ -17,7 +17,7 @@ public interface API {
     Call<verifyOTPresponse> checkOTP (@Query("phone")String phone, @Query("otp")String otp);
 
     @GET("getbilldetails/")
-    Call<List<billFetchDTO>> getBillDetails(@Header("Authorization") String token, @Query("bill_id") String bill_id);
+    Call<GetBillDetailsResponse> getBillDetails(@Header("Authorization") String token, @Query("bill_id") String bill_id);
 
     @POST("billfetch/")
     Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
@@ -35,7 +35,7 @@ public interface API {
     Call<inputParameterFeilds> inputparameterfeilds (@Header("Authorization") String token,@Query("biller_id")String billerId);
 
     @POST("homepage/")
-    Call<List<homePage>> homepage (@Header("Authorization") String token,@Query("mobile")String mobile,@Query("profile")String id);
+    Call<HomepageResponse> homepage (@Header("Authorization") String token,@Query("mobile")String mobile,@Query("profile")String id);
 
     @POST("refreshtoken/")
     Call<RefreshTokenResponse> refreshToken (@Body RefreshToken refreshToken);

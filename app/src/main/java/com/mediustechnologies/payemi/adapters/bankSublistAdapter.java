@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.ApiResponse.bankSubItem;
+import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
 
 public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.Viewholder> {
 
-    private List<bankSubItem> bankSubList;
+    private List<GetBillerByBankDTO> bankSubList;
     private bankListAdapter.onItemClicked mListner;
 
 
@@ -26,7 +26,7 @@ public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.
     public void setOnItemClickListner(bankListAdapter.onItemClicked listner){
         mListner = listner;
     }
-    public bankSublistAdapter(List<bankSubItem> bankSubList){ this.bankSubList = bankSubList; }
+    public bankSublistAdapter(List<GetBillerByBankDTO> bankSubList){ this.bankSubList = bankSubList; }
 
     @NonNull
     @Override

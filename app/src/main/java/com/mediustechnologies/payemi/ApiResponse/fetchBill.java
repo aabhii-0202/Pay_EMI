@@ -11,10 +11,6 @@ import java.util.List;
 
 public class fetchBill implements Parcelable {
 
-    @SerializedName("status")
-    @Expose
-    private int status;
-
     @SerializedName("payload")
     @Expose
     private List<billFetchDTO> payload;
@@ -29,7 +25,6 @@ public class fetchBill implements Parcelable {
 
 
     protected fetchBill(Parcel in) {
-        status = in.readInt();
         payload = in.createTypedArrayList(billFetchDTO.CREATOR);
         message = in.readString();
         exactness = in.readString();
@@ -50,20 +45,12 @@ public class fetchBill implements Parcelable {
     @Override
     public String toString() {
         return "fetchBill{" +
-                "status=" + status +
                 ", payload=" + payload +
                 ", message='" + message + '\'' +
                 ", exactness='" + exactness + '\'' +
                 '}';
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     public List<billFetchDTO> getPayload() {
         return payload;
@@ -96,7 +83,6 @@ public class fetchBill implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(status);
         parcel.writeTypedList(payload);
         parcel.writeString(message);
         parcel.writeString(exactness);

@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mediustechnologies.payemi.ApiResponse.GetBillDetailsResponse;
 import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.BuildConfig;
@@ -174,15 +175,17 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     private void getbilldetails() {
         String token = utils.access_token;
 
-        Call<List<billFetchDTO>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
+        Call<GetBillDetailsResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
 
-        call.enqueue(new Callback<List<billFetchDTO>>() {
+        call.enqueue(new Callback<GetBillDetailsResponse>() {
             @Override
-            public void onResponse(Call<List<billFetchDTO>> call, Response<List<billFetchDTO>> response) {
+            public void onResponse(Call<GetBillDetailsResponse> call, Response<GetBillDetailsResponse> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
-                    billFetchDTO data = response.body().get(0);
+                    billFetchDTO data = response.body().getData().get(0);
                     setData(data);
                     scratch();
+                    binding.scrollView.setVisibility(View.VISIBLE);
+                    binding.progress.setVisibility(View.GONE);
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -190,7 +193,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<billFetchDTO>> call, Throwable t) {
+            public void onFailure(Call<GetBillDetailsResponse> call, Throwable t) {
                 Log.d("tag","getbill details "+t.toString());
             }
         });
@@ -296,6 +299,8 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     }
 
     private void init() {
+        binding.scrollView.setVisibility(View.GONE);
+        binding.progress.setVisibility(View.VISIBLE);
         binding.share.setVisibility(View.VISIBLE);
         paymentstatus = getIntent().getBooleanExtra("status",false);
         scratched = false;

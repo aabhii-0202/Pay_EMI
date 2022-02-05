@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mediustechnologies.payemi.ApiResponse.HomepageResponse;
 import com.mediustechnologies.payemi.ApiResponse.homePage;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -260,14 +261,14 @@ public class DashBoard extends BaseAppCompatActivity {
 
     private void callapi(){
 
-        Call<List<homePage>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
+        Call<HomepageResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
 
-        call.enqueue(new Callback<List<homePage>>() {
+        call.enqueue(new Callback<HomepageResponse>() {
             @Override
-            public void onResponse(Call<List<homePage>> call, Response<List<homePage>> response) {
+            public void onResponse(Call<HomepageResponse> call, Response<HomepageResponse> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    data = response.body();
+                    data = response.body().getData();
 
 
 
@@ -286,7 +287,7 @@ public class DashBoard extends BaseAppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<homePage>> call, Throwable t) {
+            public void onFailure(Call<HomepageResponse> call, Throwable t) {
                 Toast.makeText(context, "Unable to fetch Loans", Toast.LENGTH_SHORT).show();
                 Log.e("tag","API home: "+t.toString());
             }

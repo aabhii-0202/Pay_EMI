@@ -1,6 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
@@ -16,8 +15,7 @@ import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-import com.mediustechnologies.payemi.ApiResponse.bankSubItem;
-import com.mediustechnologies.payemi.adapters.bankListAdapter;
+import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO;
 import com.mediustechnologies.payemi.adapters.bankSublistAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityBankSubCategoriesBinding;
 import java.util.ArrayList;
@@ -31,7 +29,7 @@ public class BillerList extends BaseAppCompatActivity {
 
     private ActivityBankSubCategoriesBinding binding;
     private RecyclerView bankSubListRecyclerview;
-    private List<bankSubItem> bankSubList;
+    private List<GetBillerByBankDTO> bankSubList;
     private LinearLayoutManager linearLayoutManager;
     private bankSublistAdapter adapter;
     private final Context context = this;

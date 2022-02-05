@@ -1,9 +1,9 @@
-package com.mediustechnologies.payemi.ApiResponse;
+package com.mediustechnologies.payemi.DTO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class bankSubItem {
+public class GetBillerByBankDTO {
 
 
     @SerializedName("billerId")
