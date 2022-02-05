@@ -28,7 +28,7 @@ public class SpaceItem extends DrawerItems<SpaceItem.ViewHolder> {
     }
 
     @Override
-    public boolean isSelected() {
+    public boolean isSelectable() {
         return false;
     }
 
