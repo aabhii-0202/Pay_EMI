@@ -160,7 +160,7 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
             title = format(title);
             binding.title.setText(title);
             try{
-                if(title.toLowerCase().contains("date")){
+                if(title.toLowerCase().contains("date")||title.toLowerCase().contains("dob")){
                     binding.input.setFocusable(false);
 
                     binding.input.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +178,14 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
                                         @Override
                                         public void onDateSet(DatePicker datePicker, int y, int m, int d) {
                                             m++;
-                                            String s = y+"/"+m+"/"+d;
+                                            String month = Integer.toString(m);
+                                            String day = Integer.toString(d);
+
+                                            if(m<10)month = "0"+month;
+                                            if(d<10)day = "0"+day;
+
+
+                                            String s = day+"/"+month+"/"+y;
                                             binding.input.setText(s);
                                         }
                                     },year,month,day);
