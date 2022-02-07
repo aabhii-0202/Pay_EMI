@@ -1,6 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mediustechnologies.payemi.ApiResponse.HomepageResponse;
-import com.mediustechnologies.payemi.ApiResponse.homePage;
+import com.mediustechnologies.payemi.DTO.HomepageDTO;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
@@ -39,7 +38,7 @@ public class DashBoard extends BaseAppCompatActivity {
     private ActivityPayEmiHomeBinding binding;
     private List<emiListItem> emilist;
     private final Context context = this;
-    private  List<homePage> data;
+    private  List<HomepageDTO> data;
     private AlertDialog d;
 
     @Override

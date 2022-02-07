@@ -3,11 +3,9 @@ package com.mediustechnologies.payemi.ApiResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class sendOTPResponse {
+public class sendOTPResponse extends BaseApiResponse{
 
-    @SerializedName("message")
-    @Expose
-    private String message;
+
 
     @SerializedName("payload")
     @Expose
@@ -25,13 +23,6 @@ public class sendOTPResponse {
     @Expose
     private boolean new_user;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public String getPayload() {
         return payload;

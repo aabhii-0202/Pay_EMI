@@ -6,7 +6,7 @@ import com.mediustechnologies.payemi.DTO.billFetchDTO;
 
 import java.util.List;
 
-public class GetBillDetailsResponse {
+public class GetBillDetailsResponse extends BaseApiResponse{
 
     @SerializedName("data")
     @Expose

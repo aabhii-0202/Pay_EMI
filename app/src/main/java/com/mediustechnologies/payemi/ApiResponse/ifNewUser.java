@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ifNewUser {
+public class ifNewUser extends BaseApiResponse{
     @SerializedName("new_user")
     @Expose
     private boolean new_user;

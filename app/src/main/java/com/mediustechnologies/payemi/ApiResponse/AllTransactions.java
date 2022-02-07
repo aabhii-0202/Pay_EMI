@@ -2,21 +2,20 @@ package com.mediustechnologies.payemi.ApiResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mediustechnologies.payemi.DTO.HomepageDTO;
 
 import java.util.List;
 
-public class HomepageResponse extends BaseApiResponse{
+public class AllTransactions extends BaseApiResponse{
 
     @SerializedName("data")
     @Expose
-    List<HomepageDTO> data;
+    List<TransactionDetails> data;
 
-    public List<HomepageDTO> getData() {
+    public List<TransactionDetails> getData() {
         return data;
     }
 
-    public void setData(List<HomepageDTO> data) {
+    public void setData(List<TransactionDetails> data) {
         this.data = data;
     }
 }

@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class getCashback {
+public class getCashback extends BaseApiResponse{
     @SerializedName("cashback_amount")
     @Expose
     private String cashback_amount;

@@ -219,6 +219,8 @@ public class AddLoanAccount extends BaseAppCompatActivity {
                     fetchBill bill = response.body();
                     utils.bill_id = bill.getPayload().get(0).getId();
 
+
+
                     LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
                     variableData.putAll(bill.getPayload().get(0).getAmountOptions());
                     variableData.putAll(bill.getPayload().get(0).getInputparams_value());

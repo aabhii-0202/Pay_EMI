@@ -1,15 +1,14 @@
-package com.mediustechnologies.payemi.ApiResponse;
+package com.mediustechnologies.payemi.DTO;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mediustechnologies.payemi.DTO.mandatoryParmsDTO;
 
 import java.util.HashMap;
 
-public class homePage implements Parcelable {
+public class HomepageDTO implements Parcelable {
 
     @SerializedName("biller__billerName")
     @Expose
@@ -79,7 +78,7 @@ public class homePage implements Parcelable {
     @Expose
     String loan_paid;
 
-    protected homePage(Parcel in) {
+    protected HomepageDTO(Parcel in) {
         biller__billerName = in.readString();
         biller__logo_url = in.readString();
         biller__billerTimeout = in.readString();
@@ -98,15 +97,15 @@ public class homePage implements Parcelable {
         loan_paid = in.readString();
     }
 
-    public static final Creator<homePage> CREATOR = new Creator<homePage>() {
+    public static final Creator<HomepageDTO> CREATOR = new Creator<HomepageDTO>() {
         @Override
-        public homePage createFromParcel(Parcel in) {
-            return new homePage(in);
+        public HomepageDTO createFromParcel(Parcel in) {
+            return new HomepageDTO(in);
         }
 
         @Override
-        public homePage[] newArray(int size) {
-            return new homePage[size];
+        public HomepageDTO[] newArray(int size) {
+            return new HomepageDTO[size];
         }
     };
 

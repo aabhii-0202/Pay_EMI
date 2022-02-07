@@ -185,7 +185,7 @@ public class inputParametersAdapter extends RecyclerView.Adapter<inputParameters
                                             if(d<10)day = "0"+day;
 
 
-                                            String s = day+"/"+month+"/"+y;
+                                            String s = day+"-"+month+"-"+y;
                                             binding.input.setText(s);
                                         }
                                     },year,month,day);

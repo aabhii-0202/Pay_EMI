@@ -1,6 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.fetchBill;
-import com.mediustechnologies.payemi.ApiResponse.homePage;
+import com.mediustechnologies.payemi.DTO.HomepageDTO;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.adapters.fetchBillAdapter2;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -32,7 +31,7 @@ public class GetLoanDetails extends BaseAppCompatActivity {
     private final Context context = this;
     private ActivityPayEmiDetailsBinding binding;
     private fetchBill bill;
-    private homePage data;
+    private HomepageDTO data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

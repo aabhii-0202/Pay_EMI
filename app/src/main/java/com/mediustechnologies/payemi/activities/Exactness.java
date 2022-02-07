@@ -1,6 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.mediustechnologies.payemi.ApiResponse.homePage;
+import com.mediustechnologies.payemi.DTO.HomepageDTO;
 import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
@@ -18,7 +17,7 @@ public class Exactness extends BaseAppCompatActivity {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
-    private homePage data;
+    private HomepageDTO data;
     private String billerName,bill_id,profile_id,url;
     private String Exactness;
 

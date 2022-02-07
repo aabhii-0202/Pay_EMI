@@ -5,15 +5,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class banklistResponse {
+public class banklistResponse extends BaseApiResponse{
 
     @SerializedName("status")
     @Expose
     private String status;
-
-    @SerializedName("message")
-    @Expose
-    private String message;
 
     @SerializedName("data")
     @Expose
@@ -27,13 +23,6 @@ public class banklistResponse {
         this.status = status;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public List<getAllBanks> getData() {
         return data;
@@ -47,7 +36,6 @@ public class banklistResponse {
     public String toString() {
         return "banklistResponse{" +
                 "status='" + status + '\'' +
-                ", message='" + message + '\'' +
                 ", data=" + data +
                 '}';
     }

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.AllTransactions;
 import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.R;
@@ -66,14 +67,14 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
 //        biller_id = "OU12LO000NATGJ";
         String token = utils.access_token;
 
-        Call<List<TransactionDetails>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
+        Call<AllTransactions> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
 
-        call.enqueue(new Callback<List<TransactionDetails>>() {
+        call.enqueue(new Callback<AllTransactions>() {
             @Override
-            public void onResponse(Call<List<TransactionDetails>> call, Response<List<TransactionDetails>> response) {
+            public void onResponse(Call<AllTransactions> call, Response<AllTransactions> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
-                    List<TransactionDetails> data = response.body();
+                    List<TransactionDetails> data = response.body().getData();
                     addata(data);
 
                 }else {
@@ -83,7 +84,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
             }
 
             @Override
-            public void onFailure(Call<List<TransactionDetails>> call, Throwable t) {
+            public void onFailure(Call<AllTransactions> call, Throwable t) {
 
             }
         });
@@ -180,7 +181,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
                             @Override
                             public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
                                 Log.d("tag", "onScratchProgress: "+atLeastScratchedPercent);
-                                if(atLeastScratchedPercent>8){
+                                if(atLeastScratchedPercent>7){
                                     Log.d("tag","scratched");
                                     redeem(item.getBill_id());
                                 }
@@ -208,6 +209,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
 
     private void redeem(String bill_id) {
 
+        Log.d("tag"," --> "+utils.profileId+"--------"+bill_id);
 
         Call<RedeemScratchCard> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().redeemscratch(utils.access_token,utils.profileId,bill_id);
 
@@ -216,8 +218,8 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
             public void onResponse(Call<RedeemScratchCard> call, Response<RedeemScratchCard> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
                     if(response.body().getMessage().equals("Success")){
-                        Log.d("tag","Redeemed cashback successfull");
-                        Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG);
+                        Log.d("tag","Redeemed cashback successful");
+                        Toast.makeText(context,"Cashback Added Successfully",Toast.LENGTH_LONG).show();
                         getAllTransaction();
 
                     }

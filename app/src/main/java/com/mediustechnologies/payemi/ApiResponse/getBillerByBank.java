@@ -6,7 +6,7 @@ import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO;
 
 import java.util.List;
 
-public class getBillerByBank {
+public class getBillerByBank extends BaseApiResponse{
 
 
     @SerializedName("data")

@@ -47,7 +47,7 @@ public interface API {
     Call<RedeemScratchCard> redeemscratch (@Header("Authorization") String token,@Query("id")String id,@Query("bill_id")String bill_id);
 
     @GET("alltransactions/")
-    Call<List<TransactionDetails>> allTransaction (@Header("Authorization") String token, @Query("id") String id, @Query("biller_id") String biller_id);
+    Call<AllTransactions> allTransaction (@Header("Authorization") String token, @Query("id") String id, @Query("biller_id") String biller_id);
 
     @GET("getloandetails/")
     Call<fetchBill> getLoanDetails(@Header("Authorization") String token,@Query("loan_id") String loan_id,@Query("id") String id);

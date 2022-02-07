@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class verifyOTPresponse {
+public class verifyOTPresponse extends BaseApiResponse{
 
     @SerializedName("id")
     @Expose

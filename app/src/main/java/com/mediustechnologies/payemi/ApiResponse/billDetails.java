@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class billDetails {
+public class billDetails extends BaseApiResponse{
 
     @SerializedName("id")
     @Expose

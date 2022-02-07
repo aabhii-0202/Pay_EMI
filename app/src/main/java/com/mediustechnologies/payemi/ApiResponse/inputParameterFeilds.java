@@ -4,11 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mediustechnologies.payemi.DTO.inputParameterFeildsDTOdata;
 
-public class inputParameterFeilds {
+public class inputParameterFeilds extends BaseApiResponse{
 
-    @SerializedName("message")
-    @Expose
-    private String message;
 
     @SerializedName("data")
     @Expose
@@ -19,13 +16,6 @@ public class inputParameterFeilds {
     @Expose
     private boolean status;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public inputParameterFeildsDTOdata getData() {
         return data;
@@ -46,7 +36,6 @@ public class inputParameterFeilds {
     @Override
     public String toString() {
         return "inputParameterFeilds{" +
-                "message='" + message + '\'' +
                 ", data=" + data +
                 ", status=" + status +
                 '}';

@@ -9,15 +9,15 @@ import com.mediustechnologies.payemi.DTO.billFetchDTO;
 
 import java.util.List;
 
-public class fetchBill implements Parcelable {
+public class fetchBill extends BaseApiResponse implements Parcelable {
+
+    //todo extends BaseApiResponse
 
     @SerializedName("payload")
     @Expose
     private List<billFetchDTO> payload;
 
-    @SerializedName("message")
-    @Expose
-    private String message;
+
 
     @SerializedName("billerPaymentExactness")
     @Expose
@@ -26,7 +26,7 @@ public class fetchBill implements Parcelable {
 
     protected fetchBill(Parcel in) {
         payload = in.createTypedArrayList(billFetchDTO.CREATOR);
-        message = in.readString();
+
         exactness = in.readString();
     }
 
@@ -46,7 +46,7 @@ public class fetchBill implements Parcelable {
     public String toString() {
         return "fetchBill{" +
                 ", payload=" + payload +
-                ", message='" + message + '\'' +
+
                 ", exactness='" + exactness + '\'' +
                 '}';
     }
@@ -60,13 +60,7 @@ public class fetchBill implements Parcelable {
         this.payload = payload;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public String getExactness() {
         return exactness;
@@ -84,7 +78,7 @@ public class fetchBill implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeTypedList(payload);
-        parcel.writeString(message);
+
         parcel.writeString(exactness);
     }
 }
