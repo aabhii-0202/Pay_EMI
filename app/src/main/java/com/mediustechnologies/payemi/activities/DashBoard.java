@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mediustechnologies.payemi.ApiResponse.AddMissingCategoryResponse;
 import com.mediustechnologies.payemi.ApiResponse.HomepageResponse;
 import com.mediustechnologies.payemi.DTO.HomepageDTO;
 import com.mediustechnologies.payemi.R;
@@ -225,32 +226,40 @@ public class DashBoard extends BaseAppCompatActivity {
 
     private void fillmissingdata(String loan_acc_no, String loanType, String loanAmount, String emi, String month, String year) {
 
-        Call<String> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().addMissingInfo(utils.access_token,loan_acc_no,loanType,loanAmount,emi,month,year);
-        call.enqueue(new Callback<String>() {
+        Call<AddMissingCategoryResponse> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().addMissingInfo(utils.access_token,loan_acc_no,loanType,loanAmount,emi,month,year);
+        call.enqueue(new Callback<AddMissingCategoryResponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.code()== utils.RESPONSE_SUCCESS ){
-                    Toast.makeText(context, "Data updated successfully.", Toast.LENGTH_SHORT).show();
-                    Log.d("tag","Missing info uploaded successfully.");
+            public void onResponse(Call<AddMissingCategoryResponse> call, Response<AddMissingCategoryResponse> response) {
+                if(response.code()== utils.RESPONSE_SUCCESS && response.body()!=null){
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        Toast.makeText(context, "Data updated successfully.", Toast.LENGTH_SHORT).show();
+                        Log.d("tag", "Missing info uploaded successfully.");
+                    }
+                    else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
 
                 }else {
                     Log.e("tag","Missing info api "+response.code());
                     Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
-
-
-
                 }
                 d.dismiss();
                 callapi();
             }
 
+
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<AddMissingCategoryResponse> call, Throwable t) {
                 Log.e("tag","Missing info API "+t.toString());
 //                Toast.makeText(context, "Unable to add missing data", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 d.dismiss();
                 callapi();
+
             }
         });
 
@@ -265,23 +274,30 @@ public class DashBoard extends BaseAppCompatActivity {
         call.enqueue(new Callback<HomepageResponse>() {
             @Override
             public void onResponse(Call<HomepageResponse> call, Response<HomepageResponse> response) {
-
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    data = response.body().getData();
-
-
-
-                    setData();
-                    try {
-                        Log.d("tag", "-->>" + data.get(0).toString());
-                    }catch (Exception e){
-                        Log.d("tag","New User");
-                        startActivity(new Intent(context, EmiCategories.class));
-
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        data = response.body().getData();
+                        setData();
+                        if(!data.isEmpty()){
+                            String s = "";
+                            for(int i=0;i<data.size();i++){
+                                s+=(1+i)+" "+data.get(i).toString()+"\n";
+                            }
+                            Log.d("tag","EMI List \n"+s);
+                        }
+                        else{
+                            Log.d("tag", "No saved data.");
+                            startActivity(new Intent(context, EmiCategories.class));
+                        }
+                    } else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
                     }
-
                 }else {
-                    Log.e("tag","Home "+response.code());
+                    Log.e("tag", "Home " + response.code());
                 }
             }
 
@@ -294,8 +310,6 @@ public class DashBoard extends BaseAppCompatActivity {
     }
 
     private void init(){
-
-
         binding.addbutton.setOnClickListener(view -> startActivity(new Intent(context, EmiCategories.class)));
     }
 }

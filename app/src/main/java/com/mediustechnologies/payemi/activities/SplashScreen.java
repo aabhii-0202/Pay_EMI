@@ -56,24 +56,32 @@ public class SplashScreen extends BaseAppCompatActivity {
             call.enqueue(new Callback<ifNewUser>() {
                 @Override
                 public void onResponse(Call<ifNewUser> call, Response<ifNewUser> response) {
-
                     if (response.code()==utils.RESPONSE_SUCCESS){
-                        ifNewUser n = response.body();
-                        assert n != null;
-
-                        if (n.getNew_user()){
-                            startActivity(new Intent(context, OnBording.class));
-                            finish();
+                        if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                            ifNewUser n = response.body();
+                            assert n != null;
+                            if (n.getNew_user()) {
+                                startActivity(new Intent(context, OnBording.class));
+                                finish();
+                            } else {
+                                Toast.makeText(context, "Welcome " + phone, Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(context, DashBoard.class));
+                                utils.access_token = token;
+                                utils.refresh_token = refresh_token;
+                                utils.phone = phone;
+                                utils.profileId = id;
+                                utils.customer_id = custid;
+                                finish();
+                            }
                         }else{
-                            Toast.makeText(context, "Welcome "+phone, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(context, DashBoard.class));
-                            utils.access_token= token;
-                            utils.refresh_token= refresh_token;
-                            utils.phone=phone;
-                            utils.profileId = id;
-                            utils.customer_id = custid;
-                            finish();
+                            try {
+                                utils.errortoast(context,response.body().getMessage());
+                            }catch (Exception e){
+                                Log.e("tag",e.toString());
+                            }
                         }
+
+
                     }
                     else {
                         Log.d("tag","Check if new: "+response.message());

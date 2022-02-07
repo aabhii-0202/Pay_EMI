@@ -60,8 +60,6 @@ public class BillerList extends BaseAppCompatActivity {
             i.putExtra("biller_name",bankSubList.get(position).getBillerName());
             startActivity(i);
         });
-
-        int count = getIntent().getIntExtra("count",0);
         try {
             if (bankSubList.size()==1) {
                 Intent i = new Intent(context, AddLoanAccount.class);
@@ -88,11 +86,18 @@ public class BillerList extends BaseAppCompatActivity {
         call.enqueue(new Callback<getBillerByBank>() {
             @Override
             public void onResponse(Call<getBillerByBank> call, Response<getBillerByBank> response) {
-
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    bankSubList = response.body().getData();
-                    Log.d("tag", "biller list "+response.body());
-                    initRecyclerView();
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        bankSubList = response.body().getData();
+                        Log.d("tag", "biller list " + response.body());
+                        initRecyclerView();
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
                 }
             }
 

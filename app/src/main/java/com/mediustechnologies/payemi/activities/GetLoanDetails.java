@@ -126,15 +126,28 @@ public class GetLoanDetails extends BaseAppCompatActivity {
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    bill = response.body();
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
 
-                    utils.bill_id = response.body().getPayload().get(0).getId();
 
-                    binding.paybtn.setVisibility(View.VISIBLE);
-                    setData(bill);
-                    binding.progress.setVisibility(View.GONE);
-                    binding.scrollviewshare.setVisibility(View.VISIBLE);
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        bill = response.body();
+
+                        utils.bill_id = response.body().getPayload().get(0).getId();
+
+                        binding.paybtn.setVisibility(View.VISIBLE);
+                        setData(bill);
+                        binding.progress.setVisibility(View.GONE);
+                        binding.scrollviewshare.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
+
+
 
                 }else if (response.code()==400){
                     Toast.makeText(context, "Phone number not linked to loan, please enter with linked phone number", Toast.LENGTH_LONG).show();

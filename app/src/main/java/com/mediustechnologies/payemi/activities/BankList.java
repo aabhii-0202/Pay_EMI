@@ -176,14 +176,21 @@ public class BankList extends BaseAppCompatActivity {
             @Override
             public void onResponse(Call<banklistResponse> call, Response<banklistResponse> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.isSuccessful()&&response.body().getData()!=null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        banklist = response.body();
+                        Log.d("tag", "Banklist setdata: " + banklist.toString());
+                        initRecyclerView();
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
+                }
 
-                    banklist  = response.body();
-                    Log.d("tag", "Banklist setdata: "+banklist.toString());
-                    initRecyclerView();
-                }
-                if(response.code()==400){
-                    Log.d("tag","Error code 400 on fetch bill. ErrorCode: BOU001");
-                }
+
+
                 else{
                     Log.d("tag", "Get BankList onResponse: "+response.code());
                 }

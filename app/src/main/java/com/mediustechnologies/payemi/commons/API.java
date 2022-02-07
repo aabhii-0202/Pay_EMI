@@ -20,7 +20,7 @@ public interface API {
     Call<GetBillDetailsResponse> getBillDetails(@Header("Authorization") String token, @Query("bill_id") String bill_id);
 
     @POST("billfetch/")
-    Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
+    Call<fetchBill> billfetch (@Header("Authorization") String token, @Query("id")String Id,@Query("biller_id")String Id_biller, @Query("mobile") String mobile, @Body JsonObject body);
 
     @GET("get-all-banks/")
     Call<banklistResponse> getAllBanks(@Header("Authorization")String token,@Query("loan_category_id")String loan_category);
@@ -56,7 +56,7 @@ public interface API {
     Call<List<loancategory>> getLoanCategory(@Header("Authorization")String token);
 
     @POST("addMissingLoanData/")
-    Call<String> addMissingInfo(@Header("Authorization") String token,
+    Call<AddMissingCategoryResponse> addMissingInfo(@Header("Authorization") String token,
                                 @Query("loan_acc_no")String loan_acc_no,
                                 @Query("loan_type") String loan_type,
                                 @Query("loan_amount") String loan_amount,

@@ -90,8 +90,9 @@ public class EmiCategories extends BaseAppCompatActivity {
             @Override
             public void onResponse(Call<List<loancategory>> call, Response<List<loancategory>> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&& response.body()!=null){
-                    List<loancategory> data = response.body();
 
+
+                    List<loancategory> data = response.body();
                     if(data.size()>0) setdata(data);
 
                 }

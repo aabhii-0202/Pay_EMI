@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.mediustechnologies.payemi.ApiResponse.RefreshTokenResponse;
@@ -65,6 +66,11 @@ public class utils extends Activity {
                 Log.d("tag","Refresh token: "+t.toString());
             }
         });
+    }
+
+    public static void errortoast (Context context,String messaage){
+        Toast.makeText(context, messaage, Toast.LENGTH_SHORT).show();
+        Log.e("tag","Error in api reponse "+messaage);
     }
 
 }

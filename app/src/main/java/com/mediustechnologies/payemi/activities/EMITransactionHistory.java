@@ -39,6 +39,8 @@ import com.mediustechnologies.payemi.databinding.ActivityPayEmiTransactionPageBi
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -74,8 +76,19 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
             public void onResponse(Call<AllTransactions> call, Response<AllTransactions> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
-                    List<TransactionDetails> data = response.body().getData();
-                    addata(data);
+
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")){
+
+                        List<TransactionDetails> data = response.body().getData();
+                        addata(data);
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
+
 
                 }else {
                     Toast.makeText(context, "Response "+response.code(), Toast.LENGTH_SHORT).show();
@@ -94,32 +107,39 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
 
     private void addata(List<TransactionDetails> data) {
 
-        chatlist = new ArrayList<>();
+        try{
+            chatlist = new ArrayList<>();
+            if(data.isEmpty()) Toast.makeText(context, "No transaction history.", Toast.LENGTH_SHORT).show();
+            for (int i = 0; i < data.size(); i++) {
+                String date = data.get(i).getTransaction_datetime();
+                date = formatdate(date);
 
-        for(int i=0;i<data.size();i++){
-            String date = data.get(i).getTransaction_datetime();
-            date = formatdate(date);
-
-            TransactionDetails item = data.get(i);
-            String status = item.getBbps_transaction_status();
-            if(status!=null){
-                if(status.equals("Successful")){
-                    date = "  Paid | "+date;
-                }else if(status.equals("failed")){
-                    date = "  Failed | "+date;
+                TransactionDetails item = data.get(i);
+                String status = item.getBbps_transaction_status();
+                if (status != null) {
+                    if (status.equals("Successful")) {
+                        date = "  Paid | " + date;
+                    } else if (status.equals("failed")) {
+                        date = "  Failed | " + date;
+                    } else {
+                        date = " Pending | " + date;
+                    }
+                } else {
+                    status = "Pending";
+                    date = " Pending | " + date;
                 }
-                else {
-                    date = " Pending | "+date;
-                }
-            }else {
-                status = "Pending";
-                date = " Pending | "+date;
+                chatlist.add(new transaction_chat("Payment to " + item.getBiller_name(), "Not in api", "₹ " + item.getAmount(), status, date, item.getIs_redeemed(), item.getType()));
             }
-
-
-            chatlist.add(new transaction_chat("Payment to "+item.getBiller_name(),"Not in api","₹ "+item.getAmount(),status,date,item.getIs_redeemed(),item.getType()));
+            initrecyclerview(data);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            Toast.makeText(context, "No Transaction History", Toast.LENGTH_SHORT).show();
+            Log.e("tag",""+e.toString());
         }
-        initrecyclerview(data);
+        catch (Exception e){
+            e.printStackTrace();
+            Log.e("tag",""+e.toString());
+        }
 
     }
 

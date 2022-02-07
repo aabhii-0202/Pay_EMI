@@ -181,11 +181,21 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
             @Override
             public void onResponse(Call<GetBillDetailsResponse> call, Response<GetBillDetailsResponse> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
-                    billFetchDTO data = response.body().getData().get(0);
-                    setData(data);
-                    scratch();
-                    binding.scrollView.setVisibility(View.VISIBLE);
-                    binding.progress.setVisibility(View.GONE);
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        billFetchDTO data = response.body().getData().get(0);
+                        setData(data);
+                        scratch();
+                        binding.scrollView.setVisibility(View.VISIBLE);
+                        binding.progress.setVisibility(View.GONE);
+                    }
+                    else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
+
                 }
                 else{
                     Log.d("tag", "onResponse: getbill detail "+response.code());
@@ -206,56 +216,70 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
         call.enqueue(new Callback<getCashback>() {
             @Override
             public void onResponse(Call<getCashback> call, Response<getCashback> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    cashback = response.body().getCashback_amount();
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")){
+                        cashback = response.body().getCashback_amount();
+                        binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (!scratched) {
+                                    Dialog d = new Dialog(context);
+                                    d.setContentView(R.layout.scratchcardlayout);
+                                    d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
+                                    scratchamount.setText("Rs. " + cashback);
+                                    d.show();
 
-                    binding.scratchpopup.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(!scratched){
-                            Dialog d = new Dialog(context);
-                            d.setContentView(R.layout.scratchcardlayout);
-                            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
-                            scratchamount.setText("Rs. "+cashback);
-                            d.show();
+                                    com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard1);
+                                    card.setScratchListener(new ScratchListener() {
+                                        @Override
+                                        public void onScratchStarted() {
 
-                            com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout card = d.findViewById(R.id.scratchCard1);
-                            card.setScratchListener(new ScratchListener() {
-                                @Override
-                                public void onScratchStarted() {
+                                        }
 
+                                        @Override
+                                        public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
+                                            Log.d("tag", "onScratchProgress: " + atLeastScratchedPercent);
+                                            if (atLeastScratchedPercent > 8) {
+                                                Log.d("tag", "scratched");
+                                                scratched = true;
+                                                redeem();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onScratchComplete() {
+
+                                        }
+                                    });
+
+
+                                } else {
+                                    Dialog d = new Dialog(context);
+                                    d.setContentView(R.layout.already_redeemed_scratchcard);
+                                    d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
+                                    scratchamount.setText("Rs. " + cashback);
+                                    d.show();
                                 }
-
-                                @Override
-                                public void onScratchProgress(@NonNull ScratchCardLayout scratchCardLayout, int atLeastScratchedPercent) {
-                                    Log.d("tag", "onScratchProgress: "+atLeastScratchedPercent);
-                                    if(atLeastScratchedPercent>8){
-                                        Log.d("tag","scratched");
-                                        scratched = true;
-                                        redeem();
-                                    }
-                                }
-
-                                @Override
-                                public void onScratchComplete() {
-
-                                }
-                            });
-
-
-                        }else{
-                                Dialog d = new Dialog(context);
-                                d.setContentView(R.layout.already_redeemed_scratchcard);
-                                d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                TextView scratchamount = d.findViewById(R.id.scratch_cashback_amount);
-                                scratchamount.setText("Rs. "+cashback);
-                                d.show();
                             }
+                        });
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
                         }
-                    });
+                    }
 
-                }
+            }
+
+
+
+
+
+
+
                 else{
                     Log.d("tag","Get Cashback:  "+response.code());
                 }

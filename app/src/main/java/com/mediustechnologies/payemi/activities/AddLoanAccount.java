@@ -68,21 +68,29 @@ public class AddLoanAccount extends BaseAppCompatActivity {
             @Override
             public void onResponse(Call<inputParameterFeilds> call, Response<inputParameterFeilds> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    inputParameterFeilds inputParameterFeilds = response.body();
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
-                    String s = inputParameterFeilds.toString();
-                    Log.d("tag", "InputParameterFeilds: "+s);
+                        inputParameterFeilds inputParameterFeilds = response.body();
 
-                    binding.linearLayout.setVisibility(View.VISIBLE);
-                    binding.progressbar.setVisibility(View.GONE);
+                        String s = inputParameterFeilds.toString();
+                        Log.d("tag", "InputParameterFeilds: " + s);
 
-                    recyclerview(inputParameterFeilds);
-                    exactness = inputParameterFeilds.getData().getBillerPaymentExactness();
+                        binding.linearLayout.setVisibility(View.VISIBLE);
+                        binding.progressbar.setVisibility(View.GONE);
 
-                    String url = inputParameterFeilds.getData().getLogo();
-                    Glide.with(binding.Image).load(url).into(binding.Image);
-                    Log.d("tag", "onResponse: Input Parameter Feilds"+inputParameterFeilds.toString());
+                        recyclerview(inputParameterFeilds);
+                        exactness = inputParameterFeilds.getData().getBillerPaymentExactness();
 
+                        String url = inputParameterFeilds.getData().getLogo();
+                        Glide.with(binding.Image).load(url).into(binding.Image);
+                        Log.d("tag", "onResponse: Input Parameter Feilds" + inputParameterFeilds.toString());
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
                 }
             }
 
@@ -140,9 +148,11 @@ public class AddLoanAccount extends BaseAppCompatActivity {
 
     private void nextScreen(){
 
+        binding.linearLayout.setVisibility(View.GONE);
+        binding.progressbar.setVisibility(View.VISIBLE);
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
-        if(verifydata(feilds))
-//        if(true)
+//        if(verifydata(feilds))
+        if(true)
         {
             FetchBill(ApiJsonMap(feilds));
         }
@@ -208,36 +218,63 @@ public class AddLoanAccount extends BaseAppCompatActivity {
     private void FetchBill(JsonObject jsonObject){
 
         String biller_id = getIntent().getStringExtra("biller_id");
+        biller_id = "TVSC00000NAT0T";
+        String  id = utils.profileId;
+        id = "81";
+        String phone = utils.phone;
+        phone = "99943713390";
 
-        Call<fetchBill> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().billfetch(utils.access_token,biller_id,utils.phone,jsonObject);
+        LinkedHashMap<String, String> feilds = new LinkedHashMap<>();
+        feilds.put("Agreement number","TN3003CA0005203");
+        jsonObject = ApiJsonMap(feilds);
 
 
+        //todo above lines are hard coded
+
+
+
+
+
+        Call<fetchBill> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().billfetch(utils.access_token,id,biller_id,phone,jsonObject);
+
+
+        String finalBiller_id = biller_id;
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    fetchBill bill = response.body();
-                    utils.bill_id = bill.getPayload().get(0).getId();
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
+                        fetchBill bill = response.body();
+                        utils.bill_id = bill.getPayload().get(0).getId();
 
+                        LinkedHashMap<String, String> variableData = new LinkedHashMap<>();
+                        variableData.putAll(bill.getPayload().get(0).getAmountOptions());
+                        variableData.putAll(bill.getPayload().get(0).getInputparams_value());
+                        variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
 
-                    LinkedHashMap<String,String> variableData = new LinkedHashMap<>();
-                    variableData.putAll(bill.getPayload().get(0).getAmountOptions());
-                    variableData.putAll(bill.getPayload().get(0).getInputparams_value());
-                    variableData.putAll(bill.getPayload().get(0).getBiller_additional_info());
-
-                    Intent i = new Intent(context, EMIDetailsBillFetch.class);
-                    i.putExtra("url", url);
-                    i.putExtra("variableData",variableData);
-                    i.putExtra("bill",bill);
-                    i.putExtra("exact",exactness);
-                    i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
-                    i.putExtra("biller_id", biller_id);
-                    startActivity(i);
+                        Intent i = new Intent(context, EMIDetailsBillFetch.class);
+                        i.putExtra("url", url);
+                        i.putExtra("variableData", variableData);
+                        i.putExtra("bill", bill);
+                        i.putExtra("exact", exactness);
+                        i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
+                        i.putExtra("biller_id", finalBiller_id);
+                        startActivity(i);
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                            Log.e("tagg",response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
                 }
                 else{
                     Log.e("tag", "onResponse: "+response.code());
                 }
+                binding.linearLayout.setVisibility(View.VISIBLE);
+                binding.progressbar.setVisibility(View.GONE);
             }
             @Override
             public void onFailure(Call<fetchBill> call, Throwable t) {
