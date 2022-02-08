@@ -1,0 +1,27 @@
+
+h	java:S1164"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç‰’¹þÿÿÿÿ
+<
+java:S11704"!Make this final field static too.(Ç‰’¹þÿÿÿÿ
+8
+java:S16595""Declare "name" on a separate line.(çÉ¯§
+i
+java:S14505"SRemove the "name" field and declare it as a local variable in the relevant methods.(çÉ¯§
+V	java:S125E"<This block of commented-out lines of code should be removed.(Éº Ýøÿÿÿÿ
+œ
+java:S1186d"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜¤þ„øÿÿÿÿ
+A
+java:S1197—"*Move the array designators [] to the type.(£éôê
+˜
+java:S1186Å"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¿Ø 
+
+java:S1186Ó"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¾«ï†øÿÿÿÿ
+?	java:S108Ü")Either remove or fill this block of code.(á¢–¬
+
+java:S1186€"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Åð‰¥ûÿÿÿÿ
+[	java:S106ù"9Replace this use of System.out or System.err by a logger.(±´Ýãúÿÿÿÿ8«Â¼Ãí/
+B
+java:S10684"'Remove this unused "TAG" private field.(Ç‰’¹þÿÿÿÿ
+f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ƒ½É
+g	java:S117æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óà‰Ï
+D
+java:S1604­"(Make this anonymous inner class a lambda(õò«¾ÿÿÿÿÿ

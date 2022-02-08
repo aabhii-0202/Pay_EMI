@@ -1,0 +1,55 @@
+
+K
+java:S3740§"/Provide the parametrized type for this generic.(¹©¤Áüÿÿÿÿ
+K
+java:S3740¾"/Provide the parametrized type for this generic.(ñËŞùÿÿÿÿ
+i	java:S116+"TRename this field "biller_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°‘­¬
+\
+java:S1659+"FDeclare "biller_id" and all following declarations on a separate line.(°‘­¬
+n
+java:S1450+"XRemove the "biller_id" field and declare it as a local variable in the relevant methods.(°‘­¬
+V	java:S125<"<This block of commented-out lines of code should be removed.(ëñ³áùÿÿÿÿ
+V	java:S125>"<This block of commented-out lines of code should be removed.(Çüà¬øÿÿÿÿ
+M
+java:S1117T"7Rename "url" which hides the field declared at line 43.(ŸÛ­¢
+V	java:S125u"<This block of commented-out lines of code should be removed.(¯€¨Ûüÿÿÿÿ
+Q	java:S125š"<This block of commented-out lines of code should be removed.(“«G
+i	java:S100¡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èäòàøÿÿÿÿ
+N
+java:S1874¬"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ
+I
+java:S1874­"-Remove this use of "parse"; it is deprecated.(Š†‡Èûÿÿÿÿ
+T	java:S106»"9Replace this use of System.out or System.err by a logger.(»½Ç’üÿÿÿÿ
+W	java:S125À"<This block of commented-out lines of code should be removed.(¬µˆûÿÿÿÿ
+d	java:S100Ú"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑÇ¦
+U
+java:S1854à"9Remove this useless assignment to local variable "phone".(Ÿ³¿¤üÿÿÿÿ
+R
+java:S1854Ş"6Remove this useless assignment to local variable "id".(úÆ±ışÿÿÿÿ
+T
+java:S1854Ü"=Remove this useless assignment to local variable "biller_id".(­ƒ½É
+T
+java:S1117Ü"=Rename "biller_id" which hides the field declared at line 43.(­ƒ½É
+I
+java:S1135è"2Complete the task associated to this TODO comment.(ïÌë®
+L
+java:S2696ù"6Make the enclosing method "static" or remove this set.(§ËÛn
+[
+java:S1128"ERemove this unused import 'androidx.appcompat.app.AppCompatActivity'.(€¶£î
+\
+java:S1128"ARemove this unused import 'androidx.fragment.app.DialogFragment'.(ƒæ÷£ùÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'android.app.DatePickerDialog'.(„å“ˆùÿÿÿÿ
+Q
+java:S1128"6Remove this unused import 'android.widget.DatePicker'.(µö—şÿÿÿÿ
+o
+java:S1128"TRemove this unused import 'com.mediustechnologies.payemi.helper.DatePickerFragment'.(ª¬ƒóşÿÿÿÿ
+E
+java:S1144¹"/Remove this unused private "verifydata" method.(²æ¡?
+`
+java:S1192;"JDefine a constant instead of duplicating this literal "biller_id" 3 times.(ºŞÇè
+l	java:S117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…“çÑüÿÿÿÿ
+g	java:S117Ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ƒ½É
+l	java:S117ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†æû„şÿÿÿÿ
+^
+java:S1226å"GIntroduce a new variable instead of reusing the parameter "jsonObject".(ä³½Ğ

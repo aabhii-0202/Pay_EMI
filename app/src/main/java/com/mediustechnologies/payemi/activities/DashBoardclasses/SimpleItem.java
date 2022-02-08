@@ -46,7 +46,7 @@ public class SimpleItem extends DrawerItems<SimpleItem.ViewHolder> {
         //todo
 //        holder.title.setText(isChecked? selectedItemTextTint: normalItemTextTint);
 //        holder.icon.setColorFilter(isChecked ? selectedItemIconTint : normalItemsIconTint);
-        holder.title.setText("normalItemTextTint");
+        holder.title.setText("Home");
         holder.icon.setColorFilter(normalItemsIconTint);
     }
 

@@ -1,0 +1,8 @@
+
+h	java:S1167"SRename this field "SubImage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ´ìõ
+a
+java:S1172P"KRemove these unused method parameters "billerid", "bankname", "billername".(š…Þƒ
+>
+java:S1604>"(Make this anonymous inner class a lambda(ú“Úå
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ò‚Â£
+f	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(µƒ›¾

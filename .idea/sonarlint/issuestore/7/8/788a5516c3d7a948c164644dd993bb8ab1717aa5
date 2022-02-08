@@ -1,0 +1,10 @@
+
+p	java:S116	"TRename this field "loan_data" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¯«¤8ìãİÃí/
+~	java:S116"bRename this field "data_passed_by_frontend" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾èÉÈ8ı®áÃí/
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªã·á8œÏãÃí/
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÄµš8ÏãÃí/
+j	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( “°¢8ÏãÃí/
+j	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¥êÎ8ÏãÃí/
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÄµš8ÏãÃí/
+m	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¥êÎ8ÏãÃí/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Üèèš

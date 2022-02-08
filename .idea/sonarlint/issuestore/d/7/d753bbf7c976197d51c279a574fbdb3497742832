@@ -1,0 +1,9 @@
+
+>	java:S108Y")Either remove or fill this block of code.(‚Üò
+R
+java:S2696‡"6Make the enclosing method "static" or remove this set.(Ü±ºÙúÿÿÿÿ
+O
+java:S1117²"8Rename "data" which hides the field declared at line 34.(™Æå‡
+D	java:S108Î")Either remove or fill this block of code.(ñ“Š±üÿÿÿÿ
+k	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š—ó¢ÿÿÿÿÿ
+l	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“š¨ûÿÿÿÿ

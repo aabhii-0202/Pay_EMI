@@ -1,0 +1,22 @@
+
+—
+java:S1186f"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡Ý
+G
+java:S1172ž"+Remove this unused method parameter "type".(Æµö«úÿÿÿÿ
+D	java:S108Æ")Either remove or fill this block of code.(¬Àáªøÿÿÿÿ
+Q	java:S125Ê"<This block of commented-out lines of code should be removed.(ƒ¼º-
+‰
+java:S1319>"sThe return type of this method should be an interface such as "Map" rather than the implementation "LinkedHashMap".(Ïé™ð
+‡
+java:S1319D"lThe type of "inputList" should be an interface such as "Map" rather than the implementation "LinkedHashMap".(Ö¬§Îÿÿÿÿÿ
+?
+java:S1604‹"(Make this anonymous inner class a lambda(ú“Úå
+?
+java:S1604±"(Make this anonymous inner class a lambda(ÌÜÝ‚
+?
+java:S1604¦"(Make this anonymous inner class a lambda(ïêÛÍ
+g	java:S101$"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(âÄ­Äùÿÿÿÿ
+h	java:S101„"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Â¿ÃÁûÿÿÿÿ
+b
+java:S12234"LRename this method to prevent any misunderstanding or make it a constructor.(ñê¯£
+f	java:S1143"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‰ó’…

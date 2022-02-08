@@ -1,7 +1,6 @@
 package com.mediustechnologies.payemi.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.databinding.TransactionPageDatelineBinding;
 import com.mediustechnologies.payemi.databinding.TransactionPagePaymentItemBinding;
 import com.mediustechnologies.payemi.databinding.TransactionPageScratchcardItemBinding;
 

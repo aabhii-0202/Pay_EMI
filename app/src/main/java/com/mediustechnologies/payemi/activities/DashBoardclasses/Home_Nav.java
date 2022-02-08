@@ -8,11 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.login.SendOTP;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityHomeNavBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
@@ -28,10 +36,10 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
     private static final int POS_HOME= 0;
     private static final int POS_COMPLAINT = 1;
     private static final int POS_TRANSACTIONSEARCH= 2;
-    private static final int POS_PROFILE = 4;
-    private static final int POS_RATE = 5;
-    private static final int POS_NOTIFICATION = 6;
-    private static final int POS_HELP = 7;
+    private static final int POS_PROFILE = 3;
+    private static final int POS_RATE = 4;
+    private static final int POS_NOTIFICATION = 5;
+    private static final int POS_HELP = 6;
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -41,8 +49,13 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityHomeNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
 
         setSupportActionBar(binding.toolbar);
@@ -55,6 +68,21 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
+
+        ImageView logout = slidingRootNav.getLayout().findViewById(R.id.nav_logout);
+        logout.setOnClickListener(view ->{
+            SharedPreferences preferences = getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
+            preferences.edit().putString("phone", "").apply();
+            preferences.edit().putString("token", "Bearer ").apply();
+            preferences.edit().putString("profileid","").apply();
+            preferences.edit().putString("refresh_token", "Bearer ").apply();
+
+            Intent i = new Intent(context, SendOTP.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        });
+        TextView t =  slidingRootNav.getLayout().findViewById(R.id.nav_name);
+        //todo set text for user name do same with image
         
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
@@ -66,11 +94,7 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 creatItemFor(POS_PROFILE),
                 creatItemFor(POS_RATE),
                 creatItemFor(POS_NOTIFICATION),
-                new SpaceItem(260),
                 creatItemFor(POS_HELP)
-
-
-
         ));
 
         adapter.setListener(this);
@@ -117,7 +141,9 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
 
     @Override
     public void onBackPressed() {
-        finish();
+        if(slidingRootNav.isMenuClosed())
+            finish();
+        else slidingRootNav.closeMenu();
     }
 
     @Override

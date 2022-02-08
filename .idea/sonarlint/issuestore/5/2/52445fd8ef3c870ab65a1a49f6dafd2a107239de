@@ -1,0 +1,7 @@
+
+m	java:S116"XRename this field "category_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ьќА∞
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(БЈЧ 
+h	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ѓИ…ѓъ€€€€
+k	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ѓИ…ѓъ€€€€
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ѕ∆в»щ€€€€
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(№ииЪ
