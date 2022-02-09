@@ -7,8 +7,6 @@ Papp/src/main/java/com/mediustechnologies/payemi/adapters/bankSublistAdapter.jav
 Kapp/src/main/java/com/mediustechnologies/payemi/DTO/GetBillerByBankDTO.java,f\b\fb8fc37b8816a739ed049702550d33c1e3781ff0
 „
 Tapp/src/main/java/com/mediustechnologies/payemi/adapters/inputParametersAdapter.java,8\5\852b0be96e5c565cbe6df6405b6f63bf2feb9d76
-{
-Kapp/src/main/java/com/mediustechnologies/payemi/activities/login/SendOTP.kt,0\7\07f1c7d84d1f9b8fe7ffacc6980652e8c5d7002a
 }
 Mapp/src/main/java/com/mediustechnologies/payemi/activities/login/OnBording.kt,9\b\9bbfddb079ec4d8eb39d34cdec3cc3037ce3354b
 z
@@ -39,3 +37,11 @@ Uapp/src/main/java/com/mediustechnologies/payemi/activities/EMITransactionHistor
 Qapp/src/main/java/com/mediustechnologies/payemi/activities/PaymentSuccessful.java,e\5\e5ebdba8d2a963df0189728ad321a16d9d356832
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/GetLoanDetails.java,d\7\d753bbf7c976197d51c279a574fbdb3497742832
+‹
+[app/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/SimpleItem.java,5\0\5088e7d565a5edd5994e74439033deeb045f663f
+|
+Lapp/src/main/java/com/mediustechnologies/payemi/activities/login/CheckOTP.kt,0\3\03c59aebe229ab0886b0c4dcd3dcd03423271cba
+r
+Bapp/src/main/java/com/mediustechnologies/payemi/commons/utils.java,f\9\f94f07f590f6033a59be819dfdba84367a1732ab
+‰
+Yapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/Home_Nav.java,7\5\7583717f5c8bc220d13588e18f20162c336bdd4d
