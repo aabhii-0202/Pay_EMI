@@ -265,8 +265,6 @@ public class DashBoard extends BaseAppCompatActivity {
 
     }
 
-
-
     private void callapi(){
 
         Call<HomepageResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().homepage(utils.access_token,utils.phone,utils.profileId );
