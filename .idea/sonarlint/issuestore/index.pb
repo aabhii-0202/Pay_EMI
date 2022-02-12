@@ -41,3 +41,5 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 Å
 Qapp/src/main/java/com/mediustechnologies/payemi/helper/BaseAppCompatActivity.java,e\e\eea954710f0be5494295d31ec59b5af7cc0f8e26
+ë
+aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintRegFrag.java,2\2\2206e22f68a3f57075f25de0971b407e0476bd76

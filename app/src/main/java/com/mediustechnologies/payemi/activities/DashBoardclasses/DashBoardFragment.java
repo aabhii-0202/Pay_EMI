@@ -142,73 +142,64 @@ public class DashBoardFragment extends Fragment {
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
             AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
 
-            binding.month.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Calendar today = Calendar.getInstance();
-                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
-                        selectedMonth+=1;
-                        binding.month.setText(selectedMonth+"");
-                        binding.year.setText(selectedYear+"");
+            binding.month.setOnClickListener(view13 -> {
+                Calendar today = Calendar.getInstance();
+                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                    selectedMonth+=1;
+                    binding.month.setText(String.valueOf(selectedMonth));
+                    binding.year.setText(String.valueOf(selectedYear));
 
-                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-                    builder.setMaxYear(3000).build().show();
-                }
+                }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                builder.setMaxYear(3000).build().show();
             });
 
-            binding.year.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Calendar today = Calendar.getInstance();
-                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
-                        selectedMonth+=1;
-                        binding.month.setText(selectedMonth+"");
-                        binding.year.setText(selectedYear+"");
+            binding.year.setOnClickListener(view12 -> {
+                Calendar today = Calendar.getInstance();
+                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                    selectedMonth+=1;
+                    binding.month.setText(String.valueOf(selectedMonth));
+                    binding.year.setText(String.valueOf(selectedYear));
 
-                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-                    builder.setMaxYear(3000).build().show();
-                }
+                }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                builder.setMaxYear(3000).build().show();
             });
 
 
 
 
-            d.findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            d.findViewById(R.id.update).setOnClickListener(view14 -> {
 
-                    String loanType = binding.loantype.getText().toString();
-                    String loanAmount = binding.loanamount.getText().toString();
-                    String emi = binding.emi.getText().toString();
-                    String month = binding.month.getText().toString();
-                    String year = binding.year.getText().toString();
+                String loanType = binding.loantype.getText().toString();
+                String loanAmount = binding.loanamount.getText().toString();
+                String emi = binding.emi.getText().toString();
+                String month = binding.month.getText().toString();
+                String year = binding.year.getText().toString();
 
 
-                    boolean call = true;
-                    if(loanType.trim().length()<1){
-                        binding.loantype.setError("Please enter loan type.");
-                        call = false;
-                    }
-                    if(loanAmount.trim().length()<1){
-                        binding.loanamount.setError("Please enter loan amount.");
-                        call = false;
-                    }
-                    if(emi.trim().length()<1){
-                        binding.emi.setError("Please enter EMI.");
-                        call = false;
-                    }
-                    if(month.trim().length()<1){
-                        binding.month.setError("Please select month.");
-                        call = false;
-                    }
-                    if(year.trim().length()<1){
-                        binding.year.setError("Please select year.");
-                        call = false;
-                    }
-
-                    if(call) fillmissingdata(data.get(pos).getLoan_acc_no(),loanType,loanAmount,emi,month,year);
-
+                boolean call = true;
+                if(loanType.trim().length()<1){
+                    binding.loantype.setError("Please enter loan type.");
+                    call = false;
                 }
+                if(loanAmount.trim().length()<1){
+                    binding.loanamount.setError("Please enter loan amount.");
+                    call = false;
+                }
+                if(emi.trim().length()<1){
+                    binding.emi.setError("Please enter EMI.");
+                    call = false;
+                }
+                if(month.trim().length()<1){
+                    binding.month.setError("Please select month.");
+                    call = false;
+                }
+                if(year.trim().length()<1){
+                    binding.year.setError("Please select year.");
+                    call = false;
+                }
+
+                if(call) fillmissingdata(data.get(pos).getLoan_acc_no(),loanType,loanAmount,emi,month,year);
+
             });
 
 

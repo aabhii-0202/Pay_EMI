@@ -66,8 +66,9 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 startActivity(myIntent);
             }
         });
+
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle(null);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
         slidingRootNav = new SlidingRootNavBuilder(this).withDragDistance(100)
                 .withRootViewScale(0.75f)
                 .withRootViewElevation(25)

@@ -91,6 +91,9 @@
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/Pay_EMI/app/src/main/res/layout/bank_list_item.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/Pay_EMI/app/src/main/res/layout/catagories_recycler_item.xml" value="0.42398022249690975" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable-v24/ic_processing.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/amount_box.xml" value="0.318" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/complaint_box.xml" value="0.318" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/complaintidbox.xml" value="0.318" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/frame_round_bg.xml" value="0.2915" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_cross.xml" value="0.1" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_crosspopup.xml" value="0.37777777777777777" />
@@ -99,6 +102,8 @@
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/ic_tick.xml" value="0.4305555555555556" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/onbording_progress.xml" value="0.272" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/onbording_progressbar.xml" value="0.272" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/pay_emi_bg.xml" value="0.318" />
+        <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/drawable/profile_screen_bg.xml" value="0.318" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_act12_add_new_upi.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_bank_list.xml" value="0.4244791666666667" />
         <entry key="..\:/Users/pc/StudioProjects/Pay_EMI/app/src/main/res/layout/activity_bank_sub_categories.xml" value="0.24895833333333334" />
