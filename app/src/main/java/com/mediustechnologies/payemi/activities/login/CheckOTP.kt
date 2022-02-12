@@ -10,13 +10,12 @@ import com.mediustechnologies.payemi.helper.RetrofitClient
 import com.mediustechnologies.payemi.commons.urlconstants
 import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse
 import com.mediustechnologies.payemi.commons.utils
-import android.content.SharedPreferences
 import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.mediustechnologies.payemi.activities.EmiCategories
-import com.mediustechnologies.payemi.activities.DashBoard
 import com.mediustechnologies.payemi.R
+import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -131,7 +130,7 @@ class CheckOTP : BaseAppCompatActivity() {
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 startActivity(i)
                             } else {
-                                val i = Intent(context, DashBoard::class.java)
+                                val i = Intent(context, Home_Nav::class.java)
                                 i.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 startActivity(i)
@@ -145,7 +144,6 @@ class CheckOTP : BaseAppCompatActivity() {
 
                     override fun onFailure(call: Call<verifyOTPresponse>, t: Throwable) {
                         Log.d("tag", "Unable to verify OTP")
-                        //                        startActivity(new Intent(context, DashBoard.class));
                     }
                 })
             }

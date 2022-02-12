@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mediustechnologies.payemi.ApiResponse.AddMissingCategoryResponse;
 import com.mediustechnologies.payemi.ApiResponse.HomepageResponse;
 import com.mediustechnologies.payemi.DTO.HomepageDTO;
@@ -31,17 +29,15 @@ import com.mediustechnologies.payemi.databinding.AddMissingInfoBinding;
 import com.mediustechnologies.payemi.databinding.DashboardFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
-
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class dashboardFrag extends Fragment {
+public class DashBoardFragment extends Fragment {
 
     DashboardFragmentBinding binding;
     private List<emiListItem> emilist;
@@ -65,15 +61,6 @@ public class dashboardFrag extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.addbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(context, EmiCategories.class);
-                getActivity().startActivity(myIntent);
-            }
-        });
-
         callapi();
     }
 
@@ -115,7 +102,7 @@ public class dashboardFrag extends Fragment {
     }
 
     private void initrecycler() {
-        RecyclerView emilistRecycler = binding.loanrecyclerview;
+        RecyclerView emilistRecycler = binding.listofloan;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         emilistRecycler.setLayoutManager(linearLayoutManager);
@@ -155,33 +142,33 @@ public class dashboardFrag extends Fragment {
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
             AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
 
-//            binding.month.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Calendar today = Calendar.getInstance();
-//                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
-//                        selectedMonth+=1;
-//                        binding.month.setText(selectedMonth+"");
-//                        binding.year.setText(selectedYear+"");
-//
-//                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-//                    builder.setMaxYear(3000).build().show();
-//                }
-//            });
-//
-//            binding.year.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Calendar today = Calendar.getInstance();
-//                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
-//                        selectedMonth+=1;
-//                        binding.month.setText(selectedMonth+"");
-//                        binding.year.setText(selectedYear+"");
-//
-//                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-//                    builder.setMaxYear(3000).build().show();
-//                }
-//            });
+            binding.month.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Calendar today = Calendar.getInstance();
+                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                        selectedMonth+=1;
+                        binding.month.setText(selectedMonth+"");
+                        binding.year.setText(selectedYear+"");
+
+                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                    builder.setMaxYear(3000).build().show();
+                }
+            });
+
+            binding.year.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Calendar today = Calendar.getInstance();
+                    MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
+                        selectedMonth+=1;
+                        binding.month.setText(selectedMonth+"");
+                        binding.year.setText(selectedYear+"");
+
+                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                    builder.setMaxYear(3000).build().show();
+                }
+            });
 
 
 

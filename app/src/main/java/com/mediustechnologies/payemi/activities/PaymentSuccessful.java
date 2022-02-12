@@ -35,6 +35,7 @@ import com.mediustechnologies.payemi.ApiResponse.getCashback;
 import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav;
 import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.adapters.GetBillDetailsAdapter;
@@ -454,7 +455,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     }
 
     private void nextScreen(){
-        Intent i = new Intent(context,DashBoard.class);
+        Intent i = new Intent(context, Home_Nav.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }

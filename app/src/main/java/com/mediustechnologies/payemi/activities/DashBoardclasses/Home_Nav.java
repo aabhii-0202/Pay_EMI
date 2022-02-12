@@ -13,25 +13,27 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
-import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityHomeNavBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
 
     ActivityHomeNavBinding binding;
-    private Context context = this;
+    private final Context context = this;
 
     private static final int POS_HOME= 0;
     private static final int POS_COMPLAINT = 1;
@@ -57,8 +59,15 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
 
 
 
-
+        binding.addbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(context, EmiCategories.class);
+                startActivity(myIntent);
+            }
+        });
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle(null);
         slidingRootNav = new SlidingRootNavBuilder(this).withDragDistance(100)
                 .withRootViewScale(0.75f)
                 .withRootViewElevation(25)
@@ -151,11 +160,23 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         // transaction of fragments
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+
         if(position == POS_HOME){
-            dashboardFrag dashboardFrag = new dashboardFrag();
+            binding.homenavtitle.setText("PayEMI");
+            binding.linearLayout2.setVisibility(View.VISIBLE);
+            binding.titleImage.setVisibility(View.GONE);
+            binding.navtitleimg.setVisibility(View.VISIBLE);
+            binding.navview.setVisibility(View.VISIBLE);
+            DashBoardFragment dashboardFrag = new DashBoardFragment();
             transaction.replace(R.id.homeframe,dashboardFrag);
         }
+        else if(position == POS_PROFILE){
+            hide_detail("Profile");
+            ProfileFraggment profileFraggment = new ProfileFraggment();
+            transaction.replace(R.id.homeframe,profileFraggment);
+        }
         else{
+            hide_detail("Register Complaint");
             ComplaintRegFrag complaintRegFrag = new ComplaintRegFrag();
             transaction.replace(R.id.homeframe,complaintRegFrag);
         }
@@ -165,4 +186,14 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         transaction.commit();
         
     }
+
+    private void hide_detail(String title){
+        binding.homenavtitle.setText(title);
+        binding.linearLayout2.setVisibility(View.GONE);
+        binding.titleImage.setVisibility(View.VISIBLE);
+        binding.navtitleimg.setVisibility(View.GONE);
+        binding.navview.setVisibility(View.GONE);
+    }
+
+
 }

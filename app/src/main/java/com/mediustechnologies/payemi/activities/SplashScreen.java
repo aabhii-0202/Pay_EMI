@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.mediustechnologies.payemi.ApiResponse.ifNewUser;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav;
 import com.mediustechnologies.payemi.activities.login.OnBording;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
@@ -64,8 +65,7 @@ public class SplashScreen extends BaseAppCompatActivity {
                                 startActivity(new Intent(context, OnBording.class));
                                 finish();
                             } else {
-                                Toast.makeText(context, "Welcome " + phone, Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(context, DashBoard.class));
+                                startActivity(new Intent(context, Home_Nav.class));
                                 utils.access_token = token;
                                 utils.refresh_token = refresh_token;
                                 utils.phone = phone;
