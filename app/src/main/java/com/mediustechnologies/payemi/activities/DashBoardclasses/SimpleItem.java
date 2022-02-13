@@ -42,16 +42,13 @@ public class SimpleItem extends DrawerItems<SimpleItem.ViewHolder> {
         holder.title.setText(title);
         holder.icon.setImageDrawable(icon);
 
-
         //todo
-//        holder.title.setText(isChecked? selectedItemTextTint: normalItemTextTint);
-//        holder.icon.setColorFilter(isChecked ? selectedItemIconTint : normalItemsIconTint);
-        holder.title.setText("Home");
-        holder.icon.setColorFilter(normalItemsIconTint);
+        holder.title.setTextColor(isChecked? selectedItemTextTint: normalItemTextTint);
+        holder.icon.setColorFilter(isChecked ? selectedItemIconTint : normalItemsIconTint);
     }
 
-    public SimpleItem withSelectedIconTint(int selectedItemTextTint){
-        this.selectedItemTextTint = selectedItemTextTint;
+    public SimpleItem withSelectedIconTint(int selectedItemIconTint){
+        this.selectedItemIconTint = selectedItemIconTint;
         return this;
     }
 

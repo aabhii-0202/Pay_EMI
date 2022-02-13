@@ -1,8 +1,4 @@
 
-Š
-Zapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/SpaceItem.java,a\1\a1355e1e463e0a70bebff581c1a54e8967d657b7
-€
-Papp/src/main/java/com/mediustechnologies/payemi/adapters/bankSublistAdapter.java,7\5\75cbd1d0391697c378d3e38b807d613ae27121aa
 {
 Kapp/src/main/java/com/mediustechnologies/payemi/DTO/GetBillerByBankDTO.java,f\b\fb8fc37b8816a739ed049702550d33c1e3781ff0
 „
@@ -19,8 +15,6 @@ x
 Happ/src/main/java/com/mediustechnologies/payemi/activities/BankList.java,a\f\afc3102509dede9da4c7790e0eb3e14113008132
 z
 Japp/src/main/java/com/mediustechnologies/payemi/activities/BillerList.java,c\6\c62669ffe838344fbe387105889b0c66451d7d85
-~
-Napp/src/main/java/com/mediustechnologies/payemi/activities/AddLoanAccount.java,6\7\671c6190ac808fe520b5ed3b42d18d5a2633308e
 ‚
 Rapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/RedeemScratchCard.java,c\1\c18cabb196f578dc1aa1d64597a77ef8dc1a5f80
 }
@@ -33,8 +27,6 @@ Uapp/src/main/java/com/mediustechnologies/payemi/activities/EMITransactionHistor
 [app/src/main/java/com/mediustechnologies/payemi/ApiResponse/AddMissingCategoryResponse.java,7\8\788a5516c3d7a948c164644dd993bb8ab1717aa5
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/GetLoanDetails.java,d\7\d753bbf7c976197d51c279a574fbdb3497742832
-‹
-[app/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/SimpleItem.java,5\0\5088e7d565a5edd5994e74439033deeb045f663f
 r
 Bapp/src/main/java/com/mediustechnologies/payemi/commons/utils.java,f\9\f94f07f590f6033a59be819dfdba84367a1732ab
 X
@@ -43,3 +35,11 @@ X
 Qapp/src/main/java/com/mediustechnologies/payemi/helper/BaseAppCompatActivity.java,e\e\eea954710f0be5494295d31ec59b5af7cc0f8e26
 ‘
 aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintRegFrag.java,2\2\2206e22f68a3f57075f25de0971b407e0476bd76
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+’
+bapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/DashBoardFragment.java,8\9\893a905f73ffc7d8de2bf914df76966852974ecb
+‘
+aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ProfileFraggment.java,4\f\4fdef9c67b25e57657d87b6d483ac0da96ef78f9
+‡
+Wapp/src/main/java/com/mediustechnologies/payemi/activities/act20transaction_Search.java,3\3\33ba7fa50d0276167bf68d82bbd2e7d426369bc0

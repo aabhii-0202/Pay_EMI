@@ -124,7 +124,7 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 .withIconTint(color(R.color.btncolor))//color of selected
                 .withTextTint(color(R.color.black))
                 .withSelectedIconTint(color(R.color.teal_200))
-                .withSelectedTextTint(color(R.color.black));
+                .withSelectedTextTint(color(R.color.teal_200));
     }
 
     @ColorInt
@@ -171,11 +171,22 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
             DashBoardFragment dashboardFrag = new DashBoardFragment();
             transaction.replace(R.id.homeframe,dashboardFrag);
         }
+        else if (position == POS_TRANSACTIONSEARCH){
+            hide_detail("Transaction Search");
+            TransactionSearchFragment transactionSearchFragment = new TransactionSearchFragment();
+            transaction.replace(R.id.homeframe,transactionSearchFragment);
+        }
         else if(position == POS_PROFILE){
             hide_detail("Profile");
             ProfileFraggment profileFraggment = new ProfileFraggment();
             transaction.replace(R.id.homeframe,profileFraggment);
         }
+        else if(position == POS_HELP){
+            hide_detail("Complaint Tracking");
+            ComplaintTrackingFragment complaintTrackingFragment = new ComplaintTrackingFragment();
+            transaction.replace(R.id.homeframe,complaintTrackingFragment);
+        }
+
         else{
             hide_detail("Register Complaint");
             ComplaintRegFrag complaintRegFrag = new ComplaintRegFrag();

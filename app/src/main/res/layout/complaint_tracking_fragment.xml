@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RadioGroup
+            android:id="@+id/complaint_type"
+            android:layout_marginTop="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="-6dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="#412e8d"
+                android:checked="true"
+                android:fontFamily="@font/gtwalsheim_pro_medium"
+                android:inputType="textMultiLine"
+                android:text="Transaction"
+                android:textColor="#412e8d"
+                android:textSize="16sp" />
+
+            <!--                    <RadioButton-->
+            <!--                        android:layout_marginStart="40dp"-->
+            <!--                        android:id="@+id/radio_Tracking"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:buttonTint="#412e8d"-->
+            <!--                        android:fontFamily="@font/gtwalsheim_pro_medium"-->
+            <!--                        android:text="Tracking"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:textColor="@color/black"-->
+            <!--                        android:textSize="16sp"-->
+
+            <!--                        />-->
+        </RadioGroup>
+
+
+        <LinearLayout
+            android:id="@+id/layouttracking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Complaint Id"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/complaintid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/complaint_box"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:hint="Enter Transaction Complaint Id"
+                android:padding="14dp"
+                android:paddingHorizontal="10dp"
+                android:paddingStart="24dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/HintColor"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/checkbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/gtwalsheim_pro_medium"
+            android:letterSpacing="0"
+            android:text="Check Status"
+            android:textAllCaps="false"
+            android:textSize="22sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

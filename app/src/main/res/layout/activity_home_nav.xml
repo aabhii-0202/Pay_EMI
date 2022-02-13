@@ -36,6 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:title=""
 
+
                 />
 
             <LinearLayout
@@ -53,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="8dp"
-                    android:fontFamily="@font/gilroy_extra_bold"
+                    android:fontFamily="@font/gtwalsheim_pro_bold"
                     android:text="PayEMI"
                     android:textColor="@color/grey2"
                     android:textSize="20sp" />
