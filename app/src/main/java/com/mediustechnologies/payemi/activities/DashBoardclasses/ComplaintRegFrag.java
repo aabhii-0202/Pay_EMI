@@ -110,6 +110,9 @@ public class ComplaintRegFrag extends Fragment {
         String[] itemlist = getResources().getStringArray(R.array.dispoistion);
         ArrayList<String> list = new ArrayList<>(Arrays.asList(itemlist));
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context.getApplicationContext(),R.layout.dropdown_item,list);
+
+        binding.dispositon.setAdapter(adapter);
 
 
 
@@ -123,11 +126,11 @@ public class ComplaintRegFrag extends Fragment {
             transaction_id = binding.refid.getText().toString();
             complaint_description = binding.descrip.getText().toString();
             complaint_type = "Transaction";
-            complaint_dispostion = "Transaction Successful, account not updated";
+            complaint_dispostion = binding.dispositon.getText().toString();
 
             if(transaction_id.length()<1){
                 binding.refid.setError("Enter valid Id");
-            }else if(complaint_description.length()<1) {
+            }else if(complaint_description.equalsIgnoreCase("select")) {
                 binding.descrip.setError("Enter description.");
             }else if(complaint_dispostion.length()<1){
                 binding.dispositon.setError("Enter valid Id");

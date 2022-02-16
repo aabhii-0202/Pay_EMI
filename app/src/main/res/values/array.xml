@@ -2,6 +2,7 @@
 <resources>
 
     <string-array name="dispoistion">
+        <item>Select</item>
         <item>Transaction Successful, account not updated</item>
         <item>Transaction Not Successful</item>
     </string-array>
