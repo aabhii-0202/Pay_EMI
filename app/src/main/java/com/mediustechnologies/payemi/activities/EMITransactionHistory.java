@@ -26,6 +26,7 @@ import com.mediustechnologies.payemi.ApiResponse.AllTransactions;
 import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav;
 import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener;
 import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -284,7 +285,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()){
             case R.id.gethelp:
-                Intent i = new Intent(context,act12complaintRegistration.class);
+                Intent i = new Intent(context, Home_Nav.class);
                 startActivity(i);
                 return  true;
 

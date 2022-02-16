@@ -42,7 +42,6 @@ public class SimpleItem extends DrawerItems<SimpleItem.ViewHolder> {
         holder.title.setText(title);
         holder.icon.setImageDrawable(icon);
 
-        //todo
         holder.title.setTextColor(isChecked? selectedItemTextTint: normalItemTextTint);
         holder.icon.setColorFilter(isChecked ? selectedItemIconTint : normalItemsIconTint);
     }

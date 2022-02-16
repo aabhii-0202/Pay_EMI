@@ -89,6 +89,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/refid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/complaint_box"
@@ -120,12 +121,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="Complaint Type"
+                        android:text="Complaint Disposition"
                         android:textColor="@color/grey"
                         android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/complainttypeselect"
+                        android:id="@+id/dispositon"
                         android:layout_width="match_parent"
                         android:layout_height="46dp"
                         android:background="@drawable/complaint_box"
@@ -161,6 +162,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/descrip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lines="8"
@@ -269,7 +271,7 @@
 
 
             <Button
-                android:id="@+id/viewbtn"
+                android:id="@+id/register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

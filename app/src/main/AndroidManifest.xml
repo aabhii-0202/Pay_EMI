@@ -26,9 +26,6 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".activities.act12complaintRegistration"
-            android:exported="false"/>
-        <activity
             android:name=".activities.EmiCategories"
             android:exported="false" />
         <activity

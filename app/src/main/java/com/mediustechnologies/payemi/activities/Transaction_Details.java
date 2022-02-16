@@ -26,6 +26,7 @@ import com.google.android.material.internal.ManufacturerUtils;
 import com.mediustechnologies.payemi.ApiResponse.TransactionDetails;
 import com.mediustechnologies.payemi.BuildConfig;
 import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav;
 import com.mediustechnologies.payemi.databinding.ActivityTransactionDetailsBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 
@@ -135,7 +136,7 @@ public class Transaction_Details extends BaseAppCompatActivity {
         });
 
         binding.havingIssue.setOnClickListener(view -> {
-            Intent i = new Intent(context,act12complaintRegistration.class);
+            Intent i = new Intent(context, Home_Nav.class);
 
 
             startActivity(i);
