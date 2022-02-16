@@ -113,7 +113,6 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(context));
         list.setAdapter(adapter);
-
         adapter.setSelected(POS_HOME);
 
     }
@@ -121,8 +120,8 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
     //method to set color on selected toolbar
     private DrawerItems creatItemFor (int position){
         return new SimpleItem(screenIcons[position],screenTitles[position])
-                .withIconTint(color(R.color.btncolor))//color of selected
-                .withTextTint(color(R.color.black))
+                .withIconTint(color(R.color.navText))//color of selected
+                .withTextTint(color(R.color.navText))
                 .withSelectedIconTint(color(R.color.teal_200))
                 .withSelectedTextTint(color(R.color.teal_200));
     }

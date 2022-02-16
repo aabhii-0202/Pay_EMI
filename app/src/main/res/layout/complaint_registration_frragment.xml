@@ -89,6 +89,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/refid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/complaint_box"
@@ -120,27 +121,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:text="Complaint Type"
+                        android:text="Complaint Disposition"
                         android:textColor="@color/grey"
                         android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/complainttypeselect"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="46dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_marginTop="8dp"
+                        >
+                    <AutoCompleteTextView
+                        android:id="@+id/dispositon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/complaint_box"
                         android:fontFamily="@font/gtwalsheim_pro_regular"
-                        android:focusable="false"
-                        android:layout_marginTop="8dp"
-                        android:paddingHorizontal="10dp"
+                        android:inputType="none"
                         android:text="Select"
                         android:paddingStart="24dp"
                         android:textColorHint="@color/HintColor"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/sendOTP"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textColor="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -161,6 +164,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/descrip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lines="8"
@@ -269,7 +273,7 @@
 
 
             <Button
-                android:id="@+id/viewbtn"
+                android:id="@+id/register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

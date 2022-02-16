@@ -1,20 +1,27 @@
 package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+
+import com.mediustechnologies.payemi.activities.login.OnBording;
 import com.mediustechnologies.payemi.databinding.TransactionSearchFragmentBinding;
+import com.mediustechnologies.payemi.helper.DatePickerFragment;
 
 public class TransactionSearchFragment extends Fragment {
 
     TransactionSearchFragmentBinding binding;
     private Context context ;
+    private boolean from;
 
     @Nullable
     @Override
@@ -34,8 +41,31 @@ public class TransactionSearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        init();
         //todo on create
 
 
     }
+
+    private void init(){
+
+
+        binding.layoutfrom.setOnClickListener(View ->{
+            from = true;
+            DialogFragment datepicker = new DatePickerFragment();
+            datepicker.show(getParentFragmentManager(),"date picker");
+        });
+
+        binding.layoutto.setOnClickListener(view -> {
+            from = false;
+            DialogFragment datepicker = new DatePickerFragment();
+            datepicker.show(getParentFragmentManager(),"date picker");
+        });
+
+    }
+
+
+
+
+
 }

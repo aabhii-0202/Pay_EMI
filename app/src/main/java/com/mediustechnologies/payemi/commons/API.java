@@ -64,5 +64,12 @@ public interface API {
                                 @Query("start_month")String month,
                                 @Query("start_year") String year );
 
+    @POST("registerComplaint/")
+    Call<RegisterComplaintResponse> registerComplaint(@Header("Authorization") String token,
+                                                      @Query("complaint_disposition")String complaint_disposition,
+                                                      @Query("complaint_description")String complaint_description,
+                                                      @Query("complaint_type")String complaint_type,
+                                                      @Query("transaction_ref_id")String transaction_ref_id );
+
 
 }

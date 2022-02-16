@@ -18,7 +18,9 @@
     <color name="shadow">#0F25265E</color>
     <color name="errormessagecolor">#d41700</color>
     <color name="payment_screen">#3da27c</color>
+    <color name="complaintpopup">#34c759</color>
     <color name="homepagebg">#f4f6f8</color>
     <color name="navbg">#3f3f44</color>
+    <color name="navText">#FFF</color>
 
 </resources>

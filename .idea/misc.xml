@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/ic_nav_bell.xml" value="0.2925" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_bank_sub_categories.xml" value="0.3567708333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_complaint_registration.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_home_nav.xml" value="0.409375" />
@@ -10,8 +11,10 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/bank_sublist_items.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_registered_popup.xml" value="0.4" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_registration_frragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_tracking.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/dropdown_item.xml" value="0.26666666666666666" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/profile_fragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transaction_search_fragment.xml" value="0.409375" />
         <entry key="..\:/Users/abhis/.android/avd/platforms/android-31/data/res/drawable/btn_dropdown.xml" value="0.403125" />
