@@ -51,8 +51,6 @@ public class ComplaintTrackingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         binding.checkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,9 +62,6 @@ public class ComplaintTrackingFragment extends Fragment {
                 }else callapi(type,comp_id);
             }
         });
-
-
-
     }
 
     private void callapi(String comp_type, String comp_id){
@@ -86,7 +81,6 @@ public class ComplaintTrackingFragment extends Fragment {
                         ConstraintLayout c = d.findViewById(R.id.statuslayout);
                         c.setVisibility(View.VISIBLE);
                         TextView status = d.findViewById(R.id.compstatus);
-
 
                         try{
                             compid.setText(response.body().getData().getComplaint_id());
@@ -123,6 +117,5 @@ public class ComplaintTrackingFragment extends Fragment {
                 binding.parentdata.setVisibility(View.GONE);
             }
         });
-
     }
 }
