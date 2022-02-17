@@ -72,4 +72,7 @@ public interface API {
                                                       @Query("transaction_ref_id")String transaction_ref_id );
 
 
+    @POST("trackComplaint/")
+    Call<RegisterComplaintResponse> trackComplaint(@Header("Authorization") String token,@Query("comp_id") String comp_id, @Query("comp_type") String comp_type);
+
 }

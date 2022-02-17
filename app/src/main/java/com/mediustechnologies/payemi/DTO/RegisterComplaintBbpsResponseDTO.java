@@ -13,6 +13,17 @@ public class RegisterComplaintBbpsResponseDTO {
     @Expose
     private String  complaintId;
 
+    @SerializedName("complaintStatus")
+    @Expose
+    private String  complaintStatus;
+
+    public String getComplaintStatus() {
+        return complaintStatus;
+    }
+
+    public void setComplaintStatus(String complaintStatus) {
+        this.complaintStatus = complaintStatus;
+    }
 
     public String getComplaintAssigned() {
         return complaintAssigned;
@@ -35,6 +46,7 @@ public class RegisterComplaintBbpsResponseDTO {
         return "RegisterComplaintBbpsResponseDTO{" +
                 "complaintAssigned='" + complaintAssigned + '\'' +
                 ", complaintId='" + complaintId + '\'' +
+                ", complaintStatus='" + complaintStatus + '\'' +
                 '}';
     }
 }
