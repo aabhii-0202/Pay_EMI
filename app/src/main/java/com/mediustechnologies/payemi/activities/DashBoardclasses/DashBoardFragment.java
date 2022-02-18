@@ -75,7 +75,7 @@ public class DashBoardFragment extends Fragment {
             try{
                 double total = Double.parseDouble(totalemi);
                 double paied = Double.parseDouble(loanpaied);
-                int p = (int) (total/paied);
+                int p = (int) ((paied/total)*100);
                 progress = p;
             }catch (Exception e){
                 progress = -1;

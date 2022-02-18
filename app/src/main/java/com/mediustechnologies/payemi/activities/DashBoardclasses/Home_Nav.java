@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityHomeNavBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
@@ -92,7 +93,7 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
             startActivity(i);
         });
         TextView t =  slidingRootNav.getLayout().findViewById(R.id.nav_name);
-        //todo set text for user name do same with image
+        t.setText(utils.name);
         
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();

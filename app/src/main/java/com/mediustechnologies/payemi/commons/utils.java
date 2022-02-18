@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class utils extends Activity {
-    public static String access_token,refresh_token,phone,profileId,customer_id;
+    public static String access_token,refresh_token,phone,profileId,customer_id,name;
     public static String bill_id;
     public static Context application;
     public static final int RESPONSE_SUCCESS = 200;

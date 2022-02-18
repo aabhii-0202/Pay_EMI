@@ -43,12 +43,14 @@ public class SplashScreen extends BaseAppCompatActivity {
         String id = preferences.getString("profileid","");
         String refresh_token = preferences.getString("refresh_token","");
         String custid = preferences.getString("cutomerid","");
+        String name = preferences.getString("name","");
 
         System.out.println("Token---------------- "+token);
         System.out.println("Refresh Token--------"+refresh_token);
         System.out.println("Phone---------------- "+phone);
         System.out.println("ProfileId------------ "+id);
         System.out.println("Customer Id---------- "+custid);
+        System.out.println("Name----------------- "+name);
 
         new Handler().postDelayed(() -> {
 
@@ -71,6 +73,7 @@ public class SplashScreen extends BaseAppCompatActivity {
                                 utils.phone = phone;
                                 utils.profileId = id;
                                 utils.customer_id = custid;
+                                utils.name = name;
                                 finish();
                             }
                         }else{

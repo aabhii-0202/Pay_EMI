@@ -77,8 +77,11 @@ public class ComplaintRegFrag extends Fragment {
                             compid.setText(response.body().getData().getComplaint_id());
                             compassighed.setText(response.body().getData().getComplaint_assigned_to());
                             d.show();
+                            binding.refid.setText("");
+                            binding.descrip.setText("");
                         }catch (Exception e){
                             e.printStackTrace();
+                            Toast.makeText(context, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -89,7 +92,8 @@ public class ComplaintRegFrag extends Fragment {
                             Log.e("tag",e.toString());
                         }
                     }
-                }else {
+                }
+                else {
                     Log.e("tag",""+response.code());
                 }
             }
@@ -97,6 +101,7 @@ public class ComplaintRegFrag extends Fragment {
             @Override
             public void onFailure(Call<RegisterComplaintResponse> call, Throwable t) {
                 Log.e("tag",t.getMessage());
+                Toast.makeText(context, "Failed to load data.", Toast.LENGTH_SHORT).show();
             }
         });
 

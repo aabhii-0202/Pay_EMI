@@ -75,4 +75,12 @@ public interface API {
     @POST("trackComplaint/")
     Call<RegisterComplaintResponse> trackComplaint(@Header("Authorization") String token,@Query("comp_id") String comp_id, @Query("comp_type") String comp_type);
 
+
+    @POST("transactionSearch/")
+    Call<TransactionSearchResponse> transactionSearchwithMobile(@Header("Authorization") String token,@Query("mobile_no") String mobile_no,@Query("start_date") String start_date,@Query("end_date") String end_date);
+
+
+    @POST("transactionSearch/")
+    Call<TransactionSearchResponse> transactionSearchWithRefId(@Header("Authorization") String token,@Query("transaction_ref_id") String transaction_ref_id);
+
 }

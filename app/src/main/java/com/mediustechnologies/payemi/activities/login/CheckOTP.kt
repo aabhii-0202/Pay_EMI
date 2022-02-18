@@ -111,19 +111,15 @@ class CheckOTP : BaseAppCompatActivity() {
                             utils.phone = phone
                             utils.profileId = response.body()!!.id
                             utils.customer_id = response.body()!!.customer_id
+                            utils.name = response.body()!!.fullname
                             val preferences =
                                 applicationContext.getSharedPreferences("PAY_EMI", MODE_PRIVATE)
                             preferences.edit().putString("phone", phone).apply()
-                            preferences.edit().putString(
-                                "refresh_token",
-                                "Bearer " + response.body()!!.refresh_token
-                            ).apply()
-                            preferences.edit()
-                                .putString("token", "Bearer " + response.body()!!.access_token)
-                                .apply()
+                            preferences.edit().putString("refresh_token", "Bearer " + response.body()!!.refresh_token).apply()
+                            preferences.edit().putString("token", "Bearer " + response.body()!!.access_token).apply()
+                            preferences.edit().putString("name",response.body()!!.fullname).apply()
                             preferences.edit().putString("profileid", response.body()!!.id).apply()
-                            preferences.edit().putString("cutomerid", response.body()!!.customer_id)
-                                .apply()
+                            preferences.edit().putString("cutomerid", response.body()!!.customer_id).apply()
                             if (intent.getBooleanExtra("newUser", true)) {
                                 val i = Intent(context, EmiCategories::class.java)
                                 i.flags =

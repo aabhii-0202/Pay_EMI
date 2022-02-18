@@ -10,14 +10,20 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_input_parameter_feilds.xml" value="0.4" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/add_missing_info.xml" value="0.2677083333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/bank_sublist_items.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_registered_popup.xml" value="0.4" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_registration_frragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_tracking.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/complaint_tracking_fragment.xml" value="0.2994791666666667" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/dropdown_item.xml" value="0.26666666666666666" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.3390625" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.2140625" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/otpsentpopup.xml" value="0.3390625" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/profile_fragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transaction_search_fragment.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transaction_search_popup.xml" value="0.2677083333333333" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transcation_details_popup.xml" value="0.536" />
         <entry key="..\:/Users/abhis/.android/avd/platforms/android-31/data/res/drawable/btn_dropdown.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/.android/avd/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.381025641025641" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/amount_box.xml" value="0.31666666666666665" />
