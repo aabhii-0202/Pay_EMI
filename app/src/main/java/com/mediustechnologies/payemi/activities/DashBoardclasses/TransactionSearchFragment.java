@@ -89,11 +89,6 @@ public class TransactionSearchFragment extends Fragment {
                 String dateto = binding.totext.getText().toString();
                 String datefrom = binding.fromtext.getText().toString();
 
-
-                datefrom ="2020-01-15";
-                dateto = "2022-02-10";
-
-
                 if(refid!=null&&refid.length()>1){
                     callapiforrefid(refid);
                 }
@@ -237,59 +232,33 @@ public class TransactionSearchFragment extends Fragment {
         PickerDialog dialog=new PickerDialog(context);
         dialog.showPicker();
 
-        dialog.setRangeSelected(new PickerDialog.OnRangeSelect() {
-            @Override
-            public void OnSelect(Date StartDate, Date EndDate) {
+        dialog.setRangeSelected((StartDate, EndDate) -> {
 
-                //Do Something here
-                Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance();
 
-                cal.setTime(StartDate);
-                int date = cal.get(Calendar.DAY_OF_MONTH);
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
+            cal.setTime(StartDate);
+            int date = cal.get(Calendar.DAY_OF_MONTH);
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
 
-                String m = ++month+"";
-                if (month<10) m = "0"+m;
-                String d = date+"";
-                if(date<10) d = "0"+d;
-                String from = year+"-"+m+"-"+d;
-                binding.fromtext.setText(from);
+            String m = ++month+"";
+            if (month<10) m = "0"+m;
+            String d = date+"";
+            if(date<10) d = "0"+d;
+            String from = year+"-"+m+"-"+d;
+            binding.fromtext.setText(from);
 
-                cal.setTime(EndDate);
-                date = cal.get(Calendar.DAY_OF_MONTH);
-                year = cal.get(Calendar.YEAR);
-                month = cal.get(Calendar.MONTH);
+            cal.setTime(EndDate);
+            date = cal.get(Calendar.DAY_OF_MONTH);
+            year = cal.get(Calendar.YEAR);
+            month = cal.get(Calendar.MONTH);
 
-                m = ++month+"";
-                if (month<10) m = "0"+m;
-                d = date+"";
-                if(date<10) d = "0"+d;
-                String to = year+"-"+m+"-"+d;
-                binding.totext.setText(to);
-
-            }
+            m = ++month+"";
+            if (month<10) m = "0"+m;
+            d = date+"";
+            if(date<10) d = "0"+d;
+            String to = year+"-"+m+"-"+d;
+            binding.totext.setText(to);
         });
-
-
-
     }
-
-    private int getMonth(String month){
-        String[] cal = {
-          "Jan", "Feb", "Mar" , "Apr" , "May", "Jun", "Jul" , "Aug", "Sep", "Oct", "Nov", "Dec"
-        };
-
-        int ans = -1;
-        for(int i=0;i<cal.length;i++){
-            if(month.equalsIgnoreCase(cal[i])){
-                ans = (i+1);
-                break;
-            }
-        }
-
-        return ans;
-    }
-
-
 }
