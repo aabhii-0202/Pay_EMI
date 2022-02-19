@@ -15,8 +15,6 @@ x
 Happ/src/main/java/com/mediustechnologies/payemi/activities/BankList.java,a\f\afc3102509dede9da4c7790e0eb3e14113008132
 z
 Japp/src/main/java/com/mediustechnologies/payemi/activities/BillerList.java,c\6\c62669ffe838344fbe387105889b0c66451d7d85
-Ç
-Rapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/RedeemScratchCard.java,c\1\c18cabb196f578dc1aa1d64597a77ef8dc1a5f80
 }
 Mapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/loancategory.java,5\2\52445fd8ef3c870ab65a1a49f6dafd2a107239de
 ã
@@ -25,8 +23,6 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 Å
 Qapp/src/main/java/com/mediustechnologies/payemi/helper/BaseAppCompatActivity.java,e\e\eea954710f0be5494295d31ec59b5af7cc0f8e26
-ë
-aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ProfileFraggment.java,4\f\4fdef9c67b25e57657d87b6d483ac0da96ef78f9
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 É
@@ -35,13 +31,9 @@ Sapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionDetails.
 Qapp/src/main/java/com/mediustechnologies/payemi/DTO/TransactionSearchDataDTO.java,0\e\0e29f2ef31d1f3cf7db316e7de2aedc9aa5a6c33
 ä
 Zapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionSearchResponse.java,0\f\0f7957f566b89b40ed520752e177845a2086702c
-p
-@app/src/main/java/com/mediustechnologies/payemi/commons/API.java,4\b\4b64e310b503d2d93bf7176d792bcc26178734a4
 ö
 japp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintTrackingFragment.java,7\b\7bb7042abda92406fb6a0d9ddd0d7aff87978555
 å
 \app/src/main/java/com/mediustechnologies/payemi/activities/payments/SelectPaymentMethod.java,e\b\ebdca3dc3afe2694060de39de6e15864b697fe67
 Ñ
 Tapp/src/main/java/com/mediustechnologies/payemi/activities/payments/CardPayment.java,1\e\1e7dcf3461c7b82555b1f7c46f4fc6ccbf6eef0e
-ë
-aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintRegFrag.java,2\2\2206e22f68a3f57075f25de0971b407e0476bd76
