@@ -1,7 +1,5 @@
 package com.mediustechnologies.payemi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -10,11 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.mediustechnologies.payemi.activities.login.act28onBording;
-import com.mediustechnologies.payemi.helper.DatePickerFragment;
-import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
+import androidx.fragment.app.DialogFragment;
 
-public class act20transaction_Search extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+import com.mediustechnologies.payemi.activities.login.OnBording;
+import com.mediustechnologies.payemi.databinding.ActivityTaransactionSearchBinding;
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
+import com.mediustechnologies.payemi.helper.DatePickerFragment;
+
+public class act20transaction_Search extends BaseAppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ActivityTaransactionSearchBinding binding;
     private boolean from;
@@ -25,8 +26,6 @@ public class act20transaction_Search extends AppCompatActivity implements DatePi
         super.onCreate(savedInstanceState);
         binding= ActivityTaransactionSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
         init();
 
 
@@ -63,7 +62,7 @@ public class act20transaction_Search extends AppCompatActivity implements DatePi
             }
         });
 
-        binding.search.setOnClickListener(view -> startActivity(new Intent(context, act28onBording.class)));
+        binding.search.setOnClickListener(view -> startActivity(new Intent(context, OnBording.class)));
 
         binding.layoutfrom.setOnClickListener(View ->{
             from = true;

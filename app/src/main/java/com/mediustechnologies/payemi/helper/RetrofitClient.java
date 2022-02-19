@@ -1,10 +1,14 @@
 package com.mediustechnologies.payemi.helper;
 
+import android.content.Context;
+
 import com.mediustechnologies.payemi.commons.API;
 
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -13,20 +17,28 @@ public class RetrofitClient {
 
     public static RetrofitClient mInstance;
     private Retrofit retrofit;
+    private Context activity_context;
 
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.MINUTES)
-            .readTimeout(1,TimeUnit.MINUTES)
-            .writeTimeout(1,TimeUnit.MINUTES)
-            .addInterceptor(getLoggin())
-            .build();
+    public RetrofitClient(){
+    }
 
     public static HttpLoggingInterceptor getLoggin() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         return logging;
     }
-    private RetrofitClient(String BASE_URL) {
+    private RetrofitClient(Context mContext, String BASE_URL) {
+        activity_context = mContext;
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(1,TimeUnit.MINUTES)
+                .writeTimeout(1,TimeUnit.MINUTES)
+                .addInterceptor(getLoggin())
+                .addInterceptor(new ErrorInterceptor(activity_context))
+                .build();
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
@@ -34,8 +46,8 @@ public class RetrofitClient {
                 .build();
     }
 
-    public static synchronized RetrofitClient getInstance(String BASE_URL) {
-        mInstance = new RetrofitClient(BASE_URL);
+    public synchronized RetrofitClient getInstance(Context mContext, String BASE_URL) {
+        mInstance = new RetrofitClient(mContext, BASE_URL);
         return mInstance;
     }
 

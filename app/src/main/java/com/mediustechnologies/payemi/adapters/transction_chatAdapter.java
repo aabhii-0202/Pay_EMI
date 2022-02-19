@@ -8,9 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.Models.transaction_chat;
+import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.databinding.TransactionPageDatelineBinding;
 import com.mediustechnologies.payemi.databinding.TransactionPagePaymentItemBinding;
 import com.mediustechnologies.payemi.databinding.TransactionPageScratchcardItemBinding;
 
@@ -18,11 +17,23 @@ import java.util.ArrayList;
 
 public class transction_chatAdapter extends RecyclerView.Adapter{
 
+    private onItemClick mListner;
     private Context context;
-    private ArrayList<transaction_chat> chatlist;
+    private final ArrayList<transaction_chat> chatlist;
+
+
+
     final int ITEM_SCRATCH =1;
     final int ITEM_PAYMENT=2;
-    final int ITEM_DATE =3;
+
+    public interface onItemClick{
+        void onItemClick (int postion);
+    }
+    public void setOnItemClickListner(transction_chatAdapter.onItemClick listner){
+        mListner = listner;
+    }
+
+
 
     public transction_chatAdapter(Context context, ArrayList<transaction_chat> chatlist){
         this.chatlist=chatlist;
@@ -37,11 +48,6 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
             View view = LayoutInflater.from(context).inflate(R.layout.transaction_page_scratchcard_item,parent,false);
             return new rewardViewHolder(view);
         }
-
-        else if(viewType==ITEM_DATE){
-            View view  = LayoutInflater.from(context).inflate(R.layout.transaction_page_dateline,parent,false);
-            return new dateLineViewHolder(view);
-        }
         else{
             View view = LayoutInflater.from(context).inflate(R.layout.transaction_page_payment_item,parent,false);
             return new paymentViewHolder(view);
@@ -51,60 +57,54 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
     @Override
     public int getItemViewType(int position) {
 
-        transaction_chat chat = chatlist.get(position);
-
-        if(chat.getDateline()!=null) return ITEM_DATE;
-
-        if (chat.getStatus_date()==null)return ITEM_SCRATCH;
-
-        return ITEM_PAYMENT;
-
+        if(chatlist.get(position).getType().equals("transaction")) return ITEM_PAYMENT;
+        return ITEM_SCRATCH;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         String name = chatlist.get(position).getName();
-        String loanname = chatlist.get(position).getLoan_name();
-        String status = chatlist.get(position).getStatus_date();
+        String loanname = chatlist.get(position).getLoanname();
+        String date = chatlist.get(position).getDate();
+        String status = chatlist.get(position).getStatus();
         String amount = chatlist.get(position).getAmount();
-        String dateline = chatlist.get(position).getDateline();
+        String type = chatlist.get(position).getType();
+        String redeemed = chatlist.get(position).getRedeemed();
 
 
-        if(dateline==null) {
-            if (status == null) {
-                rewardViewHolder vh = (rewardViewHolder) holder;
-                vh.binding.titletext.setText(name);
-                vh.binding.subtitle.setText(loanname);
-            } else {
-                paymentViewHolder vh = (paymentViewHolder) holder;
-                vh.binding.cardamount.setText(amount);
-                vh.binding.cardbankname.setText(name);
-                vh.binding.cardloanname.setText(loanname);
-                vh.binding.statusanddate.setText(status);
+        if(type.equals("transaction")){
+            paymentViewHolder vh = (paymentViewHolder) holder;
+            vh.binding.cardbankname.setText(name);
+            vh.binding.cardloanname.setText(loanname);
+            vh.binding.cardamount.setText(amount);
+            vh.binding.statusanddate.setText(date);
+            if(status.equals("Successful")){
+                vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
+            }
+            else if(status.equals("failed")){
+                vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cross, 0, 0, 0);
             }
         }
-        else {
-            dateLineViewHolder vh = (dateLineViewHolder) holder;
-            vh.binding.date.setText(dateline);
-        }
+        else if(type.equals("cashback")){
 
+            rewardViewHolder vh = (rewardViewHolder) holder;
+            if(redeemed.equals("false")){
+                vh.binding.titletext.setText("Scratch Now");
+                vh.binding.subtitle.setText("Earn a reward!");
+            }
+            else {
+                vh.binding.titletext.setText(amount);
+                vh.binding.subtitle.setText("You earned a reward!");
+            }
+
+        }
     }
 
     @Override
     public int getItemCount() {
         return chatlist.size();
     }
-
-    public class dateLineViewHolder extends RecyclerView.ViewHolder{
-        TransactionPageDatelineBinding binding;
-
-        public dateLineViewHolder(@NonNull View itemView) {
-            super(itemView);
-            binding = TransactionPageDatelineBinding.bind(itemView);
-        }
-    }
-
 
     public class rewardViewHolder extends RecyclerView.ViewHolder{
 
@@ -113,6 +113,18 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
         public rewardViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = TransactionPageScratchcardItemBinding.bind(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -123,6 +135,18 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
         public paymentViewHolder(@NonNull View itemView) {
             super(itemView);
             binding = TransactionPagePaymentItemBinding.bind(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 

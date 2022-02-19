@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/transactionIdselected"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Transaction Reference Id"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/transactionId"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/complaint_box"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:paddingVertical="14dp"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black"
+                android:hint="Enter Your Transaction Reference Id"
+                android:textColorHint="@color/HintColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginVertical="24dp"
+            >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/or"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                android:background="#dddddd"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/or"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardBackgroundColor="#f4f6f8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="40dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OR"
+                    android:textColor="@color/grey"
+                    android:fontFamily="@font/gtwalsheim_pro_bold"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toEndOf="@+id/or"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
+                android:background="#dddddd"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        or-->
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/mobileNumberSelected">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gtwalsheim_pro_regular"
+                    android:text="Mobile Number"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/complaint_box"
+                    android:fontFamily="@font/gtwalsheim_pro_regular"
+                    android:inputType="phone"
+                    android:paddingVertical="14dp"
+                    android:paddingHorizontal="16dp"
+                    android:hint="Enter Your Mobile Number"
+                    android:textColorHint="@color/HintColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/sendOTP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/gtwalsheim_pro_regular"
+                    android:text="Select Date Range"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutfrom"
+                        android:layout_width="143dp"
+                        android:layout_height="46dp"
+                        android:background="@drawable/complaint_box"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/fromtext"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16sp"
+                            android:fontFamily="@font/gtwalsheim_pro_regular"
+                            android:hint="From"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/HintColor"
+                            android:paddingVertical="14sp"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_datevector"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutto"
+                        android:layout_width="143dp"
+                        android:layout_height="46dp"
+                        android:background="@drawable/complaint_box"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/totext"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16sp"
+                            android:fontFamily="@font/gtwalsheim_pro_regular"
+                            android:hint="To"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/HintColor"
+                            android:paddingVertical="14sp"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_datevector"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="Search"
+            android:textSize="22sp"
+            android:letterSpacing="0"
+            android:fontFamily="@font/gtwalsheim_pro_medium"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/button_bg"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

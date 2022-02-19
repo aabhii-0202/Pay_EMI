@@ -9,14 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.Models.bankListItem;
+import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.R;
 
 import java.util.List;
 
 public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHolder> {
 
-    private List<bankListItem> bankListItem;
+    private List<getAllBanks> bankListItem;
     private onItemClicked mListner;
 
 
@@ -27,7 +28,7 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
     public void setOnItemClickListner(onItemClicked listner){
         mListner = listner;
     }
-    public bankListAdapter(List<bankListItem> bankListItem){
+    public bankListAdapter(List<getAllBanks> bankListItem){
         this.bankListItem=bankListItem;
     }
 
@@ -42,8 +43,8 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull bankListAdapter.ViewHolder holder, int position) {
-        int imageRes = bankListItem.get(position).getBank_Logo();
-        String name = bankListItem.get(position).getBank_Name();
+        String imageRes = bankListItem.get(position).getBank_logo_url();
+        String name = bankListItem.get(position).getBank_name();
         holder.setData(imageRes,name);
 
     }
@@ -53,6 +54,13 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
     @Override
     public int getItemCount() {
         return bankListItem.size();
+    }
+
+    public void filterList(List<getAllBanks> filteredList){
+
+        bankListItem = filteredList;
+        notifyDataSetChanged();
+
     }
 
 
@@ -83,9 +91,10 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
 
         }
 
-        public void setData(int imageRes, String name) {
+        public void setData(String url, String name) {
 
-            logo.setImageResource(imageRes);
+
+            Glide.with(logo).load(url).into(logo);
             Bank_name.setText(name);
 
         }

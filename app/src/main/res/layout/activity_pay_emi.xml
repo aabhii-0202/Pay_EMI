@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".activities.act8payEMI">
+    tools:context=".activities.Exactness">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/bharatBillLogo"
+            android:id="@+id/logout"
             android:layout_width="63dp"
             android:layout_height="match_parent"
             android:src="@drawable/cornericon"
@@ -74,6 +74,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:background="#f4f6f8"
+                android:scaleType="centerCrop"
                 android:src="@drawable/b6" />
 
             <TextView
@@ -91,32 +92,34 @@
                 android:id="@+id/LoanName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:layout_marginHorizontal="5dp"
-                android:text="Home Loan"
-                android:textSize="14sp"
-                android:textColor="@color/grey2"
                 android:layout_below="@+id/customerName"
-                android:layout_toEndOf="@+id/bankImage"/>
+                android:layout_marginHorizontal="5dp"
+                android:layout_toEndOf="@+id/bankImage"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Home Loan"
+                android:textColor="@color/grey2"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:text="Rs. 14,288"
-                android:textSize="14sp"
-                android:textColor="@color/grey2"
                 android:layout_below="@id/LoanName"
-                android:layout_toEndOf="@+id/bankImage"/>
+                android:layout_marginHorizontal="5dp"
+                android:layout_toEndOf="@+id/bankImage"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:text="Rs. 14,288"
+                android:textColor="@color/grey2"
+                android:textSize="14sp" />
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/billername"
             android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
+            android:layout_marginHorizontal="16dp"
             android:text="Paying HDFC Bank"
             android:fontFamily="@font/gtwalsheim_pro_bold"
             android:layout_gravity="center"
@@ -125,6 +128,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_gravity="center_horizontal"
             >
 
@@ -147,9 +151,9 @@
                 android:layout_toEndOf="@+id/rupee_sign"
                 android:background="@drawable/amount_box"
                 android:fontFamily="@font/gtwalsheim_pro_light"
-                android:hint="00"
                 android:inputType="number"
                 android:padding="5dp"
+                android:text="14288"
                 android:textColor="@color/black"
                 android:textColorHint="@color/HintColor"
                 android:textSize="60sp" />

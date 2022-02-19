@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.act4BankList"
-    android:background="@color/white">
+    tools:context=".activities.BankList"
+    android:background="@color/homepagebg">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/bharatBillLogo"
+            android:id="@+id/logout"
             android:layout_width="63dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,16 +52,76 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search"
+        android:textColorHint="@color/HintColor"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/input_box_layout"
+        android:textSize="14sp"
+        android:fontFamily="@font/gtwalsheim_pro_regular"
+        android:padding="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"/>
+
+
+
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/flag_transparent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/search"-->
+<!--            app:itemTextColor="@color/black"-->
+<!--            android:id="@+id/nav"-->
+<!--            />-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/catagory"
+        android:scrollbars="none"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/homepagebg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listOfBanks"
         android:layout_width="wrap_content"
+        android:scrollbars="none"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/white"
+        android:layout_marginTop="16dp"
+        android:background="@color/homepagebg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/catagory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

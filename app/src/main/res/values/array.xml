@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="dispoistion">
+        <item>Select</item>
+        <item>Transaction Successful, account not updated</item>
+        <item>Transaction Not Successful</item>
+    </string-array>
+
+    <string-array name="id_activityScreenTitles">
+        <item>Home</item>
+        <item>Complaint</item>
+        <item>Transaction Search</item>
+        <item>Profile</item>
+        <item>Rate this App</item>
+        <item>Notification</item>
+        <item>Help</item>
+    </string-array>
+    <array name="id_activityScreenIcon">
+        <item>@drawable/ic_nav_home</item>
+        <item>@drawable/ic_nav_triangle</item>
+        <item>@drawable/ic_nav_card</item>
+        <item>@drawable/ic_nav_user</item>
+        <item>@drawable/ic_nav_star</item>
+        <item>@drawable/ic_nav_bell</item>
+        <item>@drawable/ic_nav_phone</item>
+        <item>@drawable/ic_nav_logout</item>
+    </array>
+    
+</resources>

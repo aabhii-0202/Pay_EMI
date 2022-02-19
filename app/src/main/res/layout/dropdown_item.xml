@@ -1,0 +1,13 @@
+<TextView
+    android:id="@+id/listitem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Transaction successful but not showing in history."
+    android:textAlignment="textStart"
+    android:paddingVertical="24dp"
+    android:paddingHorizontal="16dp"
+    android:textColorHint="@color/HintColor"
+    android:textColor="@color/black"
+    android:background="@drawable/complaint_box"
+    android:fontFamily="@font/gtwalsheim_pro_regular"
+xmlns:android="http://schemas.android.com/apk/res/android"/>

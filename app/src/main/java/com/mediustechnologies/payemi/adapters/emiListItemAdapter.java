@@ -9,7 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.Models.emiListItem;
+import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.helper.MyProgressBar;
 
@@ -18,7 +19,31 @@ import java.util.List;
 public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.viewHolder> {
 
     private List<emiListItem> emiList;
+    private onItemClicked mListner;
+    private onButtonClickeListner btnListner;
+    private onAddMissingListner missingListner;
 
+    public interface onAddMissingListner{
+        void onMissingClick(int pos);
+    }
+    public interface onItemClicked{
+        void onItemClick(int position);
+    }
+    public interface onButtonClickeListner{
+        void onButtonClick(int pos);
+    }
+
+    public void setOnMissingClickLIstner(onAddMissingListner lIstner){
+        missingListner = lIstner;
+    }
+
+    public void setOnButtonClickListner(onButtonClickeListner listner){
+        btnListner = listner;
+    }
+
+    public void setOnItemClickListner(onItemClicked listner){
+        mListner = listner;
+    }
 
     public emiListItemAdapter(List<emiListItem> emiList){this.emiList = emiList;}
 
@@ -33,14 +58,13 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull emiListItemAdapter.viewHolder holder, int position) {
-        int icon = emiList.get(position).getIcon();
+        String icon = emiList.get(position).getIcon();
         String EMIAmount = emiList.get(position).getEmiAmount();
         String BankName = emiList.get(position).getBank_Name();
         String LoanName = emiList.get(position).getLoan_Name();
         String PaidAmount = emiList.get(position).getPaid_Amount();
         String TotalAmount = emiList.get(position).getTotal_Amount();
         int progress = emiList.get(position).getProgress();
-
 
         holder.set(icon,EMIAmount,BankName,LoanName,PaidAmount,TotalAmount,progress);
 
@@ -54,7 +78,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
     public class viewHolder extends RecyclerView.ViewHolder {
 
         private ImageView icon;
-        private TextView emiamount,bankname,loanname,paidamount,totalamount;
+        private TextView emiamount,bankname,loanname,paidamount,totalamount,addmissing;
         private MyProgressBar progressBar;
 
         public viewHolder(@NonNull View view){
@@ -66,23 +90,93 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             paidamount= view.findViewById(R.id.paidamount);
             totalamount= view.findViewById(R.id.total_Loan);
             progressBar = view.findViewById(R.id.emiProgressbar);
+            addmissing = view.findViewById(R.id.addmissinginfo);
+
+
+            itemView.findViewById(R.id.emilistpay).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(btnListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            btnListner.onButtonClick(position);
+                        }
+                    }
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListner!=null){
+                        int pos = getAbsoluteAdapterPosition();
+                        if (pos!=RecyclerView.NO_POSITION){
+                            mListner.onItemClick(pos);
+                        }
+                    }
+                }
+            });
+
+            itemView.findViewById(R.id.addmissinginfo).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(missingListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if (position!=RecyclerView.NO_POSITION){
+                            missingListner.onMissingClick(position);
+                        }
+                    }
+                }
+            });
 
         }
 
-        public void set(int img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
-            icon.setImageResource(img);
-            emiamount.setText(emiAmount);
+        public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
+
+            Glide.with(icon).load(img).into(icon);
+            emiamount.setText("₹"+emiAmount);
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
+            Paid_Amount = formatinword(Paid_Amount);
             paidamount.setText(Paid_Amount);
-            totalamount.setText(Total_Amount);
-            progressBar.setProgress(progress);
 
+            if(progress==-1){
+                progressBar.setVisibility(View.GONE);
+                addmissing.setVisibility(View.VISIBLE);
+            }
+            else{
+                progressBar.setProgress(progress);
+                addmissing.setVisibility(View.GONE);
+            }
 
+            String t = formatinword(Total_Amount);
+            totalamount.setText(t);
 
         }
 
+        private String formatinword(String total_amount) {
+            String ans = "₹";
+            try{
+                if(total_amount=="null")return "";
+                if(total_amount==null)return "";
 
+                int length = total_amount.length();
+                if(length>7){
+                    ans += total_amount.substring(0,length-7)+"."+total_amount.substring(length-7,length-6)+"Cr";
+                }
+                else if(length>5){
+                    ans += total_amount.substring(0,length-5)+"."+total_amount.substring(length-5,length-4)+"L";
+                }else if(length>3){
+                    ans += total_amount.substring(0,length-3)+"."+total_amount.substring(length-3,length-2)+"K";
+                }
+                else ans += total_amount;
+            }
+            catch (Exception e){
+                return "null";
+            }
+
+            return ans;
+        }
 
 
     }

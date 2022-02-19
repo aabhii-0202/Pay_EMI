@@ -42,7 +42,7 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/bharatBillLogo"
+                android:id="@+id/logout"
                 android:layout_width="63dp"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
                 android:buttonTint="#412e8d"
                 android:checked="true"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
-
+                android:layout_weight="1"
                 android:text="Mobile Number"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -84,7 +84,7 @@
                 android:id="@+id/radio_Transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_weight="1"
                 android:buttonTint="#412e8d"
                 android:fontFamily="@font/gtwalsheim_pro_medium"
                 android:text="Transaction Ref. Id"
