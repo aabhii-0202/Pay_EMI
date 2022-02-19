@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 
+import com.afsal.rangedialog.PickerDialog;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.mediustechnologies.payemi.ApiResponse.TransactionSearchResponse;
 import com.mediustechnologies.payemi.R;
@@ -31,6 +32,7 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -232,91 +234,43 @@ public class TransactionSearchFragment extends Fragment {
 
     private void datePicker() {
 
-        MaterialDatePicker.Builder<Pair<Long,Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
-        builder.setTitleText("Date Range Picker");
+        PickerDialog dialog=new PickerDialog(context);
+        dialog.showPicker();
 
-        final MaterialDatePicker<Pair<Long, Long>> materialDatePicker = builder.build();
+        dialog.setRangeSelected(new PickerDialog.OnRangeSelect() {
+            @Override
+            public void OnSelect(Date StartDate, Date EndDate) {
 
-        materialDatePicker.show(getParentFragmentManager(), "Date_Picker");
+                //Do Something here
+                Calendar cal = Calendar.getInstance();
 
+                cal.setTime(StartDate);
+                int date = cal.get(Calendar.DAY_OF_MONTH);
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
 
-        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+                String m = ++month+"";
+                if (month<10) m = "0"+m;
+                String d = date+"";
+                if(date<10) d = "0"+d;
+                String from = year+"-"+m+"-"+d;
+                binding.fromtext.setText(from);
 
+                cal.setTime(EndDate);
+                date = cal.get(Calendar.DAY_OF_MONTH);
+                year = cal.get(Calendar.YEAR);
+                month = cal.get(Calendar.MONTH);
 
+                m = ++month+"";
+                if (month<10) m = "0"+m;
+                d = date+"";
+                if(date<10) d = "0"+d;
+                String to = year+"-"+m+"-"+d;
+                binding.totext.setText(to);
 
-
-            String s = materialDatePicker.getHeaderText();
-            Log.d("date","Date range:  "+s.length());
-
-            int index = s.indexOf('–');
-            String datefrom = s.substring(0,index);
-            String dateto = s.substring(index+1);
-
-            System.out.println(datefrom);
-
-            System.out.println(dateto);
-
-            // Jan 1
-            // Jan 13
-
-            // Nov 9, 2021 with and without year change
-
-
-//            if(s.length()>21){
-//
-//                //Dec 17, 2021 – Jan 24, 2022  len ==27
-//
-//                String month = s.substring(0,3);
-//                int monthFrom = getMonth(month);
-//
-//                month = s.substring(15,18);
-//                int monthTo = getMonth(month);
-//
-//                String yearFrom = s.substring(8,12);
-//                String yearTo = s.substring(22);
-//
-//                String dateFrom = s.substring(4,6);
-//                String dateTo = s.substring(19,21);
-//
-//                String From = yearFrom+"-"+monthFrom+"-"+dateFrom;
-//                String To = yearTo+"-"+monthTo+"-"+dateTo;
-//
-//                System.out.println(From);
-//                System.out.println(To);
-//
-//                binding.fromtext.setText(From);
-//                binding.totext.setText(To);
-//
-//            }else if(s.length()==20){
-//
-//
-//
-//            }else{
-//                //Feb 17 – Feb 24
-//
-//                String month = s.substring(0,3);
-//                int monthFrom = getMonth(month);
-//
-//                month = s.substring(9,12);
-//                int monthTo = getMonth(month);
-//
-//                String yearFrom = "2022";
-//                String yearTo = "2022";
-//
-//                String dateFrom = s.substring(4,6);
-//                String dateTo = s.substring(12);
-//
-//                String From = yearFrom+"-"+monthFrom+"-"+dateFrom;
-//                String To = yearTo+"-"+monthTo+"-"+dateTo;
-//
-//                binding.fromtext.setText(From);
-//                binding.totext.setText(To);
-//            }
-
-
-
-
+            }
         });
+
 
 
     }
