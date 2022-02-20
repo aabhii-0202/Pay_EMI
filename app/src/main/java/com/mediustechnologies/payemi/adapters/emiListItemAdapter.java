@@ -140,7 +140,7 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
             Paid_Amount = formatinword(Paid_Amount);
             paidamount.setText(Paid_Amount);
 
-            if(progress==-1){
+            if(progress==-1||emiAmount==null||loanname==null||paidamount==null||totalamount==null||emiAmount=="null"||loanname.equals("null")||paidamount.equals("null")||totalamount.equals("null")){
                 progressBar.setVisibility(View.GONE);
                 addmissing.setVisibility(View.VISIBLE);
             }

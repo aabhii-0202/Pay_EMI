@@ -67,7 +67,7 @@ public class DashBoardFragment extends Fragment {
     private void setData() {
         emilist = new ArrayList<>();
         for(int i=0;i<data.size();i++){
-            String totalemi = data.get(i).getAmount();
+            String totalemi = data.get(i).getLoan_amount();
             String loanpaied = data.get(i).getLoan_paid();
 
             int progress;
@@ -85,6 +85,7 @@ public class DashBoardFragment extends Fragment {
             s = "EMI "+data.get(i).getEmi();
             s+= "\nBiller Name "+data.get(i).getBiller__billerName();
             s+= "\nLoan type "+data.get(i).getLoan_type();
+            s+="\nLoan amount "+data.get(i).getLoan_amount();
             s+= "\nPaid "+data.get(i).getLoan_paid();
             s+= "\nAmount "+data.get(i).getAmount();
             s+= "\nProgress "+progress;
@@ -93,7 +94,7 @@ public class DashBoardFragment extends Fragment {
 
 
 
-            emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),data.get(i).getLoan_type(),data.get(i).getLoan_paid(),data.get(i).getAmount(),data.get(i).getBiller__logo_url(),progress));
+            emilist.add(new emiListItem(data.get(i).getEmi(),data.get(i).getBiller__billerName(),data.get(i).getLoan_type(),data.get(i).getLoan_paid(),data.get(i).getLoan_amount(),data.get(i).getBiller__logo_url(),progress));
 
         }
 

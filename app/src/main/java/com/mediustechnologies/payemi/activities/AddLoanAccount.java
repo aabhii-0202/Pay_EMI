@@ -151,8 +151,8 @@ public class AddLoanAccount extends BaseAppCompatActivity {
         binding.linearLayout.setVisibility(View.GONE);
         binding.progressbar.setVisibility(View.VISIBLE);
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
-//        if(verifydata(feilds))
-        if(true)
+        if(verifydata(feilds))
+//        if(true)
         {
             FetchBill(ApiJsonMap(feilds));
         }
@@ -218,20 +218,15 @@ public class AddLoanAccount extends BaseAppCompatActivity {
     private void FetchBill(JsonObject jsonObject){
 
         String biller_id = getIntent().getStringExtra("biller_id");
-        biller_id = "TVSC00000NAT0T";
+//        biller_id = "TVSC00000NAT0T";
         String  id = utils.profileId;
-        id = "81";
+//        id = "81";
         String phone = utils.phone;
-        phone = "99943713390";
+//        phone = "99943713390";
 
         LinkedHashMap<String, String> feilds = new LinkedHashMap<>();
         feilds.put("Agreement number","TN3003CA0005203");
         jsonObject = ApiJsonMap(feilds);
-
-
-        //todo above lines are hard coded
-
-
 
 
 

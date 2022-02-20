@@ -47,7 +47,7 @@ public class GetLoanDetails extends BaseAppCompatActivity {
 
         data = getIntent().getParcelableExtra("data");
 
-        String totalemi = data.getAmount();
+        String totalemi = data.getLoan_amount();
         String loanpaied = data.getLoan_paid();
 
         int progress;
@@ -55,7 +55,7 @@ public class GetLoanDetails extends BaseAppCompatActivity {
             double total = Double.parseDouble(totalemi);
             double paied = Double.parseDouble(loanpaied);
 
-            int p = (int) (total/paied);
+            int p = (int) ((paied/total)*100);
             progress = p;
 
 
