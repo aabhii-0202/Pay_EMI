@@ -15,7 +15,7 @@ import com.mediustechnologies.payemi.databinding.TransactionPageScratchcardItemB
 
 import java.util.ArrayList;
 
-public class transction_chatAdapter extends RecyclerView.Adapter{
+public class TransactionHistoryAdapter extends RecyclerView.Adapter{
 
     private onItemClick mListner;
     private Context context;
@@ -29,13 +29,13 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
     public interface onItemClick{
         void onItemClick (int postion);
     }
-    public void setOnItemClickListner(transction_chatAdapter.onItemClick listner){
+    public void setOnItemClickListner(TransactionHistoryAdapter.onItemClick listner){
         mListner = listner;
     }
 
 
 
-    public transction_chatAdapter(Context context, ArrayList<transaction_chat> chatlist){
+    public TransactionHistoryAdapter(Context context, ArrayList<transaction_chat> chatlist){
         this.chatlist=chatlist;
         this.context=context;
 
@@ -79,10 +79,10 @@ public class transction_chatAdapter extends RecyclerView.Adapter{
             vh.binding.cardloanname.setText(loanname);
             vh.binding.cardamount.setText(amount);
             vh.binding.statusanddate.setText(date);
-            if(status.equals("Successful")){
+            if(status.equalsIgnoreCase("successful")){
                 vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
             }
-            else if(status.equals("failed")){
+            else if(status.equalsIgnoreCase("failed")){
                 vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cross, 0, 0, 0);
             }
         }

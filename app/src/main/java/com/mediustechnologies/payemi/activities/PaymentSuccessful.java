@@ -19,10 +19,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -62,6 +65,8 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     private final Context context = this;
     private String cashback,bill_id;
     private boolean scratched,paymentstatus;
+    private billFetchDTO data;
+    private int nooftrials;
 
 
     @Override
@@ -75,7 +80,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
 
     }
 
-    private void setData(billFetchDTO data) {
+    private void setData() {
 
 
         Log.d("tag", "Bill fetch API call successful " + data.toString());
@@ -113,7 +118,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
         else binding.totalamountholder.setVisibility(View.GONE);
 
         if(data.getTransation_status()!=null)
-            binding.TransactionStatus.setText("Failed "+data.getTransation_status());
+            binding.TransactionStatus.setText("Pending "+data.getTransation_status());
         else binding.transactionstatusholder.setVisibility(View.GONE);
 
         if(data.getTransaction_id()!=null)
@@ -174,6 +179,8 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     }
 
     private void getbilldetails() {
+        nooftrials++;
+        System.out.println(nooftrials);
         String token = utils.access_token;
 
         Call<GetBillDetailsResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
@@ -183,9 +190,23 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
             public void onResponse(Call<GetBillDetailsResponse> call, Response<GetBillDetailsResponse> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                        billFetchDTO data = response.body().getData().get(0);
-                        setData(data);
-                        scratch();
+                        data = response.body().getData().get(0);
+                        setData();
+                        String status = data.getTransation_status();
+                        status = status.toLowerCase();
+                        if(status.equalsIgnoreCase("SU")||status.contains("success")){
+                            paymentsuccess();
+                        }else{
+                            if(nooftrials<10){
+                                new Handler().postDelayed(() -> {
+                                    getbilldetails();
+                                },5000);
+                            }
+
+                            else {
+                                paymentsuccess();
+                            }
+                        }
                         binding.scrollView.setVisibility(View.VISIBLE);
                         binding.progress.setVisibility(View.GONE);
                     }
@@ -324,28 +345,24 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     }
 
     private void init() {
+        nooftrials = 0;
         binding.scrollView.setVisibility(View.GONE);
         binding.progress.setVisibility(View.VISIBLE);
-        binding.share.setVisibility(View.VISIBLE);
         paymentstatus = getIntent().getBooleanExtra("status",false);
         scratched = false;
         bill_id = getIntent().getStringExtra("bill_id");
         binding.crossButton.setOnClickListener(view -> nextScreen());
         if(!paymentstatus){
-            binding.scratchpopup.setVisibility(View.GONE);
-            binding.gif.setVisibility(View.GONE);
             binding.paymentstatus.setText("Payment Failed");
             binding.paymentstatus.setTextColor(getResources().getColor(R.color.errormessagecolor));
-            binding.failedimg.setVisibility(View.VISIBLE);
-
+            Drawable res = getResources().getDrawable(R.drawable.ic_crosspopupred);
+            binding.failedimg.setImageDrawable(res);
+            binding.timeanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_crosspopupred, 0, 0, 0);
         }
 
-        binding.share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                File file = save();
-                if(file != null) share(file);
-            }
+        binding.share.setOnClickListener(view -> {
+            File file = save();
+            if(file != null) share(file);
         });
     }
 
@@ -379,6 +396,18 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
         catch (Exception e){
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    private void paymentsuccess(){
+        scratch();
+        binding.paymentstatus.setText("Payment Successful");
+        binding.gif.setVisibility(View.VISIBLE);
+        binding.failedimg.setVisibility(View.GONE);
+        binding.paymentstatus.setTextColor(Color.parseColor("#0c8f2d"));
+        binding.timeanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
+        binding.timeanddate.setText("  Completed | " + data.getTransaction_date_and_time());
+        binding.scratchpopup.setVisibility(View.VISIBLE);
 
     }
 

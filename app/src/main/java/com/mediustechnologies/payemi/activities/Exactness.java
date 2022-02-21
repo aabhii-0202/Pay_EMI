@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class Exactness extends BaseAppCompatActivity {
             data = getIntent().getParcelableExtra("data");
             url = data.getBiller__logo_url();
             exactness = data.getBiller__billerPaymentExactness();
+            binding.LoanName.setText(getIntent().getStringExtra("type"));
         }catch (Exception e){
             url = getIntent().getStringExtra("logo");
             exactness = getIntent().getStringExtra("exact");
@@ -72,7 +74,7 @@ public class Exactness extends BaseAppCompatActivity {
         binding.enterAmount.setText(amount);
         binding.customerName.setText(customer);
         binding.billername.setText("Paying to "+billerName);
-        binding.LoanName.setText("Loan Name");
+
 
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
@@ -123,6 +125,9 @@ public class Exactness extends BaseAppCompatActivity {
 
     private void nextScreen(){
 
+
+        //todo initialise razorpay again
+
         Intent i = new Intent(context, SelectPaymentMethod.class);
         i.putExtra("billerName",billerName);
         i.putExtra("bill_id",bill_id);
@@ -130,6 +135,22 @@ public class Exactness extends BaseAppCompatActivity {
         i.putExtra("logo",url);
         i.putExtra("amount",binding.enterAmount.getText().toString());
         startActivity(i);
+    }
+
+    private void razorpaypaymentsuccess(){
+
+    }
+
+    private void razorpaypaymentfailed(){
+        Toast.makeText(context, "Card payment failed", Toast.LENGTH_SHORT).show();
+        Log.d("tag", "Card Payment: Failed ");
+
+        Intent j = new Intent(context, PaymentSuccessful.class);
+        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
+        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+        j.putExtra("status",false);
+        startActivity(j);
+
     }
 
 

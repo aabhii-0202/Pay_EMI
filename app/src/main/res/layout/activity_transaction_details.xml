@@ -81,6 +81,7 @@
             android:id="@+id/image"
             android:layout_width="59dp"
             android:layout_height="59dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="48dp"
             android:src="@drawable/carlogo" />

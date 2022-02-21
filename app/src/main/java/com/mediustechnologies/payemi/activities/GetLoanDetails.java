@@ -101,7 +101,7 @@ public class GetLoanDetails extends BaseAppCompatActivity {
         Intent i = new Intent(context,Exactness.class);
 
         i.putExtra("data",data);
-
+        i.putExtra("type",data.getLoan_type());
         i.putExtra("bill_id",bill.getPayload().get(0).getId());
 
         i.putExtra("customer",bill.getPayload().get(0).getCustomer_name());

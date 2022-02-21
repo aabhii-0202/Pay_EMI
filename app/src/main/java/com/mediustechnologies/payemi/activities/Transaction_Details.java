@@ -46,14 +46,13 @@ public class Transaction_Details extends BaseAppCompatActivity {
         binding = ActivityTransactionDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         init();
     }
 
     private String formatdate(String date) {
         String ans = "";
         String day = date.substring(8, 10);
-        ans += day + " ";
+        ans += day + "";
         String month = date.substring(5, 7);
         String months[] = {
                 "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep",
@@ -91,13 +90,16 @@ public class Transaction_Details extends BaseAppCompatActivity {
 
         TransactionDetails item = getIntent().getParcelableExtra("item");
 
+        System.out.println("Transaction history item: "+item.toString());
+
+
         try {
             if (item.getType().equals("transaction")) {
                 binding.transactionId.setText(item.getRazorpay_transaction_id());
                 binding.detailsbankname.setText("To - " + item.getBiller_name());
                 binding.customerName.setText("From - " + item.getCustomer_name());
                 binding.customeremail.setText("" + item.getCustomer_email());
-                binding.billerid.setText("Bill Id - " + item.getBiller_id());
+                binding.billerid.setText("Bill Id - " + item.getBill_id());
                 binding.tobankname.setText("To " + item.getBiller_name());
                 binding.paidAmount.setText(item.getAmount());
                 String status = item.getBbps_transaction_status();
@@ -116,6 +118,7 @@ public class Transaction_Details extends BaseAppCompatActivity {
                         binding.statusdate.setText("  Pending | " + date);
                         binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);
                     }
+
                 } catch (Exception e) {
                     binding.statusdate.setText("  Pending | " + date);
                     binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);

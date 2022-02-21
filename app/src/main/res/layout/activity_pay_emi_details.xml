@@ -135,7 +135,7 @@
                         android:layout_marginTop="32dp"
                         android:paddingVertical="4dp"
                         android:progress="25"
-                        android:progressDrawable="@drawable/emi_progress_bar_bg2"
+                        android:progressDrawable="@drawable/emi_progress_bar_bg"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -243,6 +243,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
+                        android:layout_marginBottom="32dp"
                         android:layout_marginTop="26dp">
 
                         <TextView
@@ -276,6 +277,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="26dp"
+                        android:visibility="gone"
                         android:layout_marginBottom="32dp">
 
                         <TextView

@@ -1,8 +1,6 @@
 package com.mediustechnologies.payemi.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,8 +11,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -34,13 +30,11 @@ import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.transaction_chat;
-import com.mediustechnologies.payemi.adapters.transction_chatAdapter;
+import com.mediustechnologies.payemi.adapters.TransactionHistoryAdapter;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiTransactionPageBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.security.auth.login.LoginException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,8 +44,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
     private final Context context = this;
     private ActivityPayEmiTransactionPageBinding binding;
     private ArrayList<transaction_chat> chatlist;
-    private final String TAG = "tag";
-    private String logo,name;
+    private String logo,name, loanname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +60,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
     private void getAllTransaction() {
 
         String biller_id = getIntent().getStringExtra("biller_id");
-//        biller_id = "OU12LO000NATGJ";
+
         String token = utils.access_token;
 
         Call<AllTransactions> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().allTransaction(token,utils.profileId,biller_id);
@@ -168,10 +161,10 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        transction_chatAdapter adapter = new transction_chatAdapter(context, chatlist);
+        TransactionHistoryAdapter adapter = new TransactionHistoryAdapter(context, chatlist);
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListner(new transction_chatAdapter.onItemClick() {
+        adapter.setOnItemClickListner(new TransactionHistoryAdapter.onItemClick() {
             @Override
             public void onItemClick(int postion) {
 
@@ -180,7 +173,7 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
                 if(item.getType().equals("transaction")) {
                     Intent i = new Intent(context, Transaction_Details.class);
                     i.putExtra("item", item);
-                    i.putExtra("logl", logo);
+                    i.putExtra("logo", logo);
                     startActivity(i);
                 }else{
                     // code for cashback
@@ -209,15 +202,9 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
                             }
 
                             @Override
-                            public void onScratchComplete() {
-
-                            }
+                            public void onScratchComplete() { }
                         });
-
-
                     }
-
-
                     else{
 
                     }
@@ -264,7 +251,8 @@ public class EMITransactionHistory extends BaseAppCompatActivity implements Popu
 
         name = getIntent().getStringExtra("name");
         logo = getIntent().getStringExtra("logo");
-
+        loanname = getIntent().getStringExtra("lonaname");
+        binding.loanName.setText(loanname);
         Glide.with(binding.image).load(logo).into(binding.image);
         binding.bankname.setText(name);
         binding.backButton.setOnClickListener(view -> finish());

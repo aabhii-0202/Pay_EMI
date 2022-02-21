@@ -134,7 +134,10 @@ public class emiListItemAdapter extends RecyclerView.Adapter<emiListItemAdapter.
         public void set(String img,String emiAmount,String Bank_Name,String Loan_Name,String Paid_Amount,String Total_Amount,int progress){
 
             Glide.with(icon).load(img).into(icon);
-            emiamount.setText("₹"+emiAmount);
+            if(emiAmount==null||emiAmount.equalsIgnoreCase("null")){
+                emiamount.setVisibility(View.GONE);
+            }else
+                emiamount.setText("₹"+emiAmount);
             bankname.setText(Bank_Name);
             loanname.setText(Loan_Name);
             Paid_Amount = formatinword(Paid_Amount);

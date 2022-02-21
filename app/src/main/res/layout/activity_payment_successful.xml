@@ -53,6 +53,7 @@
 
 
             <pl.droidsonroids.gif.GifImageView
+                android:visibility="gone"
                 android:id="@+id/gif"
                 android:layout_width="159dp"
                 android:layout_height="159dp"
@@ -64,10 +65,11 @@
                 android:layout_width="159dp"
                 android:layout_height="159dp"
                 android:id="@+id/failedimg"
-                android:src="@drawable/ic_crosspopupred"
+                android:src="@drawable/ic_processing"
                 android:layout_gravity="center"
                 android:layout_marginTop="64dp"
-                android:visibility="gone"/>
+                android:layout_marginBottom="32dp"
+                android:visibility="visible"/>
 
             <TextView
                 android:id="@+id/paymentstatus"
@@ -76,9 +78,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:gravity="center"
                 android:layout_marginTop="4dp"
-                android:text="Bill Payment Successful"
+                android:text="Bill Payment Processing"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
-                android:textColor="#0c8f2d"
+                android:textColor="#ffa300"
                 android:textSize="23sp" />
 
             <TextView
@@ -138,17 +140,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="  Completed | 15 Oct 21 11:34 AM"
+                android:text="  Processing | 15 Oct 21 11:34 AM"
                 android:fontFamily="@font/gtwalsheim_pro_regular"
                 android:textColor="@color/black"
                 android:textSize="13sp"
-                app:drawableStartCompat="@drawable/ic_tick" />
+                app:drawableStartCompat="@drawable/ic_processing" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/scratchpopup"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginTop="32dp"
+                android:visibility="gone"
                 >
 
                 <ImageView
@@ -786,7 +789,6 @@
 
                 <Button
                     android:id="@+id/share"
-                    android:visibility="visible"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                     android:layout_width="155dp"
                     android:layout_height="wrap_content"
