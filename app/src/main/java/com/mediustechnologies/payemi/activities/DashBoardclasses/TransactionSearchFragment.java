@@ -28,12 +28,7 @@ import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.TransactionSearchFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -138,7 +133,9 @@ public class TransactionSearchFragment extends Fragment {
             agentid.setText(response.getData().get(0).getAgentId());
             billername.setText(response.getData().get(0).getBiller_name());
             amount.setText(response.getData().get(0).getAmount());
-            transactiondate.setText(response.getData().get(0).getTransaction_date());
+            String date = response.getData().get(0).getTransaction_date();
+            date  = format(date);
+            transactiondate.setText(date);
             txnrefid.setText(response.getData().get(0).getTransaction_ref_id());
             status.setText(response.getData().get(0).getTransation_status());
 
@@ -158,6 +155,18 @@ public class TransactionSearchFragment extends Fragment {
         }
 
 
+    }
+
+    private String format(String s){
+        //  2021-12-21T`08:22:07Z
+
+        String date = s.substring(0,10);
+        String time = s.substring(12,16);
+
+        String ans = date+" | "+time;
+
+
+        return ans;
     }
 
     private void callapiforrefid(String refid) {

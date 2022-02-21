@@ -194,7 +194,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                         setData();
                         String status = data.getTransation_status();
                         status = status.toLowerCase();
-                        if(status.equalsIgnoreCase("SU")||status.contains("success")){
+                        if(status.equalsIgnoreCase("su")||status.contains("success")){
                             paymentsuccess();
                         }else{
                             if(nooftrials<10){
@@ -204,7 +204,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                             }
 
                             else {
-                                paymentsuccess();
+//                                paymentsuccess();
                             }
                         }
                         binding.scrollView.setVisibility(View.VISIBLE);
