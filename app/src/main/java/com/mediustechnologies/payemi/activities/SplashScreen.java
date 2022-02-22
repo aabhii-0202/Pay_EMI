@@ -77,6 +77,7 @@ public class SplashScreen extends BaseAppCompatActivity {
                                 utils.customer_id = custid;
                                 utils.name = name;
                                 utils.profileUrl=path;
+                                utils.profileUrl="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg";
                                 finish();
                             }
                         }else{

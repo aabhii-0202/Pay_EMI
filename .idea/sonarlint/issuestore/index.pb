@@ -23,8 +23,6 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 Å
 Qapp/src/main/java/com/mediustechnologies/payemi/helper/BaseAppCompatActivity.java,e\e\eea954710f0be5494295d31ec59b5af7cc0f8e26
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 Å
 Qapp/src/main/java/com/mediustechnologies/payemi/DTO/TransactionSearchDataDTO.java,0\e\0e29f2ef31d1f3cf7db316e7de2aedc9aa5a6c33
 ä
@@ -35,8 +33,6 @@ Zapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionSearchRe
 japp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintTrackingFragment.java,7\b\7bb7042abda92406fb6a0d9ddd0d7aff87978555
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/AddLoanAccount.java,6\7\671c6190ac808fe520b5ed3b42d18d5a2633308e
 É
