@@ -364,6 +364,33 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
             File file = save();
             if(file != null) share(file);
         });
+
+        binding.download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadbill();
+            }
+        });
+    }
+
+    private void downloadbill() {
+//        code to download
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private void share(File file){

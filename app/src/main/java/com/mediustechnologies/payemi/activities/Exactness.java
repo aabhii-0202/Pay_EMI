@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.CreateOrderIdResponse;
 import com.mediustechnologies.payemi.DTO.HomepageDTO;
-import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
+import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Exactness extends BaseAppCompatActivity {
@@ -19,8 +24,10 @@ public class Exactness extends BaseAppCompatActivity {
     private ActivityPayEmiBinding binding;
     private final Context context = this;
     private HomepageDTO data;
-    private String billerName,bill_id,profile_id,url;
+    private String billerName,bill_id,profile_id,url,order_id;
     private String Exactness;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +82,8 @@ public class Exactness extends BaseAppCompatActivity {
         binding.customerName.setText(customer);
         binding.billername.setText("Paying to "+billerName);
 
-
         bill_id = getIntent().getStringExtra("bill_id");
         profile_id = getIntent().getStringExtra("profile_id");
-
-//        if(exactness.equals("Exact")){
-//            binding.enterAmount.setEnabled(false);
-//        }
-
 
         binding.payButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,31 +114,66 @@ public class Exactness extends BaseAppCompatActivity {
                 }else {
                     next = true;
                 }
-
-
-
-                if(next) nextScreen();
+                if(next) getOrderId();
             }
         });
     }
 
+    private void getOrderId() {
+
+        String amount = binding.enterAmount.getText().toString();
+        int d = Integer.parseInt(amount);
+        d = d*100;
+        String note = binding.note.getText().toString();
+        Call<CreateOrderIdResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getRazorpayOrderId(utils.access_token,utils.profileId,bill_id,d,note);
+
+        call.enqueue(new Callback<CreateOrderIdResponse>() {
+            @Override
+            public void onResponse(Call<CreateOrderIdResponse> call, Response<CreateOrderIdResponse> response) {
+                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                        order_id = response.body().getOrder_id();
+                    }else{
+                        try {
+                            utils.errortoast(context,response.body().getMessage());
+                        }catch (Exception e){
+                            Log.e("tag",e.toString());
+                        }
+                    }
+                }else {
+                    Toast.makeText(context, "Failed "+response.code(), Toast.LENGTH_SHORT).show();
+                    Log.e("tag",""+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CreateOrderIdResponse> call, Throwable t) {
+                Toast.makeText(context, "Failed "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("tag",t.getMessage());
+            }
+        });
 
 
-    private void nextScreen(){
+    }
+
+
+    private void nextScreen() {
+
+
+//        https://razorpay.com/docs/payments/payment-gateway/android-integration/standard/build-integration/
 
 
         //todo initialise razorpay again
+//        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
 
-        Intent i = new Intent(context, SelectPaymentMethod.class);
-        i.putExtra("billerName",billerName);
-        i.putExtra("bill_id",bill_id);
-        i.putExtra("profile_id",profile_id);
-        i.putExtra("logo",url);
-        i.putExtra("amount",binding.enterAmount.getText().toString());
-        startActivity(i);
-    }
 
-    private void razorpaypaymentsuccess(){
+//        Intent i = new Intent(context, SelectPaymentMethod.class);
+//        i.putExtra("billerName",billerName);
+//        i.putExtra("bill_id",bill_id);
+//        i.putExtra("profile_id",profile_id);
+//        i.putExtra("logo",url);
+//        i.putExtra("amount",binding.enterAmount.getText().toString());
+//        startActivity(i);
 
     }
 

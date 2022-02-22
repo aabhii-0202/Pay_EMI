@@ -9,18 +9,14 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -29,21 +25,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.bumptech.glide.Glide;
-import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.mediustechnologies.payemi.ApiResponse.ProfileInfoResponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ProfileFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
-
-import java.io.File;
-
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Multipart;
 
 public class ProfileFraggment extends Fragment {
 
@@ -93,7 +89,7 @@ public class ProfileFraggment extends Fragment {
             String mail = binding.profilemail.getText().toString();
             String username = binding.profileUsername.getText().toString();
             String address = binding.profileaddress.getText().toString();
-            Bitmap imgurl = null;
+            MultipartBody.Part imgurl = null;
 
 
 
@@ -234,6 +230,9 @@ public class ProfileFraggment extends Fragment {
 
                 alertDialog.cancel();
                 takepermissionforcamera();
+
+
+
             }
         });
 
@@ -247,6 +246,10 @@ public class ProfileFraggment extends Fragment {
 
 
     }
+
+
+
+
 
     private void takepermissionforcamera() {
 
@@ -264,23 +267,9 @@ public class ProfileFraggment extends Fragment {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == REQUEST_CODE_CAMERA && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Images.Media.TITLE, "New Picture");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
-            cam_uri = requireContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, cam_uri);
-            startCamera.launch(cameraIntent);
-        }
-        else{
-            Toast.makeText(context, "Permission Not Granted", Toast.LENGTH_SHORT).show();
-        }
-    }
+
+
 
     ActivityResultLauncher<Intent> startCamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -290,6 +279,8 @@ public class ProfileFraggment extends Fragment {
                     if (result.getResultCode() == RESULT_OK) {
                         binding.profileImage.setImageURI(cam_uri);
                         convert(cam_uri);
+
+
                     }
                 }
             });
@@ -308,5 +299,11 @@ public class ProfileFraggment extends Fragment {
 
 
 
+
     }
+
+
+
+
+
 }

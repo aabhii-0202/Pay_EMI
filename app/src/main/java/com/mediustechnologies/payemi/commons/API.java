@@ -7,6 +7,8 @@ import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.*;
 import com.mediustechnologies.payemi.ApiResponse.*;
 import java.util.List;
+
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -126,6 +128,17 @@ public interface API {
                                                 @Query("email") String email,
                                                 @Query("user_name") String user_name,
                                                 @Query("address") String address,
-                                                @Body Bitmap profile_url);
+                                                @Part MultipartBody.Part image);
+
+    @GET("getPaymentReceiptPDFNoauth/")
+    Call<String> download (@Query("bill_id") String bill_id);
+
+    @POST("CreateOrder-noauth/")
+    Call<CreateOrderIdResponse> getRazorpayOrderId (@Header("Authorization") String token,
+                                                    @Query("id") String id,
+                                                    @Query("bill_id") String bill_id,
+                                                    @Query("amount") int amount,
+                                                    @Query("notes") String notes
+    );
 
 }

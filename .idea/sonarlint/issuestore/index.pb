@@ -31,8 +31,6 @@ Zapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionSearchRe
 \app/src/main/java/com/mediustechnologies/payemi/activities/payments/SelectPaymentMethod.java,e\b\ebdca3dc3afe2694060de39de6e15864b697fe67
 š
 japp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintTrackingFragment.java,7\b\7bb7042abda92406fb6a0d9ddd0d7aff87978555
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/AddLoanAccount.java,6\7\671c6190ac808fe520b5ed3b42d18d5a2633308e
 ƒ
@@ -55,7 +53,5 @@ Papp/src/main/java/com/mediustechnologies/payemi/adapters/emiListItemAdapter.jav
 Wapp/src/main/java/com/mediustechnologies/payemi/adapters/TransactionHistoryAdapter.java,2\e\2e0d982ea62787ea211b226d7ed52cbbd3fe90a0
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/GetLoanDetails.java,d\7\d753bbf7c976197d51c279a574fbdb3497742832
-y
-Iapp/src/main/java/com/mediustechnologies/payemi/activities/Exactness.java,4\9\49d13b49e2f0404aad1bff3fe639fe24f8b14560
 
 Qapp/src/main/java/com/mediustechnologies/payemi/activities/PaymentSuccessful.java,e\5\e5ebdba8d2a963df0189728ad321a16d9d356832
