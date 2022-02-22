@@ -131,7 +131,7 @@ public interface API {
                                                 @Part MultipartBody.Part image);
 
     @GET("getPaymentReceiptPDFNoauth/")
-    Call<String> download (@Query("bill_id") String bill_id);
+    Call<DownloadBillResponse> download (@Header("Authorization") String token,@Query("bill_id") String bill_id);
 
     @POST("CreateOrder-noauth/")
     Call<CreateOrderIdResponse> getRazorpayOrderId (@Header("Authorization") String token,

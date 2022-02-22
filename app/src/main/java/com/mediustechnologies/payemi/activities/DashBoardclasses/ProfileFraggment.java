@@ -271,6 +271,7 @@ public class ProfileFraggment extends Fragment {
 
 
 
+
     ActivityResultLauncher<Intent> startCamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -301,9 +302,4 @@ public class ProfileFraggment extends Fragment {
 
 
     }
-
-
-
-
-
 }

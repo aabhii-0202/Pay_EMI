@@ -53,5 +53,3 @@ Papp/src/main/java/com/mediustechnologies/payemi/adapters/emiListItemAdapter.jav
 Wapp/src/main/java/com/mediustechnologies/payemi/adapters/TransactionHistoryAdapter.java,2\e\2e0d982ea62787ea211b226d7ed52cbbd3fe90a0
 ~
 Napp/src/main/java/com/mediustechnologies/payemi/activities/GetLoanDetails.java,d\7\d753bbf7c976197d51c279a574fbdb3497742832
-Å
-Qapp/src/main/java/com/mediustechnologies/payemi/activities/PaymentSuccessful.java,e\5\e5ebdba8d2a963df0189728ad321a16d9d356832

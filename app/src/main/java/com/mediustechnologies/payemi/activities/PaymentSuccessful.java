@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mediustechnologies.payemi.ApiResponse.DownloadBillResponse;
 import com.mediustechnologies.payemi.ApiResponse.GetBillDetailsResponse;
 import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard;
 import com.mediustechnologies.payemi.ApiResponse.getCashback;
@@ -51,6 +53,7 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -67,7 +70,9 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     private boolean scratched,paymentstatus;
     private billFetchDTO data;
     private int nooftrials;
-
+    private final int permissionforscreanshot = 10;
+    private final int permissionfordownload = 20;
+    private int permission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,19 +197,21 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         data = response.body().getData().get(0);
                         setData();
-                        String status = data.getTransation_status();
-                        status = status.toLowerCase();
-                        if(status.equalsIgnoreCase("su")||status.contains("success")){
-                            paymentsuccess();
-                        }else{
-                            if(nooftrials<10){
-                                new Handler().postDelayed(() -> {
-                                    getbilldetails();
-                                },5000);
-                            }
+                        binding.download.setOnClickListener(view -> downloadbill());
+                        if(paymentstatus) {
+                            String status = data.getTransation_status();
+                            status = status.toLowerCase();
+                            if (status.equalsIgnoreCase("su") || status.contains("success")) {
+                                paymentsuccess();
 
-                            else {
+                            } else {
+                                if (nooftrials < 10) {
+                                    new Handler().postDelayed(() -> {
+                                        getbilldetails();
+                                    }, 5000);
+                                } else {
 //                                paymentsuccess();
+                                }
                             }
                         }
                         binding.scrollView.setVisibility(View.VISIBLE);
@@ -364,18 +371,53 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
             File file = save();
             if(file != null) share(file);
         });
-
-        binding.download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                downloadbill();
-            }
-        });
     }
+
 
     private void downloadbill() {
 //        code to download
 
+        String token = utils.access_token;
+        bill_id = "4945";
+
+        Call<DownloadBillResponse> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().download(token,bill_id);
+
+        call.enqueue(new Callback<DownloadBillResponse>() {
+            @Override
+            public void onResponse(Call<DownloadBillResponse> call, Response<DownloadBillResponse> response) {
+                if(response.body()!=null){
+                    String url = response.body().getFile_url();
+
+                    permission = permissionfordownload;
+                    if(!checkPermission()) return;
+
+                    String title = "Pay_EMI_"+ url.substring(0,url.length()-3);
+
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    request.setTitle(title);
+                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB){
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    }
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,title+".pdf");
+                    DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                    request.setMimeType("application/pdf");
+                    request.allowScanningByMediaScanner();
+                    request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);
+                    downloadManager.enqueue(request);
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DownloadBillResponse> call, Throwable t) {
+                Toast.makeText(context, "Something Went Wrong"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("tag",t.getMessage());
+            }
+        });
 
 
 
@@ -440,6 +482,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
 
     private File save(){
 
+        permission = permissionforscreanshot;
         if(!checkPermission()){
             return null;
         }
@@ -492,14 +535,21 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
         return true;
     }
 
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(grantResults.length>0&& grantResults[0]==PackageManager.PERMISSION_GRANTED){
-            File file = save();
-            if(file != null) share(file);
+
+            if(permission==permissionforscreanshot) {
+                File file = save();
+                if (file != null) share(file);
+            }else{
+                downloadbill();
+            }
         }
 
-        else Toast.makeText(context, "Grant permission to share image.", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Grant permission to share/download image.", Toast.LENGTH_SHORT).show();
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
