@@ -2,6 +2,7 @@ package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.ProfileInfoResponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
@@ -48,6 +50,7 @@ public class ProfileFraggment extends Fragment {
 
 
         binding.datalayout.setVisibility(View.GONE);
+        Glide.with(binding.profileImage).load(utils.profileUrl).into(binding.profileImage);
         callapiforprofile();
 
 
@@ -61,7 +64,7 @@ public class ProfileFraggment extends Fragment {
             String mail = binding.profilemail.getText().toString();
             String username = binding.profileUsername.getText().toString();
             String address = binding.profileaddress.getText().toString();
-            String imgurl = "";
+            Bitmap imgurl = null;
 
 
 

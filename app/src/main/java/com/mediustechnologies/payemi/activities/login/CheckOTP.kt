@@ -59,7 +59,7 @@ class CheckOTP : BaseAppCompatActivity() {
 
     private fun resendOTP() {
         if (phone!!.length == 10) {
-            val call = RetrofitClient().getInstance(context, urlconstants.AuthURL).api.sendOTP(
+            val call = RetrofitClient().getInstance(context, urlconstants.AuthURL).api.resendOTP(
                 phone,
                 "androidapp"
             )
@@ -112,6 +112,7 @@ class CheckOTP : BaseAppCompatActivity() {
                             utils.profileId = response.body()!!.id
                             utils.customer_id = response.body()!!.customer_id
                             utils.name = response.body()!!.fullname
+                            utils.profileUrl = response.body()!!.path
                             val preferences =
                                 applicationContext.getSharedPreferences("PAY_EMI", MODE_PRIVATE)
                             preferences.edit().putString("phone", phone).apply()
@@ -120,6 +121,7 @@ class CheckOTP : BaseAppCompatActivity() {
                             preferences.edit().putString("name",response.body()!!.fullname).apply()
                             preferences.edit().putString("profileid", response.body()!!.id).apply()
                             preferences.edit().putString("cutomerid", response.body()!!.customer_id).apply()
+                            preferences.edit().putString("path", response.body()!!.path).apply()
                             if (intent.getBooleanExtra("newUser", true)) {
                                 val i = Intent(context, EmiCategories::class.java)
                                 i.flags =

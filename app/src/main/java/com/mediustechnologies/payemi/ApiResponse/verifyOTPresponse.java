@@ -30,6 +30,18 @@ public class verifyOTPresponse extends BaseApiResponse{
     @Expose
     private String customer_id;
 
+    @SerializedName("path")
+    @Expose
+    private String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public String getFullname() {
         return fullname;
     }

@@ -1,5 +1,7 @@
 package com.mediustechnologies.payemi.commons;
 
+import android.graphics.Bitmap;
+
 import com.google.gson.JsonObject;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.*;
@@ -12,6 +14,10 @@ public interface API {
 
     @POST("sendotp/")
     Call<sendOTPResponse> sendOTP (@Query("phone")String phone,
+                                   @Query("source")String source);
+
+    @POST("resendotp/")
+    Call<sendOTPResponse> resendOTP (@Query("phone")String phone,
                                    @Query("source")String source);
 
     @POST("checkotp/")
@@ -120,6 +126,6 @@ public interface API {
                                                 @Query("email") String email,
                                                 @Query("user_name") String user_name,
                                                 @Query("address") String address,
-                                                @Query("photo") String photo);
+                                                @Body Bitmap profile_url);
 
 }

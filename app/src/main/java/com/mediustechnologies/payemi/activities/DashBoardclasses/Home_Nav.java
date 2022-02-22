@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
@@ -58,8 +59,6 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         binding = ActivityHomeNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
         binding.addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +79,8 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
 
+        ImageView profile  = slidingRootNav.getLayout().findViewById(R.id.navprofilepic);
+        Glide.with(profile).load(utils.profileUrl).into(profile);
         ImageView logout = slidingRootNav.getLayout().findViewById(R.id.nav_logout);
         logout.setOnClickListener(view ->{
             SharedPreferences preferences = getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
