@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.CreateOrderIdResponse;
 import com.mediustechnologies.payemi.DTO.HomepageDTO;
+import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
@@ -123,7 +124,6 @@ public class Exactness extends BaseAppCompatActivity {
 
         String amount = binding.enterAmount.getText().toString();
         int d = Integer.parseInt(amount);
-        d = d*100;
         String note = binding.note.getText().toString();
         Call<CreateOrderIdResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getRazorpayOrderId(utils.access_token,utils.profileId,bill_id,d,note);
 
@@ -133,6 +133,7 @@ public class Exactness extends BaseAppCompatActivity {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         order_id = response.body().getOrder_id();
+                        nextScreen();
                     }else{
                         try {
                             utils.errortoast(context,response.body().getMessage());
@@ -167,13 +168,13 @@ public class Exactness extends BaseAppCompatActivity {
 //        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
 
 
-//        Intent i = new Intent(context, SelectPaymentMethod.class);
-//        i.putExtra("billerName",billerName);
-//        i.putExtra("bill_id",bill_id);
-//        i.putExtra("profile_id",profile_id);
-//        i.putExtra("logo",url);
-//        i.putExtra("amount",binding.enterAmount.getText().toString());
-//        startActivity(i);
+        Intent i = new Intent(context, SelectPaymentMethod.class);
+        i.putExtra("billerName",billerName);
+        i.putExtra("bill_id",bill_id);
+        i.putExtra("profile_id",profile_id);
+        i.putExtra("logo",url);
+        i.putExtra("amount",binding.enterAmount.getText().toString());
+        startActivity(i);
 
     }
 
