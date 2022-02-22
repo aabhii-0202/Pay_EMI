@@ -121,6 +121,7 @@ public interface API {
     Call <ProfileInfoResponse> profileInfo(@Header("Authorization") String token,
                                            @Query("phone_number") String phone_number);
 
+    @Multipart
     @POST("profileInfo/")
     Call<ProfileInfoResponse> updateProfileInfo(@Header("Authorization") String token,
                                                 @Query("phone_number") String phone_number,
@@ -129,6 +130,14 @@ public interface API {
                                                 @Query("user_name") String user_name,
                                                 @Query("address") String address,
                                                 @Part MultipartBody.Part image);
+
+    @POST("profileInfo/")
+    Call<ProfileInfoResponse> updateProfileInfowithoutpic(@Header("Authorization") String token,
+                                                @Query("phone_number") String phone_number,
+                                                @Query("fullname") String fullname,
+                                                @Query("email") String email,
+                                                @Query("user_name") String user_name,
+                                                @Query("address") String address);
 
     @GET("getPaymentReceiptPDFNoauth/")
     Call<DownloadBillResponse> download (@Header("Authorization") String token,@Query("bill_id") String bill_id);

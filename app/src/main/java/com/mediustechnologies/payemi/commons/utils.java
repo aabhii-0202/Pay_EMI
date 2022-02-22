@@ -33,6 +33,9 @@ public class utils extends Activity {
         preferences.edit().putString("token", "Bearer ").apply();
         preferences.edit().putString("profileid","").apply();
         preferences.edit().putString("refresh_token", "Bearer ").apply();
+        preferences.edit().putString("name","").apply();
+        preferences.edit().putString("cutomerid", "").apply();
+        preferences.edit().putString("path", "").apply();
 
         Intent i = new Intent(activitycontext, SendOTP.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -48,13 +51,13 @@ public class utils extends Activity {
             public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {
 
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null){
-                    String t = "Bearer "+response.body().toString();
+                    String t = "Bearer "+response.body().getAccess_token();
                     utils.access_token = t;
                     SharedPreferences preferences = application.getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
                     preferences.edit().putString("token",t).apply();
                     Log.d("tag","Refresh token: "+t);
                 }
-                else if(response.code()==UNAUTH){
+                else if(response.code()==UNAUTH){//7678690687
                     //go to login page
                     loginAgain(context);
 
