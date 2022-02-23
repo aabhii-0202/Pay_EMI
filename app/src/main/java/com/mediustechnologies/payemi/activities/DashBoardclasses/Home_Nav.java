@@ -187,6 +187,11 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
             ComplaintTrackingFragment complaintTrackingFragment = new ComplaintTrackingFragment();
             transaction.replace(R.id.homeframe,complaintTrackingFragment);
         }
+        else if(position == POS_NOTIFICATION){
+            hide_detail("Notifications");
+            NotificationFragment notificationFragment = new NotificationFragment();
+            transaction.replace(R.id.homeframe,notificationFragment);
+        }
 
         else{
             hide_detail("Register Complaint");
