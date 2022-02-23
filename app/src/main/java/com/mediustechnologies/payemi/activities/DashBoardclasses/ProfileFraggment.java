@@ -26,15 +26,23 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mediustechnologies.payemi.ApiResponse.ProfileInfoResponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ProfileFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -120,16 +128,25 @@ public class ProfileFraggment extends Fragment {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
-                        try {
-                            binding.profilephone.setText(utils.phone);
-                            binding.profilename.setText(utils.name);
-                            binding.profilemail.setText(response.body().getData().get(0).getEmail());
-                            binding.profileUsername.setText(response.body().getData().get(0).getUser_name());
-                            binding.profileaddress.setText(response.body().getData().get(0).getAddress());
-                        }
-                        catch (Exception e){
-                            e.printStackTrace();
+                        if(!response.body().getData().isEmpty()) {
+                            try {
+                                binding.profilephone.setText(utils.phone);
+                                binding.profilename.setText(utils.name);
+                                binding.profilemail.setText(response.body().getData().get(0).getEmail());
+                                binding.profileUsername.setText(response.body().getData().get(0).getUser_name());
+                                binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
+                                SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+
+                                preferences.edit().putString("name", response.body().getData().get(0).getUser_name()).apply();
+                                preferences.edit().putString("profileid", response.body().getData().get(0).getId()).apply();
+                                preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
+                                preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
+                                utils.profileUrl = response.body().getData().get(0).getProfile_url();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+
+                            }
                         }
 
                         binding.datalayout.setVisibility(View.VISIBLE);
@@ -284,18 +301,48 @@ public class ProfileFraggment extends Fragment {
         return byteBuff.toByteArray();
     }
 
+    private JsonObject ApiJsonMap() {
+
+        JsonObject gsonObject = new JsonObject();
+        try {
+            JSONObject jsonObj_ = new JSONObject();
+
+//            for (Map.Entry item:feilds.entrySet()){
+//                jsonObj_.put((String) item.getKey(),item.getValue());
+//            }
+            jsonObj_.put("fullname",binding.profilename.getText().toString());
+            jsonObj_.put("email",binding.profilemail.getText().toString());
+            jsonObj_.put("user_name",binding.profileUsername.getText().toString());
+            jsonObj_.put("address",binding.profileaddress.getText().toString());
+
+
+            JsonParser jsonParser = new JsonParser();
+            gsonObject = (JsonObject) jsonParser.parse(jsonObj_.toString());
+
+            //print parameter
+            Log.d("tag", "AS PARAMETER  " + gsonObject);
+
+        } catch (Exception e) {
+            Log.d("tag","Add loan Account JSON exception line 154");
+        }
+
+        return gsonObject;
+    }
+
     private void uploadImage(String name, String mail, String username, String address, byte[] imageBytes){
 
         MultipartBody.Part body;
         Call<ProfileInfoResponse> call;
+
+        JsonObject josnbody = ApiJsonMap();
         if(imageBytes!=null){
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
             body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
             call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfo(utils.access_token,utils.phone,
-                    name,mail,username,address,body);
+                    josnbody,body);
         }else{
             call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfowithoutpic(utils.access_token,utils.phone,
-                    name,mail,username,address);
+                    josnbody);
         }
 
 

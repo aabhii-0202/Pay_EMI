@@ -125,19 +125,13 @@ public interface API {
     @POST("profileInfo/")
     Call<ProfileInfoResponse> updateProfileInfo(@Header("Authorization") String token,
                                                 @Query("phone_number") String phone_number,
-                                                @Query("fullname") String fullname,
-                                                @Query("email") String email,
-                                                @Query("user_name") String user_name,
-                                                @Query("address") String address,
+                                                @Body JsonObject body,
                                                 @Part MultipartBody.Part image);
 
     @POST("profileInfo/")
     Call<ProfileInfoResponse> updateProfileInfowithoutpic(@Header("Authorization") String token,
                                                 @Query("phone_number") String phone_number,
-                                                @Query("fullname") String fullname,
-                                                @Query("email") String email,
-                                                @Query("user_name") String user_name,
-                                                @Query("address") String address);
+                                                @Body JsonObject body);
 
     @GET("getPaymentReceiptPDFNoauth/")
     Call<DownloadBillResponse> download (@Header("Authorization") String token,@Query("bill_id") String bill_id);
@@ -148,6 +142,12 @@ public interface API {
                                                     @Query("bill_id") String bill_id,
                                                     @Query("amount") int amount,
                                                     @Query("notes") String notes
+    );
+
+    @GET("shownotification/")
+    Call<ShowNotificationResponse> showNotificatoin (
+            @Header("Authorization") String token,
+            @Query("phone_number") String phone_number
     );
 
 }
