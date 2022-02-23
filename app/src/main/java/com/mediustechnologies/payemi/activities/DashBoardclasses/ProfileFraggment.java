@@ -219,7 +219,6 @@ public class ProfileFraggment extends Fragment {
                         Boolean camerapermission = result.get(
                                 Manifest.permission.CAMERA);
                         if (camerapermission != null && camerapermission) {
-                            Log.d("camera","Granted");
                             camera();
                         } else {
                             Toast.makeText(context, "Please give permission to open camera.", Toast.LENGTH_SHORT).show();

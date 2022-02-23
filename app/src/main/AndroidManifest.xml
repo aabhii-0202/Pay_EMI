@@ -30,27 +30,27 @@
         <activity
             android:name=".activities.PaymentSuccessful"
             android:exported="false" />
-        <activity
-            android:name=".activities.payments.NetBanking"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.LinkWallet"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.UPIPayment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.CardPayment"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activities.payments.NetBanking"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.LinkWallet"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.UPIPayment"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.CardPayment"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activities.EMITransactionHistory"
             android:exported="false" />
         <activity
             android:name=".activities.GetLoanDetails"
             android:exported="false" />
-        <activity
-            android:name=".activities.payments.SelectPaymentMethod"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activities.payments.SelectPaymentMethod"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activities.Transaction_Details"
             android:exported="false" />
@@ -71,7 +71,13 @@
             android:exported="false"/>
         <activity
             android:name=".activities.Exactness"
-            android:exported="false" />
+            android:exported="true" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".activities.AddLoanAccount"
             android:exported="false" />
@@ -98,10 +104,10 @@
 
 
         <!-- below code for razorpay -->
-        <!--
+
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="rzp.device_token.share" />
             </intent-filter>
@@ -120,13 +126,13 @@
                     android:scheme="io.rzp" />
             </intent-filter>
         </activity>
-        -->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <meta-data
-            android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_I4yUvwRiUPNWay" />
+<!--        <meta-data-->
+<!--            android:name="com.razorpay.ApiKey"-->
+<!--            android:value="rzp_test_I4yUvwRiUPNWay" />-->
 
         <provider
             android:name="androidx.core.content.FileProvider"

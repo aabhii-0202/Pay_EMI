@@ -1,0 +1,17 @@
+
+G
+java:S1602E",Remove useless curly braces around statement(–ƒ¯âøÿÿÿÿ
+G
+java:S1602I",Remove useless curly braces around statement(Á¹Åùùÿÿÿÿ
+Y
+java:S1659{"CDeclare "amount" and all following declarations on a separate line.(ï¼¨
+d
+java:S1192¿"HDefine a constant instead of duplicating this literal "Failed " 4 times.(ù ø‡úÿÿÿÿ
+k	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ƒ¯âøÿÿÿÿ
+g	java:S117ô"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÇ¶ö
+g	java:S117ô"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÇ¶ö
+>
+java:S1604N"(Make this anonymous inner class a lambda(äû™„
+y
+java:S1488¦"[Immediately return this expression instead of assigning it to the temporary variable "ans".(ïİï²8­³êäñ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÔ‹ÿÿÿÿÿ

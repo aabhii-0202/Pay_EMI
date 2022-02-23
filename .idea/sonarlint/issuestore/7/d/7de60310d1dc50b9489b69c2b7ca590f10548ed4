@@ -1,0 +1,6 @@
+
+o	java:S116"SRename this field "file_url" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã£Áë8ø­‰‘ò/
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ý§Ê­8¾é‰‘ò/
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÊÒÚüÿÿÿÿ8¾é‰‘ò/
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÊÒÚüÿÿÿÿ8¾é‰‘ò/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Üèèš

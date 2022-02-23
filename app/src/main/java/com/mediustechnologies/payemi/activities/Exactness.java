@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,24 +10,30 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.CreateOrderIdResponse;
 import com.mediustechnologies.payemi.DTO.HomepageDTO;
-import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod;
+import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Exactness extends BaseAppCompatActivity {
+public class Exactness extends BaseAppCompatActivity implements PaymentResultListener {
 
     private ActivityPayEmiBinding binding;
     private final Context context = this;
     private HomepageDTO data;
-    private String billerName,bill_id,profile_id,url,order_id;
+    private String billerName,bill_id,profile_id,url;
     private String Exactness;
+
 
 
 
@@ -36,14 +43,13 @@ public class Exactness extends BaseAppCompatActivity {
         binding = ActivityPayEmiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         init();
 
     }
 
     private void init(){
 
-
+        Checkout.preload(getApplicationContext());
         String exactness = null;
 
 
@@ -90,34 +96,40 @@ public class Exactness extends BaseAppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                boolean next = true;
-                String amont = binding.enterAmount.getText().toString();
-                String originalamount = getIntent().getStringExtra("amount");
-                double a = Double.parseDouble(amont);
-                double oa = Double.parseDouble(originalamount);
+                try {
+                    boolean next = true;
+                    String amont = binding.enterAmount.getText().toString();
+                    String originalamount = getIntent().getStringExtra("amount");
+                    double a = Double.parseDouble(amont);
+                    double oa = Double.parseDouble(originalamount);
 
-                if(Exactness == "up"){
-                    if(oa<=a){
+                    if (Exactness == "up") {
+                        if (oa <= a) {
+                            next = true;
+                        } else {
+                            Toast.makeText(context, "You are not allowed to pay any amount lower than Rs." + originalamount, Toast.LENGTH_SHORT).show();
+                            next = false;
+                        }
+                    } else if (Exactness == "down") {
+                        if (oa < a) {
+                            Toast.makeText(context, "You are not allowed to pay any amount greater than Rs." + originalamount, Toast.LENGTH_SHORT).show();
+                            next = false;
+                        } else next = true;
+
+                    } else if (Exactness == "any") {
+                        next = true;
+                    } else {
                         next = true;
                     }
-                    else {
-                        Toast.makeText(context, "You are not allowed to pay any amount lower than Rs."+originalamount, Toast.LENGTH_SHORT).show();
-                        next = false;
-                    }
-                }else if (Exactness == "down"){
-                    if(oa<a){
-                        Toast.makeText(context, "You are not allowed to pay any amount greater than Rs."+originalamount, Toast.LENGTH_SHORT).show();
-                        next = false;
-                    }else next = true;
-
-                }else if (Exactness == "any"){
-                        next = true;
-                }else {
-                    next = true;
+                    if (next) getOrderId();
                 }
-                if(next) getOrderId();
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         });
+
     }
 
     private void getOrderId() {
@@ -132,8 +144,9 @@ public class Exactness extends BaseAppCompatActivity {
             public void onResponse(Call<CreateOrderIdResponse> call, Response<CreateOrderIdResponse> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                        order_id = response.body().getOrder_id();
-                        nextScreen();
+                        String order_id = response.body().getOrder_id();
+                        String amount = Integer.toString(d*100);
+                        startPayment(utils.name,"Bill_id"+bill_id,order_id,amount,utils.phone);
                     }else{
                         try {
                             utils.errortoast(context,response.body().getMessage());
@@ -157,38 +170,69 @@ public class Exactness extends BaseAppCompatActivity {
 
     }
 
+    public void startPayment(String name,String description,String order_id
+    ,String amount,String phone) {
 
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
+        checkout.setImage(R.drawable.cornericon);
+        final Activity activity = this;
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", name);
+            options.put("description", description);
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            options.put("order_id", order_id);//from response of step 3.
+            options.put("theme.color", "#3399cc");
+            options.put("currency", "INR");
+            options.put("amount", amount);//pass amount in currency subunits
+            options.put("prefill.contact",phone);
+            JSONObject retryObj = new JSONObject();
+            retryObj.put("enabled", true);
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+            checkout.open(activity, options);
+
+        } catch(Exception e) {
+            Log.e("tag", "Error in starting Razorpay Checkout", e);
+        }
+    }
+
+
+
+
+
+    @Override
+    public void onPaymentSuccess(String s) {
+
+        System.out.println("-----------------------------------Success");
+//        Intent j = new Intent(context, PaymentSuccessful.class);
+//        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
+//        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+//        j.putExtra("status",true);
+//        startActivity(j);
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+
+        System.out.println(i+"  -----------------------------------Failed "+s);
+
+//        Intent j = new Intent(context, PaymentSuccessful.class);
+//        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
+//        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
+//        j.putExtra("status",false);
+//        startActivity(j);
+    }
     private void nextScreen() {
-
-
-//        https://razorpay.com/docs/payments/payment-gateway/android-integration/standard/build-integration/
-
-
-        //todo initialise razorpay again
-//        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
-
-
-        Intent i = new Intent(context, SelectPaymentMethod.class);
-        i.putExtra("billerName",billerName);
-        i.putExtra("bill_id",bill_id);
-        i.putExtra("profile_id",profile_id);
-        i.putExtra("logo",url);
-        i.putExtra("amount",binding.enterAmount.getText().toString());
-        startActivity(i);
-
+//        Intent i = new Intent(context, SelectPaymentMethod.class);
+//        i.putExtra("billerName",billerName);
+//        i.putExtra("bill_id",bill_id);
+//        i.putExtra("profile_id",profile_id);
+//        i.putExtra("logo",url);
+//        i.putExtra("amount",binding.enterAmount.getText().toString());
+//        startActivity(i);
     }
-
-    private void razorpaypaymentfailed(){
-        Toast.makeText(context, "Card payment failed", Toast.LENGTH_SHORT).show();
-        Log.d("tag", "Card Payment: Failed ");
-
-        Intent j = new Intent(context, PaymentSuccessful.class);
-        j.putExtra("billerName",getIntent().getStringExtra("billerName"));
-        j.putExtra("bill_id",getIntent().getStringExtra("bill_id"));
-        j.putExtra("status",false);
-        startActivity(j);
-
-    }
-
-
 }
