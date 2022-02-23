@@ -57,9 +57,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //razorpay
     implementation 'com.razorpay:checkout:1.6.15'
+    implementation 'com.google.android.gms:play-services-tasks:18.0.1'
+//    implementation 'com.androidx.support:customtabs:26.1.0'
 //    implementation files ( 'libs/razorpay-android-3.8.8.aar')
 //    implementation files ( 'libs/tez-client-api-0.9.4.aar')
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
