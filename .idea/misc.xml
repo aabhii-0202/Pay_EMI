@@ -15,6 +15,7 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.31145833333333334" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi_details.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi_transaction_page.xml" value="0.37135416666666665" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_payment_confirmation.xml" value="0.13645833333333332" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_payment_successful.xml" value="0.31145833333333334" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_taransaction_search.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_transaction_details.xml" value="0.2755208333333333" />
@@ -29,6 +30,8 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.21302083333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.3390625" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.2140625" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notificaion_item.xml" value="0.6" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notification_fragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/otpsentpopup.xml" value="0.3390625" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/profile_fragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/profile_picture_alert.xml" value="0.6" />
