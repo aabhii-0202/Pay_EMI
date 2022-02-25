@@ -43,6 +43,7 @@ public class AddLoanAccount extends BaseAppCompatActivity {
     private String url,biller_id,exactness;
     private inputParametersAdapter adapter;
     private LinkedHashMap<String, mandatoryParmsDTO> data;
+    private JsonObject gsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +152,7 @@ public class AddLoanAccount extends BaseAppCompatActivity {
         binding.linearLayout.setVisibility(View.GONE);
         binding.progressbar.setVisibility(View.VISIBLE);
         LinkedHashMap<String, String> feilds = adapter.getfeilds();
+        System.out.println("Feilds "+feilds.toString());
         if(verifydata(feilds))
 //        if(true)
         {
@@ -165,7 +167,9 @@ public class AddLoanAccount extends BaseAppCompatActivity {
             JSONObject jsonObj_ = new JSONObject();
 
             for (Map.Entry item:feilds.entrySet()){
-                jsonObj_.put((String) item.getKey(),item.getValue());
+                String key = (String) item.getKey();
+                key.replace("_"," ");
+                jsonObj_.put(key,item.getValue());
             }
 
 
@@ -224,16 +228,27 @@ public class AddLoanAccount extends BaseAppCompatActivity {
         String phone = utils.phone;
 //        phone = "99943713390";
 
-        LinkedHashMap<String, String> feilds = new LinkedHashMap<>();
-        feilds.put("Agreement number","TN3003CA0005203");
-        jsonObject = ApiJsonMap(feilds);
+
+
+        
+
+        String s ="";
+        s+="id -> "+id+"\n";
+        s+="biller_idbiller_id -> "+biller_id+"\n";
+        s+="phone -> "+phone+"\n\n";
+
+        s+= "Body\n"+jsonObject.toString();
+
+        System.out.println(s);
+
+
+
 
 
 
         Call<fetchBill> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().billfetch(utils.access_token,id,biller_id,phone,jsonObject);
 
 
-        String finalBiller_id = biller_id;
         call.enqueue(new Callback<fetchBill>() {
             @Override
             public void onResponse(Call<fetchBill> call, Response<fetchBill> response) {
@@ -254,7 +269,7 @@ public class AddLoanAccount extends BaseAppCompatActivity {
                         i.putExtra("bill", bill);
                         i.putExtra("exact", exactness);
                         i.putExtra("biller_name", getIntent().getStringExtra("biller_name"));
-                        i.putExtra("biller_id", finalBiller_id);
+                        i.putExtra("biller_id", biller_id);
                         startActivity(i);
                     }else{
                         try {
