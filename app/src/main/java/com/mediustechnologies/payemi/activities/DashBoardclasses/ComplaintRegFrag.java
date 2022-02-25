@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +89,24 @@ public class ComplaintRegFrag extends Fragment {
                     }else{
                         try {
                             utils.errortoast(context,response.body().getMessage());
+                            Dialog d = new Dialog(context);
+                            d.setContentView(R.layout.complaint_registered_popup);
+                            d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            TextView error = d.findViewById(R.id.errorMessage);
+                            LinearLayout parent = d.findViewById(R.id.parent);
+
+                            try{
+                                error.setText(response.body().getMessage());
+                                error.setVisibility(View.VISIBLE);
+                                parent.setVisibility(View.GONE);
+                                d.show();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast.makeText(context, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+
+
                         }catch (Exception e){
                             Log.e("tag",e.toString());
                         }

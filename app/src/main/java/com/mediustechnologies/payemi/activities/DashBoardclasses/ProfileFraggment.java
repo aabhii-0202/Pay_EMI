@@ -104,7 +104,7 @@ public class ProfileFraggment extends Fragment {
             String address = binding.profileaddress.getText().toString();
 
             try {
-                uploadImage(name,mail,username,address,getBytes(is));
+                uploadImage(getBytes(is));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -329,7 +329,7 @@ public class ProfileFraggment extends Fragment {
         return gsonObject;
     }
 
-    private void uploadImage(String name, String mail, String username, String address, byte[] imageBytes){
+    private void uploadImage(byte[] imageBytes){
 
         MultipartBody.Part body;
         Call<ProfileInfoResponse> call;
@@ -338,12 +338,60 @@ public class ProfileFraggment extends Fragment {
         if(imageBytes!=null){
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
             body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
-            call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfo(utils.access_token,utils.phone,
-                    josnbody,body);
-        }else{
-            call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfowithoutpic(utils.access_token,utils.phone,
-                    josnbody);
+            call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfilePic(utils.access_token,utils.phone, body);
+
+            call.enqueue(new Callback<ProfileInfoResponse>() {
+                @Override
+                public void onResponse(Call<ProfileInfoResponse> call, Response<ProfileInfoResponse> response) {
+                    binding.progress.setVisibility(View.GONE);
+
+                    if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                        if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                            if(!response.body().getData().isEmpty()) {
+                                try {
+                                    binding.profilephone.setText(utils.phone);
+                                    binding.profilename.setText(utils.name);
+                                    binding.profilemail.setText(response.body().getData().get(0).getEmail());
+                                    binding.profileUsername.setText(response.body().getData().get(0).getUser());
+                                    binding.profileaddress.setText(response.body().getData().get(0).getAddress());
+
+                                    SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+
+                                    preferences.edit().putString("name",response.body().getData().get(0).getUser_name()).apply();
+                                    preferences.edit().putString("profileid", response.body().getData().get(0).getId()).apply();
+                                    preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
+                                    preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
+                                    utils.profileUrl = response.body().getData().get(0).getProfile_url();
+
+                                    Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+
+                                }
+                            }
+
+
+                        } else {
+                            try {
+                                utils.errortoast(context, response.body().getMessage());
+                            } catch (Exception e) {
+                                Log.e("tag", e.toString());
+                            }
+                        }
+                    }
+                    else {
+                        Log.e("tag",""+response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ProfileInfoResponse> call, Throwable t) {
+
+                }
+            });
         }
+        call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfo(utils.access_token,utils.phone, josnbody);
 
 
         call.enqueue(new Callback<ProfileInfoResponse>() {

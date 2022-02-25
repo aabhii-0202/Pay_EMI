@@ -3,8 +3,30 @@
 
     <string-array name="dispoistion">
         <item>Select</item>
-        <item>Transaction Successful, account not updated</item>
-        <item>Transaction Not Successful</item>
+        <item>Transaction Successful, account not updated.</item>
+        <item>Amount deducted, biller account credited but transaction ID not received.</item>
+        <item>Amount deducted, biller account not credited transaction ID not received.</item>
+        <item>Amount deducted multiple times.</item>
+        <item>Double payment updated.</item>
+        <item>Erroneously paid in wrong account.</item>
+        <item>Others, provide details in description.</item>
+        <item>Agent not willing to print receipt.</item>
+        <item>Agent misbehaved.</item>
+        <item>Agent outlet closed.</item>
+        <item>Agent denying registration of complaint.</item>
+        <item>Agent not accepting certain bills.</item>
+        <item>Agent overcharging.</item>
+        <item>Biller available. Unable to transact.</item>
+        <item>Multiple failure for same biller.</item>
+        <item>Denomination not available.</item>
+        <item>Incorrect bill details displayed.</item>
+        <item>Incomplete / no details reflecting.</item>
+        <item>Others</item>
+
+
+
+
+
     </string-array>
 
     <string-array name="id_activityScreenTitles">

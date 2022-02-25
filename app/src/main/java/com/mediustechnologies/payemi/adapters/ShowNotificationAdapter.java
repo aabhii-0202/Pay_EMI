@@ -17,6 +17,13 @@ import java.util.List;
 public class ShowNotificationAdapter extends RecyclerView.Adapter<ShowNotificationAdapter.vh> {
 
     List<ShowNotificationDTO> list;
+    private onButtonClickeListner btnListner;
+    public interface onButtonClickeListner{
+        void onButtonClick(int pos);
+    }
+    public void setOnButtonClickListner(onButtonClickeListner listner){
+        btnListner = listner;
+    }
 
     public ShowNotificationAdapter(List<ShowNotificationDTO> list){
         this.list = list;
@@ -35,6 +42,7 @@ public class ShowNotificationAdapter extends RecyclerView.Adapter<ShowNotificati
         String time = list.get(position).getTime();
         String logo = list.get(position).getBank_logo();
 
+
         holder.setdata(logo,message,time);
     }
 
@@ -48,6 +56,17 @@ public class ShowNotificationAdapter extends RecyclerView.Adapter<ShowNotificati
         public vh(@NonNull View itemView) {
             super(itemView);
             binding = NotificaionItemBinding.bind(itemView);
+            binding.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(btnListner!=null){
+                        int position = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            btnListner.onButtonClick(position);
+                        }
+                    }
+                }
+            });
 
         }
 

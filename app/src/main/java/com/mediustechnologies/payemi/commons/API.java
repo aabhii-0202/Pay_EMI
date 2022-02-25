@@ -123,13 +123,12 @@ public interface API {
 
     @Multipart
     @POST("profileInfo/")
-    Call<ProfileInfoResponse> updateProfileInfo(@Header("Authorization") String token,
+    Call<ProfileInfoResponse> updateProfilePic(@Header("Authorization") String token,
                                                 @Query("phone_number") String phone_number,
-                                                @Body JsonObject body,
                                                 @Part MultipartBody.Part image);
 
     @POST("profileInfo/")
-    Call<ProfileInfoResponse> updateProfileInfowithoutpic(@Header("Authorization") String token,
+    Call<ProfileInfoResponse> updateProfileInfo(@Header("Authorization") String token,
                                                 @Query("phone_number") String phone_number,
                                                 @Body JsonObject body);
 

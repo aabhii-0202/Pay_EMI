@@ -107,6 +107,13 @@ public class NotificationFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnButtonClickListner(new ShowNotificationAdapter.onButtonClickeListner() {
+            @Override
+            public void onButtonClick(int pos) {
+                System.out.println(pos);
+            }
+        });
+
 
 
 
