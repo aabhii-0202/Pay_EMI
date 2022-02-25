@@ -418,22 +418,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                 Log.e("tag",t.getMessage());
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+}
 
     private void share(File file){
 
