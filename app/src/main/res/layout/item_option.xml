@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="wrap_content"
     android:background="@color/navbg"
-    android:orientation="horizontal"
-    android:paddingHorizontal="24dp"
-    android:paddingVertical="12dp">
+    android:orientation="vertical"
+    >
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp">
     <ImageView
         android:id="@+id/drawericon"
         android:layout_width="wrap_content"
@@ -23,9 +28,55 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/gtwalsheim_pro_regular"
-        android:text="Home"
+        android:text="Complaint"
         android:textColor="@color/HintColor"
         android:textSize="14sp" />
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dropdown"
+        android:background="@color/navbg"
+        android:src="@drawable/dropdown"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/subcatagory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        >
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/gtwalsheim_pro_regular"
+        android:text="Registration"
+        android:textColor="@color/HintColor"
+        android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/Tracking"
+            android:layout_marginVertical="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/gtwalsheim_pro_regular"
+            android:layout_below="@+id/register"
+            android:text="Tracking"
+            android:textColor="@color/HintColor"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
+
 
 
 </LinearLayout>

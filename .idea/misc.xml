@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable-v24/ic_processing.xml" value="0.303" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/dropdown.xml" value="0.339" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/dropup.xml" value="0.339" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/ic_cross.xml" value="0.303" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/ic_exclamation.xml" value="0.303" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/drawable/ic_nav_bell.xml" value="0.2925" />
@@ -31,7 +33,7 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/dropdown_item.xml" value="0.26666666666666666" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/emi_list_item.xml" value="0.21302083333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.3390625" />
-        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.2140625" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.536" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notificaion_item.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notification_fragment.xml" value="0.2984375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/otpsentpopup.xml" value="0.3390625" />
@@ -41,6 +43,7 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transaction_search_fragment.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transaction_search_popup.xml" value="0.2677083333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/transcation_details_popup.xml" value="0.536" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/menu/transaction_history.xml" value="0.39375" />
         <entry key="..\:/Users/abhis/.android/avd/platforms/android-31/data/res/drawable/btn_dropdown.xml" value="0.403125" />
         <entry key="..\:/Users/abhis/.android/avd/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.381025641025641" />
         <entry key="..\:/Users/abhis/Desktop/Abhi/Prog/ANDROID PROJECTS/PayEMI/app/src/main/res/drawable/amount_box.xml" value="0.31666666666666665" />
