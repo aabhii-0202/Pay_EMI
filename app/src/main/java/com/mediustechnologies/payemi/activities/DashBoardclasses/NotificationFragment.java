@@ -110,7 +110,22 @@ public class NotificationFragment extends Fragment {
         adapter.setOnButtonClickListner(new ShowNotificationAdapter.onButtonClickeListner() {
             @Override
             public void onButtonClick(int pos) {
-                System.out.println(pos);
+                String type = data.get(pos).getNotification_type();
+
+
+                if(type!=null){
+                    type = type.toLowerCase();
+                    if(type.contains("transaction")){
+                        Toast.makeText(context, "Transaction Button Clicked", Toast.LENGTH_SHORT).show();
+                    }else if(type.contains("cash")){
+                        Toast.makeText(context, "Redeem Button Clicked", Toast.LENGTH_SHORT).show();
+                    }else{
+                        
+                    }
+                }
+
+
+
             }
         });
 

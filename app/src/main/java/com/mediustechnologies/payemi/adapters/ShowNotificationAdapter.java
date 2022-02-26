@@ -1,5 +1,6 @@
 package com.mediustechnologies.payemi.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +39,16 @@ public class ShowNotificationAdapter extends RecyclerView.Adapter<ShowNotificati
 
     @Override
     public void onBindViewHolder(@NonNull ShowNotificationAdapter.vh holder, int position) {
-        String message = list.get(position).getMsg();
-        String time = list.get(position).getTime();
-        String logo = list.get(position).getBank_logo();
+        String message = list.get(position).getNotification_name();
+        String time = list.get(position).getNotification_time();
+        String logo = list.get(position).getNotification_logo();
+        String type = list.get(position).getNotification_type();
+        boolean status = list.get(position).isNotification_status();
+        boolean action = list.get(position).isNotification_action();
+        boolean seen = list.get(position).isNotification_is_seen();
 
 
-        holder.setdata(logo,message,time);
+        holder.setdata(logo,message,time,type,status,action,seen);
     }
 
     @Override
@@ -70,10 +75,34 @@ public class ShowNotificationAdapter extends RecyclerView.Adapter<ShowNotificati
 
         }
 
-        public void setdata(String logo, String message, String time) {
-            binding.notificationText.setText(message);
-            Glide.with(binding.image).load(logo).into(binding.image);
-            binding.notificationTimeText.setText(format(time));
+        public void setdata(String logo, String message, String time, String type, boolean status, boolean action, boolean seen) {
+
+            if(status) {
+                binding.notificationText.setText(message);
+                Glide.with(binding.image).load(logo).into(binding.image);
+                binding.notificationTimeText.setText(format(time));
+                binding.button.setVisibility(View.GONE);
+
+                if(!seen){
+                    binding.card.setCardBackgroundColor(Color.parseColor("#eceaf3"));
+                }
+
+                if(action){
+                    binding.button.setVisibility(View.VISIBLE);
+                    if(type!=null){
+                        type = type.toLowerCase();
+                        if(type.contains("transaction")){
+                            binding.button.setText("Pay Now & Earn Cashback");
+                        }else if(type.contains("cash")){
+                            binding.button.setText("Redeem Now");
+                        }else{
+                            binding.button.setText("-------");
+                        }
+                    }
+                }
+
+            }
+
         }
 
         private String format(String s){

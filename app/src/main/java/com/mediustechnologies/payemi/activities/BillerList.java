@@ -25,7 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BillerList extends BaseAppCompatActivity {
+public class
+BillerList extends BaseAppCompatActivity {
 
     private ActivityBankSubCategoriesBinding binding;
     private RecyclerView bankSubListRecyclerview;

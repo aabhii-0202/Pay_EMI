@@ -11,21 +11,35 @@ public class ShowNotificationDTO {
     @Expose
     private String id;
 
-    @SerializedName("bank_logo")
+    @SerializedName("notification_logo")
     @Expose
-    private String bank_logo;
+    private String notification_logo;
 
-    @SerializedName("bank_name")
-    @Expose
-    private String bank_name;
 
-    @SerializedName("msg")
+    @SerializedName("notification_name")
     @Expose
-    private String msg;
+    private String notification_name;
 
-    @SerializedName("time")
+    @SerializedName("notification_time")
     @Expose
-    private String time;
+    private String notification_time;
+
+    @SerializedName("notification_type")
+    @Expose
+    private String notification_type;
+
+    @SerializedName("notification_status")
+    @Expose
+    private boolean notification_status;
+
+    @SerializedName("notification_action")
+    @Expose
+    private boolean notification_action;
+
+    @SerializedName("notification_is_seen")
+    @Expose
+    private boolean notification_is_seen;
+
 
     @SerializedName("profile")
     @Expose
@@ -40,36 +54,60 @@ public class ShowNotificationDTO {
         this.id = id;
     }
 
-    public String getBank_logo() {
-        return bank_logo;
+    public String getNotification_logo() {
+        return notification_logo;
     }
 
-    public void setBank_logo(String bank_logo) {
-        this.bank_logo = bank_logo;
+    public void setNotification_logo(String notification_logo) {
+        this.notification_logo = notification_logo;
     }
 
-    public String getBank_name() {
-        return bank_name;
+    public String getNotification_name() {
+        return notification_name;
     }
 
-    public void setBank_name(String bank_name) {
-        this.bank_name = bank_name;
+    public void setNotification_name(String notification_name) {
+        this.notification_name = notification_name;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getNotification_time() {
+        return notification_time;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setNotification_time(String notification_time) {
+        this.notification_time = notification_time;
     }
 
-    public String getTime() {
-        return time;
+    public String getNotification_type() {
+        return notification_type;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setNotification_type(String notification_type) {
+        this.notification_type = notification_type;
+    }
+
+    public boolean isNotification_status() {
+        return notification_status;
+    }
+
+    public void setNotification_status(boolean notification_status) {
+        this.notification_status = notification_status;
+    }
+
+    public boolean isNotification_action() {
+        return notification_action;
+    }
+
+    public void setNotification_action(boolean notification_action) {
+        this.notification_action = notification_action;
+    }
+
+    public boolean isNotification_is_seen() {
+        return notification_is_seen;
+    }
+
+    public void setNotification_is_seen(boolean notification_is_seen) {
+        this.notification_is_seen = notification_is_seen;
     }
 
     public String getProfile() {
