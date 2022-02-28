@@ -1,22 +1,22 @@
 package com.mediustechnologies.payemi.activities.login
 
 import android.content.Context
-import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
-import android.os.Bundle
-import android.widget.Toast
-import android.os.CountDownTimer
-import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse
-import com.mediustechnologies.payemi.helper.RetrofitClient
-import com.mediustechnologies.payemi.commons.urlconstants
-import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse
-import com.mediustechnologies.payemi.commons.utils
 import android.content.Intent
+import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
-import com.mediustechnologies.payemi.activities.EmiCategories
+import android.widget.Toast
+import com.mediustechnologies.payemi.ApiResponse.sendOTPResponse
+import com.mediustechnologies.payemi.ApiResponse.verifyOTPresponse
 import com.mediustechnologies.payemi.R
 import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav
+import com.mediustechnologies.payemi.activities.EmiCategories
+import com.mediustechnologies.payemi.commons.urlconstants
+import com.mediustechnologies.payemi.commons.utils
 import com.mediustechnologies.payemi.databinding.ActivityVerifyNumberBinding
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
+import com.mediustechnologies.payemi.helper.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -113,6 +113,14 @@ class CheckOTP : BaseAppCompatActivity() {
                             utils.customer_id = response.body()!!.customer_id
                             utils.name = response.body()!!.fullname
                             utils.profileUrl = response.body()!!.path
+
+                            println("ProfileId------------ ${utils.profileId}")
+                            println("Name----------------- ${utils.name}")
+                            println("Token---------------- ${utils.access_token}")
+                            println("Refresh Token--------${utils.refresh_token}")
+                            println("Phone---------------- $phone")
+                            println("Customer Id---------- ${utils.customer_id}")
+                            println("Profile Pic---------- ${utils.profileUrl}")
                             val preferences =
                                 applicationContext.getSharedPreferences("PAY_EMI", MODE_PRIVATE)
                             preferences.edit().putString("phone", phone).apply()

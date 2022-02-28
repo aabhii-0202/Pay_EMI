@@ -3,6 +3,7 @@ package com.mediustechnologies.payemi.activities.DashBoardclasses;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,30 +14,39 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.mediustechnologies.payemi.ApiResponse.BaseApiResponse;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.activities.EmiCategories;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
+import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityHomeNavBinding;
+import com.mediustechnologies.payemi.databinding.NotificationFragmentBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    ActivityHomeNavBinding binding;
+public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
+
+    private ActivityHomeNavBinding binding;
     private final Context context = this;
-
     private static final int POS_HOME= 0;
     private static final int POS_COMPLAINT = 1;
     private static final int POS_TRANSACTIONSEARCH= 2;
@@ -44,11 +54,10 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
     private static final int POS_RATE = 4;
     private static final int POS_NOTIFICATION = 5;
     private static final int POS_HELP = 6;
-
     private String[] screenTitles;
     private Drawable[] screenIcons;
-
     private SlidingRootNav slidingRootNav;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +104,7 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         });
         TextView t =  slidingRootNav.getLayout().findViewById(R.id.nav_name);
         t.setText(utils.name);
-        
+
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
 
@@ -117,7 +126,10 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         list.setAdapter(adapter);
         adapter.setSelected(POS_HOME);
 
+
+
     }
+
 
     //method to set color on selected toolbar
     private DrawerItems creatItemFor (int position){
@@ -189,8 +201,57 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         }
         else if(position == POS_NOTIFICATION){
             hide_detail("Notifications");
+            binding.clearall.setVisibility(View.VISIBLE);
+            binding.titleImage.setVisibility(View.GONE);
             NotificationFragment notificationFragment = new NotificationFragment();
             transaction.replace(R.id.homeframe,notificationFragment);
+
+            binding.clearall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (utils.ids != null && utils.ids.size() > 0){
+                        Call<BaseApiResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().clearAllNotification(utils.access_token, utils.ids);
+
+                    call.enqueue(new Callback<BaseApiResponse>() {
+                        @Override
+                        public void onResponse(Call<BaseApiResponse> call, Response<BaseApiResponse> response) {
+                            if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                                if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+
+
+                                    Toast.makeText(context, "All notifications cleared", Toast.LENGTH_SHORT).show();
+                                    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.homeframe);
+                                    if(fragment instanceof NotificationFragment ){
+                                        ((NotificationFragment) fragment).clear();
+                                    }
+
+
+
+
+
+                                } else {
+                                    try {
+                                        utils.errortoast(context, response.body().getMessage());
+                                    } catch (Exception e) {
+                                        Log.e("tag", e.toString());
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(context, "Failed " + response.code(), Toast.LENGTH_SHORT).show();
+                                Log.e("tag", "" + response.code());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<BaseApiResponse> call, Throwable t) {
+
+                        }
+                    });
+
+                }
+                }
+            });
         }
 
         else{
@@ -202,16 +263,15 @@ public class Home_Nav  extends BaseAppCompatActivity implements DrawerAdapter.On
         slidingRootNav.closeMenu();
         transaction.addToBackStack(null);
         transaction.commit();
-        
+
     }
 
     private void hide_detail(String title){
+        binding.clearall.setVisibility(View.GONE);
         binding.homenavtitle.setText(title);
         binding.linearLayout2.setVisibility(View.GONE);
         binding.titleImage.setVisibility(View.VISIBLE);
         binding.navtitleimg.setVisibility(View.GONE);
         binding.navview.setVisibility(View.GONE);
     }
-
-
 }

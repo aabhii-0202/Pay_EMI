@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.*;
 import com.mediustechnologies.payemi.ApiResponse.*;
+
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -148,5 +150,10 @@ public interface API {
             @Header("Authorization") String token,
             @Query("phone_number") String phone_number
     );
+
+    @POST("clearAllNotification/")
+    Call<BaseApiResponse> clearAllNotification(@Header("Authorization") String token,
+                                               @Body HashMap<String,List<String>> ids
+                                               );
 
 }

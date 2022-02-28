@@ -67,9 +67,6 @@
             android:name=".activities.login.SendOTP"
             android:exported="false" />
         <activity
-            android:name=".activities.act20transaction_Search"
-            android:exported="false"/>
-        <activity
             android:name=".activities.Exactness"
             android:exported="false" />
         <activity

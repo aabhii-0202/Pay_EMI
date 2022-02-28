@@ -54,20 +54,6 @@ public class EMIDetailsBillFetch extends BaseAppCompatActivity {
         amount = bill.getPayload().get(0).getAmount();
         customer = bill.getPayload().get(0).getCustomer_name();
 
-//        String s = "Not in API";
-
-//        binding.ChargesLevied.setText(s);
-//
-//        binding.LatePaymentFee.setText(s);
-//
-//        binding.AdditionalCharges.setText(s);
-//
-//        binding.FixedCharges.setText(s);
-//
-//        binding.EMI.setText(s);
-
-//        binding.ServiceTax.setText(s);
-
         if(bill.getPayload().get(0).getRespDueDate()!=null)
             binding.DueDate.setText(bill.getPayload().get(0).getRespDueDate());
         else binding.duedatelayout.setVisibility(View.GONE);
