@@ -30,7 +30,7 @@ public class verifyOTPresponse extends BaseApiResponse{
     @Expose
     private String customer_id;
 
-    @SerializedName("path")
+    @SerializedName("profile_url")
     @Expose
     private String path;
 

@@ -13,6 +13,9 @@ import com.mediustechnologies.payemi.activities.apiBody.RefreshToken;
 import com.mediustechnologies.payemi.activities.login.SendOTP;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
+import java.util.HashMap;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +28,7 @@ public class utils extends Activity {
     public static final int INTERNAL_SERVER_ERROR = 500;
     public static final int NOT_FOUND = 404;
     public static final int UNAUTH = 401;
+    public static HashMap<String, List<String>> ids;
 
 
     public static void loginAgain(Context activitycontext){
