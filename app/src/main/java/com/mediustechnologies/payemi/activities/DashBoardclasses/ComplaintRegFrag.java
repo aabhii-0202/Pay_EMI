@@ -138,12 +138,6 @@ public class ComplaintRegFrag extends Fragment {
 
         binding.dispositon.setAdapter(adapter);
 
-
-
-
-
-
-
         binding.register.setOnClickListener(view -> {
             String complaint_dispostion,complaint_description,complaint_type,transaction_id;
 

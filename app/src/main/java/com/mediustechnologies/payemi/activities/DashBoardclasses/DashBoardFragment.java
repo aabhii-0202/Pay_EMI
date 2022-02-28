@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.recyclerItems.emiListItem;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import retrofit2.Call;
@@ -146,6 +148,14 @@ public class DashBoardFragment extends Fragment {
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());
             AddMissingInfoBinding binding = AddMissingInfoBinding.bind(view);
 
+            String[] loantypelist = getResources().getStringArray(R.array.loantype);
+            ArrayList<String> list = new ArrayList<>(Arrays.asList(loantypelist));
+            ArrayAdapter<String> loantypeadapter = new ArrayAdapter<>(context.getApplicationContext(),R.layout.dropdown_item,list);
+
+            binding.selectloantype.setAdapter(loantypeadapter);
+
+
+
             binding.month.setOnClickListener(view13 -> {
                 Calendar today = Calendar.getInstance();
                 MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(context, (selectedMonth, selectedYear) -> {
@@ -173,7 +183,7 @@ public class DashBoardFragment extends Fragment {
 
             d.findViewById(R.id.update).setOnClickListener(view14 -> {
 
-                String loanType = binding.loantype.getText().toString();
+                String loanType = binding.selectloantype.getText().toString();
                 String loanAmount = binding.loanamount.getText().toString();
                 String emi = binding.emi.getText().toString();
                 String month = binding.month.getText().toString();
@@ -181,8 +191,8 @@ public class DashBoardFragment extends Fragment {
 
 
                 boolean call = true;
-                if(loanType.trim().length()<1){
-                    binding.loantype.setError("Please enter loan type.");
+                if(loanType.equalsIgnoreCase("select")){
+                    Toast.makeText(context, "Please select loan type", Toast.LENGTH_SHORT).show();
                     call = false;
                 }
                 if(loanAmount.trim().length()<1){
