@@ -51,7 +51,7 @@ public class BankList extends BaseAppCompatActivity {
         binding = ActivityBankListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        init();
+        binding.backButton.setOnClickListener(view -> finish());
 
         int p = getIntent().getIntExtra("position",0);
         initcatagoriesRecyclerview(p);
@@ -121,8 +121,6 @@ public class BankList extends BaseAppCompatActivity {
         for(int i=0;i<catagories.size();i++){
             menu.add(0,i,Menu.NONE,catagories.get(i));
         }
-
-
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -188,46 +186,14 @@ public class BankList extends BaseAppCompatActivity {
                         }
                     }
                 }
-
-
-
                 else{
                     Log.d("tag", "Get BankList onResponse: "+response.code());
                 }
             }
-
             @Override
             public void onFailure(Call<banklistResponse> call, Throwable t) {
                 Log.d("tag", "Get BankList failed : "+t.toString());
             }
         });
-    }
-
-
-
-
-
-    private void init(){
-
-
-        binding.backButton.setOnClickListener(view -> finish());
-        binding.logout.setOnClickListener(view -> {
-            SharedPreferences preferences = getApplicationContext().getSharedPreferences("PAY_EMI", MODE_PRIVATE);
-            preferences.edit().putString("phone", "").apply();
-            preferences.edit().putString("refresh_token", "Bearer ").apply();
-            preferences.edit().putString("token", "Bearer ").apply();
-            preferences.edit().putString("profileid","").apply();
-
-            Intent i = new Intent(context, SendOTP.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-
-        });
-
-
-
-
-
-
     }
 }

@@ -81,9 +81,6 @@ public class EmiCategories extends BaseAppCompatActivity {
     }
 
     private void api() {
-
-//        utils.access_token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNjc1MjEwLCJpYXQiOjE2NDI1ODg4MTAsImp0aSI6Ijk1YTkxZGYzZTJhODRiOWY5ODU1ZjQ4NTIwMjQ3YTk0IiwidXNlcl9pZCI6NH0.yEu8ikmsqqIIUuDyAGp540goMv7DjmWZQypC-dZpGg0";
-
         Call<List<loancategory>> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getLoanCategory(utils.access_token);
 
         call.enqueue(new Callback<List<loancategory>>() {
