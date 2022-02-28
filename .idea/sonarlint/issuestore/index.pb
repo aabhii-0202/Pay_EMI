@@ -19,5 +19,3 @@ Qapp/src/main/java/com/mediustechnologies/payemi/activities/PaymentSuccessful.ja
 Lapp/src/main/java/com/mediustechnologies/payemi/activities/AddLoanAccount.kt,1\7\1743412d8fb4699ce87f09b90a75cbc27b031702
 Å
 Qapp/src/main/java/com/mediustechnologies/payemi/helper/BaseAppCompatActivity.java,e\e\eea954710f0be5494295d31ec59b5af7cc0f8e26
-}
-Mapp/src/main/java/com/mediustechnologies/payemi/adapters/bankListAdapter.java,c\3\c35071cd1e53e4e3a656921143fd18ec0a901dff

@@ -44,6 +44,7 @@ public class BankList extends BaseAppCompatActivity {
     private bankListAdapter adapter;
     private final Context context = this;
     private ArrayList<String> catagories,ids;
+    private List<getAllBanks> filteredList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,7 @@ public class BankList extends BaseAppCompatActivity {
         int p = getIntent().getIntExtra("position",0);
         initcatagoriesRecyclerview(p);
 
-
         addItemsInRecyclerView(getIntent().getStringExtra("loan_category_id"));
-
-
-
-
     }
 
     private void initcatagoriesRecyclerview(int p) {
@@ -104,9 +100,17 @@ public class BankList extends BaseAppCompatActivity {
         searchbar();
         adapter.setOnItemClickListner(position -> {
             Intent i = new Intent(context, BillerList.class);
-            i.putExtra("name",banklist.getData().get(position).getBank_name());
-            i.putExtra("imgurl",banklist.getData().get(position).getBank_logo_url());
-            i.putExtra("count",banklist.getData().size());
+
+            if(filteredList!=null&&!filteredList.isEmpty()) {
+                i.putExtra("name", filteredList.get(position).getBank_name());
+                i.putExtra("imgurl", filteredList.get(position).getBank_logo_url());
+                i.putExtra("count", filteredList.size());
+            }
+            else{
+                i.putExtra("name", banklist.getData().get(position).getBank_name());
+                i.putExtra("imgurl", banklist.getData().get(position).getBank_logo_url());
+                i.putExtra("count", banklist.getData().size());
+            }
 
             startActivity(i);
         });
@@ -153,7 +157,7 @@ public class BankList extends BaseAppCompatActivity {
     }
 
     private void filter(String text){
-        List<getAllBanks> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
 
         for(getAllBanks item : banklist.getData()){
             if(item.getBank_name().toLowerCase().contains(text.toLowerCase())){
