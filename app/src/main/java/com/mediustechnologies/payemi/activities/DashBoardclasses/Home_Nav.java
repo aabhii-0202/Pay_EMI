@@ -124,7 +124,10 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(context));
         list.setAdapter(adapter);
-        adapter.setSelected(POS_HOME);
+        int fragment = getIntent().getIntExtra("fragment",0);
+        adapter.setSelected(fragment);
+        
+        binding.bell.setOnClickListener(view -> onItemSelected(POS_NOTIFICATION));
 
 
     }
@@ -180,6 +183,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             binding.titleImage.setVisibility(View.GONE);
             binding.navtitleimg.setVisibility(View.VISIBLE);
             binding.navview.setVisibility(View.VISIBLE);
+            binding.clearall.setVisibility(View.GONE);
             DashBoardFragment dashboardFrag = new DashBoardFragment();
             transaction.replace(R.id.homeframe, dashboardFrag);
         } else if (position == POS_TRANSACTIONSEARCH) {
@@ -201,46 +205,43 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             NotificationFragment notificationFragment = new NotificationFragment();
             transaction.replace(R.id.homeframe, notificationFragment);
 
-            binding.clearall.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            binding.clearall.setOnClickListener(view -> {
 
-                    if (utils.ids != null && utils.ids.size() > 0) {
-                        Call<BaseApiResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().clearAllNotification(utils.access_token, utils.ids);
+                if (utils.ids != null && utils.ids.size() > 0) {
+                    Call<BaseApiResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().clearAllNotification(utils.access_token, utils.ids);
 
-                        call.enqueue(new Callback<BaseApiResponse>() {
-                            @Override
-                            public void onResponse(Call<BaseApiResponse> call, Response<BaseApiResponse> response) {
-                                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
-                                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                    call.enqueue(new Callback<BaseApiResponse>() {
+                        @Override
+                        public void onResponse(Call<BaseApiResponse> call, Response<BaseApiResponse> response) {
+                            if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                                if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
 
-                                        Toast.makeText(context, "All notifications cleared", Toast.LENGTH_SHORT).show();
-                                        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.homeframe);
-                                        if (fragment instanceof NotificationFragment) {
-                                            ((NotificationFragment) fragment).clear();
-                                        }
+                                    Toast.makeText(context, "All notifications cleared", Toast.LENGTH_SHORT).show();
+                                    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.homeframe);
+                                    if (fragment instanceof NotificationFragment) {
+                                        ((NotificationFragment) fragment).clear();
                                     }
-                                    else {
-                                        try {
-                                            utils.errortoast(context, response.body().getMessage());
-                                        } catch (Exception e) {
-                                            Log.e("tag", e.toString());
-                                        }
-                                    }
-                                } else {
-                                    Toast.makeText(context, "Failed " + response.code(), Toast.LENGTH_SHORT).show();
-                                    Log.e("tag", "" + response.code());
                                 }
+                                else {
+                                    try {
+                                        utils.errortoast(context, response.body().getMessage());
+                                    } catch (Exception e) {
+                                        Log.e("tag", e.toString());
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(context, "Failed " + response.code(), Toast.LENGTH_SHORT).show();
+                                Log.e("tag", "" + response.code());
                             }
+                        }
 
-                            @Override
-                            public void onFailure(Call<BaseApiResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<BaseApiResponse> call, Throwable t) {
 
-                            }
-                        });
+                        }
+                    });
 
-                    }
                 }
             });
         } else {
@@ -254,6 +255,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         transaction.commit();
 
     }
+
 
     private void hide_detail(String title) {
         binding.clearall.setVisibility(View.GONE);

@@ -2,6 +2,8 @@ package com.mediustechnologies.payemi.commons;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.CallSuper;
+
 import com.google.gson.JsonObject;
 import com.mediustechnologies.payemi.DTO.billFetchDTO;
 import com.mediustechnologies.payemi.activities.apiBody.*;
@@ -155,5 +157,10 @@ public interface API {
     Call<BaseApiResponse> clearAllNotification(@Header("Authorization") String token,
                                                @Body HashMap<String,List<String>> ids
                                                );
+
+    @POST("seenNotification/")
+    Call<BaseApiResponse> seenNotification(@Header("Authorization") String token,
+                                           @Body HashMap<String,List<String>> ids
+                                           );
 
 }

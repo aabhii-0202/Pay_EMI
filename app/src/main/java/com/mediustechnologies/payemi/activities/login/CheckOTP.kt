@@ -39,7 +39,7 @@ class CheckOTP : BaseAppCompatActivity() {
     }
 
     private fun countdown() {
-        val start = TimeUnit.MINUTES.toMillis(2)
+        val start = TimeUnit.MINUTES.toMillis(1)
         object : CountDownTimer(start, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000

@@ -139,9 +139,10 @@ public class Transaction_Details extends BaseAppCompatActivity {
         });
 
         binding.havingIssue.setOnClickListener(view -> {
-            Intent i = new Intent(context, Home_Nav.class);
-
-
+            Intent i = new Intent(context,Home_Nav.class);
+            i.putExtra("fragment",1);
+            i.putExtra("transactionId",item.getRazorpay_transaction_id());
+            //todo for above line in complaint fragment
             startActivity(i);
         });
 

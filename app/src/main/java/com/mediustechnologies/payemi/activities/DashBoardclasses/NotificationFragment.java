@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mediustechnologies.payemi.ApiResponse.BaseApiResponse;
 import com.mediustechnologies.payemi.ApiResponse.ShowNotificationResponse;
 import com.mediustechnologies.payemi.DTO.ShowNotificationDTO;
 import com.mediustechnologies.payemi.adapters.ShowNotificationAdapter;
@@ -78,6 +79,8 @@ public class NotificationFragment extends Fragment  {
                         if (!response.body().getData().isEmpty()) {
                             setData(response.body().getData());
                             binding.txt.setVisibility(View.GONE);
+
+
                         } else {
                             binding.parentlayout.setVisibility(View.GONE);
                             binding.txt.setVisibility(View.VISIBLE);
@@ -105,6 +108,18 @@ public class NotificationFragment extends Fragment  {
 
     }
 
+    private void seen() {
+
+        Call<BaseApiResponse> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().seenNotification(utils.access_token,utils.ids);
+        call.enqueue(new Callback<BaseApiResponse>() {
+            @Override
+            public void onResponse(Call<BaseApiResponse> call, Response<BaseApiResponse> response) { }
+
+            @Override
+            public void onFailure(Call<BaseApiResponse> call, Throwable t) { }
+        });
+    }
+
     private void setData(List<ShowNotificationDTO> data) {
 
         List<String> list = new ArrayList<>();
@@ -122,6 +137,7 @@ public class NotificationFragment extends Fragment  {
             HashMap<String, List<String>> ids = new HashMap<>();
             ids.put("notification_id", list);
             utils.ids = ids;
+            seen();
         } catch (Exception e) {
         }
 

@@ -546,7 +546,8 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
     }
 
     private void nextScreen(){
-        Intent i = new Intent(context, Home_Nav.class);
+        Intent i = new Intent(context,Home_Nav.class);
+        i.putExtra("fragment",0);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
