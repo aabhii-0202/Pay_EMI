@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -127,7 +128,10 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         int fragment = getIntent().getIntExtra("fragment",0);
         adapter.setSelected(fragment);
         
-        binding.bell.setOnClickListener(view -> onItemSelected(POS_NOTIFICATION));
+        binding.bell.setOnClickListener(view -> {
+            onItemSelected(POS_NOTIFICATION);
+            binding.notificaioncountcard.setVisibility(View.GONE);
+        });
 
 
     }
@@ -186,6 +190,16 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             binding.clearall.setVisibility(View.GONE);
             DashBoardFragment dashboardFrag = new DashBoardFragment();
             transaction.replace(R.id.homeframe, dashboardFrag);
+
+            new Handler().postDelayed(() -> {
+                if(utils.new_notification_count>0){
+                    binding.notificaioncountcard.setVisibility(View.VISIBLE);
+                    binding.notificaioncount.setText(""+utils.new_notification_count);
+                }
+            },2000);
+
+
+
         } else if (position == POS_TRANSACTIONSEARCH) {
             hide_detail("Transaction Search");
             TransactionSearchFragment transactionSearchFragment = new TransactionSearchFragment();
@@ -215,7 +229,6 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
                         public void onResponse(Call<BaseApiResponse> call, Response<BaseApiResponse> response) {
                             if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                                 if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-
 
                                     Toast.makeText(context, "All notifications cleared", Toast.LENGTH_SHORT).show();
                                     Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.homeframe);

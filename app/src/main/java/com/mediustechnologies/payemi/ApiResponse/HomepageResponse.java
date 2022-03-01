@@ -12,6 +12,18 @@ public class HomepageResponse extends BaseApiResponse{
     @Expose
     List<HomepageDTO> data;
 
+    @SerializedName("new_notification_count")
+    @Expose
+    int new_notification_count;
+
+    public int getNew_notification_count() {
+        return new_notification_count;
+    }
+
+    public void setNew_notification_count(int new_notification_count) {
+        this.new_notification_count = new_notification_count;
+    }
+
     public List<HomepageDTO> getData() {
         return data;
     }

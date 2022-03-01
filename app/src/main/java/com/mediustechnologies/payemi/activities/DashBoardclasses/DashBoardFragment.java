@@ -271,6 +271,14 @@ public class DashBoardFragment extends Fragment {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         data = response.body().getData();
+
+                        try {
+                            utils.new_notification_count = response.body().getNew_notification_count();
+                        }
+                        catch (Exception e){
+                            utils.new_notification_count = 0;
+                        }
+
                         setData();
                         if(!data.isEmpty()){
                             String s = "";
@@ -302,6 +310,4 @@ public class DashBoardFragment extends Fragment {
             }
         });
     }
-
-
 }

@@ -21,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class utils extends Activity {
-    public static String access_token,refresh_token,phone,profileId,customer_id,name,profileUrl;
-    public static String bill_id;
+    public static String access_token,refresh_token,phone,profileId,customer_id,name,profileUrl,bill_id;
+    public static int new_notification_count = 0;
     public static Context application;
     public static final int RESPONSE_SUCCESS = 200;
     public static final int INTERNAL_SERVER_ERROR = 500;

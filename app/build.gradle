@@ -78,6 +78,5 @@ dependencies {
     implementation 'com.github.afsalkodasseri:DateRangePicker:1.0.0'
 
 
-
 }
 
