@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -35,14 +36,11 @@ import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ProfileFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -50,17 +48,20 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.http.Multipart;
 
 public class ProfileFraggment extends Fragment {
 
     private static final int RESULT_OK = -1;
     private static final int REQUEST_CODE_CAMERA = 20;
     private ProfileFragmentBinding binding;
-    private Context context ;
+    private Context context;
     private Uri cam_uri;
     private InputStream is;
+    private updateNameListner listner;
+
+    public interface updateNameListner {
+        void updatename(String name);
+    }
 
     @Nullable
     @Override
@@ -73,6 +74,17 @@ public class ProfileFraggment extends Fragment {
     public void onAttach(@NonNull Context context) {
         this.context = context;
         super.onAttach(context);
+        if(context instanceof updateNameListner){
+             listner = (updateNameListner) context;
+        }else{
+            throw new RuntimeException(context.toString()+" must implemetn updateNameListner");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listner = null;
     }
 
     @Override
@@ -90,8 +102,6 @@ public class ProfileFraggment extends Fragment {
                 camera();
             }
         });
-
-
 
 
         binding.profileupdate.setOnClickListener(view1 -> {
@@ -117,7 +127,7 @@ public class ProfileFraggment extends Fragment {
 
         binding.progress.setVisibility(View.VISIBLE);
 
-        Call<ProfileInfoResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().profileInfo(utils.access_token,utils.phone);
+        Call<ProfileInfoResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().profileInfo(utils.access_token, utils.phone);
 
         call.enqueue(new Callback<ProfileInfoResponse>() {
             @Override
@@ -125,24 +135,26 @@ public class ProfileFraggment extends Fragment {
 
                 binding.progress.setVisibility(View.GONE);
 
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
-                        if(!response.body().getData().isEmpty()) {
+                        if (!response.body().getData().isEmpty()) {
                             try {
                                 binding.profilephone.setText(utils.phone);
-                                binding.profilename.setText(utils.name);
+                                binding.profilename.setText(response.body().getData().get(0).getFullname());
                                 binding.profilemail.setText(response.body().getData().get(0).getEmail());
                                 binding.profileUsername.setText(response.body().getData().get(0).getUser_name());
                                 binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
-                                SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                                SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
 
-                                preferences.edit().putString("name", response.body().getData().get(0).getUser_name()).apply();
+                                preferences.edit().putString("name", response.body().getData().get(0).getFullname()).apply();
                                 preferences.edit().putString("profileid", response.body().getData().get(0).getId()).apply();
                                 preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
                                 preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
                                 utils.profileUrl = response.body().getData().get(0).getProfile_url();
+
+                                listner.updatename(response.body().getData().get(0).getFullname());
                             } catch (Exception e) {
                                 e.printStackTrace();
 
@@ -158,28 +170,27 @@ public class ProfileFraggment extends Fragment {
                             Log.e("tag", e.toString());
                         }
                     }
-                }
-                else {
-                    Log.e("tag",""+response.code());
+                } else {
+                    Log.e("tag", "" + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<ProfileInfoResponse> call, Throwable t) {
                 binding.progress.setVisibility(View.GONE);
-                Log.e("tag",t.getMessage());
+                Log.e("tag", t.getMessage());
                 Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void camera(){
+    private void camera() {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = getLayoutInflater();
-        View dialog = inflater.inflate(R.layout.profile_picture_alert,null);
+        View dialog = inflater.inflate(R.layout.profile_picture_alert, null);
         builder.setCancelable(false);
         builder.setView(dialog);
 
@@ -194,7 +205,6 @@ public class ProfileFraggment extends Fragment {
 
                 alertDialog.cancel();
                 takepermissionforcamera();
-
 
 
             }
@@ -214,7 +224,7 @@ public class ProfileFraggment extends Fragment {
     private void takepermissionforcamera() {
 
         int camerapermission = ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA);
-        if(camerapermission == PackageManager.PERMISSION_GRANTED){
+        if (camerapermission == PackageManager.PERMISSION_GRANTED) {
             ContentValues values = new ContentValues();
             values.put(MediaStore.Images.Media.TITLE, "New Picture");
             values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
@@ -222,9 +232,8 @@ public class ProfileFraggment extends Fragment {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, cam_uri);
             startCamera.launch(cameraIntent);
-        }else{
-//            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CAMERA},REQUEST_CODE_CAMERA);
-            cameraPermissionRequest.launch(new String[] {
+        } else {
+            cameraPermissionRequest.launch(new String[]{
                     Manifest.permission.CAMERA
             });
         }
@@ -236,7 +245,7 @@ public class ProfileFraggment extends Fragment {
                         Boolean camerapermission = result.get(
                                 Manifest.permission.CAMERA);
                         if (camerapermission != null && camerapermission) {
-                            Log.d("camera","Granted");
+                            Log.d("camera", "Granted");
                             camera();
                         } else {
                             Toast.makeText(context, "Please give permission to open camera.", Toast.LENGTH_SHORT).show();
@@ -267,16 +276,12 @@ public class ProfileFraggment extends Fragment {
                 }
             });
 
-    private void convert(Uri uri){
+    private void convert(Uri uri) {
         try {
             is = context.getContentResolver().openInputStream(uri);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
 
 
     }
@@ -294,7 +299,7 @@ public class ProfileFraggment extends Fragment {
             while ((len = is.read(buff)) != -1) {
                 byteBuff.write(buff, 0, len);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
 
@@ -310,10 +315,10 @@ public class ProfileFraggment extends Fragment {
 //            for (Map.Entry item:feilds.entrySet()){
 //                jsonObj_.put((String) item.getKey(),item.getValue());
 //            }
-            jsonObj_.put("fullname",binding.profilename.getText().toString());
-            jsonObj_.put("email",binding.profilemail.getText().toString());
-            jsonObj_.put("user_name",binding.profileUsername.getText().toString());
-            jsonObj_.put("address",binding.profileaddress.getText().toString());
+            jsonObj_.put("fullname", binding.profilename.getText().toString());
+            jsonObj_.put("email", binding.profilemail.getText().toString());
+            jsonObj_.put("user_name", binding.profileUsername.getText().toString());
+            jsonObj_.put("address", binding.profileaddress.getText().toString());
 
 
             JsonParser jsonParser = new JsonParser();
@@ -323,41 +328,41 @@ public class ProfileFraggment extends Fragment {
             Log.d("tag", "AS PARAMETER  " + gsonObject);
 
         } catch (Exception e) {
-            Log.d("tag","Add loan Account JSON exception line 154");
+            Log.d("tag", "Add loan Account JSON exception line 154");
         }
 
         return gsonObject;
     }
 
-    private void uploadImage(byte[] imageBytes){
+    private void uploadImage(byte[] imageBytes) {
 
         MultipartBody.Part body;
         Call<ProfileInfoResponse> call;
 
         JsonObject josnbody = ApiJsonMap();
-        if(imageBytes!=null){
+        if (imageBytes != null) {
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
             body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
-            call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfilePic(utils.access_token,utils.phone, body);
+            call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfilePic(utils.access_token, utils.phone, body);
 
             call.enqueue(new Callback<ProfileInfoResponse>() {
                 @Override
                 public void onResponse(Call<ProfileInfoResponse> call, Response<ProfileInfoResponse> response) {
                     binding.progress.setVisibility(View.GONE);
 
-                    if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                    if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                         if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                            if(!response.body().getData().isEmpty()) {
+                            if (!response.body().getData().isEmpty()) {
                                 try {
                                     binding.profilephone.setText(utils.phone);
-                                    binding.profilename.setText(utils.name);
+                                    binding.profilename.setText(response.body().getData().get(0).getFullname());
                                     binding.profilemail.setText(response.body().getData().get(0).getEmail());
                                     binding.profileUsername.setText(response.body().getData().get(0).getUser());
                                     binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
-                                    SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                                    SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
 
-                                    preferences.edit().putString("name",response.body().getData().get(0).getUser_name()).apply();
+                                    preferences.edit().putString("name", response.body().getData().get(0).getFullname()).apply();
                                     preferences.edit().putString("profileid", response.body().getData().get(0).getId()).apply();
                                     preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
                                     preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
@@ -379,9 +384,8 @@ public class ProfileFraggment extends Fragment {
                                 Log.e("tag", e.toString());
                             }
                         }
-                    }
-                    else {
-                        Log.e("tag",""+response.code());
+                    } else {
+                        Log.e("tag", "" + response.code());
                     }
                 }
 
@@ -391,7 +395,8 @@ public class ProfileFraggment extends Fragment {
                 }
             });
         }
-        call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfo(utils.access_token,utils.phone, josnbody);
+
+        call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfileInfo(utils.access_token, utils.phone, josnbody);
 
 
         call.enqueue(new Callback<ProfileInfoResponse>() {
@@ -400,23 +405,26 @@ public class ProfileFraggment extends Fragment {
 
                 binding.progress.setVisibility(View.GONE);
 
-                if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                        if(!response.body().getData().isEmpty()) {
+                        if (!response.body().getData().isEmpty()) {
                             try {
                                 binding.profilephone.setText(utils.phone);
-                                binding.profilename.setText(utils.name);
+                                binding.profilename.setText(response.body().getData().get(0).getFullname());
                                 binding.profilemail.setText(response.body().getData().get(0).getEmail());
                                 binding.profileUsername.setText(response.body().getData().get(0).getUser());
                                 binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
-                                SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                                SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
 
-                                preferences.edit().putString("name",response.body().getData().get(0).getUser_name()).apply();
+                                preferences.edit().putString("name", response.body().getData().get(0).getFullname()).apply();
                                 preferences.edit().putString("profileid", response.body().getData().get(0).getId()).apply();
                                 preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
                                 preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
                                 utils.profileUrl = response.body().getData().get(0).getProfile_url();
+
+
+                                listner.updatename(response.body().getData().get(0).getFullname());
 
                                 Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
 
@@ -434,20 +442,18 @@ public class ProfileFraggment extends Fragment {
                             Log.e("tag", e.toString());
                         }
                     }
-                }
-                else {
-                    Log.e("tag",""+response.code());
+                } else {
+                    Log.e("tag", "" + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<ProfileInfoResponse> call, Throwable t) {
                 binding.progress.setVisibility(View.GONE);
-                Log.e("tag",t.getMessage());
+                Log.e("tag", t.getMessage());
                 Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }

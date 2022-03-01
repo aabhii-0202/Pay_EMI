@@ -44,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
+public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnItemSelectedListener, ProfileFraggment.updateNameListner {
 
     private ActivityHomeNavBinding binding;
     private final Context context = this;
@@ -58,6 +58,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
     private String[] screenTitles;
     private Drawable[] screenIcons;
     private SlidingRootNav slidingRootNav;
+    private TextView t;
 
 
     @Override
@@ -103,7 +104,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         });
-        TextView t = slidingRootNav.getLayout().findViewById(R.id.nav_name);
+        t = slidingRootNav.getLayout().findViewById(R.id.nav_name);
         t.setText(utils.name);
 
         screenIcons = loadScreenIcons();
@@ -277,5 +278,10 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         binding.titleImage.setVisibility(View.VISIBLE);
         binding.navtitleimg.setVisibility(View.GONE);
         binding.navview.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updatename(String name) {
+        t.setText(name);
     }
 }
