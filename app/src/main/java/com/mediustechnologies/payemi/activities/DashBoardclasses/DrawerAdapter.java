@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mediustechnologies.payemi.databinding.ItemOptionBinding;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +47,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         }
         for(int i=0;i<items.size();i++){
             DrawerItems item = items.get(i);
-
-            //todo
             if(item.isChecked()){
                 item.setChecked(false);
                 notifyItemChanged(i);
@@ -91,18 +91,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
+
         return viewType.get(items.get(position).getClass());
     }
-
-
-
-
-
-
-
-
-
-
 
     public static abstract class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
