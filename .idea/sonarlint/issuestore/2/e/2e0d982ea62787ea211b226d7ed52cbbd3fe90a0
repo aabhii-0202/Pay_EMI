@@ -1,0 +1,20 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(ÞŠŠ©úÿÿÿÿ
+q	java:S116"WRename this field "ITEM_SCRATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õª§°úÿÿÿÿ
+q	java:S116"WRename this field "ITEM_PAYMENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó»”Øûÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(õª§°úÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(Ó»”Øûÿÿÿÿ
+ƒ
+java:S1319&"hThe type of "chatlist" should be an interface such as "List" rather than the implementation "ArrayList".(Ðÿûÿÿÿÿ
+>
+java:S1604u"(Make this anonymous inner class a lambda(ú“Úå
+?
+java:S1604‹"(Make this anonymous inner class a lambda(ú“Úå
+g	java:S101m"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Îº¾Ïþÿÿÿÿ
+b	java:S101ƒ"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô®ð
+b
+java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(ñê¯£
+f	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‰ó’…

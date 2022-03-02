@@ -1,0 +1,8 @@
+
+Vkotlin:S1172/"7Use "_" instead of this unused lambda parameter "view".(Œ˜Èâ8¸Šô‡ô/
+>kotlin:S1128"Remove this unused import.(ËüŞÔûÿÿÿÿ8½Šô‡ô/
+Gkotlin:S1874{"#Deprecated code should not be used.(Ì—©·ûÿÿÿÿ8¿Šô‡ô/
+Gkotlin:S1874{"#Deprecated code should not be used.(Ì—©·ûÿÿÿÿ8ÀŠô‡ô/
+rkotlin:S117ƒ"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(¸¢»úÿÿÿÿ8ÁŠô‡ô/
+ykotlin:S1186p"ZAdd a nested comment explaining why this function is empty or complete the implementation.(…±Ò8ÃŠô‡ô/
+~kotlin:S1186q"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ÛìØ—üÿÿÿÿ8ÃŠô‡ô/

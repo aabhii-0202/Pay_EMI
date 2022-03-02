@@ -35,8 +35,6 @@ class SendOTP : BaseAppCompatActivity() {
 
     private fun sendOTP() {
         val phone = binding!!.phoneNumber.text.toString().trim { it <= ' ' }
-        //        String courntycode = binding.countryCodePicker.getSelectedCountryCode();
-//        phone = "+"+courntycode+phone;
         if (phone.length == 10) {
             val call = RetrofitClient().getInstance(context, urlconstants.AuthURL).api.sendOTP(
                 phone,

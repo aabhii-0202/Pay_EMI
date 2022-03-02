@@ -1,0 +1,13 @@
+
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+‰
+java:S1319)"sThe return type of this method should be an interface such as "Map" rather than the implementation "LinkedHashMap".(¢­È™
+‡
+java:S1319-"lThe type of "mandatory" should be an interface such as "Map" rather than the implementation "LinkedHashMap".(›ÄËÁøÿÿÿÿ
+
+java:S13191"sThe return type of this method should be an interface such as "Map" rather than the implementation "LinkedHashMap".(¨´Üéùÿÿÿÿ
+
+java:S13195"kThe type of "optional" should be an interface such as "Map" rather than the implementation "LinkedHashMap".(œêÈ˜
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(°ƒ„‰
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ĞØî

@@ -76,6 +76,7 @@ class CheckOTP : BaseAppCompatActivity() {
                     Toast.makeText(context, "OTP sent to $finalPhone", Toast.LENGTH_SHORT).show()
                     binding!!.resendOTPtext.isClickable = false
                     countdown()
+                    Toast.makeText(context, "OTP: ${response.body()!!.payload}", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(call: Call<sendOTPResponse>, t: Throwable) {
@@ -105,7 +106,7 @@ class CheckOTP : BaseAppCompatActivity() {
                         call: Call<verifyOTPresponse>,
                         response: Response<verifyOTPresponse>
                     ) {
-                        if (response.code() == utils.RESPONSE_SUCCESS) {
+                        if (response.code() == utils.RESPONSE_SUCCESS&&response.body()!!.error!="true") {
                             utils.access_token = "Bearer " + response.body()!!.access_token
                             utils.refresh_token = response.body()!!.refresh_token
                             utils.phone = phone
@@ -143,7 +144,11 @@ class CheckOTP : BaseAppCompatActivity() {
                             }
                         } else if (response.code() == 400) {
                             Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
-                        } else {
+                        }
+                        else if(response.body()!!.error.equals("true",true)){
+                            Toast.makeText(context, response.body()!!.message, Toast.LENGTH_SHORT).show()
+                        }
+                        else {
                             Log.d("tag", response.code().toString() + "")
                         }
                     }
@@ -160,7 +165,7 @@ class CheckOTP : BaseAppCompatActivity() {
 
     private fun init() {
         phone = intent.getStringExtra("phone")
-        binding!!.codesenttotext.text = "4 digit code sent to $phone"
+        binding!!.codesenttotext.text = "4 digit code sent to +91$phone"
         binding!!.back.setOnClickListener { view: View? -> finish() }
         binding!!.verifyOTP.setOnClickListener { view: View? -> verify() }
         binding!!.OTPpinView.cursorColor = getColor(R.color.grey)

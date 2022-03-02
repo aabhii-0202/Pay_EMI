@@ -1,0 +1,36 @@
+
+s	java:S116"RRename this field "bill_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’—ùıúÿÿÿÿ8îµ»¼ò/
+v	java:S116"URename this field "profile_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’—ùıúÿÿÿÿ8îµ»¼ò/
+t	java:S116"SRename this field "order_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’—ùıúÿÿÿÿ8îµ»¼ò/
+u	java:S116"TRename this field "Exactness" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÛñúÿÿÿÿ8îµ»¼ò/
+f
+java:S1659"DDeclare "bill_id" and all following declarations on a separate line.(’—ùıúÿÿÿÿ8úµ»¼ò/
+p
+java:S1450"SRemove the "data" field and declare it as a local variable in the relevant methods.(éë8ûµ»¼ò/
+t
+java:S3776,"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(şñÊëÿÿÿÿÿ8„¶»¼ò/
+X	java:S125A"<This block of commented-out lines of code should be removed.(ˆ•¾Å8†¶»¼ò/
+J	java:S108M")Either remove or fill this block of code.(ñ“Š±üÿÿÿÿ8‡¶»¼ò/
+Y	java:S125¨"<This block of commented-out lines of code should be removed.(Ñ³şî8”¶»¼ò/
+U
+java:S1135§"2Complete the task associated to this TODO comment.(‡å´ÿÿÿÿÿ8•¶»¼ò/
+N
+java:S1068",Remove this unused "order_id" private field.(’—ùıúÿÿÿÿ8š¶»¼ò/
+X
+java:S1144µ":Remove this unused private "razorpaypaymentfailed" method.(‹ÃÀĞ8š¶»¼ò/
+j
+java:S1192V"HDefine a constant instead of duplicating this literal "bill_id" 4 times.(“é¯•úÿÿÿÿ8›¶»¼ò/
+c
+java:S1192="GDefine a constant instead of duplicating this literal "amount" 3 times.(·ø¦j8›¶»¼ò/
+h
+java:S1192>"KDefine a constant instead of duplicating this literal "billerName" 4 times.(€¦Û8›¶»¼ò/
+J
+java:S1604Y"(Make this anonymous inner class a lambda(ÿìÁŞûÿÿÿÿ8œ¶»¼ò/
+Y
+java:S4973c"<Strings and Boxed types should be compared using "equals()".(­ëÏ8¶»¼ò/
+Y
+java:S4973k"<Strings and Boxed types should be compared using "equals()".(ˆÚ—Å8¶»¼ò/
+^
+java:S4973q"<Strings and Boxed types should be compared using "equals()".(¤Šîııÿÿÿÿ8¶»¼ò/
+:
+java:S1700"Rename field "Exactness"(ÇÛñúÿÿÿÿ8¶»¼ò/

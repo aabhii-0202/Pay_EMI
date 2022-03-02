@@ -1,0 +1,7 @@
+
+l	java:S116
+"WRename this field "access_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäøª
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨³Õ·úÿÿÿÿ
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öœé
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öœé
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Üèèš

@@ -134,7 +134,6 @@ public class TransactionSearchFragment extends Fragment {
             billername.setText(response.getData().get(0).getBiller_name());
             amount.setText(response.getData().get(0).getAmount());
             String date = response.getData().get(0).getTransaction_date();
-            date  = format(date);
             transactiondate.setText(date);
             txnrefid.setText(response.getData().get(0).getTransaction_ref_id());
             status.setText(response.getData().get(0).getTransation_status());
@@ -155,18 +154,6 @@ public class TransactionSearchFragment extends Fragment {
         }
 
 
-    }
-
-    private String format(String s){
-        //  2021-12-21T`08:22:07Z
-
-        String date = s.substring(0,10);
-        String time = s.substring(12,16);
-
-        String ans = date+" | "+time;
-
-
-        return ans;
     }
 
     private void callapiforrefid(String refid) {

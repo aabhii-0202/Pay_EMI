@@ -1,0 +1,8 @@
+
+Lkotlin:S108I")Either remove or fill this block of code.(ÍÖ¥ºÿÿÿÿÿ8òÛÆƒô/
+Hkotlin:S108¤")Either remove or fill this block of code.(½ûöÆ8óÛÆƒô/
+Vkotlin:S1172L"7Use "_" instead of this unused lambda parameter "view".(Œ˜Èâ8óÛÆƒô/
+[kotlin:S1172M"7Use "_" instead of this unused lambda parameter "view".(Ñ÷àûÿÿÿÿ8ôÛÆƒô/
+>kotlin:S1128"Remove this unused import.(ÛÕ¯úøÿÿÿÿ8úÛÆƒô/
+lkotlin:S117°"NRename this parameter to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(«£ˆP8ÿÛÆƒô/
+vkotlin:S117`"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(õø– ûÿÿÿÿ8ÿÛÆƒô/

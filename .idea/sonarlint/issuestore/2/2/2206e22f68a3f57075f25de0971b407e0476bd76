@@ -1,0 +1,13 @@
+
+m
+java:S3776<"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Í¨Û’ÿÿÿÿÿ
+n
+java:S1659"RDeclare "complaint_description" and all following declarations on a separate line.(óÊ¬˜øÿÿÿÿ
+P
+java:S1141b"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¨Û’ÿÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÊ¬˜øÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÊ¬˜øÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÊ¬˜øÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÊ¬˜øÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÔ‹ÿÿÿÿÿ

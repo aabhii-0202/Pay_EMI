@@ -21,7 +21,7 @@ public class TransactionSearchDataDTO {
     @Expose
     String transaction_date;
 
-    @SerializedName("transation_status")
+    @SerializedName("transaction_status")
     @Expose
     String transation_status;
 

@@ -1,0 +1,54 @@
+
+l	java:S116E"RRename this field "bill_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÛÀğşÿÿÿÿ
+<
+java:S1170I"!Make this final field static too.(Úù®Šÿÿÿÿÿ
+6
+java:S1170J"!Make this final field static too.(Íù¤N
+@
+java:S1659E"%Declare "bill_id" on a separate line.(šÛÀğşÿÿÿÿ
+F
+java:S1659F"+Declare "paymentstatus" on a separate line.(å•Ğ†şÿÿÿÿ
+h
+java:S3776X"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(óê‚¥
+W	java:S125¡"<This block of commented-out lines of code should be removed.(ÎÚÂ·üÿÿÿÿ
+i
+java:S3776º"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(ÓòÕÓ
+T	java:S106¼"9Replace this use of System.out or System.err by a logger.(ÑêûÃşÿÿÿÿ
+K
+java:S1874Ñ"/Remove this use of "Handler"; it is deprecated.(’àŞ–úÿÿÿÿ
+H
+java:S1602Ñ",Remove useless curly braces around statement(’àŞ–úÿÿÿÿ
+o
+java:S1612Ñ"SReplace this lambda with method reference 'PaymentSuccessful.this::getbilldetails'.(’àŞ–úÿÿÿÿ
+W	java:S125Õ"<This block of commented-out lines of code should be removed.(òÉÓèùÿÿÿÿ
+n
+java:S3776ñ"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÙğÌÜüÿÿÿÿ
+
+java:S1186¾"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª¾²ıÿÿÿÿ
+˜
+java:S1186‰"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¿Ø 
+
+java:S1186˜"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¾«ï†øÿÿÿÿ
+
+java:S1186Ü"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Åğ‰¥ûÿÿÿÿ
+T	java:S106Õ"9Replace this use of System.out or System.err by a logger.(±´İãúÿÿÿÿ
+G
+java:S1874ì"0Remove this use of "getColor"; it is deprecated.(¾Ğú˜
+O
+java:S1874í"3Remove this use of "getDrawable"; it is deprecated.(ß¹‡³ùÿÿÿÿ
+Z
+java:S1874"CRemove this use of "allowScanningByMediaScanner"; it is deprecated.(ˆƒ½‘
+Z
+java:S1874•"CRemove this use of "allowScanningByMediaScanner"; it is deprecated.(ˆƒ½‘
+R	java:S125Û"<This block of commented-out lines of code should be removed.(»ïë
+W	java:S125å"<This block of commented-out lines of code should be removed.(äÂİœıÿÿÿÿ
+Z
+java:S1117‚">Rename "permission" which hides the field declared at line 75.(ËÈ›œıÿÿÿÿ
+s
+java:S3252‚"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ËÈ›œıÿÿÿÿ
+s
+java:S3252ƒ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(òÈ¾ùÿÿÿÿ
+f
+java:S1874"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ
+D
+java:S1604û"(Make this anonymous inner class a lambda(ÃñÁ”ùÿÿÿÿ
