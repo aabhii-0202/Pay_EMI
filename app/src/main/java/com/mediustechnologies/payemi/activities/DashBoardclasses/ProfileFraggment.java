@@ -60,7 +60,7 @@ public class ProfileFraggment extends Fragment {
     private updateNameListner listner;
 
     public interface updateNameListner {
-        void updatename(String name);
+        void updatename(String name,String url);
     }
 
     @Nullable
@@ -154,7 +154,7 @@ public class ProfileFraggment extends Fragment {
                                 preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
                                 utils.profileUrl = response.body().getData().get(0).getProfile_url();
 
-                                listner.updatename(response.body().getData().get(0).getFullname());
+                                listner.updatename(response.body().getData().get(0).getFullname(),response.body().getData().get(0).getProfile_url());
                             } catch (Exception e) {
                                 e.printStackTrace();
 
@@ -424,7 +424,7 @@ public class ProfileFraggment extends Fragment {
                                 utils.profileUrl = response.body().getData().get(0).getProfile_url();
 
 
-                                listner.updatename(response.body().getData().get(0).getFullname());
+                                listner.updatename(response.body().getData().get(0).getFullname(),response.body().getData().get(0).getProfile_url());
 
                                 Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
 

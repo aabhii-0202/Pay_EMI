@@ -59,6 +59,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] screenIcons;
     private SlidingRootNav slidingRootNav;
     private TextView t;
+    private ImageView profile;
 
 
     @Override
@@ -87,7 +88,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
 
-        ImageView profile = slidingRootNav.getLayout().findViewById(R.id.navprofilepic);
+        profile = slidingRootNav.getLayout().findViewById(R.id.navprofilepic);
         Glide.with(profile).load(utils.profileUrl).into(profile);
         ImageView logout = slidingRootNav.getLayout().findViewById(R.id.nav_logout);
         logout.setOnClickListener(view -> {
@@ -249,7 +250,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
 
                         @Override
                         public void onFailure(Call<BaseApiResponse> call, Throwable t) {
-
+                            Toast.makeText(context,"Not able to clear notification please try again later",Toast.LENGTH_LONG);
                         }
                     });
 
@@ -277,8 +278,10 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         binding.navview.setVisibility(View.GONE);
     }
 
+
     @Override
-    public void updatename(String name) {
+    public void updatename(String name, String url) {
         t.setText(name);
+        Glide.with(profile).load(url).into(profile);
     }
 }

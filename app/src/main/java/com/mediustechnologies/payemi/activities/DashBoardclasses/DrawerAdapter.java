@@ -21,6 +21,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     private SparseArray<DrawerItems> holderFactories;
     private OnItemSelectedListener listener;
 
+
     public DrawerAdapter(List<DrawerItems> items){
         this.items = items;
         this.viewType = new HashMap<>();
@@ -103,6 +104,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+
+
         }
 
         @Override
