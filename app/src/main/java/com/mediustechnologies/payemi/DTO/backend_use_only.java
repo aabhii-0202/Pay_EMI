@@ -3,7 +3,7 @@ package com.mediustechnologies.payemi.DTO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisterComplaintBbpsResponseDTO {
+public class backend_use_only {
 
     @SerializedName("complaintAssigned")
     @Expose

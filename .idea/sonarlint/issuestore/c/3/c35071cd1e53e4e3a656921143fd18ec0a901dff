@@ -1,6 +1,0 @@
-
-h	java:S116G"TRename this field "Bank_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¿-
->
-java:S1604O"(Make this anonymous inner class a lambda(ú“Úå
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Â­‚á
-f	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(µƒ›¾

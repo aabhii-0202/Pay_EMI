@@ -73,6 +73,8 @@ public class ComplaintTrackingFragment extends Fragment {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
+                        binding.parentdata.setVisibility(View.VISIBLE);
+                        binding.errormess.setVisibility(View.GONE);
                         Dialog d = new Dialog(context);
                         d.setContentView(R.layout.complaint_registered_popup);
                         d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

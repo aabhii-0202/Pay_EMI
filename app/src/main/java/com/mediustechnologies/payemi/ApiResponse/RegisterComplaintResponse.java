@@ -2,7 +2,7 @@ package com.mediustechnologies.payemi.ApiResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mediustechnologies.payemi.DTO.RegisterComplaintBbpsResponseDTO;
+import com.mediustechnologies.payemi.DTO.backend_use_only;
 import com.mediustechnologies.payemi.DTO.RegisterComplaintDataDTO;
 
 public class RegisterComplaintResponse extends BaseApiResponse{
@@ -11,9 +11,9 @@ public class RegisterComplaintResponse extends BaseApiResponse{
     @Expose
     private RegisterComplaintDataDTO data;
 
-    @SerializedName("bbps response")
+    @SerializedName("backend_use_only")
     @Expose
-    private RegisterComplaintBbpsResponseDTO bbps_response;
+    private backend_use_only backend_use_only;
 
     public RegisterComplaintDataDTO getData() {
         return data;
@@ -23,19 +23,19 @@ public class RegisterComplaintResponse extends BaseApiResponse{
         this.data = data;
     }
 
-    public RegisterComplaintBbpsResponseDTO getBbps_response() {
-        return bbps_response;
+    public backend_use_only getBbps_response() {
+        return backend_use_only;
     }
 
-    public void setBbps_response(RegisterComplaintBbpsResponseDTO bbps_response) {
-        this.bbps_response = bbps_response;
+    public void setBbps_response(backend_use_only backend_use_only) {
+        this.backend_use_only = backend_use_only;
     }
 
     @Override
     public String toString() {
         return "RegisterComplaintResponse{" +
                 "data=" + data +
-                ", bbps_response='" + bbps_response + '\'' +
+                ", bbps_response='" + backend_use_only + '\'' +
                 '}';
     }
 }
