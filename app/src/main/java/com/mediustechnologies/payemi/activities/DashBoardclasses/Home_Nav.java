@@ -207,10 +207,15 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             hide_detail("Profile");
             ProfileFraggment profileFraggment = new ProfileFraggment();
             transaction.replace(R.id.homeframe, profileFraggment);
-        } else if (position == POS_HELP) {
+        } else if (position == POS_RATE) {
             hide_detail("Complaint Tracking");
             ComplaintTrackingFragment complaintTrackingFragment = new ComplaintTrackingFragment();
             transaction.replace(R.id.homeframe, complaintTrackingFragment);
+        } else if(position == POS_HELP){
+            hide_detail("Help");
+            HelpFragment helpFragment = new HelpFragment();
+            transaction.replace(R.id.homeframe,helpFragment);
+
         } else if (position == POS_NOTIFICATION) {
             hide_detail("Notifications");
             binding.clearall.setVisibility(View.VISIBLE);

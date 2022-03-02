@@ -1,14 +1,0 @@
-
-m
-java:S3776l"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÝÀ—µùÿÿÿÿ
-R	java:S125þ"<This block of commented-out lines of code should be removed.(‡Äü
-n
-java:S3776ˆ"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(šóãÏùÿÿÿÿ
-Y
-java:S2696”"6Make the enclosing method "static" or remove this set.(ºåöùÿÿÿÿ8Ë¢£¬ô/
-T
-java:S2696—"6Make the enclosing method "static" or remove this set.(š©¢’8Ë¢£¬ô/
-l	java:S117ß"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š›—èýÿÿÿÿ
-8
-java:S1643ž"Use a StringBuilder instead.(¡ò„úÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÔ‹ÿÿÿÿÿ
