@@ -25,8 +25,6 @@ Rapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/verifyOTPresponse.j
 Sapp/src/main/java/com/mediustechnologies/payemi/activities/EMITransactionHistory.kt,c\6\c67be05f1cde2031f56992ef3dd3262789c1087a
 Ñ
 Tapp/src/main/java/com/mediustechnologies/payemi/activities/apiBody/RefreshToken.java,3\3\3392d33fe75de19864b03803b74de80b3dc717b6
-É
-Sapp/src/main/java/com/mediustechnologies/payemi/activities/Transaction_Details.java,1\3\1330688281b31cdadc7f31fcf153cbcc11e83ce2
 ï
 eapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/NotificationFragment.java,8\1\81f524e6506f656a36cf51af780a922052c86a80
 Å
