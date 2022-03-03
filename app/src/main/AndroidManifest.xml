@@ -4,10 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     <application
         android:allowBackup="true"
@@ -19,8 +18,11 @@
         android:theme="@style/Theme.PayEMI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.HelpSubcatagory"
+            android:exported="false" />
+        <activity
             android:name=".activities.DashBoardclasses.Home_Nav"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.EmiCategories"
             android:exported="false" />
@@ -89,12 +91,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-
-
-        <!-- below code for razorpay -->
+        </activity> <!-- below code for razorpay -->
         <!--
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"

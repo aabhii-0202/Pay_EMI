@@ -16,6 +16,18 @@ import java.util.List;
 public class HelpCatagoryAdapter extends RecyclerView.Adapter<HelpCatagoryAdapter.viewHolder> {
 
     private List<HelpCatagoryList> catlist;
+    private OnItemClickListner listner;
+
+    public interface OnItemClickListner{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListner(OnItemClickListner listner){
+        this.listner= listner;
+    }
+
+
+
 
     public HelpCatagoryAdapter(List<HelpCatagoryList> catlist){
         this.catlist = catlist;
@@ -47,6 +59,17 @@ public class HelpCatagoryAdapter extends RecyclerView.Adapter<HelpCatagoryAdapte
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             binding = HelpCatagoryItemBinding.bind(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listner!=null){
+                        int position  = getAbsoluteAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            listner.OnItemClick(position);
+                        }
+                    }
+                }
+            });
 
         }
 

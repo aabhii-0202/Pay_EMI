@@ -18,6 +18,7 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_bank_sub_categories.xml" value="0.3567708333333333" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_complaint_registration.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_emi_categories.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_help_subcatagory.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_home_nav.xml" value="0.37962962962962965" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_input_parameter_feilds.xml" value="0.4" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/activity_pay_emi.xml" value="0.31145833333333334" />
@@ -40,6 +41,7 @@
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/get_bill_details_layout.xml" value="0.3390625" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/help_catagory_item.xml" value="0.72" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/help_fragment.xml" value="0.409375" />
+        <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/help_subcatagory_item.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/item_option.xml" value="0.37962962962962965" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notificaion_item.xml" value="0.409375" />
         <entry key="..\:/Android Projects/Android Studio/Pay_EMI/app/src/main/res/layout/notification_fragment.xml" value="0.2984375" />
