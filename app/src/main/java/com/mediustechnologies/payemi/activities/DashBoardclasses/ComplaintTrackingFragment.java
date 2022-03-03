@@ -51,6 +51,8 @@ public class ComplaintTrackingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.profressbar.setVisibility(View.GONE);
+
         binding.checkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,11 +67,12 @@ public class ComplaintTrackingFragment extends Fragment {
     }
 
     private void callapi(String comp_type, String comp_id){
-
+        binding.profressbar.setVisibility(View.VISIBLE);
         Call<RegisterComplaintResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().trackComplaint(utils.access_token,comp_id,comp_type);
         call.enqueue(new Callback<RegisterComplaintResponse>() {
             @Override
             public void onResponse(Call<RegisterComplaintResponse> call, Response<RegisterComplaintResponse> response) {
+                binding.profressbar.setVisibility(View.GONE);
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
@@ -113,6 +116,7 @@ public class ComplaintTrackingFragment extends Fragment {
 
             @Override
             public void onFailure(Call<RegisterComplaintResponse> call, Throwable t) {
+                binding.profressbar.setVisibility(View.GONE);
                 Toast.makeText(context, "Error Fetching Complaint", Toast.LENGTH_SHORT).show();
                 Log.e("tag",t.getMessage());
                 binding.errormess.setText(t.getMessage());

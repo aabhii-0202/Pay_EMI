@@ -59,13 +59,17 @@ public class ComplaintRegFrag extends Fragment {
 
     private void callApi(String dispostion,String description, String type, String trans_id){
 
+        binding.progressbar.setVisibility(View.VISIBLE);
+
         Call<RegisterComplaintResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().registerComplaint(
                 utils.access_token,dispostion,description,type,trans_id);
 
+        binding.progressbar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<RegisterComplaintResponse>() {
             @Override
             public void onResponse(Call<RegisterComplaintResponse> call, Response<RegisterComplaintResponse> response) {
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
+                    binding.progressbar.setVisibility(View.GONE);
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
                         Dialog d = new Dialog(context);
@@ -121,6 +125,7 @@ public class ComplaintRegFrag extends Fragment {
             public void onFailure(Call<RegisterComplaintResponse> call, Throwable t) {
                 Log.e("tag",t.getMessage());
                 Toast.makeText(context, "Failed to load data.", Toast.LENGTH_SHORT).show();
+                binding.progressbar.setVisibility(View.GONE);
             }
         });
 
@@ -129,7 +134,6 @@ public class ComplaintRegFrag extends Fragment {
     }
 
     private void init(){
-
 
         String[] itemlist = getResources().getStringArray(R.array.dispoistion);
         ArrayList<String> list = new ArrayList<>(Arrays.asList(itemlist));
