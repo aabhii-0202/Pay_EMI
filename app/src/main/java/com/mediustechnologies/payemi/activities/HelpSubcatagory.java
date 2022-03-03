@@ -38,19 +38,20 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
 
         String answer = "We value our customer’s time and hence moved away from a single customer care number to a comprehensive chat-based support system for quick and easy resolution. You no longer have to go through the maze of an IVRS call support. Just search for your issue in the help section on this page and initiate a chat You can also email us your issue on support@swiggy.in. Note: We value your privacy and your information is safe with us. Please do not reveal any personal information, bank account number, you for these details. Please do not reveal these details to fraudsters and do not entertain phishing calls or emails";
         List<helpActivityRecyclerItem> list = new ArrayList<>();
-
+        int p = 0;
         for(int i=0;i<10;i++){
             if(i==ans){
                 list.add(new helpActivityRecyclerItem("Question "+i, answer));
+                p=i;
             }
             else {
                 list.add(new helpActivityRecyclerItem("Question "+i, ""));
             }
         }
-        initrec(list);
+        initrec(list,p);
     }
 
-    private void initrec(List<helpActivityRecyclerItem> list){
+    private void initrec(List<helpActivityRecyclerItem> list,int p){
 
 
 
@@ -60,6 +61,8 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
         helpActivityAdapter helpActivityAdapter = new helpActivityAdapter(list);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(helpActivityAdapter);
+
+        recyclerView.getLayoutManager().scrollToPosition(p);
 
         helpActivityAdapter.SetOnQuestionClicked(new helpActivityAdapter.onQuestionAskd() {
             @Override
