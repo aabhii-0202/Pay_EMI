@@ -1,0 +1,62 @@
+
+[	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(êÉêš
+l	java:S116:"RRename this field "cam_uri" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â¹Ô™ÿÿÿÿÿ
+D
+java:S1481o")Remove this unused "name" local variable.(…Â§Äüÿÿÿÿ
+D
+java:S1481p")Remove this unused "mail" local variable.(ÛÀ‘şÿÿÿÿ
+H
+java:S1481q"-Remove this unused "username" local variable.(ü’™Âùÿÿÿÿ
+G
+java:S1481r",Remove this unused "address" local variable.(’ıÄùûÿÿÿÿ
+h
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ÊÊÁ±
+M
+java:S2696›"6Make the enclosing method "static" or remove this set.(§Ñ»æ
+n
+java:S3252â"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(˜±®œ
+e
+java:S3252å"NUse static access with "android.provider.MediaStore$MediaColumns" for "TITLE".(´ø¨œ
+w
+java:S3252æ"[Use static access with "android.provider.MediaStore$Images$ImageColumns" for "DESCRIPTION".(ß“ÙÜıÿÿÿÿ
+=
+java:S1168¯"&Return an empty array instead of null.(¥¹ï
+d	java:S100µ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ñÔª
+W	java:S125»"<This block of commented-out lines of code should be removed.(œìõÿúÿÿÿÿ
+N
+java:S1874Ä"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ
+I
+java:S1874Å"-Remove this use of "parse"; it is deprecated.(Š†‡Èûÿÿÿÿ
+n
+java:S3776Ñ"RRefactor this method to reduce its Cognitive Complexity from 50 to the 15 allowed.(€Ê–„ûÿÿÿÿ
+J
+java:S1874Ø".Remove this use of "create"; it is deprecated.(ØËˆëûÿÿÿÿ
+
+java:S1186‰"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ëÑÉÊøÿÿÿÿ
+M
+java:S2696ñ"6Make the enclosing method "static" or remove this set.(§Ñ»æ
+M
+java:S2696¨"6Make the enclosing method "static" or remove this set.(§Ñ»æ
+R
+java:S10687"7Remove this unused "REQUEST_CODE_CAMERA" private field.(‰ùàŸùÿÿÿÿ
+f
+java:S1192™"JDefine a constant instead of duplicating this literal "cutomerid" 3 times.(’úÅÀøÿÿÿÿ
+f
+java:S1192•"HDefine a constant instead of duplicating this literal "PAY_EMI" 3 times.(—á»Ò8Ï†¢­ô/
+]
+java:S1192‹"FDefine a constant instead of duplicating this literal "false" 3 times.(‰¼À
+f
+java:S1192˜"JDefine a constant instead of duplicating this literal "profileid" 3 times.(ç€“£ûÿÿÿÿ
+l	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…“çÑüÿÿÿÿ
+>
+java:S1604c"(Make this anonymous inner class a lambda(ì›ù›
+D
+java:S1604Ê"(Make this anonymous inner class a lambda(ğÆø¬ÿÿÿÿÿ
+D
+java:S1604Õ"(Make this anonymous inner class a lambda(£‚Ìüÿÿÿÿ
+D
+java:S1604‚"(Make this anonymous inner class a lambda(Ş¡ó¢úÿÿÿÿ
+D
+java:S1604"(Make this anonymous inner class a lambda(•íùƒûÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÔ‹ÿÿÿÿÿ
+k	java:S114>"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ö¶†ûÿÿÿÿ

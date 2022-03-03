@@ -1,0 +1,14 @@
+
+K
+java:S3740Œ"/Provide the parametrized type for this generic.(ôñŒèúÿÿÿÿ
+R
+java:S1874E"7Remove this use of "FLAG_FULLSCREEN"; it is deprecated.(ÛŒ şÿÿÿÿ
+M
+java:S1874F"7Remove this use of "FLAG_FULLSCREEN"; it is deprecated.(­‰ı›
+i
+java:S3776²"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(–°“Ş
+K
+java:S1874Á"/Remove this use of "Handler"; it is deprecated.(’àŞ–úÿÿÿÿ
+i	java:S100•"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï¹™£øÿÿÿÿ
+g	java:S101/"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(³ĞÌ şÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÔ‹ÿÿÿÿÿ
