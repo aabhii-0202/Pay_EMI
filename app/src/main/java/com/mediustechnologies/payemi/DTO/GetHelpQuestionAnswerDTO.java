@@ -1,13 +1,19 @@
-package com.mediustechnologies.payemi.recyclerItems;
+package com.mediustechnologies.payemi.DTO;
 
-public class helpActivityRecyclerItem {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+public class GetHelpQuestionAnswerDTO {
+
+    @SerializedName("question")
+    @Expose
     String question;
-    String answer;
 
-    public helpActivityRecyclerItem(String question, String answer) {
-        this.question = question;
-        this.answer = answer;
-    }
+    @SerializedName("answer")
+    @Expose
+    String answer;
 
     public String getQuestion() {
         return question;

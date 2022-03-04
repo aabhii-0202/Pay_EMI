@@ -1,6 +1,7 @@
 package com.mediustechnologies.payemi.commons;
 
 import android.graphics.Bitmap;
+import android.util.Pair;
 
 import androidx.annotation.CallSuper;
 
@@ -162,5 +163,18 @@ public interface API {
     Call<BaseApiResponse> seenNotification(@Header("Authorization") String token,
                                            @Body HashMap<String,List<String>> ids
                                            );
+
+    @GET("getHelpCategory/")
+    Call<GetHelpCatagoryResponse> getHelpCatagory(@Header("Authorization") String token);
+
+    @POST("getHelpSubCategory/")
+    Call<HelpSubCatagoryResponse> getHelpSubCategory(@Header("Authorization") String token,
+                                                     @Body Pair<String,String> catagory
+                                                    );
+
+    @POST("getHelpQuestionAnswer/")
+    Call<GetHelpQuestionAnswer> GetHelpQuestionAnswer (@Header("Authorization") String token,
+                                                       @Body Pair<String,String> sub_category
+                                                      );
 
 }

@@ -3,19 +3,29 @@ package com.mediustechnologies.payemi.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Pair;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mediustechnologies.payemi.R;
+import com.mediustechnologies.payemi.DTO.GetHelpQuestionAnswerDTO;
 import com.mediustechnologies.payemi.adapters.helpActivityAdapter;
+import com.mediustechnologies.payemi.commons.urlconstants;
+import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.ActivityHelpSubcatagoryBinding;
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
-import com.mediustechnologies.payemi.recyclerItems.helpActivityRecyclerItem;
+import com.mediustechnologies.payemi.ApiResponse.GetHelpQuestionAnswer;
+import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HelpSubcatagory extends BaseAppCompatActivity {
 
@@ -30,30 +40,44 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
         setContentView(binding.getRoot());
 
         init();
-       body = getIntent().getStringExtra("body");
-       callApi(0);
+        body = getIntent().getStringExtra("body");
+        callApi(body);
     }
 
-    private void callApi(int ans){
+    private void callApi(String body) {
 
-        String answer = "We value our customer’s time and hence moved away from a single customer care number to a comprehensive chat-based support system for quick and easy resolution. You no longer have to go through the maze of an IVRS call support. Just search for your issue in the help section on this page and initiate a chat You can also email us your issue on support@swiggy.in. Note: We value your privacy and your information is safe with us. Please do not reveal any personal information, bank account number, you for these details. Please do not reveal these details to fraudsters and do not entertain phishing calls or emails";
-        List<helpActivityRecyclerItem> list = new ArrayList<>();
-        int p = 0;
-        for(int i=0;i<10;i++){
-            if(i==ans){
-                list.add(new helpActivityRecyclerItem("Question "+i, answer));
-                p=i;
+        Pair<String,String> sub_category = new Pair<>("sub_category","How do I use Alipay to Pay?");
+        Call<GetHelpQuestionAnswer> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().GetHelpQuestionAnswer(utils.access_token,sub_category);
+//
+
+        call.enqueue(new Callback<GetHelpQuestionAnswer>() {
+            @Override
+            public void onResponse(Call<GetHelpQuestionAnswer> call, Response<GetHelpQuestionAnswer> response) {
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                    if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
+                                 initrec(response.body().getData());
+                    }
+                    else {
+                        try {
+                            utils.errortoast(context, response.body().getMessage());
+                        } catch (Exception e) {
+                            Log.e("tag", e.toString());
+                        }
+                    }
+                } else {
+                    Toast.makeText(context, "Failed " + response.code(), Toast.LENGTH_SHORT).show();
+                    Log.e("tag", "" + response.code());
+                }
             }
-            else {
-                list.add(new helpActivityRecyclerItem("Question "+i, ""));
+
+            @Override
+            public void onFailure(Call<GetHelpQuestionAnswer> call, Throwable t) {
+
             }
-        }
-        initrec(list,p);
+        });
     }
 
-    private void initrec(List<helpActivityRecyclerItem> list,int p){
-
-
+    private void initrec(List<GetHelpQuestionAnswerDTO> list) {
 
         RecyclerView recyclerView = binding.rec;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
@@ -62,28 +86,16 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(helpActivityAdapter);
 
-        recyclerView.getLayoutManager().scrollToPosition(p);
-
-        helpActivityAdapter.SetOnQuestionClicked(new helpActivityAdapter.onQuestionAskd() {
-            @Override
-            public void OnQuestion(int position) {
-                callApi(position);
-            }
-        });
-
-
-
+        helpActivityAdapter.SetOnQuestionClicked(position -> recyclerView.getLayoutManager().scrollToPosition(position));
 
     }
 
-    private void init(){
+    private void init() {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
-
     }
 }

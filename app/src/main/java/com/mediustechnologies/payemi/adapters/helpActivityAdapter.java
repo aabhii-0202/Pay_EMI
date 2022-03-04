@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mediustechnologies.payemi.DTO.GetHelpQuestionAnswerDTO;
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.HelpSubcatagoryItemExpandableBinding;
-import com.mediustechnologies.payemi.recyclerItems.helpActivityRecyclerItem;
+import com.mediustechnologies.payemi.ApiResponse.GetHelpQuestionAnswer;
 
 import java.util.List;
 
 public class helpActivityAdapter extends RecyclerView.Adapter<helpActivityAdapter.vh> {
 
-    List<helpActivityRecyclerItem> list ;
+    List<GetHelpQuestionAnswerDTO> list ;
     private onQuestionAskd listner;
 
     public interface onQuestionAskd{
@@ -26,7 +27,7 @@ public class helpActivityAdapter extends RecyclerView.Adapter<helpActivityAdapte
         this.listner = listner;
     }
 
-    public helpActivityAdapter(List<helpActivityRecyclerItem> list) {
+    public helpActivityAdapter(List<GetHelpQuestionAnswerDTO> list) {
         this.list = list;
     }
 
@@ -63,6 +64,9 @@ public class helpActivityAdapter extends RecyclerView.Adapter<helpActivityAdapte
                         int position  = getAbsoluteAdapterPosition();
                         if(position!=RecyclerView.NO_POSITION){
                             listner.OnQuestion(position);
+                            binding.view.setVisibility(View.GONE);
+                            binding.answer.setVisibility(View.VISIBLE);
+
                         }
                     }
                 }
@@ -72,15 +76,9 @@ public class helpActivityAdapter extends RecyclerView.Adapter<helpActivityAdapte
 
         public void set(String question, String answer) {
             binding.title.setText(question);
-            if(answer.length()>10)
-            {
-                binding.answer.setVisibility(View.VISIBLE);
-                binding.answer.setText(answer);
-                binding.view.setVisibility(View.GONE);
-            }else{
-                binding.answer.setVisibility(View.GONE);
-                binding.view.setVisibility(View.VISIBLE);
-            }
+            binding.answer.setVisibility(View.GONE);
+            binding.answer.setText(answer);
+            binding.view.setVisibility(View.VISIBLE);
         }
     }
 }

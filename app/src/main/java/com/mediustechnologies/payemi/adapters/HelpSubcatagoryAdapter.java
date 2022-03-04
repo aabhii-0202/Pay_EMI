@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.HelpSubcatagoryItemBinding;
-import com.mediustechnologies.payemi.recyclerItems.HelpSubCatagoryItem;
+import com.mediustechnologies.payemi.ApiResponse.HelpSubCatagoryResponse;
 
 import java.util.List;
 
 public class HelpSubcatagoryAdapter extends RecyclerView.Adapter<HelpSubcatagoryAdapter.vh> {
 
-    List<HelpSubCatagoryItem> list;
+    List<String> list;
     private onSubCatClickListner listner;
 
     public interface onSubCatClickListner{
@@ -25,7 +25,7 @@ public class HelpSubcatagoryAdapter extends RecyclerView.Adapter<HelpSubcatagory
         this.listner = listner;
     }
 
-    public HelpSubcatagoryAdapter(List<HelpSubCatagoryItem> list) {
+    public HelpSubcatagoryAdapter(List<String> list) {
         this.list = list;
     }
 
@@ -38,7 +38,7 @@ public class HelpSubcatagoryAdapter extends RecyclerView.Adapter<HelpSubcatagory
 
     @Override
     public void onBindViewHolder(@NonNull HelpSubcatagoryAdapter.vh holder, int position) {
-        String title = list.get(position).getTitle();
+        String title = list.get(position);
         holder.set(title);
     }
 
