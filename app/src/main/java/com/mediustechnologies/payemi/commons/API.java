@@ -169,12 +169,12 @@ public interface API {
 
     @POST("getHelpSubCategory/")
     Call<HelpSubCatagoryResponse> getHelpSubCategory(@Header("Authorization") String token,
-                                                     @Body Pair<String,String> catagory
+                                                     @Body HashMap<String,String> catagory
                                                     );
 
     @POST("getHelpQuestionAnswer/")
     Call<GetHelpQuestionAnswer> GetHelpQuestionAnswer (@Header("Authorization") String token,
-                                                       @Body Pair<String,String> sub_category
+                                                       @Body HashMap<String,String> sub_category
                                                       );
 
 }

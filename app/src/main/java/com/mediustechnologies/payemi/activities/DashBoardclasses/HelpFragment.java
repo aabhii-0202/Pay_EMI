@@ -9,13 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mediustechnologies.payemi.activities.HelpSubcatagory;
 import com.mediustechnologies.payemi.adapters.HelpCatagoryAdapter;
 import com.mediustechnologies.payemi.adapters.HelpSubcatagoryAdapter;
@@ -26,10 +24,8 @@ import com.mediustechnologies.payemi.ApiResponse.GetHelpCatagoryResponse;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.ApiResponse.HelpSubCatagoryResponse;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -105,13 +101,14 @@ public class HelpFragment extends Fragment {
         catagories.setAdapter(helpCatagoryAdapter);
 
         helpCatagoryAdapter.setOnItemClickListner(position -> {
-//            callApiForSubcatagoryList(catlist.get(position));
+            callApiForSubcatagoryList(catlist.get(position));
         });
     }
 
     private void callApiForSubcatagoryList(String title) {
 
-        Pair<String,String> catagory = new Pair<>("category","Payment");
+        HashMap<String,String> catagory = new HashMap<>();
+        catagory.put("category",title);
         Call<HelpSubCatagoryResponse> call = new RetrofitClient().getInstance(context,urlconstants.AuthURL).getApi().getHelpSubCategory(utils.access_token,catagory);
 
         call.enqueue(new Callback<HelpSubCatagoryResponse>() {
@@ -119,7 +116,7 @@ public class HelpFragment extends Fragment {
             public void onResponse(Call<HelpSubCatagoryResponse> call, Response<HelpSubCatagoryResponse> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-//                                initSubCatRec(response.body().getSub_category());
+                                initSubCatRec(response.body().getSub_category());
                     }
                     else {
                         try {

@@ -21,6 +21,7 @@ import com.mediustechnologies.payemi.ApiResponse.GetHelpQuestionAnswer;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,9 +47,9 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
 
     private void callApi(String body) {
 
-        Pair<String,String> sub_category = new Pair<>("sub_category","How do I use Alipay to Pay?");
+        HashMap<String,String> sub_category = new HashMap<>();
+        sub_category.put("sub_category",body);
         Call<GetHelpQuestionAnswer> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().GetHelpQuestionAnswer(utils.access_token,sub_category);
-//
 
         call.enqueue(new Callback<GetHelpQuestionAnswer>() {
             @Override
