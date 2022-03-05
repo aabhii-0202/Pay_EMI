@@ -51,21 +51,11 @@ class BillerList : BaseAppCompatActivity() {
         bankSubListRecyclerview!!.adapter = adapter
         adapter!!.setOnItemClickListner { position: Int ->
             val i = Intent(context, AddLoanAccount::class.java)
+
             i.putExtra("url", bankSubList!![position].logo_url)
             i.putExtra("biller_id", bankSubList!![position].billerId)
             i.putExtra("biller_name", bankSubList!![position].billerName)
             startActivity(i)
-        }
-        try {
-            if (bankSubList!!.size == 1) {
-                val i = Intent(context, AddLoanAccount::class.java)
-                i.putExtra("url", bankSubList!![0].logo_url)
-                i.putExtra("biller_id", bankSubList!![0].billerId)
-                i.putExtra("biller_name", bankSubList!![0].billerName)
-                startActivity(i)
-                finish()
-            }
-        } catch (e: Exception) {
         }
         binding!!.progressbar.visibility = View.GONE
     }

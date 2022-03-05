@@ -10,15 +10,16 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mediustechnologies.payemi.adapters.catagoryAdapter
-import com.mediustechnologies.payemi.adapters.catagoryAdapter.oncatagoryClick
 import android.content.Intent
-import com.mediustechnologies.payemi.activities.BillerList
 import android.text.TextWatcher
 import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import com.mediustechnologies.payemi.ApiResponse.getBillerByBank
+import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO
 import com.mediustechnologies.payemi.commons.utils
 import com.mediustechnologies.payemi.helper.RetrofitClient
 import com.mediustechnologies.payemi.commons.urlconstants
@@ -76,18 +77,65 @@ class BankList : BaseAppCompatActivity() {
         bankRecyclerView.adapter = adapter
         searchbar()
         adapter!!.setOnItemClickListner { position: Int ->
-            val i = Intent(context, BillerList::class.java)
+
+            var url: String? = null
+            var name: String? = null
+
             if (filteredList != null && !filteredList!!.isEmpty()) {
-                i.putExtra("name", filteredList!![position].bank_name)
-                i.putExtra("imgurl", filteredList!![position].bank_logo_url)
-                i.putExtra("count", filteredList!!.size)
+                url = filteredList!![position].bank_logo_url
+                name = filteredList!![position].bank_name
             } else {
-                i.putExtra("name", banklist!!.data[position].bank_name)
-                i.putExtra("imgurl", banklist!!.data[position].bank_logo_url)
-                i.putExtra("count", banklist!!.data.size)
+                url = banklist!!.data[position].bank_logo_url
+                name = banklist!!.data[position].bank_name
             }
-            startActivity(i)
+            check(name,url)
         }
+    }
+
+    private fun check(name: String, url: String) {
+
+        var bankSubList: List<GetBillerByBankDTO>?  = ArrayList()
+        val call = RetrofitClient().getInstance(
+            context,
+            urlconstants.AuthURL
+        ).api.getBillerByBank(utils.access_token, name)
+        call.enqueue(object : Callback<getBillerByBank?> {
+            override fun onResponse(
+                call: Call<getBillerByBank?>,
+                response: Response<getBillerByBank?>
+            ) {
+                if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                    if (response.body()!!.error == null || response.body()!!
+                            .error.equals("false", ignoreCase = true)
+                    ) {
+                        bankSubList = response.body()!!.data
+                        if(bankSubList!!.size == 1){
+                            val i = Intent(context, AddLoanAccount::class.java)
+                            i.putExtra("url", bankSubList!![0].logo_url)
+                            i.putExtra("biller_id", bankSubList!![0].billerId)
+                            i.putExtra("biller_name", bankSubList!![0].billerName)
+                            startActivity(i)
+                        }
+                        else{
+                            val i = Intent(context, BillerList::class.java)
+                            i.putExtra("name",name)
+                            i.putExtra("imgurl", url)
+                            startActivity(i)
+                        }
+                    } else {
+                        try {
+                            utils.errortoast(context, response.body()!!.message)
+                        } catch (e: Exception) {
+                            Log.e("tag", e.toString())
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<getBillerByBank?>, t: Throwable) {
+                Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {

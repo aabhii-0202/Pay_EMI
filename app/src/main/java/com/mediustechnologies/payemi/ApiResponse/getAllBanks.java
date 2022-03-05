@@ -9,10 +9,6 @@ public class getAllBanks extends BaseApiResponse{
     @Expose
     private String id;
 
-    @SerializedName("count")
-    @Expose
-    private String count;
-
     @SerializedName("bank_name")
     @Expose
     private String bank_name;
@@ -22,13 +18,6 @@ public class getAllBanks extends BaseApiResponse{
     private String bank_logo_url;
 
 
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
 
     public String getId() {
         return id;
@@ -58,7 +47,6 @@ public class getAllBanks extends BaseApiResponse{
     public String toString() {
         return "getAllBanks{" +
                 "id='" + id + '\'' +
-                ", count='" + count + '\'' +
                 ", bank_name='" + bank_name + '\'' +
                 ", bank_logo_url='" + bank_logo_url + '\'' +
                 '}';

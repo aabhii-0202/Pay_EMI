@@ -39,7 +39,7 @@ public class HelpFragment extends Fragment {
     private Context context;
     private List<String> list;
     private HelpSubcatagoryAdapter helpSubcatagoryAdapter;
-    List<String> filteredList ;
+    private List<String> filteredList ;
 
     @Nullable
     @Override
