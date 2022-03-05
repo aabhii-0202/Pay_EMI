@@ -3,6 +3,8 @@ package com.mediustechnologies.payemi.activities.DashBoardclasses;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import com.mediustechnologies.payemi.ApiResponse.GetHelpCatagoryResponse;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 import com.mediustechnologies.payemi.ApiResponse.HelpSubCatagoryResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
@@ -34,7 +37,9 @@ public class HelpFragment extends Fragment {
 
     private HelpFragmentBinding binding;
     private Context context;
-
+    private List<String> list;
+    private HelpSubcatagoryAdapter helpSubcatagoryAdapter;
+    List<String> filteredList ;
 
     @Nullable
     @Override
@@ -67,7 +72,10 @@ public class HelpFragment extends Fragment {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         initCatagoryRecyclerView(response.body());
-                        initSubCatRec(response.body().getSub_category());
+                        list = response.body().getSub_category();
+                        filteredList = new ArrayList<>();
+                        filteredList.addAll(list);
+                        initSubCatRec();
                     }
                     else {
                         try {
@@ -116,7 +124,9 @@ public class HelpFragment extends Fragment {
             public void onResponse(Call<HelpSubCatagoryResponse> call, Response<HelpSubCatagoryResponse> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                                initSubCatRec(response.body().getSub_category());
+                        list = response.body().getSub_category();
+
+                        initSubCatRec();
                     }
                     else {
                         try {
@@ -141,23 +151,45 @@ public class HelpFragment extends Fragment {
 
     }
 
-    private void initSubCatRec(List<String> list) {
-
-
+    private void initSubCatRec() {
 
         RecyclerView subcat = binding.helprec;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        HelpSubcatagoryAdapter subcatadapter = new HelpSubcatagoryAdapter(list);
+        helpSubcatagoryAdapter = new HelpSubcatagoryAdapter(filteredList);
         subcat.setLayoutManager(linearLayoutManager);
-        subcat.setAdapter(subcatadapter);
+        subcat.setAdapter(helpSubcatagoryAdapter);
 
-        subcatadapter.setOnItemClick(position -> {
+        helpSubcatagoryAdapter.setOnItemClick(position -> {
             Intent i = new Intent(context, HelpSubcatagory.class);
-            i.putExtra("body",list.get(position));
+            i.putExtra("body",filteredList.get(position));
             startActivity(i);
         });
 
+
+        binding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = editable.toString();
+
+                filteredList = new ArrayList<>();
+
+                for(String item: list){
+                    if(item.toLowerCase().contains(text.toLowerCase())){
+                        filteredList.add(item);
+                    }
+                }
+
+                helpSubcatagoryAdapter.filter(filteredList);
+
+            }
+        });
 
 
 

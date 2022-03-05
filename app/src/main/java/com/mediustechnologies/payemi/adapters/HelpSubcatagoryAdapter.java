@@ -18,6 +18,8 @@ public class HelpSubcatagoryAdapter extends RecyclerView.Adapter<HelpSubcatagory
     List<String> list;
     private onSubCatClickListner listner;
 
+
+
     public interface onSubCatClickListner{
         void OnItemClick(int position);
     }
@@ -45,6 +47,12 @@ public class HelpSubcatagoryAdapter extends RecyclerView.Adapter<HelpSubcatagory
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void filter(List<String> filteredList) {
+        this.list = filteredList;
+        notifyDataSetChanged();
+
     }
 
     public class vh extends RecyclerView.ViewHolder {

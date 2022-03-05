@@ -3,6 +3,8 @@ package com.mediustechnologies.payemi.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.mediustechnologies.payemi.helper.RetrofitClient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +36,8 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
     private final Context context = this;
     private ActivityHelpSubcatagoryBinding binding;
     private String body;
+    private List<GetHelpQuestionAnswerDTO> list;
+    private helpActivityAdapter helpActivityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +61,8 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
             public void onResponse(Call<GetHelpQuestionAnswer> call, Response<GetHelpQuestionAnswer> response) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
-                                 initrec(response.body().getData());
+                        list= response.body().getData();
+                        initrec();
                     }
                     else {
                         try {
@@ -78,16 +84,43 @@ public class HelpSubcatagory extends BaseAppCompatActivity {
         });
     }
 
-    private void initrec(List<GetHelpQuestionAnswerDTO> list) {
+    private void initrec() {
 
         RecyclerView recyclerView = binding.rec;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        helpActivityAdapter helpActivityAdapter = new helpActivityAdapter(list);
+        helpActivityAdapter = new helpActivityAdapter(list);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(helpActivityAdapter);
-
         helpActivityAdapter.SetOnQuestionClicked(position -> recyclerView.getLayoutManager().scrollToPosition(position));
+
+        initsearchbar();
+
+    }
+
+    private void initsearchbar() {
+
+        binding.search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                    String text = editable.toString();
+                    ArrayList<GetHelpQuestionAnswerDTO> filteredlist= new ArrayList<>();
+
+                    for(GetHelpQuestionAnswerDTO item : list){
+                        if(item.getQuestion().toLowerCase().contains(text.toLowerCase())){
+                            filteredlist.add(item);
+                        }
+                    }
+                helpActivityAdapter.filterlist(filteredlist);
+            }
+        });
+
 
     }
 
