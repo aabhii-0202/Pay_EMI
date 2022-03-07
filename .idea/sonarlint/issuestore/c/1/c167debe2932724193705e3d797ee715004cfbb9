@@ -1,8 +1,0 @@
-
-9kotlin:S1128	"Remove this unused import.(υεήθ8έα¨τ/
-Bkotlin:S1874"#Deprecated code should not be used.(’©Κ8 έα¨τ/
-Gkotlin:S1874"#Deprecated code should not be used.(ψÒΑϋÿÿÿÿ8 έα¨τ/
-Gkotlin:S18742"#Deprecated code should not be used.(ΠΥΆΑψÿÿÿÿ8 έα¨τ/
-vkotlin:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(¶Α»¬ώÿÿÿÿ8Άέα¨τ/
-vkotlin:S117'"SRename this local variable to match the regular expression ^`?[_a-z][a-zA-Z0-9]*`?$(ι΄±όÿÿÿÿ8Άέα¨τ/
-ykotlin:S1186\"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ΜψÒ8¤έα¨τ/
