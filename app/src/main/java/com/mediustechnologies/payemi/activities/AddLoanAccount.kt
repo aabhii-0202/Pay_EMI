@@ -49,14 +49,10 @@ class AddLoanAccount : BaseAppCompatActivity() {
         inputParameters
     }
 
-    //        biller_id = "CAPR00000NATC0";
     private val inputParameters: Unit
-        //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNTU3MDIxLCJpYXQiOjE2NDM0NzA2MjEsImp0aSI6IjdlMWVmNjJmMjNlZjQyNzdhYzQ4ZmU2ZGM5MzcyODY4IiwidXNlcl9pZCI6NH0.X6LpLigl1PSTaxdn9DtactGwHOoyXwDjb6rmzMC1Anw";
         private get() {
             biller_id = intent.getStringExtra("biller_id")
-            //        biller_id = "CAPR00000NATC0";
             val token = utils.access_token
-            //        token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNTU3MDIxLCJpYXQiOjE2NDM0NzA2MjEsImp0aSI6IjdlMWVmNjJmMjNlZjQyNzdhYzQ4ZmU2ZGM5MzcyODY4IiwidXNlcl9pZCI6NH0.X6LpLigl1PSTaxdn9DtactGwHOoyXwDjb6rmzMC1Anw";
             val call = RetrofitClient().getInstance(
                 context,
                 urlconstants.AuthURL
@@ -105,14 +101,6 @@ class AddLoanAccount : BaseAppCompatActivity() {
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         recyclerView.layoutManager = linearLayoutManager
         data = inputParameterFeilds!!.data.mandatory
-
-//        LinkedHashMap<String, mandatoryParmsDTO> temp = new LinkedHashMap<>();
-//        mandatoryParmsDTO temp2 = new mandatoryParmsDTO();
-//        temp2.setKey("date");
-//        temp2.setRegex(null);
-//        temp2.setType("Numeric");
-//        temp.put("Date",temp2);
-//        data.putAll(temp);
         if (data != null && data!!.size > 0) {
             adapter = inputParametersAdapter(data)
             recyclerView.adapter = adapter
@@ -165,7 +153,6 @@ class AddLoanAccount : BaseAppCompatActivity() {
         println(feilds)
         for ((key1) in data!!) {
             val key = key1
-            //            mandatoryParmsDTO value = ((mandatoryParmsDTO)mapElement.getValue());
             val regex = data!![key]!!.regex
             val value = feilds[data!![key]!!.key]
             Log.d(
