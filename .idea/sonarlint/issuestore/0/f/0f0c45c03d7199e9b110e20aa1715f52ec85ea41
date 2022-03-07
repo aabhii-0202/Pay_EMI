@@ -1,7 +1,0 @@
-
-…
-java:S1319"jThe type of "catagories" should be an interface such as "List" rather than the implementation "ArrayList".(®Κ†ϋÿÿÿÿ
->
-java:S1604?"(Make this anonymous inner class a lambda(ϊ“Ϊε
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(χεέ
-f	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ά§Ελ

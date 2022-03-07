@@ -39,8 +39,6 @@ Gapp/src/main/java/com/mediustechnologies/payemi/activities/Exactness.kt,b\a\ba
 Lapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/billDetails.java,2\a\2ac7f22c1c6082fa0f5ab06cc6651c0cc65c15e0
 y
 Iapp/src/main/java/com/mediustechnologies/payemi/commons/urlconstants.java,c\e\ce0287b84427d5e402c30798d6df00fff825d02a
-z
-Japp/src/main/java/com/mediustechnologies/payemi/activities/SplashScreen.kt,c\1\c167debe2932724193705e3d797ee715004cfbb9
 r
 Bapp/src/main/java/com/mediustechnologies/payemi/commons/utils.java,f\9\f94f07f590f6033a59be819dfdba84367a1732ab
 Å

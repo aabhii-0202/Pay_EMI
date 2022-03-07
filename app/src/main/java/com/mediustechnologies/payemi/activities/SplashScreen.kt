@@ -62,7 +62,8 @@ class SplashScreen : BaseAppCompatActivity() {
                             if (n.new_user) {
                                 startActivity(Intent(context, OnBording::class.java))
                                 finish()
-                            } else {
+                            } else if(phone!!.length==10){
+
                                 val i = Intent(context, Home_Nav::class.java)
                                 i.putExtra("fragment", 0)
                                 startActivity(i)
@@ -74,6 +75,8 @@ class SplashScreen : BaseAppCompatActivity() {
                                 utils.name = name
                                 utils.profileUrl = path
                                 finish()
+                            }else{
+                                startActivity(Intent(context, OnBording::class.java))
                             }
                         } else {
                             try {
@@ -81,6 +84,7 @@ class SplashScreen : BaseAppCompatActivity() {
                             } catch (e: Exception) {
                                 Log.e("tag", e.toString())
                             }
+
                         }
                     } else {
                         Log.d("tag", "Check if new: " + response.message())
