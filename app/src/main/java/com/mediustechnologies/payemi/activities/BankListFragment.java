@@ -76,8 +76,8 @@ public class BankListFragment extends Fragment {
 
         binding.progress.setVisibility(View.VISIBLE);
         binding.listOfBanks.setVisibility(View.GONE);
-        //todo  addITeminrecycler view
-        addItemsInRecyclerView("1");
+        String catagory = getArguments().getString("position");
+        addItemsInRecyclerView(catagory);
 
     }
 
