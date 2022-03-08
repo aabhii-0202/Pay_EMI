@@ -5,14 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.R;
-
 import java.util.List;
 
 public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHolder> {
@@ -29,9 +26,8 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
         mListner = listner;
     }
     public bankListAdapter(List<getAllBanks> bankListItem){
-        this.bankListItem=bankListItem;
+        this.bankListItem =bankListItem;
     }
-
 
 
     @NonNull
@@ -92,11 +88,8 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
         }
 
         public void setData(String url, String name) {
-
-
             Glide.with(logo).load(url).into(logo);
             Bank_name.setText(name);
-
         }
     }
 }

@@ -1,18 +1,17 @@
 package com.mediustechnologies.payemi.activities
 
-import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
-import com.mediustechnologies.payemi.ApiResponse.banklistResponse
-import com.mediustechnologies.payemi.ApiResponse.getAllBanks
+import com.mediustechnologies.payemi.R
 import com.mediustechnologies.payemi.adapters.CatagoryListAdapter
-import com.mediustechnologies.payemi.adapters.bankListAdapter
 import com.mediustechnologies.payemi.databinding.ActivityBankListBinding
 import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
+import java.util.*
 
 
 class BankList : BaseAppCompatActivity() {
@@ -32,12 +31,13 @@ class BankList : BaseAppCompatActivity() {
         ids = intent.getStringArrayListExtra("ids");
 
         initcatagories(p)
+        search()
 
     }
 
     private fun initcatagories(p: Int) {
 
-        binding!!.viewpager.setOffscreenPageLimit(5)
+        binding!!.viewpager.setOffscreenPageLimit(1)
         binding!!.viewpager.addOnPageChangeListener(TabLayoutOnPageChangeListener(binding!!.tabs))
         binding!!.tabs.setOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -50,6 +50,7 @@ class BankList : BaseAppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
         setDynamicFragmentToTabLayout(p)
+
     }
     private fun setDynamicFragmentToTabLayout(p: Int) {
         for (i in catagories!!) {
@@ -58,9 +59,26 @@ class BankList : BaseAppCompatActivity() {
         val CatagoryListAdapter = CatagoryListAdapter(
             supportFragmentManager, binding!!.tabs.getTabCount(), ids!!
         )
-        binding!!.viewpager.setAdapter(CatagoryListAdapter)
 
+
+        binding!!.viewpager.setAdapter(CatagoryListAdapter)
         binding!!.viewpager.setCurrentItem(p)
+    }
+
+    private fun search(){
+        binding!!.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                var s = editable.toString()
+                val fragment = supportFragmentManager.findFragmentById(R.id.viewpager)
+                if(fragment is BankListFragment){
+                    fragment.filter(s)
+
+                    println(fragment.adapter.itemCount)
+                }
+            }
+        })
     }
 
 }

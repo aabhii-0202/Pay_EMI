@@ -48,6 +48,8 @@ class EmiCategories : BaseAppCompatActivity() {
             temp.bank_logo_url = data[i].url
             banklist.add(temp)
         }
+
+
         val category = binding!!.rec
         val gridLayoutManager = GridLayoutManager(context, 3)
         gridLayoutManager.orientation = RecyclerView.VERTICAL
@@ -76,7 +78,12 @@ class EmiCategories : BaseAppCompatActivity() {
             ) {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     val data = response.body()
-                    if (data!!.size > 0) setdata(data)
+                    if (data!!.size > 0) {
+                        setdata(data)
+//                        var s: String? = null
+//                        for (item in data) s = s+item.category_name+" "+item.id + "\n"
+//                        println(s)
+                    }
                 } else {
                     Log.e("tag", "" + response.code())
                 }

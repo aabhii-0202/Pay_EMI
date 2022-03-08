@@ -8,6 +8,6 @@
     android:paddingHorizontal="16dp"
     android:textColorHint="@color/HintColor"
     android:textColor="@color/black"
-    android:background="@drawable/complaint_box"
+    android:background="@drawable/dropdownbg"
     android:fontFamily="@font/gtwalsheim_pro_regular"
-xmlns:android="http://schemas.android.com/apk/res/android"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"/>

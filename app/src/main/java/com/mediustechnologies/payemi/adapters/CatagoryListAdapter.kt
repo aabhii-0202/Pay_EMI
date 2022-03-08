@@ -13,7 +13,7 @@ class CatagoryListAdapter internal constructor(fm: FragmentManager?, private val
     // get the current item with position number
     override fun getItem(position: Int): Fragment {
         val b = Bundle()
-        b.putString("position", ids!![position])
+        b.putString("position", ids[position])
         val frag: Fragment = BankListFragment.newInstance()
         frag.arguments = b
         return frag

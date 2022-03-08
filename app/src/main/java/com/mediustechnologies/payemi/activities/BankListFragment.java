@@ -43,7 +43,7 @@ public class BankListFragment extends Fragment {
     private Context context;
     private banklistResponse banklist;
     private List<getAllBanks> filteredList;
-    private bankListAdapter adapter;
+    public bankListAdapter adapter;
 
     public static BankListFragment newInstance() {
         return new BankListFragment();
@@ -59,6 +59,7 @@ public class BankListFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
     }
+
 
 
     // adding the layout with inflater
@@ -95,7 +96,7 @@ public class BankListFragment extends Fragment {
                         banklist = response.body();
                         Log.d("tag", "Banklist setdata: " + banklist.toString());
                         initRecyclerView();
-                        searchbar();
+//                        searchbar();
                     } else {
                         try {
                             utils.errortoast(context, response.body().getMessage());
@@ -186,28 +187,30 @@ public class BankListFragment extends Fragment {
         });
     }
 
-    private void searchbar() {
-        binding.search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+//    private void searchbar() {
+//        binding.search.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                filter(editable.toString());
+//            }
+//        });
+//    }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
-            }
-        });
-    }
-
-    private void filter(String text) {
+    public void filter(String text) {
         filteredList =new ArrayList<>();
         for (getAllBanks item : banklist.getData()){
             if(item.getBank_name().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
         }
+        System.out.println("Filtered "+filteredList.size());
+        System.out.println("Bank List "+banklist.getData().size());
 
         adapter.filterList(filteredList);
     }
