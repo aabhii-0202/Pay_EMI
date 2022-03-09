@@ -59,3 +59,13 @@ Oapp/src/main/java/com/mediustechnologies/payemi/activities/HelpSubcatagory.java
 japp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintTrackingFragment.java,7\b\7bb7042abda92406fb6a0d9ddd0d7aff87978555
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+‘
+aapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/ComplaintRegFrag.java,2\2\2206e22f68a3f57075f25de0971b407e0476bd76
+’
+bapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/DashBoardFragment.java,8\9\893a905f73ffc7d8de2bf914df76966852974ecb
+r
+Bapp/src/main/java/com/mediustechnologies/payemi/commons/utils.java,f\9\f94f07f590f6033a59be819dfdba84367a1732ab
+{
+Kapp/src/main/java/com/mediustechnologies/payemi/activities/EmiCategories.kt,6\f\6f46598f88641c8c8707d70ecb9597eae1dff90a
+
+Oapp/src/main/java/com/mediustechnologies/payemi/adapters/CatagoryListAdapter.kt,8\2\82261d8066cc764d85a999e3ca65127acff04bd0
