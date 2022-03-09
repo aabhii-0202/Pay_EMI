@@ -1,12 +1,16 @@
 package com.mediustechnologies.payemi.activities.DashBoardclasses;
 
+import android.graphics.Color;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mediustechnologies.payemi.R;
 import com.mediustechnologies.payemi.databinding.ItemOptionBinding;
 
 import java.util.HashMap;
@@ -19,9 +23,10 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     private List<DrawerItems> items;
     private Map<Class<? extends DrawerItems>, Integer> viewType;
     private SparseArray<DrawerItems> holderFactories;
-    private OnItemSelectedListener listener;
+    static OnItemSelectedListener listener;
     static onRegisterClickListner listnerreg;
     static onTrackingClickListner listnertrac;
+
 
     public interface onRegisterClickListner{
         void onRegClicked(int position);
@@ -103,10 +108,10 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         items.get(position).bindViewHolder(holder);
         if(position == Home_Nav.POS_COMPLAINT){
-            holder.binding.subcatagory.setVisibility(View.VISIBLE);
+            holder.binding.dropdown.setVisibility(View.VISIBLE);
         }
         else{
-            holder.binding.subcatagory.setVisibility(View.GONE);
+            holder.binding.dropdown.setVisibility(View.GONE);
         }
 
     }
@@ -133,26 +138,43 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
             binding = ItemOptionBinding.bind(itemView);
             itemView.setOnClickListener(this);
 
-            binding.register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(listnerreg!=null){
-                        int pos = getAbsoluteAdapterPosition();
-                        if(pos!=RecyclerView.NO_POSITION){
-                            listnerreg.onRegClicked(pos);
-                        }
+
+            binding.register.setOnClickListener(view -> {
+                if(listnerreg!=null){
+                    int pos = getAbsoluteAdapterPosition();
+                    if(pos!=RecyclerView.NO_POSITION){
+                        listnerreg.onRegClicked(pos);
+                        binding.register.setTextColor(Color.rgb(3,218,197));
+                        binding.tracking.setTextColor(Color.rgb(153,153,153));
                     }
                 }
             });
 
-            binding.tracking.setOnClickListener(new View.OnClickListener() {
+            binding.tracking.setOnClickListener(view -> {
+                if(listnertrac!=null){
+                    int pos = getAbsoluteAdapterPosition();
+                    if(pos!=RecyclerView.NO_POSITION){
+                        listnertrac.onTracClicked(pos);
+                        binding.tracking.setTextColor(Color.rgb(3,218,197));
+                        binding.register.setTextColor(Color.rgb(153,153,153));
+                    }
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(listnertrac!=null){
-                        int pos = getAbsoluteAdapterPosition();
-                        if(pos!=RecyclerView.NO_POSITION){
-                            listnertrac.onTracClicked(pos);
-                        }
+                    if(getAbsoluteAdapterPosition()==Home_Nav.POS_COMPLAINT){
+                        if(binding.subcatagory.getVisibility()==View.VISIBLE){
+                            binding.subcatagory.setVisibility(View.GONE);
+                        }else binding.subcatagory.setVisibility(View.VISIBLE);
+
+                    }
+                    else {
+//                        binding.subcatagory.setVisibility(View.GONE);
+//                        binding.tracking.setTextColor(Color.rgb(153,153,153));
+//                        binding.register.setTextColor(Color.rgb(153,153,153));
+                        drawerAdapter.setSelected(getAbsoluteAdapterPosition());
                     }
                 }
             });
