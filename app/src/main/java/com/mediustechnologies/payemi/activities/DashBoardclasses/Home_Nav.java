@@ -48,13 +48,15 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
 
     private ActivityHomeNavBinding binding;
     private final Context context = this;
-    private static final int POS_HOME = 0;
-    private static final int POS_COMPLAINT = 1;
-    private static final int POS_TRANSACTIONSEARCH = 2;
-    private static final int POS_PROFILE = 3;
-    private static final int POS_RATE = 4;
-    private static final int POS_NOTIFICATION = 5;
-    private static final int POS_HELP = 6;
+    public static final int POS_HOME = 0;
+    public static final int POS_COMPLAINT = 1;
+    public static final int POS_TRANSACTIONSEARCH = 2;
+    public static final int POS_PROFILE = 3;
+    public static final int POS_RATE = 4;
+    public static final int POS_NOTIFICATION = 5;
+    public static final int POS_HELP = 6;
+    public static final int POS_COMPLAINT_REG = 7;
+    public static final int POS_COMPLAINT_TRAC = 8;
     private String[] screenTitles;
     private Drawable[] screenIcons;
     private SlidingRootNav slidingRootNav;
@@ -130,6 +132,21 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         binding.bell.setOnClickListener(view -> {
             onItemSelected(POS_NOTIFICATION);
             binding.notificaioncountcard.setVisibility(View.GONE);
+            adapter.setSelected(POS_NOTIFICATION);
+        });
+
+        adapter.setRegClickListner(new DrawerAdapter.onRegisterClickListner() {
+            @Override
+            public void onRegClicked(int position) {
+               onItemSelected(POS_COMPLAINT_REG);
+            }
+        });
+
+        adapter.setTraclistner(new DrawerAdapter.onTrackingClickListner() {
+            @Override
+            public void onTracClicked(int position) {
+                onItemSelected(POS_COMPLAINT_TRAC);
+            }
         });
 
 
@@ -181,7 +198,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
 
 
         if (position == POS_HOME) {
-            binding.homenavtitle.setText("PayEMI");
+            binding.homenavtitle.setText(R.string.app_name);
             binding.linearLayout2.setVisibility(View.VISIBLE);
             binding.titleImage.setVisibility(View.GONE);
             binding.navtitleimg.setVisibility(View.VISIBLE);
@@ -197,8 +214,6 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
                 }
             },2000);
 
-
-
         } else if (position == POS_TRANSACTIONSEARCH) {
             hide_detail("Transaction Search");
             TransactionSearchFragment transactionSearchFragment = new TransactionSearchFragment();
@@ -208,9 +223,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
             ProfileFraggment profileFraggment = new ProfileFraggment();
             transaction.replace(R.id.homeframe, profileFraggment);
         } else if (position == POS_RATE) {
-            hide_detail("Complaint Tracking");
-            ComplaintTrackingFragment complaintTrackingFragment = new ComplaintTrackingFragment();
-            transaction.replace(R.id.homeframe, complaintTrackingFragment);
+           return;
         } else if(position == POS_HELP){
             hide_detail("Help");
             HelpFragment helpFragment = new HelpFragment();
@@ -255,17 +268,29 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
 
                         @Override
                         public void onFailure(Call<BaseApiResponse> call, Throwable t) {
-                            Toast.makeText(context,"Not able to clear notification please try again later",Toast.LENGTH_LONG);
+                            Toast.makeText(context,"Not able to clear notification please try again later",Toast.LENGTH_LONG).show();
                         }
                     });
 
                 }
             });
-        } else {
+        }
+
+        else if(position == POS_COMPLAINT){
+            return;
+        }
+        else if(position == POS_COMPLAINT_REG){
             hide_detail("Register Complaint");
             ComplaintRegFrag complaintRegFrag = new ComplaintRegFrag();
             transaction.replace(R.id.homeframe, complaintRegFrag);
         }
+        else if(position == POS_COMPLAINT_TRAC){
+            hide_detail("Complaint Tracking");
+            ComplaintTrackingFragment complaintTrackingFragment = new ComplaintTrackingFragment();
+            transaction.replace(R.id.homeframe, complaintTrackingFragment);
+        }
+        else return;
+
 
         slidingRootNav.closeMenu();
         transaction.addToBackStack(null);
