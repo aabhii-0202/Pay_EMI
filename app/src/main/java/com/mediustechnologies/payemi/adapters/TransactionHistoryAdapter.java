@@ -79,10 +79,10 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter{
             vh.binding.cardloanname.setText(loanname);
             vh.binding.cardamount.setText(amount);
             vh.binding.statusanddate.setText(date);
-            if(status.equalsIgnoreCase("successful")){
+            if(status.equalsIgnoreCase("successful")||status.equalsIgnoreCase("su")||status.equalsIgnoreCase("success")){
                 vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_tick, 0, 0, 0);
             }
-            else if(status.equalsIgnoreCase("failed")){
+            else if(status.equalsIgnoreCase("failed")||status.equalsIgnoreCase("fa")){
                 vh.binding.statusanddate.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cross, 0, 0, 0);
             }
         }

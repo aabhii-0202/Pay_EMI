@@ -144,8 +144,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
                     int pos = getAbsoluteAdapterPosition();
                     if(pos!=RecyclerView.NO_POSITION){
                         listnerreg.onRegClicked(pos);
-                        binding.register.setTextColor(Color.rgb(3,218,197));
-                        binding.tracking.setTextColor(Color.rgb(153,153,153));
+//                        binding.register.setTextColor(Color.rgb(3,218,197));
+//                        binding.tracking.setTextColor(Color.rgb(153,153,153));
                     }
                 }
             });
@@ -155,8 +155,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
                     int pos = getAbsoluteAdapterPosition();
                     if(pos!=RecyclerView.NO_POSITION){
                         listnertrac.onTracClicked(pos);
-                        binding.tracking.setTextColor(Color.rgb(3,218,197));
-                        binding.register.setTextColor(Color.rgb(153,153,153));
+//                        binding.tracking.setTextColor(Color.rgb(3,218,197));
+//                        binding.register.setTextColor(Color.rgb(153,153,153));
                     }
                 }
             });

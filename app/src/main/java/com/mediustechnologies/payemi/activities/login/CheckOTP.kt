@@ -165,7 +165,7 @@ class CheckOTP : BaseAppCompatActivity() {
 
     private fun init() {
         phone = intent.getStringExtra("phone")
-        binding!!.codesenttotext.text = "4 digit code sent to +91$phone"
+        binding!!.codesenttotext.text = "4 digit code sent to +91 $phone"
         binding!!.back.setOnClickListener { view: View? -> finish() }
         binding!!.verifyOTP.setOnClickListener { view: View? -> verify() }
         binding!!.OTPpinView.cursorColor = getColor(R.color.grey)
