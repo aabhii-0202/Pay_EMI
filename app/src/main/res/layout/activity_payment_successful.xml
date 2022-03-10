@@ -107,15 +107,15 @@
                 android:textSize="14sp" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
 
                 <ImageView
                     android:id="@+id/rupee_sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="100dp"
                     android:src="@drawable/ic_indian_rupee_symbol" />
 
                 <TextView
@@ -145,6 +145,18 @@
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 app:drawableStartCompat="@drawable/ic_processing" />
+
+            <Button
+                android:id="@+id/tryagain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/gtwalsheim_pro_regular"
+                android:letterSpacing="0"
+                android:text="Try Again"
+                android:visibility="gone"
+                android:textAllCaps="false" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/scratchpopup"

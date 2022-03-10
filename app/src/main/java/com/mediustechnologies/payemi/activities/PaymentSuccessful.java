@@ -176,8 +176,6 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-
         GetBillDetailsAdapter adapter = new GetBillDetailsAdapter(variableData);
         recyclerView.setAdapter(adapter);
 
@@ -185,7 +183,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
 
     private void getbilldetails() {
         nooftrials++;
-        System.out.println(nooftrials);
+        Log.d("tag","Trial Number: "+nooftrials+" \n");
         String token = utils.access_token;
 
         Call<GetBillDetailsResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().getBillDetails(token,bill_id);
@@ -205,7 +203,7 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                                 paymentsuccess();
 
                             } else {
-                                if (nooftrials < 10) {
+                                if (nooftrials < 3) {
                                     new Handler().postDelayed(() -> {
                                         getbilldetails();
                                     }, 5000);
@@ -405,10 +403,6 @@ public class PaymentSuccessful extends BaseAppCompatActivity {
                     request.allowScanningByMediaScanner();
                     request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);
                     downloadManager.enqueue(request);
-
-
-
-
                 }
             }
 

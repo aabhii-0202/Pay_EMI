@@ -1,24 +1,29 @@
 package com.mediustechnologies.payemi.activities
 
+import android.R
+import android.app.Activity
 import android.content.Context
-import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
-import com.mediustechnologies.payemi.DTO.HomepageDTO
+import android.content.Intent
 import android.os.Bundle
-import com.bumptech.glide.Glide
+import android.util.Log
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.mediustechnologies.payemi.ApiResponse.CreateOrderIdResponse
-import com.mediustechnologies.payemi.helper.RetrofitClient
+import com.mediustechnologies.payemi.DTO.HomepageDTO
 import com.mediustechnologies.payemi.commons.urlconstants
 import com.mediustechnologies.payemi.commons.utils
-import android.content.Intent
-import android.util.Log
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
+import com.mediustechnologies.payemi.helper.RetrofitClient
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
-class Exactness : BaseAppCompatActivity() {
+
+class Exactness : BaseAppCompatActivity(), PaymentResultListener {
     private var binding: ActivityPayEmiBinding? = null
     private val context: Context = this
     private var data: HomepageDTO? = null
@@ -131,7 +136,7 @@ class Exactness : BaseAppCompatActivity() {
                                 .error.equals("false", ignoreCase = true)
                         ) {
                             order_id = response.body()!!.order_id
-                            nextScreen()
+                            startPayment()
                         } else {
                             try {
                                 utils.errortoast(context, response.body()!!.message)
@@ -153,27 +158,6 @@ class Exactness : BaseAppCompatActivity() {
             })
         }
 
-    private fun nextScreen() {
-
-
-//        https://razorpay.com/docs/payments/payment-gateway/android-integration/standard/build-integration/
-
-
-        //todo initialise razorpay again
-//        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
-//        val i = Intent(context, SelectPaymentMethod::class.java)
-//        i.putExtra("billerName", billerName)
-//        i.putExtra("bill_id", bill_id)
-//        i.putExtra("profile_id", profile_id)
-//        i.putExtra("logo", url)
-//        i.putExtra("amount", binding!!.enterAmount.text.toString())
-//        startActivity(i)
-
-
-
-
-
-    }
 
     private fun razorpaypaymentfailed() {
         Toast.makeText(context, "Card payment failed", Toast.LENGTH_SHORT).show()
@@ -183,5 +167,51 @@ class Exactness : BaseAppCompatActivity() {
         j.putExtra("bill_id", intent.getStringExtra("bill_id"))
         j.putExtra("status", false)
         startActivity(j)
+    }
+
+    fun startPayment() {
+
+        val checkout = Checkout()
+        checkout.setKeyID("rzp_test_I4yUvwRiUPNWay")
+
+//        checkout.setImage(R.drawable.logo)
+        val activity: Activity = this
+        try {
+            val amount = binding!!.enterAmount.text.toString()+"00"
+            val options = JSONObject()
+            options.put("name", billerName)
+            options.put("description", "Bill id: "+bill_id)
+            options.put("image", url)
+//            options.put("order_id", orderId) //from response of step 3.
+            options.put("theme.color", "#3399cc")
+            options.put("currency", "INR")
+            options.put("amount", amount)
+            options.put("prefill.contact", utils.phone)
+            val retryObj = JSONObject()
+            retryObj.put("enabled", true)
+            retryObj.put("max_count", 4)
+            options.put("retry", retryObj)
+            checkout.open(activity, options)
+        } catch (e: Exception) {
+            Log.e("tag", "Error in starting Razorpay Checkout", e)
+        }
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        Log.d("payment","Success $p0")
+        nextScreen(true)
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        Log.d("payment","Failed $p1")
+        nextScreen(false)
+    }
+
+    private fun nextScreen(status: Boolean) {
+        val i = Intent(context,PaymentSuccessful::class.java)
+        i.putExtra("status",status)
+        i.putExtra("bill_id",bill_id)
+
+        startActivity(i)
     }
 }

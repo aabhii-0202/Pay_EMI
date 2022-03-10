@@ -279,8 +279,9 @@ public class DashBoardFragment extends Fragment {
                             utils.new_notification_count = 0;
                         }
 
-                        setData();
-                        if(!data.isEmpty()){
+
+                        if(data!=null&&!data.isEmpty()){
+                            setData();
                             String s = "";
                             for(int i=0;i<data.size();i++){
                                 s+=(1+i)+" "+data.get(i).toString()+"\n";

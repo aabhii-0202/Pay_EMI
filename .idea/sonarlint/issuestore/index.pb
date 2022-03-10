@@ -17,14 +17,10 @@ t
 Dapp/src/main/java/com/mediustechnologies/payemi/DTO/HomepageDTO.java,1\1\113e2b0d1c5d8b4753c9392d6b294cb06fdc7e49
 Ç
 Rapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/verifyOTPresponse.java,1\3\13468f306cfa51039634c81f01dc87251058c789
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 Ñ
 Tapp/src/main/java/com/mediustechnologies/payemi/activities/apiBody/RefreshToken.java,3\3\3392d33fe75de19864b03803b74de80b3dc717b6
 ï
 eapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/NotificationFragment.java,8\1\81f524e6506f656a36cf51af780a922052c86a80
-Å
-Qapp/src/main/java/com/mediustechnologies/payemi/activities/PaymentSuccessful.java,e\5\e5ebdba8d2a963df0189728ad321a16d9d356832
 |
 Lapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/billDetails.java,2\a\2ac7f22c1c6082fa0f5ab06cc6651c0cc65c15e0
 y
@@ -45,8 +41,6 @@ z
 Japp/src/main/java/com/mediustechnologies/payemi/activities/SplashScreen.kt,c\1\c167debe2932724193705e3d797ee715004cfbb9
 
 Oapp/src/main/java/com/mediustechnologies/payemi/activities/HelpSubcatagory.java,c\7\c7f0d8a3852cda55fa6b81f3d32deeb6fc5941aa
-í
-bapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/DashBoardFragment.java,8\9\893a905f73ffc7d8de2bf914df76966852974ecb
 {
 Kapp/src/main/java/com/mediustechnologies/payemi/activities/EmiCategories.kt,6\f\6f46598f88641c8c8707d70ecb9597eae1dff90a
 
@@ -69,3 +63,7 @@ Sapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionDetails.
 Sapp/src/main/java/com/mediustechnologies/payemi/activities/EMITransactionHistory.kt,c\6\c67be05f1cde2031f56992ef3dd3262789c1087a
 á
 Wapp/src/main/java/com/mediustechnologies/payemi/adapters/TransactionHistoryAdapter.java,2\e\2e0d982ea62787ea211b226d7ed52cbbd3fe90a0
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+B
+hs_err_pid7504.log,c\3\c35b72a85fc46df32f3c727e5c6d6c0533bf6e6e

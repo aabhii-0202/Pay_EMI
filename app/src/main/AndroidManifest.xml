@@ -32,26 +32,26 @@
         <activity
             android:name=".activities.PaymentSuccessful"
             android:exported="false" />
-        <activity
-            android:name=".activities.payments.NetBanking"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.LinkWallet"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.UPIPayment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.CardPayment"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activities.payments.NetBanking"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.LinkWallet"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.UPIPayment"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activities.payments.CardPayment"-->
+<!--            android:exported="false" />-->
+<!--                <activity-->
+<!--                    android:name=".activities.payments.SelectPaymentMethod"-->
+<!--                    android:exported="false" />-->
         <activity
             android:name=".activities.EMITransactionHistory"
             android:exported="false" />
         <activity
             android:name=".activities.GetLoanDetails"
-            android:exported="false" />
-        <activity
-            android:name=".activities.payments.SelectPaymentMethod"
             android:exported="false" />
         <activity
             android:name=".activities.Transaction_Details"
@@ -91,36 +91,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- below code for razorpay -->
-        <!--
-        <receiver
-            android:name="com.razorpay.RzpTokenReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="rzp.device_token.share" />
-            </intent-filter>
-        </receiver>
-
-        <activity
-            android:name="com.razorpay.CheckoutActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:theme="@style/CheckoutTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <data
-                    android:host="rzp.io"
-                    android:scheme="io.rzp" />
-            </intent-filter>
         </activity>
-        -->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <meta-data
-            android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_I4yUvwRiUPNWay" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
