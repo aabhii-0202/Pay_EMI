@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class ComplaintTrackingFragment extends Fragment {
 
-    ComplaintTrackingFragmentBinding binding;
+    private ComplaintTrackingFragmentBinding binding;
     private Context context ;
 
     @Nullable

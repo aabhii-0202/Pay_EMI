@@ -64,7 +64,6 @@ public class ComplaintRegFrag extends Fragment {
         Call<RegisterComplaintResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().registerComplaint(
                 utils.access_token,dispostion,description,type,trans_id);
 
-        binding.progressbar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<RegisterComplaintResponse>() {
             @Override
             public void onResponse(Call<RegisterComplaintResponse> call, Response<RegisterComplaintResponse> response) {

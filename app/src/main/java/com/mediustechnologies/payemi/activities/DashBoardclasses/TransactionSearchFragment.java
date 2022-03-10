@@ -36,7 +36,7 @@ import retrofit2.Response;
 
 public class TransactionSearchFragment extends Fragment {
 
-    TransactionSearchFragmentBinding binding;
+    private TransactionSearchFragmentBinding binding;
     private Context context;
 
     @Nullable
@@ -66,6 +66,7 @@ public class TransactionSearchFragment extends Fragment {
     private void init() {
 
 
+        binding.progressbar.setVisibility(View.GONE);
         binding.layoutfrom.setOnClickListener(View -> {
             datePicker();
         });
@@ -158,10 +159,12 @@ public class TransactionSearchFragment extends Fragment {
 
     private void callapiforrefid(String refid) {
 
+        binding.progressbar.setVisibility(View.VISIBLE);
         Call<TransactionSearchResponse> call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().transactionSearchWithRefId(utils.access_token,refid);
         call.enqueue(new Callback<TransactionSearchResponse>() {
             @Override
             public void onResponse(Call<TransactionSearchResponse> call, Response<TransactionSearchResponse> response) {
+                binding.progressbar.setVisibility(View.GONE);
                 if(response.code()==utils.RESPONSE_SUCCESS&&response.body()!=null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
 
@@ -182,6 +185,7 @@ public class TransactionSearchFragment extends Fragment {
 
             @Override
             public void onFailure(Call<TransactionSearchResponse> call, Throwable t) {
+                binding.progressbar.setVisibility(View.GONE);
                 Toast.makeText(context, "Failed "+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("tag",""+t.getMessage());
             }

@@ -21,6 +21,8 @@ public class TransactionSearchDataDTO {
     @Expose
     String transaction_date;
 
+    //transation_status
+    //transaction_status (key changed)
     @SerializedName("transaction_status")
     @Expose
     String transation_status;

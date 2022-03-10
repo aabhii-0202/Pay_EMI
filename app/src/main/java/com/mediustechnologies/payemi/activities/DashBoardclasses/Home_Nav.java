@@ -127,7 +127,15 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         list.setLayoutManager(new LinearLayoutManager(context));
         list.setAdapter(adapter);
         int fragment = getIntent().getIntExtra("fragment",0);
-        adapter.setSelected(fragment);
+        if(fragment != POS_COMPLAINT_REG)
+            adapter.setSelected(fragment);
+
+        else {
+            adapter.setSelected(POS_HOME);
+            onItemSelected(POS_COMPLAINT_REG);
+            adapter.setSelected(POS_COMPLAINT);
+
+        }
         
         binding.bell.setOnClickListener(view -> {
             onItemSelected(POS_NOTIFICATION);
@@ -158,8 +166,8 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         return new SimpleItem(screenIcons[position], screenTitles[position])
                 .withIconTint(color(R.color.navText))//color of selected
                 .withTextTint(color(R.color.navText))
-                .withSelectedIconTint(color(R.color.teal_200))
-                .withSelectedTextTint(color(R.color.teal_200));
+                .withSelectedIconTint(color(R.color.navText))
+                .withSelectedTextTint(color(R.color.navText));
     }
 
     @ColorInt
@@ -281,6 +289,7 @@ public class Home_Nav extends BaseAppCompatActivity implements DrawerAdapter.OnI
         }
         else if(position == POS_COMPLAINT_REG){
             hide_detail("Register Complaint");
+            String transactionId = getIntent().getStringExtra("transactionId");
             ComplaintRegFrag complaintRegFrag = new ComplaintRegFrag();
             transaction.replace(R.id.homeframe, complaintRegFrag);
         }

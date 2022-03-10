@@ -107,10 +107,13 @@ public class Transaction_Details extends BaseAppCompatActivity {
                 date = formatdate(date);
 
                 try {
-                    if (status.equals("Successful")) {
+                    if (status.equalsIgnoreCase("Successful")||
+                            status.equalsIgnoreCase("success")||
+                            status.equalsIgnoreCase("su")) {
                         binding.statusdate.setText("  Completed | " + date);
                         binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_tick, 0, 0, 0);
-                    } else if(status.equals("failed")){
+                    } else if(status.equalsIgnoreCase("failed")||
+                            status.equalsIgnoreCase("fa")){
                         binding.statusdate.setText("  Failed | " + date);
                         binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_cross, 0, 0, 0);
                     }
@@ -118,12 +121,10 @@ public class Transaction_Details extends BaseAppCompatActivity {
                         binding.statusdate.setText("  Pending | " + date);
                         binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);
                     }
-
                 } catch (Exception e) {
                     binding.statusdate.setText("  Pending | " + date);
                     binding.statusdate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_processing, 0, 0, 0);
                 }
-
 
                 String url = getIntent().getStringExtra("logo");
                 Glide.with(binding.image).load(url).into(binding.image);
@@ -140,7 +141,7 @@ public class Transaction_Details extends BaseAppCompatActivity {
 
         binding.havingIssue.setOnClickListener(view -> {
             Intent i = new Intent(context,Home_Nav.class);
-            i.putExtra("fragment",1);
+            i.putExtra("fragment",Home_Nav.POS_COMPLAINT_REG);
             i.putExtra("transactionId",item.getRazorpay_transaction_id());
             //todo for above line in complaint fragment
             startActivity(i);

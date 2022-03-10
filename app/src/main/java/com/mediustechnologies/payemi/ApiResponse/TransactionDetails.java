@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class TransactionDetails  implements Parcelable {
 
     @SerializedName("biller_name")
@@ -60,6 +62,15 @@ public class TransactionDetails  implements Parcelable {
     @Expose
     String biller_id;
 
+    @SerializedName("cashback_status")
+    @Expose
+    String cashback_status;
+
+    @SerializedName("product_name")
+    @Expose
+    List<String> product_name;
+
+
     protected TransactionDetails(Parcel in) {
         biller_name = in.readString();
         amount = in.readString();
@@ -74,6 +85,8 @@ public class TransactionDetails  implements Parcelable {
         customer_name = in.readString();
         customer_email = in.readString();
         biller_id = in.readString();
+        cashback_status = in.readString();
+        product_name = in.createStringArrayList();
     }
 
     public static final Creator<TransactionDetails> CREATOR = new Creator<TransactionDetails>() {
@@ -192,25 +205,21 @@ public class TransactionDetails  implements Parcelable {
         this.biller_id = biller_id;
     }
 
-    @Override
-    public String toString() {
-        return "TransactionDetails{" +
-                "biller_name='" + biller_name + '\'' +
-                ", amount='" + amount + '\'' +
-                ", razorpay_transaction_status='" + razorpay_transaction_status + '\'' +
-                ", bbps_transaction_status='" + bbps_transaction_status + '\'' +
-                ", transaction_datetime='" + transaction_datetime + '\'' +
-                ", type='" + type + '\'' +
-                ", profile_id='" + profile_id + '\'' +
-                ", bill_id='" + bill_id + '\'' +
-                ", is_redeemed='" + is_redeemed + '\'' +
-                ", razorpay_transaction_id='" + razorpay_transaction_id + '\'' +
-                ", customer_name='" + customer_name + '\'' +
-                ", customer_email='" + customer_email + '\'' +
-                ", biller_id='" + biller_id + '\'' +
-                '}';
+    public String getCashback_status() {
+        return cashback_status;
     }
 
+    public void setCashback_status(String cashback_status) {
+        this.cashback_status = cashback_status;
+    }
+
+    public List<String> getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(List<String> product_name) {
+        this.product_name = product_name;
+    }
 
     @Override
     public int describeContents() {
@@ -232,5 +241,7 @@ public class TransactionDetails  implements Parcelable {
         parcel.writeString(customer_name);
         parcel.writeString(customer_email);
         parcel.writeString(biller_id);
+        parcel.writeString(cashback_status);
+        parcel.writeStringList(product_name);
     }
 }

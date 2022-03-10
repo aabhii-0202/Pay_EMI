@@ -12,8 +12,6 @@ import com.mediustechnologies.payemi.commons.urlconstants
 import com.mediustechnologies.payemi.commons.utils
 import android.content.Intent
 import android.util.Log
-import com.mediustechnologies.payemi.activities.payments.SelectPaymentMethod
-import com.mediustechnologies.payemi.activities.PaymentSuccessful
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -163,13 +161,18 @@ class Exactness : BaseAppCompatActivity() {
 
         //todo initialise razorpay again
 //        checkout.setKeyID("rzp_test_LdI1ob5rGXZDF6");
-        val i = Intent(context, SelectPaymentMethod::class.java)
-        i.putExtra("billerName", billerName)
-        i.putExtra("bill_id", bill_id)
-        i.putExtra("profile_id", profile_id)
-        i.putExtra("logo", url)
-        i.putExtra("amount", binding!!.enterAmount.text.toString())
-        startActivity(i)
+//        val i = Intent(context, SelectPaymentMethod::class.java)
+//        i.putExtra("billerName", billerName)
+//        i.putExtra("bill_id", bill_id)
+//        i.putExtra("profile_id", profile_id)
+//        i.putExtra("logo", url)
+//        i.putExtra("amount", binding!!.enterAmount.text.toString())
+//        startActivity(i)
+
+
+
+
+
     }
 
     private fun razorpaypaymentfailed() {

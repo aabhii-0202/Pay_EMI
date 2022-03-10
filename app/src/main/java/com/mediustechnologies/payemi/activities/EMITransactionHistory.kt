@@ -2,39 +2,36 @@ package com.mediustechnologies.payemi.activities
 
 import android.app.Dialog
 import android.content.Context
-import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
-import com.mediustechnologies.payemi.recyclerItems.transaction_chat
-import android.os.Bundle
-import com.mediustechnologies.payemi.commons.utils
-import com.mediustechnologies.payemi.ApiResponse.AllTransactions
-import com.mediustechnologies.payemi.helper.RetrofitClient
-import com.mediustechnologies.payemi.commons.urlconstants
-import com.mediustechnologies.payemi.ApiResponse.TransactionDetails
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.mediustechnologies.payemi.adapters.TransactionHistoryAdapter
 import android.content.Intent
 import android.graphics.Color
-import com.mediustechnologies.payemi.R
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.TextView
-import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout
-import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener
-import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mediustechnologies.payemi.ApiResponse.AllTransactions
+import com.mediustechnologies.payemi.ApiResponse.RedeemScratchCard
+import com.mediustechnologies.payemi.ApiResponse.TransactionDetails
+import com.mediustechnologies.payemi.R
 import com.mediustechnologies.payemi.activities.DashBoardclasses.Home_Nav
+import com.mediustechnologies.payemi.activities.scratchCard.listener.ScratchListener
+import com.mediustechnologies.payemi.activities.scratchCard.ui.ScratchCardLayout
+import com.mediustechnologies.payemi.adapters.TransactionHistoryAdapter
+import com.mediustechnologies.payemi.commons.urlconstants
+import com.mediustechnologies.payemi.commons.utils
 import com.mediustechnologies.payemi.databinding.ActivityPayEmiTransactionPageBinding
+import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
+import com.mediustechnologies.payemi.helper.RetrofitClient
+import com.mediustechnologies.payemi.recyclerItems.transaction_chat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
-import java.lang.NullPointerException
-import java.util.ArrayList
 
 class EMITransactionHistory : BaseAppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private val context: Context = this
@@ -105,9 +102,14 @@ class EMITransactionHistory : BaseAppCompatActivity(), PopupMenu.OnMenuItemClick
                 val item = data[i]
                 var status = item.bbps_transaction_status
                 if (status != null) {
-                    date = if (status == "Successful") {
+                    date = if (status.equals("successful", true) ||
+                        status.equals("success", true) ||
+                        status.equals("su", true)
+                    ) {
                         "  Paid | $date"
-                    } else if (status == "failed") {
+                    } else if  (status.equals("failed", true) ||
+                        status.equals("fa", true)
+                    ) {
                         "  Failed | $date"
                     } else {
                         " Pending | $date"
@@ -116,10 +118,16 @@ class EMITransactionHistory : BaseAppCompatActivity(), PopupMenu.OnMenuItemClick
                     status = "Pending"
                     date = " Pending | $date"
                 }
+
+                var product_name: String? = null
+                if (!item.product_name.isEmpty())
+                    product_name = item.product_name[0]
+                else product_name = "Not available"
+
                 chatlist!!.add(
                     transaction_chat(
                         "Payment to " + item.biller_name,
-                        "Not in api",
+                        product_name,
                         "₹ " + item.amount,
                         status,
                         date,
@@ -196,7 +204,8 @@ class EMITransactionHistory : BaseAppCompatActivity(), PopupMenu.OnMenuItemClick
 
                         override fun onScratchComplete() {}
                     })
-                } else { }
+                } else {
+                }
             }
         }
     }
