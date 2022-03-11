@@ -59,8 +59,6 @@ Mapp/src/main/java/com/mediustechnologies/payemi/adapters/bankListAdapter.java,
 Lapp/src/main/java/com/mediustechnologies/payemi/activities/login/CheckOTP.kt,0\3\03c59aebe229ab0886b0c4dcd3dcd03423271cba
 ƒ
 Sapp/src/main/java/com/mediustechnologies/payemi/ApiResponse/TransactionDetails.java,4\c\4cda06401c1678fb120425a6dd9a25dc0f9ce441
-ƒ
-Sapp/src/main/java/com/mediustechnologies/payemi/activities/EMITransactionHistory.kt,c\6\c67be05f1cde2031f56992ef3dd3262789c1087a
 ‡
 Wapp/src/main/java/com/mediustechnologies/payemi/adapters/TransactionHistoryAdapter.java,2\e\2e0d982ea62787ea211b226d7ed52cbbd3fe90a0
 <

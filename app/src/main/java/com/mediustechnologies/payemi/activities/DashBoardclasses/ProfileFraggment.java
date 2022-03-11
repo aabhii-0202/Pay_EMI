@@ -41,6 +41,8 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -339,6 +341,17 @@ public class ProfileFraggment extends Fragment {
         MultipartBody.Part body;
         Call<ProfileInfoResponse> call;
 
+        String mail = binding.profilemail.getText().toString();
+        String pattern = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailregex = Pattern.compile(pattern,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = emailregex.matcher(mail);
+        if(!matcher.find()){
+
+            binding.profilemail.setError("Enter a valid mail.");
+            binding.progress.setVisibility(View.GONE);
+            return;
+        }
+
         JsonObject josnbody = ApiJsonMap();
         if (imageBytes != null) {
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
@@ -353,6 +366,7 @@ public class ProfileFraggment extends Fragment {
                     if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                         if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                             if (!response.body().getData().isEmpty()) {
+                                System.out.println(response.body().toString());
                                 try {
                                     binding.profilephone.setText(utils.phone);
                                     binding.profilename.setText(response.body().getData().get(0).getFullname());
@@ -408,6 +422,8 @@ public class ProfileFraggment extends Fragment {
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         if (!response.body().getData().isEmpty()) {
+
+
                             try {
                                 binding.profilephone.setText(utils.phone);
                                 binding.profilename.setText(response.body().getData().get(0).getFullname());

@@ -260,6 +260,7 @@ class EMITransactionHistory : BaseAppCompatActivity(), PopupMenu.OnMenuItemClick
         return when (item.itemId) {
             R.id.gethelp -> {
                 val i = Intent(context, Home_Nav::class.java)
+                i.putExtra("fragment",Home_Nav.POS_HELP)
                 startActivity(i)
                 true
             }
