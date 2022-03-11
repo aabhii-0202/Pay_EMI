@@ -125,6 +125,22 @@ public class billFetchDTO implements Parcelable {
     @Expose
     private String charges_levied;
 
+    @SerializedName("billerId")
+    @Expose
+    private String billerId;
+
+    @SerializedName("biller_name")
+    @Expose
+    private String biller_name;
+
+    @SerializedName("bill_date")
+    @Expose
+    private String bill_date;
+
+    @SerializedName("cashback_flag")
+    @Expose
+    private String cashback_flag;
+
     protected billFetchDTO(Parcel in) {
         id = in.readString();
         biller_id = in.readString();
@@ -152,6 +168,10 @@ public class billFetchDTO implements Parcelable {
         emi = in.readString();
         tenure = in.readString();
         charges_levied = in.readString();
+        billerId = in.readString();
+        biller_name = in.readString();
+        bill_date = in.readString();
+        cashback_flag = in.readString();
     }
 
     public static final Creator<billFetchDTO> CREATOR = new Creator<billFetchDTO>() {
@@ -398,40 +418,36 @@ public class billFetchDTO implements Parcelable {
         this.charges_levied = charges_levied;
     }
 
+    public String getBillerId() {
+        return billerId;
+    }
 
-    @Override
-    public String toString() {
-        return "billFetchDTO{" +
-                "id='" + id + '\'' +
-                ", biller_id='" + biller_id + '\'' +
-                ", profile_id='" + profile_id + '\'' +
-                ", loan_idloan_id='" + loan_idloan_id + '\'' +
-                ", loan_acc_no='" + loan_acc_no + '\'' +
-                ", customer_name='" + customer_name + '\'' +
-                ", customer_mobile='" + customer_mobile + '\'' +
-                ", biller_additional_info=" + biller_additional_info +
-                ", inputparams_value=" + inputparams_value +
-                ", amountOptions=" + amountOptions +
-                ", bill_number='" + bill_number + '\'' +
-                ", transaction_date_and_time='" + transaction_date_and_time + '\'' +
-                ", amount='" + amount + '\'' +
-                ", transation_status='" + transation_status + '\'' +
-                ", order_id='" + order_id + '\'' +
-                ", transaction_id='" + transaction_id + '\'' +
-                ", transaction_date='" + transaction_date + '\'' +
-                ", initiation_channel='" + initiation_channel + '\'' +
-                ", payment_mode='" + payment_mode + '\'' +
-                ", customer_convinience_fees='" + customer_convinience_fees + '\'' +
-                ", service_tax='" + service_tax + '\'' +
-                ", RespBillNumber='" + RespBillNumber + '\'' +
-                ", RespBillPeriod='" + RespBillPeriod + '\'' +
-                ", RespDueDate='" + RespDueDate + '\'' +
-                ", requestId='" + requestId + '\'' +
-                ", approval_number='" + approval_number + '\'' +
-                ", emi='" + emi + '\'' +
-                ", tenure='" + tenure + '\'' +
-                ", charges_levied='" + charges_levied + '\'' +
-                '}';
+    public void setBillerId(String billerId) {
+        this.billerId = billerId;
+    }
+
+    public String getBiller_name() {
+        return biller_name;
+    }
+
+    public void setBiller_name(String biller_name) {
+        this.biller_name = biller_name;
+    }
+
+    public String getBill_date() {
+        return bill_date;
+    }
+
+    public void setBill_date(String bill_date) {
+        this.bill_date = bill_date;
+    }
+
+    public String getCashback_flag() {
+        return cashback_flag;
+    }
+
+    public void setCashback_flag(String cashback_flag) {
+        this.cashback_flag = cashback_flag;
     }
 
     @Override
@@ -467,5 +483,9 @@ public class billFetchDTO implements Parcelable {
         parcel.writeString(emi);
         parcel.writeString(tenure);
         parcel.writeString(charges_levied);
+        parcel.writeString(billerId);
+        parcel.writeString(biller_name);
+        parcel.writeString(bill_date);
+        parcel.writeString(cashback_flag);
     }
 }
