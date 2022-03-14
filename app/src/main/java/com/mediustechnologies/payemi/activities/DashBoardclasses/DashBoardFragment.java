@@ -41,7 +41,7 @@ import retrofit2.Response;
 
 public class DashBoardFragment extends Fragment {
 
-    DashboardFragmentBinding binding;
+    private DashboardFragmentBinding binding;
     private List<emiListItem> emilist;
     private Context context ;
     private  List<HomepageDTO> data;

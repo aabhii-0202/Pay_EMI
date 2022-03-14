@@ -209,8 +209,8 @@ public class BankListFragment extends Fragment {
                 filteredList.add(item);
             }
         }
-        System.out.println("Filtered "+filteredList.size());
-        System.out.println("Bank List "+banklist.getData().size());
+        System.out.println("Filtered List: "+filteredList.size());
+        System.out.println("Bank List: "+banklist.getData().size());
 
         adapter.filterList(filteredList);
     }
