@@ -3,14 +3,10 @@ package com.mediustechnologies.payemi.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,13 +19,12 @@ import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.ApiResponse.getBillerByBank;
 import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO;
 import com.mediustechnologies.payemi.R;
-import com.mediustechnologies.payemi.adapters.bankListAdapter;
+import com.mediustechnologies.payemi.adapters.BankListAdapter;
 import com.mediustechnologies.payemi.commons.urlconstants;
 import com.mediustechnologies.payemi.commons.utils;
 import com.mediustechnologies.payemi.databinding.BankListFragmentBinding;
 import com.mediustechnologies.payemi.helper.RetrofitClient;
 
-import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +38,7 @@ public class BankListFragment extends Fragment {
     private Context context;
     private banklistResponse banklist;
     private List<getAllBanks> filteredList;
-    public bankListAdapter adapter;
+    public BankListAdapter adapter;
 
     public static BankListFragment newInstance() {
         return new BankListFragment();
@@ -122,12 +117,12 @@ public class BankListFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
         gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rec.setLayoutManager(gridLayoutManager);
-        adapter = new bankListAdapter(banklist.getData());
+        adapter = new BankListAdapter(banklist.getData());
         rec.setAdapter(adapter);
         binding.progress.setVisibility(View.GONE);
         binding.listOfBanks.setVisibility(View.VISIBLE);
 
-        adapter.setOnItemClickListner(new bankListAdapter.onItemClicked() {
+        adapter.setOnItemClickListner(new BankListAdapter.onItemClicked() {
             @Override
             public void onItemClick(int position) {
                 String url = "";

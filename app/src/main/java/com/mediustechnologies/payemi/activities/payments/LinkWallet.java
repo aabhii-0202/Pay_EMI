@@ -15,7 +15,7 @@
 //import com.mediustechnologies.payemi.R;
 //import com.mediustechnologies.payemi.activities.PaymentSuccessful;
 //import com.mediustechnologies.payemi.adapters.WalletAdapter;
-//import com.mediustechnologies.payemi.adapters.bankListAdapter;
+//import com.mediustechnologies.payemi.adapters.BankListAdapter;
 //import com.mediustechnologies.payemi.databinding.ActivitySelectWallectBinding;
 //import com.mediustechnologies.payemi.helper.BaseAppCompatActivity;
 //import com.mediustechnologies.payemi.recyclerItems.walletItem;

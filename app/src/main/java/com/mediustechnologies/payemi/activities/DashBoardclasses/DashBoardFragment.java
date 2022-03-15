@@ -143,6 +143,7 @@ public class DashBoardFragment extends Fragment {
             d = mBuilder.create();
             TextView name = view.findViewById(R.id.name);
             name.setText(data.get(pos).getBiller__billerName()+" Loan Account Number "+data.get(pos).getLoan_acc_no());
+            d.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
             d.show();
             view.findViewById(R.id.cross).setOnClickListener(view1 -> d.cancel());

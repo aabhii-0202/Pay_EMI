@@ -12,10 +12,10 @@ import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
 
-public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.Viewholder> {
+public class BankSublistAdapter extends RecyclerView.Adapter<BankSublistAdapter.Viewholder> {
 
     private List<GetBillerByBankDTO> bankSubList;
-    private bankListAdapter.onItemClicked mListner;
+    private BankListAdapter.onItemClicked mListner;
 
 
 
@@ -23,20 +23,20 @@ public class bankSublistAdapter extends RecyclerView.Adapter<bankSublistAdapter.
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListner(bankListAdapter.onItemClicked listner){
+    public void setOnItemClickListner(BankListAdapter.onItemClicked listner){
         mListner = listner;
     }
-    public bankSublistAdapter(List<GetBillerByBankDTO> bankSubList){ this.bankSubList = bankSubList; }
+    public BankSublistAdapter(List<GetBillerByBankDTO> bankSubList){ this.bankSubList = bankSubList; }
 
     @NonNull
     @Override
-    public bankSublistAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BankSublistAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()) .inflate(R.layout.bank_sublist_items,parent,false);
         return new Viewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull bankSublistAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull BankSublistAdapter.Viewholder holder, int position) {
 
         String billerid = bankSubList.get(position).getBillerId();
         String bankname = bankSubList.get(position).getBiller_bank__bank_name();

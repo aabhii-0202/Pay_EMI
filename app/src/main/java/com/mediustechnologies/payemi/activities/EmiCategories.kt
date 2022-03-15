@@ -7,11 +7,10 @@ import com.mediustechnologies.payemi.ApiResponse.loancategory
 import com.mediustechnologies.payemi.ApiResponse.getAllBanks
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mediustechnologies.payemi.adapters.bankListAdapter
+import com.mediustechnologies.payemi.adapters.BankListAdapter
 import android.content.Intent
 import android.util.Log
 import android.view.View
-import com.mediustechnologies.payemi.activities.BankList
 import com.mediustechnologies.payemi.helper.RetrofitClient
 import com.mediustechnologies.payemi.commons.urlconstants
 import com.mediustechnologies.payemi.commons.utils
@@ -54,7 +53,8 @@ class EmiCategories : BaseAppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(context, 3)
         gridLayoutManager.orientation = RecyclerView.VERTICAL
         category.layoutManager = gridLayoutManager
-        val adapter = bankListAdapter(banklist)
+        val adapter =
+            BankListAdapter(banklist)
         category.adapter = adapter
         adapter.setOnItemClickListner { position: Int ->
             val i = Intent(context, BankList::class.java)

@@ -12,7 +12,7 @@ import com.mediustechnologies.payemi.ApiResponse.getAllBanks;
 import com.mediustechnologies.payemi.R;
 import java.util.List;
 
-public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHolder> {
+public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.ViewHolder> {
 
     private List<getAllBanks> bankListItem;
     private onItemClicked mListner;
@@ -25,20 +25,20 @@ public class bankListAdapter extends RecyclerView.Adapter<bankListAdapter.ViewHo
     public void setOnItemClickListner(onItemClicked listner){
         mListner = listner;
     }
-    public bankListAdapter(List<getAllBanks> bankListItem){
+    public BankListAdapter(List<getAllBanks> bankListItem){
         this.bankListItem =bankListItem;
     }
 
 
     @NonNull
     @Override
-    public bankListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BankListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bank_list_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull bankListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BankListAdapter.ViewHolder holder, int position) {
         String imageRes = bankListItem.get(position).getBank_logo_url();
         String name = bankListItem.get(position).getBank_name();
         holder.setData(imageRes,name);

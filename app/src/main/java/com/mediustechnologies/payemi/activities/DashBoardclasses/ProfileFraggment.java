@@ -366,7 +366,7 @@ public class ProfileFraggment extends Fragment {
                     if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
                         if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                             if (!response.body().getData().isEmpty()) {
-                                System.out.println(response.body().toString());
+                                Log.d("tag","On Image Upload "+response.body().toString());
                                 try {
                                     binding.profilephone.setText(utils.phone);
                                     binding.profilename.setText(response.body().getData().get(0).getFullname());
@@ -420,6 +420,7 @@ public class ProfileFraggment extends Fragment {
                 binding.progress.setVisibility(View.GONE);
 
                 if (response.code() == utils.RESPONSE_SUCCESS && response.body() != null) {
+                    Log.d("tag","On No Image Upload "+response.body().toString());
                     if (response.body().getError() == null || response.body().getError().equalsIgnoreCase("false")) {
                         if (!response.body().getData().isEmpty()) {
 

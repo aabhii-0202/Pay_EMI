@@ -5,13 +5,11 @@ import com.mediustechnologies.payemi.helper.BaseAppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.mediustechnologies.payemi.DTO.GetBillerByBankDTO
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mediustechnologies.payemi.adapters.bankSublistAdapter
+import com.mediustechnologies.payemi.adapters.BankSublistAdapter
 import android.os.Bundle
-import com.mediustechnologies.payemi.adapters.bankListAdapter
 import android.content.Intent
 import android.util.Log
 import android.view.View
-import com.mediustechnologies.payemi.activities.AddLoanAccount
 import com.mediustechnologies.payemi.ApiResponse.getBillerByBank
 import com.mediustechnologies.payemi.helper.RetrofitClient
 import com.mediustechnologies.payemi.commons.urlconstants
@@ -30,7 +28,7 @@ class BillerList : BaseAppCompatActivity() {
     private var bankSubListRecyclerview: RecyclerView? = null
     private var bankSubList: List<GetBillerByBankDTO>? = null
     private var linearLayoutManager: LinearLayoutManager? = null
-    private var adapter: bankSublistAdapter? = null
+    private var adapter: BankSublistAdapter? = null
     private val context: Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +45,8 @@ class BillerList : BaseAppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager!!.orientation = RecyclerView.VERTICAL
         bankSubListRecyclerview!!.layoutManager = linearLayoutManager
-        adapter = bankSublistAdapter(bankSubList)
+        adapter =
+            BankSublistAdapter(bankSubList)
         bankSubListRecyclerview!!.adapter = adapter
         adapter!!.setOnItemClickListner { position: Int ->
             val i = Intent(context, AddLoanAccount::class.java)
