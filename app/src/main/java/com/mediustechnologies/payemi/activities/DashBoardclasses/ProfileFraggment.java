@@ -355,7 +355,8 @@ public class ProfileFraggment extends Fragment {
         JsonObject josnbody = ApiJsonMap();
         if (imageBytes != null) {
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
-            body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
+            body = MultipartBody.Part.createFormData("profile_url", "image.jpg", requestFile);
+            System.out.println(body.toString());
             call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfilePic(utils.access_token, utils.phone, body);
 
             call.enqueue(new Callback<ProfileInfoResponse>() {
@@ -371,7 +372,7 @@ public class ProfileFraggment extends Fragment {
                                     binding.profilephone.setText(utils.phone);
                                     binding.profilename.setText(response.body().getData().get(0).getFullname());
                                     binding.profilemail.setText(response.body().getData().get(0).getEmail());
-                                    binding.profileUsername.setText(response.body().getData().get(0).getUser());
+                                    binding.profileUsername.setText(response.body().getData().get(0).getUser_name());
                                     binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
                                     SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
@@ -429,7 +430,7 @@ public class ProfileFraggment extends Fragment {
                                 binding.profilephone.setText(utils.phone);
                                 binding.profilename.setText(response.body().getData().get(0).getFullname());
                                 binding.profilemail.setText(response.body().getData().get(0).getEmail());
-                                binding.profileUsername.setText(response.body().getData().get(0).getUser());
+                                binding.profileUsername.setText(response.body().getData().get(0).getUser_name());
                                 binding.profileaddress.setText(response.body().getData().get(0).getAddress());
 
                                 SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("PAY_EMI", Context.MODE_PRIVATE);
