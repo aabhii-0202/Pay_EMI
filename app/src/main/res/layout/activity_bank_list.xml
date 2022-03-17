@@ -62,7 +62,7 @@
         android:background="@drawable/input_box_layout"
         android:fontFamily="@font/gtwalsheim_pro_regular"
         android:hint="Search"
-        android:visibility="visible"
+        android:visibility="gone"
         android:padding="16dp"
         android:elevation="8dp"
         android:textColor="@color/black"

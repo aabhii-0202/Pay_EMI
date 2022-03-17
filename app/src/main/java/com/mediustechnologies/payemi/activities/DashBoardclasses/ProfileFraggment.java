@@ -356,7 +356,7 @@ public class ProfileFraggment extends Fragment {
         if (imageBytes != null) {
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
             body = MultipartBody.Part.createFormData("profile_url", "image.jpg", requestFile);
-            System.out.println(body.toString());
+
             call = new RetrofitClient().getInstance(context, urlconstants.AuthURL).getApi().updateProfilePic(utils.access_token, utils.phone, body);
 
             call.enqueue(new Callback<ProfileInfoResponse>() {
@@ -382,6 +382,8 @@ public class ProfileFraggment extends Fragment {
                                     preferences.edit().putString("cutomerid", response.body().getData().get(0).getCustomer_id()).apply();
                                     preferences.edit().putString("path", response.body().getData().get(0).getProfile_url()).apply();
                                     utils.profileUrl = response.body().getData().get(0).getProfile_url();
+
+                                    listner.updatename(response.body().getData().get(0).getFullname(),response.body().getData().get(0).getProfile_url());
 
                                     Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
 

@@ -69,5 +69,3 @@ z
 Japp/src/main/java/com/mediustechnologies/payemi/activities/SplashScreen.kt,c\1\c167debe2932724193705e3d797ee715004cfbb9
 ‰
 Yapp/src/main/java/com/mediustechnologies/payemi/activities/DashBoardclasses/Home_Nav.java,7\5\7583717f5c8bc220d13588e18f20162c336bdd4d
-v
-Fapp/src/main/java/com/mediustechnologies/payemi/activities/BankList.kt,1\7\1793f770ee27df99d2511042eadcce4faf3983b1
